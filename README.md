@@ -1,5 +1,6 @@
 # Robocross
-                                                              Annotation
+ANNOTATION
+
 This project created for All-Russian competitions of unmanned vehicles. This project include functions for initialization main interfaces for conencting, parsing and sending information to the car, personal compter and many others. Project works with controller area network (CAN) for receive the information from car. 
 
 Project was created in DSTU, laboratory of unmanned transport systems for agricultural and general purposes.
