@@ -196,11 +196,36 @@
 1645518261 source:c:\users\caska\desktop\projects\rcr\robocross\src\system_stm32f4xx.c
 	"stm32f4xx.h"
 
-1645519835 source:c:\users\caska\desktop\projects\rcr\robocross\src\main.c
+1652702133 source:c:\users\caska\desktop\projects\rcr\robocross\src\main.c
 	"main.h"
 
-1645519361 c:\users\caska\desktop\projects\rcr\robocross\inc\main.h
+1652691949 c:\users\caska\desktop\projects\rcr\robocross\inc\main.h
 	"stm32f4xx.h"
+	<FilConfig.h>
+
+1645518741 c:\users\caska\desktop\projects\rcr\robocross\src\robot_tasks.h
+	"main.h"
+
+1652692225 source:c:\users\caska\desktop\projects\rcr\robocross\src\robot_tasks.c
+	"robot_tasks.h"
+
+1608062068 c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\semphr.h
+	"queue.h"
+
+1652701468 c:\users\caska\desktop\projects\rcr\robocross\inc\robot_tasks.h
+	<FilConfig.h>
+
+1652703112 c:\users\caska\desktop\projects\rcr\robocross\fil lib\filconfig.h
+	<main.h>
+	"RCC.h"
+	"GPIO.h"
+	"TIM.h"
+	"ADC.h"
+	"DMA.h"
+	"USART.h"
+	"RCR_PinsBoard.h"
+	"RCR_Custom.h"
+	"RCR_SetupCustom.h"
 	"FreeRTOS.h"
 	"FreeRTOSConfig.h"
 	"task.h"
@@ -210,15 +235,29 @@
 	"timers.h"
 	"robot_tasks.h"
 
-1645518741 c:\users\caska\desktop\projects\rcr\robocross\src\robot_tasks.h
-	"main.h"
+1652691785 c:\users\caska\desktop\projects\rcr\robocross\fil lib\rcr dstu\rcr_pinsboard.h
 
-1645714043 source:c:\users\caska\desktop\projects\rcr\robocross\src\robot_tasks.c
-	"robot_tasks.h"
+1652703328 c:\users\caska\desktop\projects\rcr\robocross\fil lib\rcr dstu\rcr_custom.h
 
-1608062068 c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\semphr.h
-	"queue.h"
+1650516081 c:\users\caska\desktop\projects\rcr\robocross\fil lib\rcc.h
 
-1645712678 c:\users\caska\desktop\projects\rcr\robocross\inc\robot_tasks.h
-	"main.h"
+1652703231 c:\users\caska\desktop\projects\rcr\robocross\fil lib\rcr dstu\rcr_setupcustom.h
+	<FilConfig.h>
+
+1650516893 c:\users\caska\desktop\projects\rcr\robocross\fil lib\gpio.h
+
+1652703081 c:\users\caska\desktop\projects\rcr\robocross\fil lib\tim.h
+	"FilConfig.h"
+
+1652702242 source:c:\users\caska\desktop\projects\rcr\robocross\fil lib\interrupts.c
+	<FilConfig.h>
+
+1652691520 c:\users\caska\desktop\projects\rcr\robocross\fil lib\adc.h
+	<FilConfig.h>
+
+1652700743 c:\users\caska\desktop\projects\rcr\robocross\fil lib\dma.h
+	<FilConfig.h>
+
+1652691588 c:\users\caska\desktop\projects\rcr\robocross\fil lib\usart.h
+	<FilConfig.h>
 

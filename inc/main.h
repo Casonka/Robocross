@@ -7,20 +7,9 @@ extern "C" {
 // system files
 #include "stm32f4xx.h"      // kernel file for STM32
 //-----------------------------------------------------------------
-//FreeRTOS files
-#include "FreeRTOS.h"       // main FreeRTOS kernel file
-#include "FreeRTOSConfig.h" // main configuration file
-#include "task.h"           //file for initialization tasks
-#include "queue.h"  // работа с очередью переменных
-#include "semphr.h" // работа с отложенным прерыванием(семафорами)
-#include "croutine.h" // работа с сопрограммами
-#include "timers.h" // работа с программными таймерами
+//FIL files
+#include <FilConfig.h>
 //-----------------------------------------------------------------
-// custom files
-#include "robot_tasks.h"    // tasks list
-//#include "Interrupts.h"
-//-----------------------------------------------------------------
-
 #ifdef __cplusplus
 }
 #endif

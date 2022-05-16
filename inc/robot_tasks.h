@@ -1,8 +1,7 @@
 #pragma once
-#include "main.h"
+#include <FilConfig.h>
 // tasks structures
-xQueueHandle xBuffer;
-xSemaphoreHandle xRef;
+
 //--------------------------------------------
 // Tasks
 
