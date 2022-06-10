@@ -1,22 +1,72 @@
 
-
 #pragma once
 #include <FilConfig.h>
 
 
 #define MAX_PWM 700.0
 
+
+#if( _AdvancedCalculatingTimers == 1 )
+
+
+
+/*!
+*   @brief  SetPWM(CHANNEL, DUTY) - function for management PWMs signals
+*       @param  CHANNEL - number of PWM port
+*       @param  DUTY - PWM value
+*           @note This function have protection about wrong values of PWM
+*/
+
+    #define SetPWM(CHANNEL,DUTY) {\
+        float duty = DUTY;                                               \
+        if (duty > 1)    duty = 1.0;                                     \
+        if (duty < -1)   duty = -1.0;                                    \
+        if (duty > 0 )                                                   \
+        {                                                                \
+             *PWM_List[CHANNEL] = (int32_t)(MAX_PWM +  (duty * MAX_PWM));\
+             set_pin(DIR_List[CHANNEL]);                                 \
+        }                                                                \
+        if (duty < 0)                                                    \
+        {                                                                \
+             *PWM_List[CHANNEL] = (int32_t) (duty * MAX_PWM);            \
+             reset_pin(DIR_List[CHANNEL]);                               \
+        }                                                                \
+        }
+
+#endif /*_AdvancedCalculatingTimers*/
+
+/*!
+*   @param DIR_List[10] - List for edit moving direction
+*/
+   __attribute__((unused)) static uint32_t DIR_List[10] = {  BTN1_DIR_PIN, BTN2_DIR_PIN,
+                                                              BTN3_DIR_PIN, BTN4_DIR_PIN,
+                                                              BTN5_DIR_PIN, BTN6_DIR_PIN,
+                                                              BTN7_DIR_PIN, BTN8_DIR_PIN,
+                                                              BTN9_DIR_PIN, BTN10_DIR_PIN };
+
+/*!
+*   @param  PWM_List[10] - List for generation PWM signal
+*/
+   __attribute__((unused)) static uint32_t  *PWM_List[10] =  {  BTN1_CCR, BTN2_CCR,
+                                                                BTN3_CCR, BTN4_CCR,
+                                                                BTN5_CCR, BTN6_CCR,
+                                                                BTN7_CCR, BTN8_CCR,
+                                                                BTN9_CCR, BTN10_CCR };
+
 #define BoardStart {                            \
-    ClocksInit;                                  \
-    PWR->CR|=PWR_CR_DBP;                        \
+    ClocksInit;                                 \
     __disable_irq();                            \
-    SysTick_Config(168000);                     \
     InitPeriph;                                 \
+    InterruptsEnable;                           \
     TimPWMConfigure(Tim4,7,MAX_PWM,1,1,1,1);    \
     TimEncoderConfigure(Tim8);                  \
     TimEncoderConfigure(Tim1);                  \
     TimEncoderConfigure(Tim3);                  \
-    TimEncoderConfigure(Tim2);                  }
+    TimEncoderConfigure(Tim2);                  \
+    TimPIDConfigure(Tim6,10);                   \
+    usartBothConfigure(usart3, 9600);           \
+    usartBothConfigure(usart1, 9600);           \
+       }
 
 #define ClocksInit {\
     set_pwr;    \
@@ -42,7 +92,14 @@
     set_dma1;   \
     set_dma2;   \
     set_adc1;   \
+    set_usart1;  \
+    set_usart3;  \
 }
+
+#define InterruptsEnable {\
+    NVIC_EnableIRQ(TIM6_DAC_IRQn);\
+}
+
 
 #define InitPeriph {\
     conf_pin(BTN1_DIR_PIN, GENERAL, PUSH_PULL, FAST_S, NO_PULL_UP);\

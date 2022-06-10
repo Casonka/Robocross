@@ -15,18 +15,20 @@
 #pragma once
 #include <main.h>
 
+// system includes
+#include <stdio.h>
 
 #define _DefaultSectorIncludeHandler                2   // access for Basic functions FIL
 
 #define _AdvancedSectorIncludeHandler               1   // access for Advanced functions FIL
-#if (_AdvancedSectorIncludeHandler != 0)
-    #define _AdvancedCalculatingRCC                 0
+#if (_AdvancedSectorIncludeHandler == 1)
+    #define _AdvancedCalculatingRCC                 1
     #define _AdvancedGPIOSpecial                    1
     #define _AdvancedCalculatingTimers              1
 #endif /*Advanced Sector*/
 
 #define _DeveloperSectorIncludeHandler              1   // access for Developer functions FIL
-#if (_DeveloperSectorIncludeHandler != 0)
+#if (_DeveloperSectorIncludeHandler == 1)
     #define _DeveloperI2C                           0
     #define _DeveloperCAN                           0
     #define _DeveloperSPI                           0
@@ -69,13 +71,13 @@
 #endif /*_Default setup*/
 
 
-#if (_DeveloperSectorIncludeHandler != 0)
+#if (_DeveloperSectorIncludeHandler == 1)
     #if(_DeveloperRTOS == 1)
 //FreeRTOS files
 #include "FreeRTOS.h"       // main FreeRTOS kernel file
 #include "FreeRTOSConfig.h" // main configuration file
 #include "task.h"           //file for initialization tasks
-#include "queue.h"  // работа с очередью переменных
+#include "queue.h"  // работа с очередями
 #include "semphr.h" // работа с отложенным прерыванием(семафорами)
 #include "croutine.h" // работа с сопрограммами
 #include "timers.h" // работа с программными таймерами
@@ -84,6 +86,7 @@
 #include "robot_tasks.h"    // tasks list
 //-----------------------------------------------------------------
     #endif /*_DeveloperRTOS*/
+
 #endif /*_DeveloperSectorIncludeHandler*/
 
 

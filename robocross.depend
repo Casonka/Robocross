@@ -196,7 +196,7 @@
 1645518261 source:c:\users\caska\desktop\projects\rcr\robocross\src\system_stm32f4xx.c
 	"stm32f4xx.h"
 
-1652702133 source:c:\users\caska\desktop\projects\rcr\robocross\src\main.c
+1654875746 source:c:\users\caska\desktop\projects\rcr\robocross\src\main.c
 	"main.h"
 
 1652691949 c:\users\caska\desktop\projects\rcr\robocross\inc\main.h
@@ -206,17 +206,18 @@
 1645518741 c:\users\caska\desktop\projects\rcr\robocross\src\robot_tasks.h
 	"main.h"
 
-1652692225 source:c:\users\caska\desktop\projects\rcr\robocross\src\robot_tasks.c
+1654877299 source:c:\users\caska\desktop\projects\rcr\robocross\src\robot_tasks.c
 	"robot_tasks.h"
 
 1608062068 c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\semphr.h
 	"queue.h"
 
-1652701468 c:\users\caska\desktop\projects\rcr\robocross\inc\robot_tasks.h
+1654500032 c:\users\caska\desktop\projects\rcr\robocross\inc\robot_tasks.h
 	<FilConfig.h>
 
-1652703112 c:\users\caska\desktop\projects\rcr\robocross\fil lib\filconfig.h
+1654878347 c:\users\caska\desktop\projects\rcr\robocross\fil lib\filconfig.h
 	<main.h>
+	<stdio.h>
 	"RCC.h"
 	"GPIO.h"
 	"TIM.h"
@@ -237,19 +238,19 @@
 
 1652691785 c:\users\caska\desktop\projects\rcr\robocross\fil lib\rcr dstu\rcr_pinsboard.h
 
-1652703328 c:\users\caska\desktop\projects\rcr\robocross\fil lib\rcr dstu\rcr_custom.h
+1654876378 c:\users\caska\desktop\projects\rcr\robocross\fil lib\rcr dstu\rcr_custom.h
 
-1650516081 c:\users\caska\desktop\projects\rcr\robocross\fil lib\rcc.h
+1654874362 c:\users\caska\desktop\projects\rcr\robocross\fil lib\rcc.h
 
-1652703231 c:\users\caska\desktop\projects\rcr\robocross\fil lib\rcr dstu\rcr_setupcustom.h
+1654876034 c:\users\caska\desktop\projects\rcr\robocross\fil lib\rcr dstu\rcr_setupcustom.h
 	<FilConfig.h>
 
 1650516893 c:\users\caska\desktop\projects\rcr\robocross\fil lib\gpio.h
 
-1652703081 c:\users\caska\desktop\projects\rcr\robocross\fil lib\tim.h
+1654874928 c:\users\caska\desktop\projects\rcr\robocross\fil lib\tim.h
 	"FilConfig.h"
 
-1652702242 source:c:\users\caska\desktop\projects\rcr\robocross\fil lib\interrupts.c
+1654875456 source:c:\users\caska\desktop\projects\rcr\robocross\fil lib\interrupts.c
 	<FilConfig.h>
 
 1652691520 c:\users\caska\desktop\projects\rcr\robocross\fil lib\adc.h
@@ -260,4 +261,93 @@
 
 1652691588 c:\users\caska\desktop\projects\rcr\robocross\fil lib\usart.h
 	<FilConfig.h>
+
+1478569716 c:\users\caska\desktop\projects\rcr\robocross\usb_lib\cdc\inc\usbd_cdc_core.h
+	"usbd_ioreq.h"
+
+1478569716 c:\users\caska\desktop\projects\rcr\robocross\usb_lib\core\inc\usbd_ioreq.h
+	"usbd_def.h"
+	"usbd_core.h"
+
+1654877613 c:\users\caska\desktop\projects\rcr\robocross\usb_lib\core\inc\usbd_def.h
+	"usbd_conf.h"
+
+1478569716 c:\users\caska\desktop\projects\rcr\robocross\usb_lib\core\inc\usbd_core.h
+	"usb_dcd.h"
+	"usbd_def.h"
+	"usbd_conf.h"
+
+1478569716 c:\users\caska\desktop\projects\rcr\robocross\usb_lib\core\inc\usb_dcd.h
+	"usb_core.h"
+
+1478569716 c:\users\caska\desktop\projects\rcr\robocross\usb_lib\core\inc\usb_core.h
+	"usb_conf.h"
+	"usb_regs.h"
+	"usb_defines.h"
+
+1478569716 c:\users\caska\desktop\projects\rcr\robocross\usb_lib\core\inc\usb_regs.h
+	"usb_conf.h"
+
+1478569716 c:\users\caska\desktop\projects\rcr\robocross\usb_lib\core\inc\usb_defines.h
+	"usb_conf.h"
+
+1478569716 c:\users\caska\desktop\projects\rcr\robocross\usb_lib\core\inc\usbd_usr.h
+	"usbd_ioreq.h"
+
+1478569716 c:\users\caska\desktop\projects\rcr\robocross\usb_lib\stm32f4xx_conf.h
+	"stm32f4xx_adc.h"
+	"stm32f4xx_can.h"
+	"stm32f4xx_crc.h"
+	"stm32f4xx_cryp.h"
+	"stm32f4xx_dac.h"
+	"stm32f4xx_dbgmcu.h"
+	"stm32f4xx_dcmi.h"
+	"stm32f4xx_dma.h"
+	"stm32f4xx_exti.h"
+	"stm32f4xx_flash.h"
+	"stm32f4xx_fsmc.h"
+	"stm32f4xx_fmc.h"
+	"stm32f4xx_hash.h"
+	"stm32f4xx_gpio.h"
+	"stm32f4xx_i2c.h"
+	"stm32f4xx_iwdg.h"
+	"stm32f4xx_pwr.h"
+	"stm32f4xx_rcc.h"
+	"stm32f4xx_rng.h"
+	"stm32f4xx_rtc.h"
+	"stm32f4xx_sdio.h"
+	"stm32f4xx_spi.h"
+	"stm32f4xx_syscfg.h"
+	"stm32f4xx_tim.h"
+	"stm32f4xx_usart.h"
+	"stm32f4xx_wwdg.h"
+	"misc.h"
+	"stm32f4xx_dma2d.h"
+	"stm32f4xx_ltdc.h"
+
+1478569716 c:\users\caska\desktop\projects\rcr\robocross\usb_lib\usbd_conf.h
+	"usb_conf.h"
+
+1478569716 c:\users\caska\desktop\projects\rcr\robocross\usb_lib\usb_conf.h
+	"stm322xg_eval.h"
+	"stm322xg_eval_lcd.h"
+	"stm32f4xx.h"
+	"stm32f4xx.h"
+	"stm324x9i_eval.h"
+	"stm324x9i_eval_lcd.h"
+	"stm32f10x.h"
+	"stm3210c_eval.h"
+	"stm3210c_eval_lcd.h"
+
+1478569716 c:\users\caska\desktop\projects\rcr\robocross\usb_lib\usbd_desc.h
+	"usbd_req.h"
+
+1478569716 c:\users\caska\desktop\projects\rcr\robocross\usb_lib\core\inc\usbd_req.h
+	"usbd_def.h"
+	"usbd_core.h"
+	"usbd_conf.h"
+
+1478569716 c:\users\caska\desktop\projects\rcr\robocross\usb_lib\usbd_cdc_vcp.h
+	"usbd_cdc_core.h"
+	"usbd_conf.h"
 

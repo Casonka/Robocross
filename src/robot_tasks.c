@@ -10,18 +10,32 @@ void vApplicationTickHook(void){
 */
 }
 
-void vApplicationIdleHook(void){
+void vApplicationIdleHook(void)
+{
 
 }
 
-void vApplicationStackOverflowHook( TaskHandle_t xTask, char *pcTaskName ){
+void vApplicationStackOverflowHook( TaskHandle_t xTask, char *pcTaskName )
+{
 
 }
 
-void vApplicationMallocFailedHook( void ){
+void vApplicationMallocFailedHook( void )
+{
 
 }
+
 // Tasks functions
 //----------------------------------------------------------------------------------------------------------------------
+void vManagementGearsBox( void *pvParameters )  //car management gears box ( enter code here man!)
+{
 
+for(;;)
+{
+
+
+
+}
+vTaskDelete(NULL);
+}
 //-------------------------------------------------------------------------------------------------------------------------

@@ -91,7 +91,7 @@
     #define get_ppre2   ((uint8_t)(((*((uint32_t *)((RCC_BASE) + 0x08)))&(RCC_CFGR_PPRE2)) >> 13))
 
     #if (_AdvancedCalculatingRCC == 1)
-        static uint8_t prescaler_table[16] =   {0, 0, 0, 0, 1, 2, 3, 4, 1, 2, 3, 4, 6, 7, 8, 9};
+        __attribute__((unused)) static uint8_t prescaler_table[16] =   {0, 0, 0, 0, 1, 2, 3, 4, 1, 2, 3, 4, 6, 7, 8, 9};
             /*!
              *   @brief current_systick - get system clock frequency
              *
@@ -102,9 +102,9 @@
              *   @brief current_APB2 - get APB2 bus frequency
              */
         #define calc_pllvco         ((((HSE_VALUE*get_pllsrc) + (HSI_VALUE*(!get_pllsrc))) / get_pllm) * (get_plln))
-        #define current_systick     (((calc_pllvco / get_pllp)*((get_sws)>>3)) + (HSI_VALUE*(((get_sws)>>2)&0x1) ) + (HSE_VALUE*(!((get_sws >> 3)|(get_sws >> 2))) ))
-        #define current_AHB         current_systick >> prescaler_table[get_hpre]
-        #define current_APB1        current_AHB >> prescaler_table[get_ppre1]
+        #define current_Systick     (((calc_pllvco / get_pllp)*((get_sws)>>3)) + (HSI_VALUE*(((get_sws)>>2)&0x1) ) + (HSE_VALUE*(!((get_sws >> 3)|(get_sws >> 2))) ))
+        #define current_AHB         current_Systick >> prescaler_table[get_hpre]
+        #define current_APB1        (uint32_t)(current_AHB >> prescaler_table[get_ppre1])
         #define current_APB2        current_AHB >> prescaler_table[get_ppre2]
     #endif /*_AdvancedCalculatingRCC*/
 #endif /*_DefaultSectorIncludeHandler */

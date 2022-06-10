@@ -7,10 +7,7 @@
     *
     */
 #pragma once
-#ifndef _INF_
-    #define _INF_
-    #pragma warning Included RCR Custom setup stm32 (development board)
-#endif
+
 
 #if defined(STM32F401xx)
 
@@ -40,16 +37,16 @@
 /////////////////////////////////////////////////////////////////////////////
 #define MAX_PWM                 700.0
 
-#define BTN1_PWM_PIN            pin_id(PORTD,12)       /// TIM4 ch 1  AF2 //   WHEEL_1
-#define BTN2_PWM_PIN            pin_id(PORTD,13)       /// TIM4 ch 2  AF2 //   WHEEL_2
-#define BTN3_PWM_PIN            pin_id(PORTD,14)       /// TIM4 ch 3  AF2 //   WHEEL_3
-#define BTN4_PWM_PIN            pin_id(PORTD,15)       /// TIM4 ch 4  AF2
-#define BTN5_PWM_PIN            pin_id(PORTB,9)        /// TIM11 ch 1 AF3
-#define BTN6_PWM_PIN            pin_id(PORTB,8)        /// TIM10 ch 1  AF3//
-#define BTN7_PWM_PIN            pin_id(PORTE,6)        /// TIM9  ch 2 AF3 //   SERVO_DW
-#define BTN8_PWM_PIN            pin_id(PORTE,5)        /// TIM9  ch 1 AF3 //   SERVO_CW
-#define BTN9_PWM_PIN            pin_id(PORTB,14)       /// TIM12 ch 1 AF9 //   SERVO_1
-#define BTN10_PWM_PIN           pin_id(PORTB,15)       /// TIM12 ch 2 AF9//
+#define BTN1_PWM_PIN            pin_id(PORTD,12)       /// TIM4 ch 1  AF2  //
+#define BTN2_PWM_PIN            pin_id(PORTD,13)       /// TIM4 ch 2  AF2  //
+#define BTN3_PWM_PIN            pin_id(PORTD,14)       /// TIM4 ch 3  AF2  //
+#define BTN4_PWM_PIN            pin_id(PORTD,15)       /// TIM4 ch 4  AF2  //
+#define BTN5_PWM_PIN            pin_id(PORTB,9)        /// TIM11 ch 1 AF3  //
+#define BTN6_PWM_PIN            pin_id(PORTB,8)        /// TIM10 ch 1  AF3 //
+#define BTN7_PWM_PIN            pin_id(PORTE,6)        /// TIM9  ch 2 AF3  //
+#define BTN8_PWM_PIN            pin_id(PORTE,5)        /// TIM9  ch 1 AF3  //
+#define BTN9_PWM_PIN            pin_id(PORTB,14)       /// TIM12 ch 1 AF9  //
+#define BTN10_PWM_PIN           pin_id(PORTB,15)       /// TIM12 ch 2 AF9  //
 
 
 #define BTN1_CCR                ((uint32_t *)&(TIM4->CCR1))
@@ -63,19 +60,17 @@
 #define BTN9_CCR                ((uint32_t *)&(TIM12->CCR1))
 #define BTN10_CCR               ((uint32_t *)&(TIM12->CCR2))
 
-
-
 #define PWM_INHIBIT		pin_id(PORTC,13)       //INHIBIT//
 
 /////////////////////////////////////////////////////////////////////////////
 //_____________________________BTN directions___________________________//
 /////////////////////////////////////////////////////////////////////////////
 #define BTN1_DIR_PIN          pin_id(PORTC,14)          //
-#define BTN2_DIR_PIN          pin_id(PORTC,15)           //
+#define BTN2_DIR_PIN          pin_id(PORTC,15)          //
 #define BTN3_DIR_PIN          pin_id(PORTE,10)          //
 #define BTN4_DIR_PIN          pin_id(PORTE,14)          //
-#define BTN5_DIR_PIN          pin_id(PORTE,7)       //
-#define BTN6_DIR_PIN          pin_id(PORTE,2)      //
+#define BTN5_DIR_PIN          pin_id(PORTE,7)           //
+#define BTN6_DIR_PIN          pin_id(PORTE,2)           //
 #define BTN7_DIR_PIN          pin_id(PORTE,8)           //
 #define BTN8_DIR_PIN          pin_id(PORTE,13)          //
 #define BTN9_DIR_PIN          pin_id(PORTE,12)          //
@@ -121,21 +116,21 @@
 #define TX3_PIN                  pin_id(PORTC,10)
 #define RX3_PIN                  pin_id(PORTC,11)
 //USART1 in stm32, USART2 as PCB header. AF7
-#define TX1_PIN                  pin_id(PORTB,6)      // платы RX// измерительная платка//белый
-#define RX1_PIN                  pin_id(PORTB,7)      // платы TX// синий
+#define TX1_PIN                  pin_id(PORTB,6)
+#define RX1_PIN                  pin_id(PORTB,7)
 /////////////////////////////////////////////////////////////////////////////
 //____________________________External interrupts__________________________//
 /////////////////////////////////////////////////////////////////////////////
-#define EXTI1_PIN               pin_id(PORTD,0)         /// Разъем EXTI1 // HALL_SENSOR_1
-#define EXTI2_PIN               pin_id(PORTD,1)         /// Разъем EXTI2 // HALL_SENSOR_2
-#define EXTI3_PIN               pin_id(PORTD,2)         //Разъем EXTI3//
-#define EXTI4_PIN               pin_id(PORTD,3)         //Разъем EXTI4//
-#define EXTI5_PIN               pin_id(PORTE,4)         //Разъем EXTI5//
-#define EXTI6_PIN               pin_id(PORTD,6)         //Разъем EXTI6//
-#define EXTI7_PIN               pin_id(PORTD,7)         /// Разъем EXTI7 // START_SENSOR
-#define EXTI8_PIN               pin_id(PORTD,8)         //Разъем EXTI8//
-#define EXTI9_PIN               pin_id(PORTD,9)         //Разъем EXTI9//
-#define EXTI10_PIN              pin_id(PORTD,10)        //Разъем EXTI10//
+#define EXTI1_PIN               pin_id(PORTD,0)         // Разъем EXTI1 // HALL_SENSOR_1
+#define EXTI2_PIN               pin_id(PORTD,1)         // Разъем EXTI2 // HALL_SENSOR_2
+#define EXTI3_PIN               pin_id(PORTD,2)         // Разъем EXTI3 //
+#define EXTI4_PIN               pin_id(PORTD,3)         // Разъем EXTI4 //
+#define EXTI5_PIN               pin_id(PORTE,4)         // Разъем EXTI5 //
+#define EXTI6_PIN               pin_id(PORTD,6)         // Разъем EXTI6 //
+#define EXTI7_PIN               pin_id(PORTD,7)         // Разъем EXTI7 //
+#define EXTI8_PIN               pin_id(PORTD,8)         // Разъем EXTI8 //
+#define EXTI9_PIN               pin_id(PORTD,9)         // Разъем EXTI9 //
+#define EXTI10_PIN              pin_id(PORTD,10)        // Разъем EXTI10 //
 /////////////////////////////////////////////////////////////////////////////
 //________________________________I2C2 pins________________________________//
 /////////////////////////////////////////////////////////////////////////////

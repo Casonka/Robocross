@@ -1,9 +1,4 @@
 #include <FilConfig.h>
-volatile uint32_t globalTime;
-
-//void SysTick_Handler(void) {
-//    globalTime++;
-//}
 
 void TIM1_IRQHandler(void) {
 ResetTimSR(Tim1);
@@ -25,11 +20,11 @@ void TIM5_IRQHandler(void) {
 ResetTimSR(Tim5);
 }
 
-void TIM6_DAC_IRQHandler(void) {
+void TIM6_DAC_IRQHandler(void) {    // Custom Regulator
 ResetTimSR(Tim6);
 }
 
-void TIM7_IRQHandler(void) {
+void TIM7_IRQHandler(void) {    // moving Regulator
 ResetTimSR(Tim7);
 }
 
@@ -43,7 +38,6 @@ void EXTI0_IRQHandler(void) {
 
 void EXTI1_IRQHandler(void) {
     EXTI->PR=0x2;
-
 }
 
 void EXTI2_IRQHandler(void) {
