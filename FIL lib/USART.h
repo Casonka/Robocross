@@ -31,7 +31,7 @@
         #define usart_baud(baud)                      ((uint16_t)(baud))
         #define usart_transmitter(te)                 ((uint16_t)((te) << 3))
         #define usart_receiver(re)                    ((uint16_t)((re) << 2))
-        #define usart_data(dr)                        ((uint16_t)(dr))
+        #define usart_data(dr)                        ((uint8_t)(dr))
         #define usart_rxneie(rxneie)                  ((uint16_t)((rxneie) << 5))
         #define usart_txneie(txneie)                  ((uint16_t)((txneie) << 7))
         #define usart_over8(over8)                    ((uint16_t)((over8) << 15))
@@ -48,9 +48,11 @@
         #define set_usart_txneie(txneie)             (* (uint32_t *)((usart_base(usart) + usart_id(usart)) + 0x0C) |= usart_txneie(txneie))
         #define set_usart_over8(over8)               (* (uint32_t *)((usart_base(usart) + usart_id(usart)) + 0x0C) |= usart_over8(over8))
 
+        #define SetUSART_DR(USART,DR)                (* ((uint32_t *)((usart_base(USART) + usart_id(USART)) + 0x04)) = usart_data(DR))
+
         //вычисление адреса, очистка и установка значения
         #define conf_usart_baud(usart,baud)         {* ((uint32_t *)(usart_base(usart) + usart_id(usart) + 0x08)) = \
-                                                    ((* ((uint32_t *)(usart_base(usart) + usart_id(usart) + 0x08))&(~usart_baud(0xFFFFFFFF)))|usart_baud(baud));}
+                                                    ((* ((uint32_t *)(usart_base(usart) + usart_id(usart) + 0x08))&(~usart_baud(0xFFFF)))|usart_baud(baud));}
 
         #define conf_usart_ue(usart,ue)             {* ((uint32_t *)(usart_base(usart) + usart_id(usart) + 0x0C)) = \
                                                     ((* ((uint32_t *)(usart_base(usart) + usart_id(usart) + 0x0C))&(~usart_enable(0x1)))|usart_enable(ue));}
@@ -94,23 +96,19 @@
 
 
         #define usartReceiverConfigure(usart,baud)   {     \
-            conf_usart_baud(usart,calc_baud(usart,baud));  \
-            conf_usart_dmar(usart,0x1);                    \
+            conf_usart_baud(usart,baud);  \
             conf_usart_receiver(usart,0x1);                \
             conf_usart_rxneie(usart,0x1);                  \
             conf_usart_ue(usart,0x1);                }
 
         #define usartTransmitterConfigure(usart,baud)   {   \
-            conf_usart_baud(usart,calc_baud(usart,baud));  \
-            conf_usart_dmat(usart,0x1);             \
+            conf_usart_baud(usart,baud);  \
             conf_usart_transmitter(usart,0x1);      \
             conf_usart_txneie(usart,0x1);           \
             conf_usart_ue(usart,0x1);             }
 
         #define usartBothConfigure(usart,baud)      {  \
-            conf_usart_baud(usart,callc_baud(usart,baud));  \
-            conf_usart_dmar(usart,0x1);             \
-            conf_usart_dmat(usart,0x1);             \
+            conf_usart_baud(usart,baud);  \
             conf_usart_transmitter(usart,0x1);      \
             conf_usart_receiver(usart,0x1);         \
             conf_usart_rxneie(usart,0x1);           \

@@ -7,5 +7,5 @@
 
 
 void vManagementGearsBox(void *pvParameters);
-
+void vUartManagement(void *pvParameters);
 //--------------------------------------------

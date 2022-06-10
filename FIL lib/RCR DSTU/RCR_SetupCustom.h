@@ -64,9 +64,12 @@
     TimEncoderConfigure(Tim3);                  \
     TimEncoderConfigure(Tim2);                  \
     TimPIDConfigure(Tim6,10);                   \
-    usartBothConfigure(usart3, 9600);           \
-    usartBothConfigure(usart1, 9600);           \
-       }
+    usartTransmitterConfigure(usart1, 8750);           \
+    if(_AdvancedCalculatingRCC == 1) {          \
+        Clocks.Systick = current_Systick;       \
+        Clocks.AHB = current_AHB;               \
+        Clocks.APB1 = current_APB1;             \
+        Clocks.APB2 = current_APB2;}            }
 
 #define ClocksInit {\
     set_pwr;    \
@@ -96,10 +99,9 @@
     set_usart3;  \
 }
 
-#define InterruptsEnable {\
+#define InterruptsEnable         {\
     NVIC_EnableIRQ(TIM6_DAC_IRQn);\
-}
-
+    NVIC_EnableIRQ(USART1_IRQn);  }
 
 #define InitPeriph {\
     conf_pin(BTN1_DIR_PIN, GENERAL, PUSH_PULL, FAST_S, NO_PULL_UP);\
@@ -171,16 +173,15 @@
     conf_pin(GENERAL_PIN_7, ANALOG, PUSH_PULL, FAST_S, NO_PULL_UP);\
     conf_pin(GENERAL_PIN_8, ANALOG, PUSH_PULL, FAST_S, NO_PULL_UP);\
     conf_pin(GENERAL_PIN_9, ANALOG, PUSH_PULL, FAST_S, NO_PULL_UP);\
-    conf_pin(EXTI1_PIN, INPUT, PUSH_PULL, FAST_S, PULL_UP);\
-    conf_pin(EXTI2_PIN, INPUT, PUSH_PULL, FAST_S, PULL_UP);\
-    conf_pin(GENERAL_PIN_5, INPUT, PUSH_PULL, FAST_S, PULL_UP);\
-    conf_pin(EXTI3_PIN, INPUT, PUSH_PULL, FAST_S, PULL_UP);\
-    conf_pin(EXTI4_PIN, INPUT, PUSH_PULL, FAST_S, PULL_UP);\
-    conf_pin(EXTI5_PIN, INPUT, PUSH_PULL, FAST_S, PULL_UP);\
-    conf_pin(EXTI6_PIN, INPUT, PUSH_PULL, FAST_S, PULL_UP);\
-    conf_pin(EXTI7_PIN, INPUT, PUSH_PULL, FAST_S, PULL_UP);\
-    conf_pin(EXTI8_PIN, INPUT, PUSH_PULL, FAST_S, PULL_UP);\
-    conf_pin(EXTI9_PIN, INPUT, PUSH_PULL, FAST_S, PULL_UP);\
-    conf_pin(EXTI10_PIN, INPUT, PUSH_PULL, FAST_S, PULL_UP);\
+    conf_pin(EXTI1_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
+    conf_pin(EXTI2_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
+    conf_pin(EXTI3_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
+    conf_pin(EXTI4_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
+    conf_pin(EXTI5_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
+    conf_pin(EXTI6_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
+    conf_pin(EXTI7_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
+    conf_pin(EXTI8_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
+    conf_pin(EXTI9_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
+    conf_pin(EXTI10_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
 }
 
