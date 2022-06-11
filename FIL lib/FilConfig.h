@@ -3,15 +3,16 @@
     *                ///Fast Initialization Library Configuration File\\\
     *   --------------------------------------------------------------------------
     *   @author RCR group developers - Caska, Evgeny Garanin.
-    *   @date 11/04/2022 - last update version FIL STM32
+    *   @date 12/06/2022 - last update version FIL STM32
     *
     */
 
 /*!
 *   FIL STM32 Driver
-*   @file <filConfig.h>
+*   @file <FilConfig.h>
 *   @note This file include driver Fast Initialization Library(FIL) for STM32 controllers
 */
+
 #pragma once
 #include <main.h>
 
@@ -37,6 +38,7 @@
     #define _DeveloperCRYP                          0
     #define _DeveloperRTOS                          1
     #define _DeveloperDeprecatedFunctions           0
+    #define _DeveloperModBus                        1
 #endif /*Developer Sector*/
 
 
@@ -73,20 +75,28 @@
 
 #if (_DeveloperSectorIncludeHandler == 1)
     #if(_DeveloperRTOS == 1)
+
 //FreeRTOS files
 #include "FreeRTOS.h"       // main FreeRTOS kernel file
 #include "FreeRTOSConfig.h" // main configuration file
 #include "task.h"           //file for initialization tasks
-#include "queue.h"  // работа с очередями
-#include "semphr.h" // работа с отложенным прерыванием(семафорами)
-#include "croutine.h" // работа с сопрограммами
-#include "timers.h" // работа с программными таймерами
+#include "queue.h"  /// работа с очередями
+#include "semphr.h" /// работа с отложенным прерыванием(семафорами)
+#include "croutine.h" /// работа с сопрограммами
+#include "timers.h" /// работа с программными таймерами
+
 //-----------------------------------------------------------------
 // custom files
 #include "robot_tasks.h"    // tasks list
 //-----------------------------------------------------------------
+
     #endif /*_DeveloperRTOS*/
 
+    #if(_DeveloperModBus == 1)
+
+    #include "ModBus.h"     ///ModBus ASCII Protocol
+
+    #endif
 #endif /*_DeveloperSectorIncludeHandler*/
 
 

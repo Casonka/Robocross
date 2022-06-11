@@ -1,5 +1,8 @@
 #include "robot_tasks.h"
 
+
+unsigned int ErrorTask;
+
 // System functions
 //--------------------------------------------------------------------------------------------------------------------
 void vApplicationTickHook(void){
@@ -17,7 +20,11 @@ void vApplicationIdleHook(void)
 
 void vApplicationStackOverflowHook( TaskHandle_t xTask, char *pcTaskName )
 {
-
+/*!
+*   @brief vApplicationIdleHook(void) - функция переполнения, выполняется когда стек задачи переполнился
+*   @argument xTask - дескриптор задачи, pcTaskName - название задачи
+*
+*/
 }
 
 void vApplicationMallocFailedHook( void )
@@ -27,6 +34,14 @@ void vApplicationMallocFailedHook( void )
 
 // Tasks functions
 //----------------------------------------------------------------------------------------------------------------------
+void vInitMainSectors( void *pvParameters)
+{
+    ErrorTask = 0;
+    ModBus_Init();
+
+    vTaskDelete(NULL);
+}
+
 void vManagementGearsBox( void *pvParameters )  //car management gears box ( enter code here man!)
 {
 for(;;) {
@@ -35,11 +50,12 @@ for(;;) {
 vTaskDelete(NULL);
 }
 
-void vUartManagement( void *pvParameters )
+void vUartManagement( void *pvParameters )      // UART management: check buffer and parse correct message
 {
     for(;;)
     {
-
+        ErrorTask = ModBus_CheckFrame();
+        (ErrorTask == 0) ?  ModBus_ParsePacket() : ModBus_ClearMsgs();
 
     }
 vTaskDelete(NULL);

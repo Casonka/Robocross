@@ -1,11 +1,14 @@
 #pragma once
 #include <FilConfig.h>
-// tasks structures
+
+/// FreeRTOS structures
 
 //--------------------------------------------
-// Tasks
+/// Tasks
 
+void vInitMainSectors( void *pvParameters);
 
 void vManagementGearsBox(void *pvParameters);
+
 void vUartManagement(void *pvParameters);
 //--------------------------------------------

@@ -1,54 +1,51 @@
+
 #include <FilConfig.h>
 
-
+extern unsigned char UART_Buffer[UART_BUFFER_SIZE];
 //---------------------------------------------------------//
 //----------------------USART Interrupts-------------------//
 //---------------------------------------------------------//
-void USART1_IRQHandler(void) {
-
-}
-
 void USART3_IRQHandler(void) {
-    uint8_t data = 0x31;
-if(USART3->SR & 0x40)
-{
- USART3->DR = data;
-}
+
+    while(USARTGetStatus(usart3, ReceiveRegNotEmpty)) { *UARTBufferIndex++ =  USARTGetData(usart3);}
+
+    if(UART_Buffer[UART_BUFFER_SIZE - 1] != 0) { vTaskPrioritySet(vUartManagement,1); }
+
 }
 
 //---------------------------------------------------------//
 //----------------------Timer Interrupts-------------------//
 //---------------------------------------------------------//
 void TIM1_IRQHandler(void) {
-ResetTimSR(Tim1);
+    ResetTimSR(Tim1);
 }
 
 void TIM2_IRQHandler(void) {
-ResetTimSR(Tim2);
+    ResetTimSR(Tim2);
 }
 
 void TIM3_IRQHandler(void) {
-ResetTimSR(Tim3);
+    ResetTimSR(Tim3);
 }
 
 void TIM4_IRQHandler(void) {
-ResetTimSR(Tim4);
+    ResetTimSR(Tim4);
 }
 
 void TIM5_IRQHandler(void) {
-ResetTimSR(Tim5);
+    ResetTimSR(Tim5);
 }
 
 void TIM6_DAC_IRQHandler(void) {    // Custom Regulator
-ResetTimSR(Tim6);
+    ResetTimSR(Tim6);
 }
 
 void TIM7_IRQHandler(void) {    // moving Regulator
-ResetTimSR(Tim7);
+    ResetTimSR(Tim7);
 }
 
 void TIM8_UP_TIM13_IRQHandler(void) {
-ResetTimSR(Tim13);
+    ResetTimSR(Tim13);
 }
 
 //---------------------------------------------------------//

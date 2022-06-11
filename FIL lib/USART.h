@@ -84,7 +84,12 @@
                                                     ((* ((uint32_t *)(usart_base(usart) + usart_id(usart) + 0x0C))&(~usart_txneie(0x1)))|usart_txneie(txneie));}
 
         //вычисление адреса и проверка статуса
-        #define get_status(usart,state)             (( (* (uint32_t *)((usart_base(usart) + usart_id(usart)) + 0x00)))&((uint32_t)state))
+        #define ReceiveRegNotEmpty                      ((uint16_t)(0x20))
+
+        #define USARTGetData(USART)                 ((uint8_t)(*((uint32_t *)(usart_base(USART) + usart_id(USART) + 0x04))))
+
+        #define USARTGetStatus(usart,state)             (( (* (uint32_t *)((usart_base(usart) + usart_id(usart)) + 0x00)))&((uint32_t)state))
+
         #define get_usart_over8(usart)              ((uint32_t)((*((uint32_t *)(usart_base(usart) + usart_id(usart) + 0x0C)))&((uint16_t)0x8000)))
 
         //расчеты
@@ -109,10 +114,10 @@
             conf_usart_txneie(usart,0x1);           \
             conf_usart_ue(usart,0x1);             }
 
-        #define usartBothConfigure(usart,baud)      {  \
-            conf_usart_baud(usart,baud);  \
-            conf_usart_transmitter(usart,0x1);      \
-            conf_usart_receiver(usart,0x1);         \
-            conf_usart_rxneie(usart,0x1);           \
-            conf_usart_txneie(usart,0x1);           \
-            conf_usart_ue(usart,0x1);         }
+        #define USARTBothConfigure(usart,baud,TX_INTERRUPT_EN, RX_INTERRUPT_EN){\
+            conf_usart_baud(usart,baud);                        \
+            conf_usart_transmitter(usart,0x1);                  \
+            conf_usart_receiver(usart,0x1);                     \
+            conf_usart_rxneie(usart,RX_INTERRUPT_EN);           \
+            conf_usart_txneie(usart,TX_INTERRUPT_EN);           \
+            conf_usart_ue(usart,0x1);}

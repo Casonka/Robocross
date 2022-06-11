@@ -169,6 +169,10 @@
 		<Unit filename="inc\robot_tasks.h" />
 		<Unit filename="inc\stm32f4xx.h" />
 		<Unit filename="inc\system_stm32f4xx.h" />
+		<Unit filename="ModBus\ModBus.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ModBus\ModBus.h" />
 		<Unit filename="src\main.c">
 			<Option compilerVar="CC" />
 		</Unit>

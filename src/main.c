@@ -12,9 +12,9 @@ int main(void)
 {
 
     BoardStart;
-
-   // xTaskCreate(vManagementGearsBox, (char *) "car", configMINIMAL_STACK_SIZE, NULL, 1, NULL );
-    xTaskCreate(vUartManagement, (char *) "car", configMINIMAL_STACK_SIZE, NULL, 1, NULL );
+    xTaskCreate(vInitMainSectors, (char *) "STM", configMINIMAL_STACK_SIZE, NULL, 3, NULL );
+    xTaskCreate(vManagementGearsBox, (char *) "GEAR", configMINIMAL_STACK_SIZE, NULL, 2, NULL );
+    xTaskCreate(vUartManagement, (char *) "UART", configMINIMAL_STACK_SIZE, NULL, 1, NULL );
 
     vTaskStartScheduler();
     /* here not enter when RTOS is on */
