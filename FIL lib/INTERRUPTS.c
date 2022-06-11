@@ -6,11 +6,15 @@
 //---------------------------------------------------------//
 void USART1_IRQHandler(void) {
 
-USART1->DR = 0x3A;
-
 }
 
-
+void USART3_IRQHandler(void) {
+    uint8_t data = 0x31;
+if(USART3->SR & 0x40)
+{
+ USART3->DR = data;
+}
+}
 
 //---------------------------------------------------------//
 //----------------------Timer Interrupts-------------------//

@@ -35,6 +35,7 @@
         #define usart_rxneie(rxneie)                  ((uint16_t)((rxneie) << 5))
         #define usart_txneie(txneie)                  ((uint16_t)((txneie) << 7))
         #define usart_over8(over8)                    ((uint16_t)((over8) << 15))
+
         //вычисление адреса и установление значения
         #define set_usart_baud(usart,baud)           (* (uint32_t *)((usart_base(usart) + usart_id(usart)) + 0x08) |= usart_baud(baud))
         #define set_usart_ue(usart,ue)               (* (uint32_t *)((usart_base(usart) + usart_id(usart)) + 0x0C) |= usart_enable(ue))
@@ -50,6 +51,7 @@
 
         #define SetUSART_DR(USART,DR)                (* ((uint32_t *)((usart_base(USART) + usart_id(USART)) + 0x04)) = usart_data(DR))
 
+        #define ResetUSART_SR(USART)                 (* (uint32_t *)(usart_base(USART) + usart_id(USART)) &= (~0x3FF))
         //вычисление адреса, очистка и установка значения
         #define conf_usart_baud(usart,baud)         {* ((uint32_t *)(usart_base(usart) + usart_id(usart) + 0x08)) = \
                                                     ((* ((uint32_t *)(usart_base(usart) + usart_id(usart) + 0x08))&(~usart_baud(0xFFFF)))|usart_baud(baud));}

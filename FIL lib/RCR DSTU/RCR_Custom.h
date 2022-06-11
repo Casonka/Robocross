@@ -113,11 +113,13 @@
 //__________________________________USART__________________________________//
 /////////////////////////////////////////////////////////////////////////////
 //USART3 in stm32, USART1 as PCB header. AF7
-#define TX3_PIN                  pin_id(PORTC,10)
-#define RX3_PIN                  pin_id(PORTC,11)
+#define TX1_PIN                  pin_id(PORTC,10)
+#define RX1_PIN                  pin_id(PORTC,11)
 //USART1 in stm32, USART2 as PCB header. AF7
-#define TX1_PIN                  pin_id(PORTB,6)
-#define RX1_PIN                  pin_id(PORTB,7)
+#define TX2_PIN                  pin_id(PORTB,6)
+#define RX2_PIN                  pin_id(PORTB,7)
+
+#define USB_Switch_ON            pin_id(PORTC,0)
 /////////////////////////////////////////////////////////////////////////////
 //____________________________External interrupts__________________________//
 /////////////////////////////////////////////////////////////////////////////

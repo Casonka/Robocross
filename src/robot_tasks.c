@@ -29,7 +29,9 @@ void vApplicationMallocFailedHook( void )
 //----------------------------------------------------------------------------------------------------------------------
 void vManagementGearsBox( void *pvParameters )  //car management gears box ( enter code here man!)
 {
-for(;;) {}
+for(;;) {
+
+}
 vTaskDelete(NULL);
 }
 

@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <EmBitz_debug_session>
 	<debuggerLastSession>
-		<breakpoints>
-			<break type="0" enabled="1" file="FIL lib/INTERRUPTS.c" line="8" />
-		</breakpoints>
 		<watches>
 			<watch key="Clocks" format="0" array="0" start="0" count="0" expanded="1" live="1" />
 		</watches>

@@ -64,7 +64,7 @@
     TimEncoderConfigure(Tim3);                  \
     TimEncoderConfigure(Tim2);                  \
     TimPIDConfigure(Tim6,10);                   \
-    usartTransmitterConfigure(usart1, 8750);           \
+    usartTransmitterConfigure(usart3, 8750);    \
     if(_AdvancedCalculatingRCC == 1) {          \
         Clocks.Systick = current_Systick;       \
         Clocks.AHB = current_AHB;               \
@@ -96,12 +96,11 @@
     set_dma2;   \
     set_adc1;   \
     set_usart1;  \
-    set_usart3;  \
-}
+    set_usart3;}
 
 #define InterruptsEnable         {\
     NVIC_EnableIRQ(TIM6_DAC_IRQn);\
-    NVIC_EnableIRQ(USART1_IRQn);  }
+    NVIC_EnableIRQ(USART3_IRQn);}
 
 #define InitPeriph {\
     conf_pin(BTN1_DIR_PIN, GENERAL, PUSH_PULL, FAST_S, NO_PULL_UP);\
@@ -157,12 +156,10 @@
     conf_af(ENCODER4A_PIN, AF1);\
     conf_pin(ENCODER4B_PIN, ALTERNATE, PUSH_PULL, LOW_S, PULL_UP); \
     conf_af(ENCODER4B_PIN, AF1);\
-    conf_pin(TX3_PIN, ALTERNATE, PUSH_PULL, LOW_S, PULL_UP);\
-    conf_af(TX3_PIN, AF7);\
-    conf_pin(RX1_PIN, ALTERNATE, PUSH_PULL, LOW_S, PULL_UP);\
-    conf_af(RX1_PIN, AF7);\
-    conf_pin(TX1_PIN, ALTERNATE, PUSH_PULL, LOW_S, PULL_UP);\
+    conf_pin(TX1_PIN, ALTERNATE, PUSH_PULL, LOW_S, NO_PULL_UP);    \
     conf_af(TX1_PIN, AF7);\
+    conf_pin(RX1_PIN, ALTERNATE, PUSH_PULL, LOW_S, NO_PULL_UP);   \
+    conf_af(RX1_PIN, AF7);\
     conf_pin(GENERAL_PIN_0, ANALOG, PUSH_PULL, FAST_S, NO_PULL_UP);\
     conf_pin(GENERAL_PIN_1, ANALOG, PUSH_PULL, FAST_S, NO_PULL_UP);\
     conf_pin(GENERAL_PIN_2, ANALOG, PUSH_PULL, FAST_S, NO_PULL_UP);\
@@ -183,5 +180,9 @@
     conf_pin(EXTI8_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
     conf_pin(EXTI9_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
     conf_pin(EXTI10_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
+    conf_pin(pin_id(PORTA,9), ALTERNATE, PUSH_PULL, LOW_S, PULL_UP);\
+    conf_af(pin_id(PORTA,9), AF8);\
+    conf_pin(pin_id(PORTA,10), ALTERNATE, PUSH_PULL, LOW_S, PULL_UP);\
+    conf_af(pin_id(PORTA,10), AF8);\
 }
 
