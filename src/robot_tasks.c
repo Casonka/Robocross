@@ -44,19 +44,19 @@ void vInitMainSectors( void *pvParameters)
 
 void vManagementGearsBox( void *pvParameters )  //car management gears box ( enter code here man!)
 {
-for(;;) {
+    for(;;) {
 
-}
-vTaskDelete(NULL);
+    }
+    vTaskDelete(NULL);
 }
 
-void vUartManagement( void *pvParameters )      // UART management: check buffer and parse correct message
+void vModBusManagement( void *pvParameters )      // UART management: check buffer and parse correct message
 {
     for(;;)
     {
         ErrorTask = ModBus_CheckFrame();
-        (ErrorTask == 0) ?  ModBus_ParsePacket() : ModBus_ClearMsgs();
-
+        (ErrorTask == 0) ? ModBus_ParsePacket() : ModBus_ClearMsgs();
+        //ModBus_Response(UARTReveiver_Flag);
     }
 vTaskDelete(NULL);
 }

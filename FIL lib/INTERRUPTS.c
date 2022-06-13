@@ -9,13 +9,14 @@ void USART3_IRQHandler(void) {
 
     while(USARTGetStatus(usart3, ReceiveRegNotEmpty)) { *UARTBufferIndex++ =  USARTGetData(usart3);}
 
-    if(UART_Buffer[UART_BUFFER_SIZE - 1] != 0) { vTaskPrioritySet(vUartManagement,1); }
+    if(UART_Buffer[UART_BUFFER_SIZE - 1] != 0) { vTaskPrioritySet(vModBusManagement,3); }
 
 }
 
 //---------------------------------------------------------//
 //----------------------Timer Interrupts-------------------//
 //---------------------------------------------------------//
+
 void TIM1_IRQHandler(void) {
     ResetTimSR(Tim1);
 }

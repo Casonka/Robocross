@@ -3,11 +3,17 @@
 #define UART_BUFFER_SIZE    16
 
 unsigned char UART_Buffer[UART_BUFFER_SIZE];
-unsigned char *UARTBufferIndex;
-unsigned char *UARTBufferStartMsgPointer;
-unsigned char *UARTBufferEndMsgPointer;
+static unsigned char *UARTBufferIndex;
+static unsigned char *UARTBufferStartMsgPointer;
+static unsigned char *UARTBufferSlaveAddrIndex;
+static unsigned char *UARTBufferLRCIndex;
+static unsigned char *UARTBufferEndMsgPointer;
+
+static unsigned int UARTReceiver_Flag;
 
 void ModBus_Init(void);
+
+static unsigned char LRC_Counting(unsigned char *buf, unsigned short bsize);
 
 void ModBus_ClearMsgs(void);    /// Clear UART Buffer
 

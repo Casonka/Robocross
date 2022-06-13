@@ -10,5 +10,5 @@ void vInitMainSectors( void *pvParameters);
 
 void vManagementGearsBox(void *pvParameters);
 
-void vUartManagement(void *pvParameters);
+void vModBusManagement(void *pvParameters);
 //--------------------------------------------
