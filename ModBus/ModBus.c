@@ -42,7 +42,7 @@ void ModBus_Init(void) {
     Error = ModBus_CheckFrame();
     (Error == 0) ? Dat = ModBus_ParsePacket() : ModBus_ClearMsgs();
     ModBus_ClearMsgs();
-    ModBus_SendResponse(":OK");
+    ModBus_SendResponse(":D00600+555C2\r\n");
     #endif
 }
 
@@ -168,7 +168,7 @@ unsigned int ModBus_ParsePacket(void) {
                     if( Data > 0x555) { Data = 0x555; }
                     if (UARTBufferDirMsg == '-') {Data |= 0x8000;} else {Data &= 0xFFF;}
                     UARTReceiver_Flag = 0;
-                    UARTTransmit_Flag = 1;
+                    UARTTransmit_Flag = 3;
                     return Data;
                 }
                 if(ManageSector == 0x21)
@@ -179,6 +179,7 @@ unsigned int ModBus_ParsePacket(void) {
         }
     }
 UARTReceiver_Flag = 0;
+return 0;
 }
 
 unsigned int ModBus_IsFull_Queue(void)
@@ -187,14 +188,14 @@ unsigned int ModBus_IsFull_Queue(void)
     {
         case 1: // answer :OK - SUCCESS
         {
-            if( Queue_Index > (Queue_EndIndex - 3) ) { return 1; }
+            if( Queue_Index > (Queue_StartIndex + 2) ) { return 1; }
             else { return 0; }
             break;
         }
 
         case 2 : // answer: ERR - ERROR
         {
-            if( Queue_Index > Queue_EndIndex - 2 ) { return 1; }
+            if( Queue_Index > Queue_StartIndex + 3 ) { return 1; }
             else { return 0; }
             break;
         }
@@ -245,7 +246,7 @@ void ModBus_SendByte(const char Data)
             if((USART3->SR & 0x80) >> 7)
             {
                     volatile uint8_t Da = ((uint8_t)Get_Queue());
-                    USART3->DR = (unsigned int)0x01;
+                    USART3->DR = (unsigned int)Da;
             }
             }
         UARTTransmit_Flag = 0;

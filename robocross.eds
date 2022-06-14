@@ -3,10 +3,12 @@
 	<debuggerLastSession>
 		<breakpoints>
 			<break type="0" enabled="1" file="ModBus/ModBus.c" line="44" />
+			<break type="0" enabled="1" file="src/main.c" line="25" />
 		</breakpoints>
 		<watches>
 			<watch key="globalTime" format="0" array="0" start="0" count="0" expanded="0" live="1" />
-			<watch key="dir" format="0" array="0" start="0" count="0" expanded="0" live="1" />
+			<watch key="dir" format="0" array="0" start="0" count="0" expanded="0" live="0" />
+			<watch key="QueueBuffer_To_UART" format="5" array="1" start="0" count="0" expanded="1" live="1" />
 		</watches>
 		<memory_view address="0x0" locked="0" live="0" options="290" />
 	</debuggerLastSession>

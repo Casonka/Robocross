@@ -36,14 +36,9 @@ void TIM3_IRQHandler(void) {
 }
 
 void TIM4_IRQHandler(void) {
-    dir *= -1;
-    if( dir > 0 ) {set_pin(PIN6_12V);} else {reset_pin(PIN6_12V);}
 
-
-globalTime++;
 
     TIM4->SR = 0;
-
 }
 
 void TIM5_IRQHandler(void) {

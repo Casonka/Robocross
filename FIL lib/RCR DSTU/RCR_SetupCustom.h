@@ -64,7 +64,6 @@
     TimEncoderConfigure(Tim3);                  \
     TimEncoderConfigure(Tim2);                  \
     TimPIDConfigure(Tim6,10);                   \
-    USARTBothConfigure(usart3, 2500, 0, 1);     \
     if(_AdvancedCalculatingRCC == 1) {          \
         Clocks.Systick = current_Systick;       \
         Clocks.AHB = current_AHB;               \

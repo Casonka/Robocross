@@ -8,7 +8,7 @@ unsigned char *UARTBufferStartMsgPointer;
 unsigned char *UARTBufferLRCIndex;
 unsigned char *UARTBufferEndMsgPointer;
 
-#define QueueSize       6
+#define QueueSize       15
 
 unsigned char QueueBuffer_To_UART[QueueSize];
 unsigned char *Queue_StartIndex;

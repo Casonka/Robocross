@@ -85,7 +85,7 @@
     #define get_pllsrc  ((uint32_t)(((*((uint32_t *)((RCC_BASE) + 0x04)))&(RCC_PLLCFGR_PLLSRC)) >> 22))
     #define get_pllm    ((uint32_t)((*((uint32_t *)((RCC_BASE) + 0x04)))&(RCC_PLLCFGR_PLLM)))
     #define get_plln    ((uint32_t)(((*((uint32_t *)((RCC_BASE) + 0x04)))&(RCC_PLLCFGR_PLLN)) >> 6))
-    #define get_pllp    ((uint32_t)(((((*((uint32_t *)((RCC_BASE) + 0x04)))&(RCC_PLLCFGR_PLLN)) >> 16) + 1) * 2))
+    #define get_pllp    ((uint32_t)(((((*((uint32_t *)((RCC_BASE) + 0x04)))&(RCC_PLLCFGR_PLLP)) >> 16) + 1) * 2))
     #define get_hpre    ((uint32_t)(((*((uint32_t *)((RCC_BASE) + 0x08)))&(RCC_CFGR_HPRE)) >> 4))
     #define get_ppre1   ((uint8_t)(((*((uint32_t *)((RCC_BASE) + 0x08)))&(RCC_CFGR_PPRE1)) >> 10))
     #define get_ppre2   ((uint8_t)(((*((uint32_t *)((RCC_BASE) + 0x08)))&(RCC_CFGR_PPRE2)) >> 13))

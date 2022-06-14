@@ -52,7 +52,7 @@ void vManagementGearsBox( void *pvParameters )  //car management gears box ( ent
 //    if( time > 100000)
 //    {
 //        time = 0;
-//        //ModBus_SendResponse("FC");
+//        ModBus_SendResponse("FC");
 //    }
 
     reset_pin(PIN5_12V);
