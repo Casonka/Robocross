@@ -3,7 +3,7 @@
 	<ActiveTarget name="Debug" />
 	<File name="cmsis\cmsis_gcc.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="6948" topLine="192" />
+			<Cursor1 position="33328" topLine="1051" />
 		</Cursor>
 	</File>
 	<File name="cmsis\core_cm4.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -21,7 +21,7 @@
 			<Cursor1 position="22308" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="FIL lib\FilConfig.h" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="FIL lib\FilConfig.h" open="0" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="1646" topLine="18" />
 		</Cursor>
@@ -31,19 +31,19 @@
 			<Cursor1 position="2970" topLine="118" />
 		</Cursor>
 	</File>
-	<File name="FIL lib\INTERRUPTS.c" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="FIL lib\INTERRUPTS.c" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="491" topLine="0" />
+			<Cursor1 position="1122" topLine="27" />
 		</Cursor>
 	</File>
-	<File name="FIL lib\RCC.h" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="FIL lib\RCC.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2876" topLine="33" />
+			<Cursor1 position="4772" topLine="77" />
 		</Cursor>
 	</File>
-	<File name="FIL lib\RCR DSTU\RCR_Custom.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="FIL lib\RCR DSTU\RCR_Custom.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="6321" topLine="53" />
+			<Cursor1 position="8340" topLine="133" />
 		</Cursor>
 	</File>
 	<File name="FIL lib\RCR DSTU\RCR_PinsBoard.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -51,19 +51,19 @@
 			<Cursor1 position="2941" topLine="54" />
 		</Cursor>
 	</File>
-	<File name="FIL lib\RCR DSTU\RCR_SetupCustom.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="FIL lib\RCR DSTU\RCR_SetupCustom.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="3069" topLine="42" />
+			<Cursor1 position="2764" topLine="49" />
 		</Cursor>
 	</File>
-	<File name="FIL lib\TIM.h" open="0" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="FIL lib\TIM.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="17868" topLine="202" />
+			<Cursor1 position="1456" topLine="77" />
 		</Cursor>
 	</File>
-	<File name="FIL lib\USART.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="FIL lib\USART.h" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="7038" topLine="30" />
+			<Cursor1 position="9208" topLine="99" />
 		</Cursor>
 	</File>
 	<File name="freertos_lib\deprecated_definitions.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -78,57 +78,57 @@
 	</File>
 	<File name="freertos_lib\FreeRTOSConfig.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2358" topLine="6" />
+			<Cursor1 position="2358" topLine="48" />
 		</Cursor>
 	</File>
 	<File name="freertos_lib\port.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="21916" topLine="501" />
+			<Cursor1 position="17813" topLine="404" />
 		</Cursor>
 	</File>
-	<File name="freertos_lib\task.h" open="0" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="freertos_lib\task.h" open="1" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="13920" topLine="325" />
+			<Cursor1 position="43394" topLine="1059" />
 		</Cursor>
 	</File>
 	<File name="freertos_lib\tasks.c" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="153883" topLine="3666" />
+			<Cursor1 position="185708" topLine="4446" />
 		</Cursor>
 	</File>
-	<File name="inc\main.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="inc\main.h" open="1" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="165" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="inc\robot_tasks.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="inc\robot_tasks.h" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="246" topLine="0" />
+			<Cursor1 position="331" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="inc\stm32f4xx.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="inc\stm32f4xx.h" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="79185" topLine="840" />
+			<Cursor1 position="7915" topLine="128" />
 		</Cursor>
 	</File>
-	<File name="ModBus\ModBus.c" open="1" top="1" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="ModBus\ModBus.c" open="1" top="1" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2558" topLine="68" />
+			<Cursor1 position="7488" topLine="228" />
 		</Cursor>
 	</File>
-	<File name="ModBus\ModBus.h" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="ModBus\ModBus.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="233" topLine="0" />
+			<Cursor1 position="70" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src\main.c" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\main.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="377" topLine="0" />
+			<Cursor1 position="153" topLine="3" />
 		</Cursor>
 	</File>
-	<File name="src\robot_tasks.c" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\robot_tasks.c" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1379" topLine="22" />
+			<Cursor1 position="1443" topLine="30" />
 		</Cursor>
 	</File>
 	<File name="src\startup_stm32f407xx.S" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">

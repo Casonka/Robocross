@@ -2,15 +2,21 @@
 #include <FilConfig.h>
 
 extern unsigned char UART_Buffer[UART_BUFFER_SIZE];
+unsigned int status;
+volatile uint32_t globalTime;
+ int dir = 1;
 //---------------------------------------------------------//
 //----------------------USART Interrupts-------------------//
 //---------------------------------------------------------//
 void USART3_IRQHandler(void) {
 
-    while(USARTGetStatus(usart3, ReceiveRegNotEmpty)) { *UARTBufferIndex++ =  USARTGetData(usart3);}
-
-    if(UART_Buffer[UART_BUFFER_SIZE - 1] != 0) { vTaskPrioritySet(vModBusManagement,3); }
-
+    while(USARTGetStatus(usart3, ReceiveRegNotEmpty))
+             {
+             *UARTBufferIndex++ =  USART3->DR;
+             if( UARTBufferIndex > UARTBufferEndMsgPointer) {UARTBufferIndex = UARTBufferStartMsgPointer;}
+             USART3->DR = 0;
+             }
+    if(UART_Buffer[UART_BUFFER_SIZE - 1] != 0) { status = 1; }
 }
 
 //---------------------------------------------------------//
@@ -30,7 +36,14 @@ void TIM3_IRQHandler(void) {
 }
 
 void TIM4_IRQHandler(void) {
-    ResetTimSR(Tim4);
+    dir *= -1;
+    if( dir > 0 ) {set_pin(PIN6_12V);} else {reset_pin(PIN6_12V);}
+
+
+globalTime++;
+
+    TIM4->SR = 0;
+
 }
 
 void TIM5_IRQHandler(void) {

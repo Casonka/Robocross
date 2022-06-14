@@ -64,12 +64,13 @@
     TimEncoderConfigure(Tim3);                  \
     TimEncoderConfigure(Tim2);                  \
     TimPIDConfigure(Tim6,10);                   \
-    USARTBothConfigure(usart3, 8750, 0, 1);     \
+    USARTBothConfigure(usart3, 2500, 0, 1);     \
     if(_AdvancedCalculatingRCC == 1) {          \
         Clocks.Systick = current_Systick;       \
         Clocks.AHB = current_AHB;               \
         Clocks.APB1 = current_APB1;             \
-        Clocks.APB2 = current_APB2;}            }
+        Clocks.APB2 = current_APB2;\
+        Clocks.pllvco = calc_pllvco;}            }
 
 #define ClocksInit {\
     set_pwr;    \
@@ -95,7 +96,6 @@
     set_dma1;   \
     set_dma2;   \
     set_adc1;   \
-    set_usart1;  \
     set_usart3;}
 
 #define InterruptsEnable         {\
@@ -118,8 +118,8 @@
     conf_pin(PIN2_12V, GENERAL, PUSH_PULL, HIGH_S, NO_PULL_UP);       \
     conf_pin(PIN3_12V, GENERAL, PUSH_PULL, HIGH_S, NO_PULL_UP);       \
     conf_pin(PIN4_12V, GENERAL, PUSH_PULL, HIGH_S, NO_PULL_UP);       \
-    conf_pin(PIN5_12V, GENERAL, PUSH_PULL, HIGH_S, NO_PULL_UP);       \
-    conf_pin(PIN6_12V, GENERAL, PUSH_PULL, HIGH_S, NO_PULL_UP);       \
+    conf_pin(PIN5_12V, GENERAL, PUSH_PULL, LOW_S, NO_PULL_UP);       \
+    conf_pin(PIN6_12V, GENERAL, PUSH_PULL, LOW_S, NO_PULL_UP);       \
     conf_pin(BTN1_PWM_PIN, ALTERNATE, PUSH_PULL, FAST_S, NO_PULL_UP);   \
     conf_af(BTN1_PWM_PIN, AF2);                                         \
     conf_pin(BTN2_PWM_PIN, ALTERNATE, PUSH_PULL, FAST_S, NO_PULL_UP); \

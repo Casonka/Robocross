@@ -47,9 +47,11 @@
         #define set_usart_receiver(re)               (* (uint32_t *)((usart_base(usart) + usart_id(usart)) + 0x0C) |= usart_receiver(re))
         #define set_usart_rxneie(rxneie)             (* (uint32_t *)((usart_base(usart) + usart_id(usart)) + 0x0C) |= usart_rxneie(rxneie))
         #define set_usart_txneie(txneie)             (* (uint32_t *)((usart_base(usart) + usart_id(usart)) + 0x0C) |= usart_txneie(txneie))
-        #define set_usart_over8(over8)               (* (uint32_t *)((usart_base(usart) + usart_id(usart)) + 0x0C) |= usart_over8(over8))
+        #define set_usart_over8(usart,over8)               ((* (uint32_t *)((usart_base(usart) + usart_id(usart)) + 0x0C)) |= usart_over8(over8))
 
         #define SetUSART_DR(USART,DR)                (* ((uint32_t *)((usart_base(USART) + usart_id(USART)) + 0x04)) = usart_data(DR))
+
+        #define ResetUSART_DR(USART,DR)
 
         #define ResetUSART_SR(USART)                 (* (uint32_t *)(usart_base(USART) + usart_id(USART)) &= (~0x3FF))
         //вычисление адреса, очистка и установка значения
@@ -84,7 +86,11 @@
                                                     ((* ((uint32_t *)(usart_base(usart) + usart_id(usart) + 0x0C))&(~usart_txneie(0x1)))|usart_txneie(txneie));}
 
         //вычисление адреса и проверка статуса
-        #define ReceiveRegNotEmpty                      ((uint16_t)(0x20))
+        #define ReceiveRegNotEmpty                    ((uint16_t)(0x20))
+
+        #define TransmitRegEmpty                      ((uint16_t)(0x80))
+
+        #define TransmitComplete                      ((uint16_t)(0x80))
 
         #define USARTGetData(USART)                 ((uint8_t)(*((uint32_t *)(usart_base(USART) + usart_id(USART) + 0x04))))
 
@@ -115,7 +121,7 @@
             conf_usart_ue(usart,0x1);             }
 
         #define USARTBothConfigure(usart,baud,TX_INTERRUPT_EN, RX_INTERRUPT_EN){\
-            conf_usart_baud(usart,baud);                        \
+            conf_usart_baud(usart,baud);       \
             conf_usart_transmitter(usart,0x1);                  \
             conf_usart_receiver(usart,0x1);                     \
             conf_usart_rxneie(usart,RX_INTERRUPT_EN);           \

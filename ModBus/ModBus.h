@@ -1,22 +1,29 @@
 #pragma once
-
-#define UART_BUFFER_SIZE    16
+#include <FilConfig.h>
+#define UART_BUFFER_SIZE    17
 
 unsigned char UART_Buffer[UART_BUFFER_SIZE];
-static unsigned char *UARTBufferIndex;
-static unsigned char *UARTBufferStartMsgPointer;
-static unsigned char *UARTBufferSlaveAddrIndex;
-static unsigned char *UARTBufferLRCIndex;
-static unsigned char *UARTBufferEndMsgPointer;
+unsigned char *UARTBufferIndex;
+unsigned char *UARTBufferStartMsgPointer;
+unsigned char *UARTBufferLRCIndex;
+unsigned char *UARTBufferEndMsgPointer;
 
-static unsigned int UARTReceiver_Flag;
+#define QueueSize       6
+
+unsigned char QueueBuffer_To_UART[QueueSize];
+unsigned char *Queue_StartIndex;
+unsigned char *Queue_EndIndex;
+unsigned char *Queue_Index;
+
+unsigned int UARTReceiver_Flag;
+unsigned int UARTTransmit_Flag;
 
 void ModBus_Init(void);
 
-static unsigned char LRC_Counting(unsigned char *buf, unsigned short bsize);
+unsigned char LRC_Counting(unsigned char *buf, unsigned short bsize);
 
 void ModBus_ClearMsgs(void);    /// Clear UART Buffer
 
 unsigned int ModBus_CheckFrame(void);   /// Check buffer for 0x3A.../r/n
 
-void ModBus_ParsePacket(void);  /// Check and get answer, write new value
+unsigned int ModBus_ParsePacket(void);  /// Check and get answer, write new value
