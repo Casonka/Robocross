@@ -1,6 +1,6 @@
 #pragma once
 #include <FilConfig.h>
-#define UART_BUFFER_SIZE    17
+#define UART_BUFFER_SIZE    15
 
 unsigned char UART_Buffer[UART_BUFFER_SIZE];
 unsigned char *UARTBufferIndex;
@@ -27,3 +27,7 @@ void ModBus_ClearMsgs(void);    /// Clear UART Buffer
 unsigned int ModBus_CheckFrame(void);   /// Check buffer for 0x3A.../r/n
 
 unsigned int ModBus_ParsePacket(void);  /// Check and get answer, write new value
+
+void ModBus_SendResponse( const char* Resp);
+
+void ModBus_SendByte(const char Data);

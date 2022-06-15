@@ -4,19 +4,16 @@
 extern unsigned char UART_Buffer[UART_BUFFER_SIZE];
 unsigned int status;
 volatile uint32_t globalTime;
- int dir = 1;
 //---------------------------------------------------------//
 //----------------------USART Interrupts-------------------//
 //---------------------------------------------------------//
 void USART3_IRQHandler(void) {
 
-    while(USARTGetStatus(usart3, ReceiveRegNotEmpty))
+    while ((USART3->SR & 0x20) >> 5)
              {
              *UARTBufferIndex++ =  USART3->DR;
              if( UARTBufferIndex > UARTBufferEndMsgPointer) {UARTBufferIndex = UARTBufferStartMsgPointer;}
-             USART3->DR = 0;
              }
-    if(UART_Buffer[UART_BUFFER_SIZE - 1] != 0) { status = 1; }
 }
 
 //---------------------------------------------------------//
@@ -24,37 +21,36 @@ void USART3_IRQHandler(void) {
 //---------------------------------------------------------//
 
 void TIM1_IRQHandler(void) {
-    ResetTimSR(Tim1);
+TIM1->SR = 0;
 }
 
 void TIM2_IRQHandler(void) {
-    ResetTimSR(Tim2);
+TIM2->SR = 0;
 }
 
 void TIM3_IRQHandler(void) {
-    ResetTimSR(Tim3);
+TIM3->SR = 0;
 }
 
 void TIM4_IRQHandler(void) {
 
-
-    TIM4->SR = 0;
+TIM4->SR = 0;
 }
 
 void TIM5_IRQHandler(void) {
-    ResetTimSR(Tim5);
+TIM5->SR = 0;
 }
 
 void TIM6_DAC_IRQHandler(void) {    // Custom Regulator
-    ResetTimSR(Tim6);
+TIM6->SR = 0;
 }
 
 void TIM7_IRQHandler(void) {    // moving Regulator
-    ResetTimSR(Tim7);
+TIM7->SR = 0;
 }
 
 void TIM8_UP_TIM13_IRQHandler(void) {
-    ResetTimSR(Tim13);
+TIM13->SR = 0;
 }
 
 //---------------------------------------------------------//

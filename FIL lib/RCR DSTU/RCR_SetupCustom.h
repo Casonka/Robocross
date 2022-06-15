@@ -3,8 +3,21 @@
 #include <FilConfig.h>
 
 
-#define MAX_PWM 700.0
+#define MAX_PWM 200
 
+
+/*!
+*   THIS SECTOR FOR NATIVE CODE
+*
+*/
+    void BoardStart(void);
+
+    void TimEngineClutchConfigure(void);
+
+/*!
+*   END NATIVE CODE
+*
+*/
 
 #if( _AdvancedCalculatingTimers == 1 )
 
@@ -21,14 +34,14 @@
         float duty = DUTY;                                               \
         if (duty > 1)    duty = 1.0;                                     \
         if (duty < -1)   duty = -1.0;                                    \
-        if (duty > 0 )                                                   \
+        if (duty < 0 )                                                   \
         {                                                                \
-             *PWM_List[CHANNEL] = (int32_t)(MAX_PWM +  (duty * MAX_PWM));\
+             *PWM_List[CHANNEL] = ((int32_t)(MAX_PWM +  (duty * MAX_PWM)));\
              set_pin(DIR_List[CHANNEL]);                                 \
         }                                                                \
-        if (duty < 0)                                                    \
+        if (duty > 0)                                                    \
         {                                                                \
-             *PWM_List[CHANNEL] = (int32_t) (duty * MAX_PWM);            \
+             *PWM_List[CHANNEL] = ((int32_t) (duty * MAX_PWM));            \
              reset_pin(DIR_List[CHANNEL]);                               \
         }                                                                \
         }
@@ -53,23 +66,6 @@
                                                                 BTN7_CCR, BTN8_CCR,
                                                                 BTN9_CCR, BTN10_CCR };
 
-#define BoardStart {                            \
-    ClocksInit;                                 \
-    __disable_irq();                            \
-    InitPeriph;                                 \
-    InterruptsEnable;                           \
-    TimPWMConfigure(Tim4,7,MAX_PWM,1,1,1,1);    \
-    TimEncoderConfigure(Tim8);                  \
-    TimEncoderConfigure(Tim1);                  \
-    TimEncoderConfigure(Tim3);                  \
-    TimEncoderConfigure(Tim2);                  \
-    TimPIDConfigure(Tim6,10);                   \
-    if(_AdvancedCalculatingRCC == 1) {          \
-        Clocks.Systick = current_Systick;       \
-        Clocks.AHB = current_AHB;               \
-        Clocks.APB1 = current_APB1;             \
-        Clocks.APB2 = current_APB2;\
-        Clocks.pllvco = calc_pllvco;}            }
 
 #define ClocksInit {\
     set_pwr;    \

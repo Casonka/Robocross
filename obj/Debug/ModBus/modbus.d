@@ -10,4 +10,5 @@ obj\debug\modbus\modbus.o: ModBus\ModBus.c ModBus\ModBus.h \
  freertos_lib/mpu_wrappers.h freertos_lib/FreeRTOSConfig.h \
  freertos_lib/task.h freertos_lib/list.h freertos_lib/queue.h \
  freertos_lib/task.h freertos_lib/semphr.h freertos_lib/queue.h \
- freertos_lib/croutine.h freertos_lib/timers.h inc/robot_tasks.h
+ freertos_lib/croutine.h freertos_lib/timers.h inc/robot_tasks.h \
+ inc/main.h

@@ -9,9 +9,7 @@
 
 */
 static unsigned int Error;
-static const unsigned char ResponseSuccess[3] = {':', 'O', 'K'};
-static const unsigned char ResponseError[4] = {':', 'E', 'R', 'R'};
-#define UART_SIMULATION     1
+#define UART_SIMULATION     0
 
 /*!
 *   @brief ModBus_Init - function for initialize ModBus protocol
@@ -23,7 +21,7 @@ void ModBus_Init(void) {
     Error = 0;
     UARTBufferStartMsgPointer = UART_Buffer;
     UARTBufferEndMsgPointer = UART_Buffer + ( UART_BUFFER_SIZE - 1 );
-    UARTBufferLRCIndex = UARTBufferEndMsgPointer - 5;
+    UARTBufferLRCIndex = UARTBufferEndMsgPointer - 3;
     UARTReceiver_Flag = 0;
     ModBus_ClearMsgs();
 
@@ -107,15 +105,15 @@ unsigned int ModBus_CheckFrame(void) {
 
     if( *UARTBufferStartMsgPointer == ':')
         {
-            const unsigned char EndFrame[4] = {'0', '\r', '0', '\n'};
-            unsigned char Tmp[4];
+            const unsigned char EndFrame[2] = { 13, 10};
+            unsigned char Tmp[2];
             int counts = 0;
-            for (int i = 0; i <= 3; i++)
+            for (int i = 0; i <= 1; i++)
             {
-                Tmp[i] = *(UARTBufferEndMsgPointer - (3 - i));
+                Tmp[i] = *(UARTBufferEndMsgPointer - (1 - i));
                 if (Tmp[i] == EndFrame[i]) {counts++;}
             }
-           if(counts == 4) {return 0;} else {return 1;}
+           if(counts == 2) {return 0;} else {return 1;}
         }
     return 1;
 }
@@ -136,7 +134,7 @@ unsigned int ModBus_ParsePacket(void) {
     if(UARTReceiver_Flag == 0) {return 0;}
 
     unsigned char TmpLRC = LRC_Counting(UARTBufferStartMsgPointer,
-            (unsigned short)(( UARTBufferEndMsgPointer - 6 ) - UARTBufferStartMsgPointer) + 1);
+            (unsigned short)(( UARTBufferEndMsgPointer - 4 ) - UARTBufferStartMsgPointer) + 1);
     unsigned char LRCMsgs = ModBus_ASCII_TO_HEX_Converter(UARTBufferLRCIndex,
                                                          ((unsigned short)((UARTBufferLRCIndex + 1) - UARTBufferLRCIndex)));
 
@@ -154,13 +152,13 @@ unsigned int ModBus_ParsePacket(void) {
 
             case 0x06:  //writing new value
             {
-                unsigned int *UARTBufferDataMsgPointer;
-                UARTBufferDataMsgPointer = (unsigned int)(UARTBufferStartMsgPointer + 5);
+                unsigned char *UARTBufferDataMsgPointer;
+                UARTBufferDataMsgPointer = UARTBufferStartMsgPointer + 5;
                 unsigned int ManageSector = ModBus_ASCII_TO_HEX_Converter(UARTBufferDataMsgPointer,
                                                                          ((unsigned short)((UARTBufferDataMsgPointer + 1) - UARTBufferDataMsgPointer)));
                 if(ManageSector == 0x20)    // velocity
                 {
-                    unsigned int UARTBufferDirMsg = *(UARTBufferStartMsgPointer + 7);
+                    unsigned char UARTBufferDirMsg = *(UARTBufferStartMsgPointer + 7);
                     UARTBufferDataMsgPointer = UARTBufferStartMsgPointer + 8;
 
                     unsigned int Data = ModBus_ASCII_TO_HEX_Converter(UARTBufferDataMsgPointer,
@@ -168,16 +166,14 @@ unsigned int ModBus_ParsePacket(void) {
                     if( Data > 0x555) { Data = 0x555; }
                     if (UARTBufferDirMsg == '-') {Data |= 0x8000;} else {Data &= 0xFFF;}
                     UARTReceiver_Flag = 0;
-                    UARTTransmit_Flag = 3;
+                   // UARTTransmit_Flag = 1;
                     return Data;
                 }
-                if(ManageSector == 0x21)
-                {
 
-                }
             }
         }
     }
+UARTTransmit_Flag = 0;
 UARTReceiver_Flag = 0;
 return 0;
 }
@@ -188,14 +184,14 @@ unsigned int ModBus_IsFull_Queue(void)
     {
         case 1: // answer :OK - SUCCESS
         {
-            if( Queue_Index > (Queue_StartIndex + 2) ) { return 1; }
+            if( Queue_Index > (Queue_StartIndex + 4) ) { return 1; }
             else { return 0; }
             break;
         }
 
         case 2 : // answer: ERR - ERROR
         {
-            if( Queue_Index > Queue_StartIndex + 3 ) { return 1; }
+            if( Queue_Index > Queue_StartIndex + 5 ) { return 1; }
             else { return 0; }
             break;
         }

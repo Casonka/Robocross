@@ -18,7 +18,7 @@
     *       @arg ch<n> - activate/deactivate the channels of timer
     */
     #define TimPWMConfigure(TIM,prescaler,autoreset,ch1,ch2,ch3,ch4) {\
-        ConfChannelsTim(TIM,6,6,ch1,ch2,ch3,ch4);                    \
+        ConfChannelsTim(TIM,6,6,6,6,ch1,ch2,ch3,ch4);                \
         ConfFreq(TIM,prescaler,autoreset);                           \
         TimStart(TIM);                                               \
         ConfTimMainOutput(TIM,1);                                    \
@@ -85,9 +85,9 @@
 
 //----------------------------High commands------------------------------------//
 
-    #define ConfChannelsTim(TIM,mode1,mode2,ch1,ch2,ch3,ch4) {\
-        ConfTimOutputCompare1(TIM,mode1,mode1,ch1,ch2);       \
-        ConfTimOutputCompare2(TIM,mode2,mode2,ch3,ch4);       \
+    #define ConfChannelsTim(TIM,mode1,mode2,mode3,mode4,ch1,ch2,ch3,ch4) {\
+        ConfTimOutputCompare1(TIM,mode1,mode2,ch1,ch2);       \
+        ConfTimOutputCompare2(TIM,mode3,mode4,ch3,ch4);       \
         ConfTimCompareFast1(TIM,1,1,ch1,ch2);                 \
         ConfTimCompareFast2(TIM,1,1,ch3,ch4);                 \
         ConfTimCapture(TIM,1,1,1,1,ch1,ch2,ch3,ch4);          }

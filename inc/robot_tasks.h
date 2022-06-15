@@ -1,5 +1,5 @@
 #pragma once
-#include <FilConfig.h>
+#include "main.h"
 
 /// FreeRTOS structures
 
@@ -8,15 +8,19 @@
 
 void vInitMainSectors( void *pvParameters);
 
+xTaskHandle xWaitingHangle;
+void vWaitingEvent( void *pvParameters);
+
 xQueueHandle xQueue20Handle;
-xQueueHandle xQueue21Handle;
-xQueueHandle xQueue22Handle;
-xTaskHandle xTaskQueueManagHandle;
+xTaskHandle xQueueManagHandle;
 void vSecurityMemoryManagement( void *pvParameters);
 
 xTaskHandle xGearsHandle;
-void vManagementGearsBox(void *pvParameters);
+void vManagementGearsBox( void *pvParameters);
+
+xTaskHandle xClutchHandle;
+void vClutchManagement( void *pvPatameters);
 
 xTaskHandle xModBusHandle;
-void vModBusManagement(void *pvParameters);
+void vModBusManagement( void *pvParameters);
 //--------------------------------------------

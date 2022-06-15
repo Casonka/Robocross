@@ -113,6 +113,9 @@
 		<Unit filename="FIL lib\RCC.h" />
 		<Unit filename="FIL lib\RCR DSTU\RCR_Custom.h" />
 		<Unit filename="FIL lib\RCR DSTU\RCR_PinsBoard.h" />
+		<Unit filename="FIL lib\RCR DSTU\RCR_SetupCustom.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="FIL lib\RCR DSTU\RCR_SetupCustom.h" />
 		<Unit filename="FIL lib\RCR DSTU\RCR_SetupFunctions.h" />
 		<Unit filename="FIL lib\TIM.h" />
@@ -173,6 +176,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="ModBus\ModBus.h" />
+		<Unit filename="src\CarManagement.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src\CarManagement.h" />
 		<Unit filename="src\main.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -191,10 +198,10 @@
 		<Extensions>
 			<code_completion />
 			<debugger>
-				<target_debugging_settings target="Release">
+				<target_debugging_settings target="Debug">
 					<debug_interface description="STM32F407.svd" options="2" reg_filter="0" probe="STlink" device="stm32-auto" speed="" bus_address="" serial="" defines="" scripts="" flash_size="" ram_size="" vcc_voltage="" verbose="4" unwind="2" rstType="0" use_jtag="false" disable_cache="false" enable_semi="false" close_eblink="false" gdb_reset="" gdb_reset_remote="reset" gdb_before_conn="" gdb_after_conn="" use_remote="false" ip_address="" ip_port="" path="" executable="" start_server="false" arguments="" flash_verify="false" flash_run="false" />
 				</target_debugging_settings>
-				<target_debugging_settings target="Debug">
+				<target_debugging_settings target="Release">
 					<debug_interface description="STM32F407.svd" options="2" reg_filter="0" probe="STlink" device="stm32-auto" speed="" bus_address="" serial="" defines="" scripts="" flash_size="" ram_size="" vcc_voltage="" verbose="4" unwind="2" rstType="0" use_jtag="false" disable_cache="false" enable_semi="false" close_eblink="false" gdb_reset="" gdb_reset_remote="reset" gdb_before_conn="" gdb_after_conn="" use_remote="false" ip_address="" ip_port="" path="" executable="" start_server="false" arguments="" flash_verify="false" flash_run="false" />
 				</target_debugging_settings>
 			</debugger>
