@@ -9,7 +9,7 @@
 
 */
 static unsigned int Error;
-#define UART_SIMULATION     0
+#define UART_SIMULATION     1
 
 /*!
 *   @brief ModBus_Init - function for initialize ModBus protocol
@@ -30,7 +30,7 @@ void ModBus_Init(void) {
     Queue_Index = Queue_StartIndex;
 
     #if (UART_SIMULATION == 1)
-    unsigned char Data[UART_BUFFER_SIZE] = {':', 'D', '2', '0', '6', '2', '0', '+', '5', '5', '5', 'B', 'E', '0', '\r', '0', '\n' }; // 17 size
+    unsigned char Data[UART_BUFFER_SIZE] = {':', 'D', '2', '0', '6', '2', '0', '+', '5', '5', '5', 'B', 'E', '\r', '\n' }; // 15 size
     for(int i = 0; i < UART_BUFFER_SIZE; i++)
     {
         UART_Buffer[i] = Data[i];
@@ -118,7 +118,7 @@ unsigned int ModBus_CheckFrame(void) {
     return 1;
 }
 
-unsigned int ModBus_ParsePacket(void) {
+float ModBus_ParsePacket(void) {
     static unsigned char *UARTBufferSlaveAddrIndex;
     const unsigned char Slave_Address[2] = {'D', '2'};
 
@@ -161,15 +161,15 @@ unsigned int ModBus_ParsePacket(void) {
                     unsigned char UARTBufferDirMsg = *(UARTBufferStartMsgPointer + 7);
                     UARTBufferDataMsgPointer = UARTBufferStartMsgPointer + 8;
 
-                    unsigned int Data = ModBus_ASCII_TO_HEX_Converter(UARTBufferDataMsgPointer,
+                    unsigned int Data_hex = ModBus_ASCII_TO_HEX_Converter(UARTBufferDataMsgPointer,
                                                                      ((unsigned short)((UARTBufferDataMsgPointer + 2) - UARTBufferDataMsgPointer)));
-                    if( Data > 0x555) { Data = 0x555; }
-                    if (UARTBufferDirMsg == '-') {Data |= 0x8000;} else {Data &= 0xFFF;}
+                    if( Data_hex > 0x555) { Data_hex = 0x555; }
+                    Data_hex = ((unsigned int)(((unsigned int)(Data_hex * 3331)) >> 13));
+                    float Data_Dec = ((float)Data_hex) / 100;
+                    if (UARTBufferDirMsg == '-') {Data_Dec = -Data_Dec;}
                     UARTReceiver_Flag = 0;
-                   // UARTTransmit_Flag = 1;
-                    return Data;
+                    return Data_Dec;
                 }
-
             }
         }
     }

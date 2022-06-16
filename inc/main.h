@@ -11,6 +11,8 @@ extern "C" {
 //FIL files
 #include <FilConfig.h>
 //-----------------------------------------------------------------
+
+#include "CarManagement.h"
 #ifdef __cplusplus
 }
 #endif

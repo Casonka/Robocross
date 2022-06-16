@@ -14,6 +14,7 @@
 
     void TimEngineClutchConfigure(void);
 
+    void add_ext_interrupt(unsigned char pin, char edge);
 /*!
 *   END NATIVE CODE
 *
@@ -91,11 +92,8 @@
     set_dma1;   \
     set_dma2;   \
     set_adc1;   \
-    set_usart3;}
-
-#define InterruptsEnable         {\
-    NVIC_EnableIRQ(TIM6_DAC_IRQn);\
-    NVIC_EnableIRQ(USART3_IRQn);}
+    set_usart3;\
+    set_syscfg;}
 
 #define InitPeriph {\
     conf_pin(BTN1_DIR_PIN, GENERAL, PUSH_PULL, FAST_S, NO_PULL_UP);\
@@ -165,10 +163,10 @@
     conf_pin(GENERAL_PIN_7, ANALOG, PUSH_PULL, FAST_S, NO_PULL_UP);\
     conf_pin(GENERAL_PIN_8, ANALOG, PUSH_PULL, FAST_S, NO_PULL_UP);\
     conf_pin(GENERAL_PIN_9, ANALOG, PUSH_PULL, FAST_S, NO_PULL_UP);\
-    conf_pin(EXTI1_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
-    conf_pin(EXTI2_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
-    conf_pin(EXTI3_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
-    conf_pin(EXTI4_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
+    conf_pin(EXTI1_PIN, INPUT, PUSH_PULL, FAST_S, PULL_UP);\
+    conf_pin(EXTI2_PIN, INPUT, PUSH_PULL, FAST_S, PULL_UP);\
+    conf_pin(EXTI3_PIN, INPUT, PUSH_PULL, FAST_S, PULL_UP);\
+    conf_pin(EXTI4_PIN, INPUT, PUSH_PULL, FAST_S, PULL_UP);\
     conf_pin(EXTI5_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
     conf_pin(EXTI6_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
     conf_pin(EXTI7_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\

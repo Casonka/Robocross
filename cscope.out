@@ -1,4 +1,4 @@
-cscope 15 $HOME\Desktop\projects\RCR\Robocross"               0002161262
+cscope 15 $HOME\Desktop\projects\RCR\Robocross"               0002165925
 	@C:\Users\Caska\Desktop\projects\RCR\ROBOCR~1\FILLIB~1\ADC.h
 
 2 #¥agm®
@@ -5694,8 +5694,8 @@ uöt32_t
 	@C:\Users\Caska\Desktop\projects\RCR\ROBOCR~1\FILLIB~1\INTERR~1.C
 
 2 
-	~<FûC⁄fig.h
->
+	~"C¨M™agemít.h
+"
 
 4 
 UART_Buf„r
@@ -5707,19 +5707,31 @@ UART_BUFFER_SIZE
 	g°©us
 ;
 
-9 
-	$USART3_IRQH™dÀr
-() {
+6 vﬁ©ûê
+uöt32_t
+ 
+	gglobÆTime
+;
 
-11 
-	`USARTGëSètus
-(
-ußπ3
+7 vﬁ©ûê
+uöt16_t
+ 
+LPul£Whìl
 , 
-Re˚iveRegNŸEm±y
-))
+RPul£Whìl
+;
 
-13 *
+12 
+	$USART3_IRQH™dÀr
+()
+
+14 (
+USART3
+->
+SR
+ & 0x20) >> 5)
+
+16 *
 UARTBuf„rIndex
 ++ = 
 USART3
@@ -5727,7 +5739,7 @@ USART3
 DR
 ;
 
-14 if–
+17 if–
 UARTBuf„rIndex
  > 
 UARTBuf„rEndMsgPoöãr
@@ -5735,279 +5747,293 @@ UARTBuf„rEndMsgPoöãr
 UARTBuf„rSèπMsgPoöãr
 ;}
 
-15 
-USART3
+19 
+	}
+}
+
+25 
+	$TIM1_IRQH™dÀr
+()
+
+27 
+TIM1
 ->
-DR
+SR
  = 0;
 
-17 if(
-UART_Buf„r
-[
-UART_BUFFER_SIZE
- - 1] !0Ë{ 
-°©us
- = 1; }
-
-18 
+28 
 	}
 }
 
-24 
-	$TIM1_IRQH™dÀr
-() {
-
-25 
-	`Re£tTimSR
-(
-Tim1
-);
-
-26 
-	}
-}
-
-28 
+30 
 	$TIM2_IRQH™dÀr
-() {
+()
 
-29 
-	`Re£tTimSR
-(
-Tim2
-);
-
-30 
-	}
-}
-
-32 
-	$TIM3_IRQH™dÀr
-() {
+32 
+TIM2
+->
+SR
+ = 0;
 
 33 
-	`Re£tTimSR
-(
-Tim3
-);
-
-34 
 	}
 }
 
-36 
-	$TIM4_IRQH™dÀr
-() {
+35 
+	$TIM3_IRQH™dÀr
+()
 
 37 
-	`Re£tTimSR
-(
-Tim4
-);
+TIM3
+->
+SR
+ = 0;
 
 38 
 	}
 }
 
 40 
+	$TIM4_IRQH™dÀr
+()
+
+43 
+TIM4
+->
+SR
+ = 0;
+
+44 
+	}
+}
+
+46 
 	$TIM5_IRQH™dÀr
-() {
+()
 
-41 
-	`Re£tTimSR
-(
-Tim5
-);
-
-42 
-	}
-}
-
-44 
-	$TIM6_DAC_IRQH™dÀr
-() {
-
-45 
-	`Re£tTimSR
-(
-Tim6
-);
-
-46 
-	}
-}
-
-48 
-	$TIM7_IRQH™dÀr
-() {
+48 
+TIM5
+->
+SR
+ = 0;
 
 49 
-	`Re£tTimSR
-(
-Tim7
-);
-
-50 
 	}
 }
 
-52 
-	$TIM8_UP_TIM13_IRQH™dÀr
-() {
+51 
+	$TIM6_DAC_IRQH™dÀr
+()
 
 53 
-	`Re£tTimSR
-(
-Tim13
-);
+TIM6
+->
+SR
+ = 0;
 
 54 
 	}
 }
 
-60 
-	$EXTI0_IRQH™dÀr
-() {
+55 
+	gglobÆS≥ed
+ = 0;
 
-61 
-EXTI
-->
-PR
-=0x1;
+56 
+	$TIM7_IRQH™dÀr
+()
+
+59 
+Cuºít_Vñocôy
+ = 
+	`S≥ed_CÆc
+(
+LPul£Whìl
+, 
+RPul£Whìl
+);
+
+60 
+globÆS≥ed
+ +
+Cuºít_Vñocôy
+*0.1;
 
 62 
-	}
-}
-
-64 
-	$EXTI1_IRQH™dÀr
-() {
-
-65 
-EXTI
+TIM7
 ->
-PR
-=0x2;
+SR
+ = 0;
 
-66 
+63 
 	}
 }
 
-68 
-	$EXTI2_IRQH™dÀr
-() {
+65 
+	$TIM8_UP_TIM13_IRQH™dÀr
+()
 
-69 
-EXTI
+67 
+TIM13
 ->
-PR
-=0x4;
+SR
+ = 0;
 
-70 
+68 
 	}
 }
 
-72 
-	$EXTI3_IRQH™dÀr
-() {
+74 
+	$EXTI0_IRQH™dÀr
+()
 
-73 
-EXTI
-->
-PR
-=0x8;
-
-74 
-	}
-}
-
-76 
-	$EXTI4_IRQH™dÀr
-() {
+76 
+LPul£Whìl
+++;
 
 77 
 EXTI
 ->
 PR
-=0x10;
+=0x1;
 
 78 
 	}
 }
 
 80 
-	$EXTI9_5_IRQH™dÀr
-() {
+	$EXTI1_IRQH™dÀr
+()
 
-81 i‡(
-EXTI
-->
-PR
-&(1<<6))
+82 
+RPul£Whìl
+++;
 
 83 
 EXTI
 ->
 PR
-=(1<<6);
+=0x2;
 
-86 i‡(
-EXTI
-->
-PR
-&(1<<7))
+84 
+	}
+}
+
+86 
+	$EXTI2_IRQH™dÀr
+()
 
 88 
 EXTI
 ->
 PR
-=(1<<7);
+=0x4;
 
-91 i‡(
-EXTI
-->
-PR
-&(1<<8))
+89 
+	}
+}
+
+91 
+	$EXTI3_IRQH™dÀr
+()
 
 93 
 EXTI
 ->
 PR
-=(1<<8);
+=0x8;
 
-96 i‡(
-EXTI
-->
-PR
-&(1<<9))
+94 
+	}
+}
+
+96 
+	$EXTI4_IRQH™dÀr
+()
 
 98 
 EXTI
 ->
 PR
-=(1<<9);
+=0x10;
 
-100 
+99 
 	}
 }
 
-102 
-	$EXTI15_10_IRQH™dÀr
-() {
+101 
+	$EXTI9_5_IRQH™dÀr
+()
 
-104 i‡(
+103 i‡(
+EXTI
+->
+PR
+&(1<<6))
+
+105 
+EXTI
+->
+PR
+=(1<<6);
+
+108 i‡(
+EXTI
+->
+PR
+&(1<<7))
+
+110 
+EXTI
+->
+PR
+=(1<<7);
+
+113 i‡(
+EXTI
+->
+PR
+&(1<<8))
+
+115 
+EXTI
+->
+PR
+=(1<<8);
+
+118 i‡(
+EXTI
+->
+PR
+&(1<<9))
+
+120 
+EXTI
+->
+PR
+=(1<<9);
+
+122 
+	}
+}
+
+124 
+	$EXTI15_10_IRQH™dÀr
+()
+
+127 i‡(
 EXTI
 ->
 PR
 &(1<<10))
 
-106 
+129 
 EXTI
 ->
 PR
 =(1<<10);
 
-109 
+132 
 	}
 }
 
@@ -6606,7 +6632,7 @@ uöt32_t
 )(((((*((uöt32_à*)((
 RCC_BASE
 Ë+ 0x04)))&(
-RCC_PLLCFGR_PLLN
+RCC_PLLCFGR_PLLP
 )Ë>> 16Ë+ 1Ë* 2))
 
 	)
@@ -6753,13 +6779,7 @@ deföed
 STM32F40_41xxx
 )
 
-38 
-	#MAX_PWM
- 700.0
-
-	)
-
-40 
+39 
 	#BTN1_PWM_PIN
  
 	`pö_id
@@ -6767,7 +6787,7 @@ STM32F40_41xxx
 PORTD
 ,12)
 
-41 
+40 
 	#BTN2_PWM_PIN
  
 	`pö_id
@@ -6775,7 +6795,7 @@ PORTD
 PORTD
 ,13)
 
-42 
+41 
 	#BTN3_PWM_PIN
  
 	`pö_id
@@ -6783,7 +6803,7 @@ PORTD
 PORTD
 ,14)
 
-43 
+42 
 	#BTN4_PWM_PIN
  
 	`pö_id
@@ -6791,7 +6811,7 @@ PORTD
 PORTD
 ,15)
 
-44 
+43 
 	#BTN5_PWM_PIN
  
 	`pö_id
@@ -6799,7 +6819,7 @@ PORTD
 PORTB
 ,9)
 
-45 
+44 
 	#BTN6_PWM_PIN
  
 	`pö_id
@@ -6807,7 +6827,7 @@ PORTB
 PORTB
 ,8)
 
-46 
+45 
 	#BTN7_PWM_PIN
  
 	`pö_id
@@ -6815,7 +6835,7 @@ PORTB
 PORTE
 ,6)
 
-47 
+46 
 	#BTN8_PWM_PIN
  
 	`pö_id
@@ -6823,7 +6843,7 @@ PORTE
 PORTE
 ,5)
 
-48 
+47 
 	#BTN9_PWM_PIN
  
 	`pö_id
@@ -6831,7 +6851,7 @@ PORTE
 PORTB
 ,14)
 
-49 
+48 
 	#BTN10_PWM_PIN
  
 	`pö_id
@@ -6839,11 +6859,11 @@ PORTB
 PORTB
 ,15)
 
-50 
+49 
 
 	)
 
-52 
+51 
 	#BTN1_CCR
  ((
 uöt32_t
@@ -6855,7 +6875,7 @@ CCR1
 
 	)
 
-53 
+52 
 	#BTN2_CCR
  ((
 uöt32_t
@@ -6867,7 +6887,7 @@ CCR2
 
 	)
 
-54 
+53 
 	#BTN3_CCR
  ((
 uöt32_t
@@ -6879,7 +6899,7 @@ CCR3
 
 	)
 
-55 
+54 
 	#BTN4_CCR
  ((
 uöt32_t
@@ -6891,7 +6911,7 @@ CCR4
 
 	)
 
-56 
+55 
 	#BTN5_CCR
  ((
 uöt32_t
@@ -6903,7 +6923,7 @@ CCR1
 
 	)
 
-57 
+56 
 	#BTN6_CCR
  ((
 uöt32_t
@@ -6915,7 +6935,7 @@ CCR1
 
 	)
 
-58 
+57 
 	#BTN7_CCR
  ((
 uöt32_t
@@ -6927,7 +6947,7 @@ CCR2
 
 	)
 
-59 
+58 
 	#BTN8_CCR
  ((
 uöt32_t
@@ -6939,7 +6959,7 @@ CCR1
 
 	)
 
-60 
+59 
 	#BTN9_CCR
  ((
 uöt32_t
@@ -6951,7 +6971,7 @@ CCR1
 
 	)
 
-61 
+60 
 	#BTN10_CCR
  ((
 uöt32_t
@@ -6963,7 +6983,7 @@ CCR2
 
 	)
 
-63 
+62 
 	#PWM_INHIBIT
  
 	`pö_id
@@ -6971,11 +6991,11 @@ CCR2
 PORTC
 ,13)
 
-64 
+63 
 
 	)
 
-68 
+67 
 	#BTN1_DIR_PIN
  
 	`pö_id
@@ -6983,7 +7003,7 @@ PORTC
 PORTC
 ,14)
 
-69 
+68 
 	#BTN2_DIR_PIN
  
 	`pö_id
@@ -6991,7 +7011,7 @@ PORTC
 PORTC
 ,15)
 
-70 
+69 
 	#BTN3_DIR_PIN
  
 	`pö_id
@@ -6999,7 +7019,7 @@ PORTC
 PORTE
 ,10)
 
-71 
+70 
 	#BTN4_DIR_PIN
  
 	`pö_id
@@ -7007,7 +7027,7 @@ PORTE
 PORTE
 ,14)
 
-72 
+71 
 	#BTN5_DIR_PIN
  
 	`pö_id
@@ -7015,7 +7035,7 @@ PORTE
 PORTE
 ,7)
 
-73 
+72 
 	#BTN6_DIR_PIN
  
 	`pö_id
@@ -7023,7 +7043,7 @@ PORTE
 PORTE
 ,2)
 
-74 
+73 
 	#BTN7_DIR_PIN
  
 	`pö_id
@@ -7031,7 +7051,7 @@ PORTE
 PORTE
 ,8)
 
-75 
+74 
 	#BTN8_DIR_PIN
  
 	`pö_id
@@ -7039,7 +7059,7 @@ PORTE
 PORTE
 ,13)
 
-76 
+75 
 	#BTN9_DIR_PIN
  
 	`pö_id
@@ -7047,7 +7067,7 @@ PORTE
 PORTE
 ,12)
 
-77 
+76 
 	#BTN10_DIR_PIN
  
 	`pö_id
@@ -7055,7 +7075,7 @@ PORTE
 PORTB
 ,13)
 
-81 
+80 
 	#ENCODER1A_PIN
  
 	`pö_id
@@ -7063,7 +7083,7 @@ PORTB
 PORTC
 ,6)
 
-82 
+81 
 	#ENCODER1B_PIN
  
 	`pö_id
@@ -7071,7 +7091,7 @@ PORTC
 PORTC
 ,7)
 
-83 
+82 
 	#ENCODER2A_PIN
  
 	`pö_id
@@ -7079,7 +7099,7 @@ PORTC
 PORTA
 ,15)
 
-84 
+83 
 	#ENCODER2B_PIN
  
 	`pö_id
@@ -7087,7 +7107,7 @@ PORTA
 PORTB
 ,3)
 
-85 
+84 
 	#ENCODER3A_PIN
  
 	`pö_id
@@ -7095,7 +7115,7 @@ PORTB
 PORTA
 ,6)
 
-86 
+85 
 	#ENCODER3B_PIN
  
 	`pö_id
@@ -7103,7 +7123,7 @@ PORTA
 PORTA
 ,7)
 
-87 
+86 
 	#ENCODER4A_PIN
  
 	`pö_id
@@ -7111,7 +7131,7 @@ PORTA
 PORTE
 ,9)
 
-88 
+87 
 	#ENCODER4B_PIN
  
 	`pö_id
@@ -7119,11 +7139,11 @@ PORTE
 PORTE
 ,11)
 
-89 
+88 
 
 	)
 
-92 
+91 
 	#ENCODER1_CNT
  ((
 uöt32_t
@@ -7135,7 +7155,7 @@ CNT
 
 	)
 
-93 
+92 
 	#ENCODER2_CNT
  ((
 uöt32_t
@@ -7147,7 +7167,7 @@ CNT
 
 	)
 
-94 
+93 
 	#ENCODER3_CNT
  ((
 uöt32_t
@@ -7159,7 +7179,7 @@ CNT
 
 	)
 
-95 
+94 
 	#ENCODER4_CNT
  ((
 uöt32_t
@@ -7171,7 +7191,7 @@ CNT
 
 	)
 
-101 
+100 
 	#GENERAL_PIN_0
  
 	`pö_id
@@ -7179,7 +7199,7 @@ CNT
 PORTA
 ,0)
 
-102 
+101 
 	#GENERAL_PIN_1
  
 	`pö_id
@@ -7187,7 +7207,7 @@ PORTA
 PORTA
 ,1)
 
-103 
+102 
 	#GENERAL_PIN_2
  
 	`pö_id
@@ -7195,7 +7215,7 @@ PORTA
 PORTA
 ,2)
 
-104 
+103 
 	#GENERAL_PIN_3
  
 	`pö_id
@@ -7203,7 +7223,7 @@ PORTA
 PORTA
 ,3)
 
-105 
+104 
 	#GENERAL_PIN_4
  
 	`pö_id
@@ -7211,7 +7231,7 @@ PORTA
 PORTB
 ,0)
 
-106 
+105 
 	#GENERAL_PIN_5
  
 	`pö_id
@@ -7219,7 +7239,7 @@ PORTB
 PORTB
 ,1)
 
-107 
+106 
 	#GENERAL_PIN_6
  
 	`pö_id
@@ -7227,7 +7247,7 @@ PORTB
 PORTC
 ,1)
 
-108 
+107 
 	#GENERAL_PIN_7
  
 	`pö_id
@@ -7235,7 +7255,7 @@ PORTC
 PORTC
 ,2)
 
-109 
+108 
 	#GENERAL_PIN_8
  
 	`pö_id
@@ -7243,7 +7263,7 @@ PORTC
 PORTC
 ,4)
 
-110 
+109 
 	#GENERAL_PIN_9
  
 	`pö_id
@@ -7251,11 +7271,11 @@ PORTC
 PORTC
 ,5)
 
-111 
+110 
 
 	)
 
-116 
+115 
 	#TX1_PIN
  
 	`pö_id
@@ -7265,7 +7285,7 @@ PORTC
 
 	)
 
-117 
+116 
 	#RX1_PIN
  
 	`pö_id
@@ -7275,7 +7295,7 @@ PORTC
 
 	)
 
-119 
+118 
 	#TX2_PIN
  
 	`pö_id
@@ -7285,7 +7305,7 @@ PORTB
 
 	)
 
-120 
+119 
 	#RX2_PIN
  
 	`pö_id
@@ -7295,7 +7315,7 @@ PORTB
 
 	)
 
-122 
+121 
 	#USB_Swôch_ON
  
 	`pö_id
@@ -7305,7 +7325,7 @@ PORTC
 
 	)
 
-126 
+125 
 	#EXTI1_PIN
  
 	`pö_id
@@ -7313,7 +7333,7 @@ PORTC
 PORTD
 ,0)
 
-127 
+126 
 	#EXTI2_PIN
  
 	`pö_id
@@ -7321,7 +7341,7 @@ PORTD
 PORTD
 ,1)
 
-128 
+127 
 	#EXTI3_PIN
  
 	`pö_id
@@ -7329,7 +7349,7 @@ PORTD
 PORTD
 ,2)
 
-129 
+128 
 	#EXTI4_PIN
  
 	`pö_id
@@ -7337,7 +7357,7 @@ PORTD
 PORTD
 ,3)
 
-130 
+129 
 	#EXTI5_PIN
  
 	`pö_id
@@ -7345,7 +7365,7 @@ PORTD
 PORTE
 ,4)
 
-131 
+130 
 	#EXTI6_PIN
  
 	`pö_id
@@ -7353,7 +7373,7 @@ PORTE
 PORTD
 ,6)
 
-132 
+131 
 	#EXTI7_PIN
  
 	`pö_id
@@ -7361,7 +7381,7 @@ PORTD
 PORTD
 ,7)
 
-133 
+132 
 	#EXTI8_PIN
  
 	`pö_id
@@ -7369,7 +7389,7 @@ PORTD
 PORTD
 ,8)
 
-134 
+133 
 	#EXTI9_PIN
  
 	`pö_id
@@ -7377,7 +7397,7 @@ PORTD
 PORTD
 ,9)
 
-135 
+134 
 	#EXTI10_PIN
  
 	`pö_id
@@ -7385,7 +7405,7 @@ PORTD
 PORTD
 ,10)
 
-140 
+139 
 	#I2C_SDA_PIN
  
 	`pö_id
@@ -7393,7 +7413,7 @@ PORTD
 PORTB
 ,11)
 
-141 
+140 
 	#I2C_SCL_PIN
  
 	`pö_id
@@ -7401,7 +7421,7 @@ PORTB
 PORTB
 ,10)
 
-145 
+144 
 	#PIN6_12V
  
 	`pö_id
@@ -7411,7 +7431,7 @@ PORTB
 
 	)
 
-146 
+145 
 	#PIN5_12V
  
 	`pö_id
@@ -7421,7 +7441,7 @@ PORTB
 
 	)
 
-147 
+146 
 	#PIN4_12V
  
 	`pö_id
@@ -7431,7 +7451,7 @@ PORTD
 
 	)
 
-148 
+147 
 	#PIN3_12V
  
 	`pö_id
@@ -7441,7 +7461,7 @@ PORTA
 
 	)
 
-149 
+148 
 	#PIN2_12V
  
 	`pö_id
@@ -7451,7 +7471,7 @@ PORTC
 
 	)
 
-150 
+149 
 	#PIN1_12V
  
 	`pö_id
@@ -7461,7 +7481,7 @@ PORTC
 
 	)
 
-155 
+154 
 	#DYNAMIXEL_IO_CONTROL
  
 	`pö_id
@@ -7469,7 +7489,7 @@ PORTC
 PORTB
 ,12)
 
-158 
+157 
 
 	)
 
@@ -7783,6 +7803,360 @@ PORTC
 
 	)
 
+	@C:\Users\Caska\Desktop\projects\RCR\ROBOCR~1\FILLIB~1\RCRDST~1\RCR_SE~1.C
+
+1 
+	~"RCR_SëupCu°om.h
+"
+
+3 
+	#EXTI_RISING_EDGE
+ 1
+
+	)
+
+4 
+	#EXTI_FALLING_EDGE
+ 2
+
+	)
+
+5 
+	#EXTI_BOTH_EDGES
+ 3
+
+	)
+
+7 
+	$BﬂrdSèπ
+()
+
+10 
+ClocksInô
+;
+
+11 
+	`__dißbÀ_úq
+();
+
+12 
+PWR
+->
+CR
+|=
+PWR_CR_DBP
+;
+
+13 
+	`SysTick_C⁄fig
+(168000000);
+
+14 
+InôPîùh
+;
+
+15 
+	`TimPWMC⁄figuª
+(
+Tim4
+,168,100,1,1,1,1);
+
+16 
+	`TimEngöeClutchC⁄figuª
+();
+
+17 
+	`TimEncodîC⁄figuª
+(
+Tim8
+);
+
+18 
+	`TimEncodîC⁄figuª
+(
+Tim1
+);
+
+19 
+	`TimEncodîC⁄figuª
+(
+Tim3
+);
+
+20 
+	`TimEncodîC⁄figuª
+(
+Tim2
+);
+
+21 
+	`TimPIDC⁄figuª
+(
+Tim7
+,8399,1000);
+
+31 
+	`USARTBŸhC⁄figuª
+(
+ußπ3
+, 121 , 0, 1);
+
+32 
+	`add_ext_öãºu±
+(
+EXTI1_PIN
+, 
+EXTI_RISING_EDGE
+);
+
+33 
+	`add_ext_öãºu±
+(
+EXTI2_PIN
+, 
+EXTI_RISING_EDGE
+);
+
+41 
+	`I¡îru±sE«bÀ
+();
+
+42 
+	`__íabÀ_úq
+();
+
+43 
+	}
+}
+
+45 
+	$Re£tClock
+()
+
+47 
+RCC
+->
+PLLCFGR
+ = 0;
+
+48 
+RCC
+->
+CFGR
+ = 0;
+
+49 
+RCC
+->
+CR
+ = 0;
+
+51 
+RCC
+->
+CR
+ |= 0x1000000;
+
+52 
+RCC
+->
+PLLCFGR
+ |= 0x11;
+
+53 
+RCC
+->
+CFGR
+ |= 0x600000;
+
+54 
+RCC
+->
+CFGR
+ |= 0x940A;
+
+55 
+	}
+}
+
+57 
+	$I¡îru±sE«bÀ
+()
+
+59 
+	`NVIC_E«bÀIRQ
+(
+TIM7_IRQn
+);
+
+60 
+	`NVIC_E«bÀIRQ
+(
+USART3_IRQn
+);
+
+61 
+	`NVIC_E«bÀIRQ
+(
+EXTI0_IRQn
+);
+
+62 
+	`NVIC_E«bÀIRQ
+(
+EXTI1_IRQn
+);
+
+63 
+	`NVIC_E«bÀIRQ
+(
+EXTI2_IRQn
+);
+
+69 
+	}
+}
+
+71 
+	$TimEngöeClutchC⁄figuª
+()
+
+73 
+	`C⁄fCh™√lsTim
+(
+Tim11
+,7,0,0,0,1,0,0,0);
+
+74 
+	`C⁄fFªq
+(
+Tim11
+,52,200);
+
+75 
+	`SëTimO√Pul£Mode
+(
+Tim11
+,1);
+
+76 
+	`C⁄fTimMaöOuçut
+(
+Tim11
+,1);
+
+77 
+	`Re£tTimCCR1
+(
+Tim11
+);
+
+78 
+	`SëPWM
+(4,0xFFFF);
+
+79 
+	`TimSèπ
+(
+Tim11
+);
+
+80 
+	}
+}
+
+82 
+	$add_ext_öãºu±
+(
+pö
+, 
+edge
+)
+
+84 
+SYSCFG
+->
+EXTICR
+ [((
+pö
+)&0xF) >> 0x02] |= (pin>>4) << ((((pin)&0xF) % 4) << 0x02);
+
+85 
+EXTI
+->
+IMR
+ |(1<<((
+pö
+)&0xF));
+
+87 
+edge
+)
+
+89 
+EXTI_FALLING_EDGE
+:
+
+91 
+EXTI
+->
+FTSR
+ |(1<<((
+pö
+)&0xF));
+
+92 
+EXTI
+->
+RTSR
+ &~(1<<((
+pö
+)&0xF));
+
+96 
+EXTI_RISING_EDGE
+:
+
+98 
+EXTI
+->
+FTSR
+ &~(1<<((
+pö
+)&0xF));
+
+99 
+EXTI
+->
+RTSR
+ |(1<<((
+pö
+)&0xF));
+
+103 
+EXTI_BOTH_EDGES
+:
+
+105 
+EXTI
+->
+RTSR
+ |(1<<((
+pö
+)&0xF));
+
+106 
+EXTI
+->
+FTSR
+ |(1<<((
+pö
+)&0xF));
+
+110 
+	}
+}
+
 	@C:\Users\Caska\Desktop\projects\RCR\ROBOCR~1\FILLIB~1\RCRDST~1\RCR_SE~1.H
 
 1 #¥agm®
@@ -8089,15 +8463,31 @@ Tim1
 
 6 
 	#MAX_PWM
- 700.0
+ 200
 
 	)
 
-9 #if–
+13 
+BﬂrdSèπ
+();
+
+15 
+TimEngöeClutchC⁄figuª
+();
+
+17 
+add_ext_öãºu±
+(
+pö
+, 
+edge
+);
+
+23 #if–
 _Adv™˚dCÆcuœtögTimîs
  == 1 )
 
-20 
+34 
 	#SëPWM
 (
 CHANNEL
@@ -8105,37 +8495,37 @@ CHANNEL
 DUTY
 ) {\
 
-21 
+35 
 duty
  = 
 DUTY
 ; \
 
-22 i‡(
+36 i‡(
 duty
  > 1) duty = 1.0; \
 
-23 i‡(
+37 i‡(
 duty
  < -1) duty = -1.0; \
 
-24 i‡(
+38 i‡(
 duty
- > 0 ) \
+ < 0 ) \
 
-26 *
+40 *
 PWM_Li°
 [
 CHANNEL
-] = (
+] = ((
 öt32_t
 )(
 MAX_PWM
  + (
 duty
- * MAX_PWM));\
+ * MAX_PWM)));\
 
-27 
+41 
 	`£t_pö
 (
 DIR_Li°
@@ -8143,23 +8533,23 @@ DIR_Li°
 CHANNEL
 ]); \
 
-29 i‡(
+43 i‡(
 duty
- < 0) \
+ > 0) \
 
-31 *
+45 *
 PWM_Li°
 [
 CHANNEL
-] = (
+] = ((
 öt32_t
 Ë(
 duty
  * 
 MAX_PWM
-); \
+)); \
 
-32 
+46 
 	`ª£t_pö
 (
 DIR_Li°
@@ -8167,11 +8557,11 @@ DIR_Li°
 CHANNEL
 ]); \
 
-34 }
+48 }
 
 	)
 
-41 
+55 
 __©åibuã__
 ((
 unu£d
@@ -8185,31 +8575,31 @@ BTN1_DIR_PIN
 BTN2_DIR_PIN
 ,
 
-42 
+56 
 BTN3_DIR_PIN
 , 
 BTN4_DIR_PIN
 ,
 
-43 
+57 
 BTN5_DIR_PIN
 , 
 BTN6_DIR_PIN
 ,
 
-44 
+58 
 BTN7_DIR_PIN
 , 
 BTN8_DIR_PIN
 ,
 
-45 
+59 
 BTN9_DIR_PIN
 , 
 BTN10_DIR_PIN
  };
 
-50 
+64 
 __©åibuã__
 ((
 unu£d
@@ -8223,265 +8613,141 @@ BTN1_CCR
 BTN2_CCR
 ,
 
-51 
+65 
 BTN3_CCR
 , 
 BTN4_CCR
 ,
 
-52 
+66 
 BTN5_CCR
 , 
 BTN6_CCR
 ,
 
-53 
+67 
 BTN7_CCR
 , 
 BTN8_CCR
 ,
 
-54 
+68 
 BTN9_CCR
 , 
 BTN10_CCR
  };
 
-56 
-	#BﬂrdSèπ
- { \
-
-57 
-ClocksInô
-; \
-
-58 
-	`__dißbÀ_úq
-(); \
-
-59 
-InôPîùh
-; \
-
-60 
-I¡îru±sE«bÀ
-; \
-
-61 
-	`TimPWMC⁄figuª
-(
-Tim4
-,7,
-MAX_PWM
-,1,1,1,1); \
-
-62 
-	`TimEncodîC⁄figuª
-(
-Tim8
-); \
-
-63 
-	`TimEncodîC⁄figuª
-(
-Tim1
-); \
-
-64 
-	`TimEncodîC⁄figuª
-(
-Tim3
-); \
-
-65 
-	`TimEncodîC⁄figuª
-(
-Tim2
-); \
-
-66 
-	`TimPIDC⁄figuª
-(
-Tim6
-,10); \
-
-67 
-	`USARTBŸhC⁄figuª
-(
-ußπ3
-, 2500, 0, 1); \
-
-68 if(
-_Adv™˚dCÆcuœtögRCC
- == 1) { \
-
-69 
-Clocks
-.
-Sy°ick
- = 
-cuºít_Sy°ick
-; \
-
-70 
-Clocks
-.
-AHB
- = 
-cuºít_AHB
-; \
-
-71 
-Clocks
-.
-APB1
- = 
-cuºít_APB1
-; \
-
-72 
-Clocks
-.
-APB2
- = 
-cuºít_APB2
-;\
-
-73 
-Clocks
-.
-∂lvco
- = 
-ˇlc_∂lvco
-;} }
-
-	)
-
-75 
+71 
 	#ClocksInô
  {\
 
-76 
+72 
 £t_pwr
 ; \
 
-77 
+73 
 £t_gpiﬂ
 ; \
 
-78 
+74 
 £t_gpiob
 ; \
 
-79 
+75 
 £t_gpioc
 ; \
 
-80 
+76 
 £t_gpiod
 ; \
 
-81 
+77 
 £t_gpi€
 ; \
 
-82 
+78 
 £t_tim1
 ; \
 
-83 
+79 
 £t_tim2
 ; \
 
-84 
+80 
 £t_tim3
 ; \
 
-85 
+81 
 £t_tim4
 ; \
 
-86 
+82 
 £t_tim5
 ; \
 
-87 
+83 
 £t_tim6
 ; \
 
-88 
+84 
 £t_tim7
 ; \
 
-89 
+85 
 £t_tim8
 ; \
 
-90 
+86 
 £t_tim9
 ; \
 
-91 
+87 
 £t_tim10
 ; \
 
-92 
+88 
 £t_tim11
 ; \
 
-93 
+89 
 £t_tim12
 ; \
 
-94 
+90 
 £t_tim13
 ; \
 
-95 
+91 
 £t_tim14
 ; \
 
-96 
+92 
 £t_dma1
 ; \
 
-97 
+93 
 £t_dma2
 ; \
 
-98 
+94 
 £t_adc1
 ; \
 
-99 
+95 
 £t_ußπ3
+;\
+
+96 
+£t_syscfg
 ;}
 
 	)
 
-101 
-	#I¡îru±sE«bÀ
- {\
-
-102 
-	`NVIC_E«bÀIRQ
-(
-TIM6_DAC_IRQn
-);\
-
-103 
-	`NVIC_E«bÀIRQ
-(
-USART3_IRQn
-);}
-
-	)
-
-105 
+98 
 	#InôPîùh
  {\
 
-106 
+99 
 	`c⁄f_pö
 (
 BTN1_DIR_PIN
@@ -8495,7 +8761,7 @@ FAST_S
 NO_PULL_UP
 );\
 
-107 
+100 
 	`c⁄f_pö
 (
 BTN2_DIR_PIN
@@ -8509,7 +8775,7 @@ FAST_S
 NO_PULL_UP
 ); \
 
-108 
+101 
 	`c⁄f_pö
 (
 BTN3_DIR_PIN
@@ -8523,7 +8789,7 @@ FAST_S
 NO_PULL_UP
 ); \
 
-109 
+102 
 	`c⁄f_pö
 (
 BTN4_DIR_PIN
@@ -8537,7 +8803,7 @@ FAST_S
 NO_PULL_UP
 ); \
 
-110 
+103 
 	`c⁄f_pö
 (
 BTN5_DIR_PIN
@@ -8551,7 +8817,7 @@ FAST_S
 NO_PULL_UP
 ); \
 
-111 
+104 
 	`c⁄f_pö
 (
 BTN6_DIR_PIN
@@ -8565,7 +8831,7 @@ FAST_S
 NO_PULL_UP
 ); \
 
-112 
+105 
 	`c⁄f_pö
 (
 BTN7_DIR_PIN
@@ -8579,7 +8845,7 @@ FAST_S
 NO_PULL_UP
 ); \
 
-113 
+106 
 	`c⁄f_pö
 (
 BTN8_DIR_PIN
@@ -8593,7 +8859,7 @@ FAST_S
 NO_PULL_UP
 ); \
 
-114 
+107 
 	`c⁄f_pö
 (
 BTN9_DIR_PIN
@@ -8607,7 +8873,7 @@ FAST_S
 NO_PULL_UP
 ); \
 
-115 
+108 
 	`c⁄f_pö
 (
 BTN10_DIR_PIN
@@ -8621,7 +8887,7 @@ FAST_S
 NO_PULL_UP
 ); \
 
-116 
+109 
 	`c⁄f_pö
 (
 PWM_INHIBIT
@@ -8635,7 +8901,7 @@ FAST_S
 NO_PULL_UP
 ); \
 
-117 
+110 
 	`c⁄f_pö
 (
 PIN1_12V
@@ -8649,7 +8915,7 @@ HIGH_S
 NO_PULL_UP
 ); \
 
-118 
+111 
 	`c⁄f_pö
 (
 PIN2_12V
@@ -8663,7 +8929,7 @@ HIGH_S
 NO_PULL_UP
 ); \
 
-119 
+112 
 	`c⁄f_pö
 (
 PIN3_12V
@@ -8677,7 +8943,7 @@ HIGH_S
 NO_PULL_UP
 ); \
 
-120 
+113 
 	`c⁄f_pö
 (
 PIN4_12V
@@ -8691,7 +8957,7 @@ HIGH_S
 NO_PULL_UP
 ); \
 
-121 
+114 
 	`c⁄f_pö
 (
 PIN5_12V
@@ -8705,7 +8971,7 @@ LOW_S
 NO_PULL_UP
 ); \
 
-122 
+115 
 	`c⁄f_pö
 (
 PIN6_12V
@@ -8719,7 +8985,7 @@ LOW_S
 NO_PULL_UP
 ); \
 
-123 
+116 
 	`c⁄f_pö
 (
 BTN1_PWM_PIN
@@ -8733,128 +8999,194 @@ FAST_S
 NO_PULL_UP
 ); \
 
-124 
+117 
 	`c⁄f_af
 (
 BTN1_PWM_PIN
 , 
 AF2
+); \
+
+118 
+	`c⁄f_pö
+(
+BTN2_PWM_PIN
+, 
+ALTERNATE
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+NO_PULL_UP
+); \
+
+119 
+	`c⁄f_af
+(
+BTN2_PWM_PIN
+, 
+AF2
+);\
+
+120 
+	`c⁄f_pö
+(
+BTN3_PWM_PIN
+, 
+ALTERNATE
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+NO_PULL_UP
+); \
+
+121 
+	`c⁄f_af
+(
+BTN3_PWM_PIN
+, 
+AF2
+);\
+
+122 
+	`c⁄f_pö
+(
+BTN4_PWM_PIN
+, 
+ALTERNATE
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+NO_PULL_UP
+); \
+
+123 
+	`c⁄f_af
+(
+BTN4_PWM_PIN
+, 
+AF2
+);\
+
+124 
+	`c⁄f_pö
+(
+BTN5_PWM_PIN
+, 
+ALTERNATE
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+NO_PULL_UP
 ); \
 
 125 
-	`c⁄f_pö
+	`c⁄f_af
 (
-BTN2_PWM_PIN
+BTN5_PWM_PIN
 , 
-ALTERNATE
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-NO_PULL_UP
-); \
+AF3
+);\
 
 126 
-	`c⁄f_af
+	`c⁄f_pö
 (
-BTN2_PWM_PIN
+BTN6_PWM_PIN
 , 
-AF2
-);\
+ALTERNATE
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+NO_PULL_UP
+); \
 
 127 
-	`c⁄f_pö
+	`c⁄f_af
 (
-BTN3_PWM_PIN
+BTN6_PWM_PIN
 , 
-ALTERNATE
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-NO_PULL_UP
-); \
+AF3
+);\
 
 128 
-	`c⁄f_af
+	`c⁄f_pö
 (
-BTN3_PWM_PIN
+BTN7_PWM_PIN
 , 
-AF2
-);\
+ALTERNATE
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+NO_PULL_UP
+); \
 
 129 
-	`c⁄f_pö
+	`c⁄f_af
 (
-BTN4_PWM_PIN
+BTN7_PWM_PIN
 , 
-ALTERNATE
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-NO_PULL_UP
-); \
+AF3
+);\
 
 130 
-	`c⁄f_af
+	`c⁄f_pö
 (
-BTN4_PWM_PIN
+BTN8_PWM_PIN
 , 
-AF2
-);\
+ALTERNATE
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+NO_PULL_UP
+); \
 
 131 
-	`c⁄f_pö
+	`c⁄f_af
 (
-BTN5_PWM_PIN
+BTN8_PWM_PIN
 , 
-ALTERNATE
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-NO_PULL_UP
-); \
+AF3
+);\
 
 132 
-	`c⁄f_af
+	`c⁄f_pö
 (
-BTN5_PWM_PIN
+BTN9_PWM_PIN
 , 
-AF3
-);\
+ALTERNATE
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+NO_PULL_UP
+); \
 
 133 
-	`c⁄f_pö
-(
-BTN6_PWM_PIN
-, 
-ALTERNATE
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-NO_PULL_UP
-); \
-
-134 
 	`c⁄f_af
 (
-BTN6_PWM_PIN
+BTN9_PWM_PIN
 , 
-AF3
+AF9
 );\
 
-135 
+134 
 	`c⁄f_pö
 (
-BTN7_PWM_PIN
+BTN10_PWM_PIN
 , 
 ALTERNATE
 , 
@@ -8865,84 +9197,84 @@ FAST_S
 NO_PULL_UP
 ); \
 
-136 
+135 
 	`c⁄f_af
 (
-BTN7_PWM_PIN
+BTN10_PWM_PIN
 , 
-AF3
+AF9
+);\
+
+136 
+	`c⁄f_pö
+(
+ENCODER1A_PIN
+, 
+ALTERNATE
+, 
+PUSH_PULL
+, 
+LOW_S
+, 
+PULL_UP
 );\
 
 137 
-	`c⁄f_pö
-(
-BTN8_PWM_PIN
-, 
-ALTERNATE
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-NO_PULL_UP
-); \
-
-138 
 	`c⁄f_af
 (
-BTN8_PWM_PIN
+ENCODER1A_PIN
 , 
 AF3
 );\
 
-139 
+138 
 	`c⁄f_pö
 (
-BTN9_PWM_PIN
+ENCODER1B_PIN
 , 
 ALTERNATE
 , 
 PUSH_PULL
 , 
-FAST_S
+LOW_S
 , 
-NO_PULL_UP
+PULL_UP
 ); \
 
-140 
+139 
 	`c⁄f_af
 (
-BTN9_PWM_PIN
+ENCODER1B_PIN
 , 
-AF9
+AF3
+);\
+
+140 
+	`c⁄f_pö
+(
+ENCODER2A_PIN
+, 
+ALTERNATE
+, 
+PUSH_PULL
+, 
+LOW_S
+, 
+PULL_UP
 );\
 
 141 
-	`c⁄f_pö
-(
-BTN10_PWM_PIN
-, 
-ALTERNATE
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-NO_PULL_UP
-); \
-
-142 
 	`c⁄f_af
 (
-BTN10_PWM_PIN
+ENCODER2A_PIN
 , 
-AF9
+AF1
 );\
 
-143 
+142 
 	`c⁄f_pö
 (
-ENCODER1A_PIN
+ENCODER2B_PIN
 , 
 ALTERNATE
 , 
@@ -8951,20 +9283,20 @@ PUSH_PULL
 LOW_S
 , 
 PULL_UP
+); \
+
+143 
+	`c⁄f_af
+(
+ENCODER2B_PIN
+, 
+AF1
 );\
 
 144 
-	`c⁄f_af
-(
-ENCODER1A_PIN
-, 
-AF3
-);\
-
-145 
 	`c⁄f_pö
 (
-ENCODER1B_PIN
+ENCODER3A_PIN
 , 
 ALTERNATE
 , 
@@ -8975,18 +9307,18 @@ LOW_S
 PULL_UP
 ); \
 
-146 
+145 
 	`c⁄f_af
 (
-ENCODER1B_PIN
+ENCODER3A_PIN
 , 
-AF3
+AF2
 );\
 
-147 
+146 
 	`c⁄f_pö
 (
-ENCODER2A_PIN
+ENCODER3B_PIN
 , 
 ALTERNATE
 , 
@@ -8995,42 +9327,42 @@ PUSH_PULL
 LOW_S
 , 
 PULL_UP
+); \
+
+147 
+	`c⁄f_af
+(
+ENCODER3B_PIN
+, 
+AF2
 );\
 
 148 
-	`c⁄f_af
+	`c⁄f_pö
 (
-ENCODER2A_PIN
+ENCODER4A_PIN
 , 
-AF1
+ALTERNATE
+, 
+PUSH_PULL
+, 
+LOW_S
+, 
+PULL_UP
 );\
 
 149 
-	`c⁄f_pö
-(
-ENCODER2B_PIN
-, 
-ALTERNATE
-, 
-PUSH_PULL
-, 
-LOW_S
-, 
-PULL_UP
-); \
-
-150 
 	`c⁄f_af
 (
-ENCODER2B_PIN
+ENCODER4A_PIN
 , 
 AF1
 );\
 
-151 
+150 
 	`c⁄f_pö
 (
-ENCODER3A_PIN
+ENCODER4B_PIN
 , 
 ALTERNATE
 , 
@@ -9040,19 +9372,19 @@ LOW_S
 , 
 PULL_UP
 ); \
+
+151 
+	`c⁄f_af
+(
+ENCODER4B_PIN
+, 
+AF1
+);\
 
 152 
-	`c⁄f_af
-(
-ENCODER3A_PIN
-, 
-AF2
-);\
-
-153 
 	`c⁄f_pö
 (
-ENCODER3B_PIN
+TX1_PIN
 , 
 ALTERNATE
 , 
@@ -9060,21 +9392,21 @@ PUSH_PULL
 , 
 LOW_S
 , 
-PULL_UP
+NO_PULL_UP
 ); \
 
-154 
+153 
 	`c⁄f_af
 (
-ENCODER3B_PIN
+TX1_PIN
 , 
-AF2
+AF7
 );\
 
-155 
+154 
 	`c⁄f_pö
 (
-ENCODER4A_PIN
+RX1_PIN
 , 
 ALTERNATE
 , 
@@ -9082,84 +9414,18 @@ PUSH_PULL
 , 
 LOW_S
 , 
-PULL_UP
+NO_PULL_UP
+); \
+
+155 
+	`c⁄f_af
+(
+RX1_PIN
+, 
+AF7
 );\
 
 156 
-	`c⁄f_af
-(
-ENCODER4A_PIN
-, 
-AF1
-);\
-
-157 
-	`c⁄f_pö
-(
-ENCODER4B_PIN
-, 
-ALTERNATE
-, 
-PUSH_PULL
-, 
-LOW_S
-, 
-PULL_UP
-); \
-
-158 
-	`c⁄f_af
-(
-ENCODER4B_PIN
-, 
-AF1
-);\
-
-159 
-	`c⁄f_pö
-(
-TX1_PIN
-, 
-ALTERNATE
-, 
-PUSH_PULL
-, 
-LOW_S
-, 
-NO_PULL_UP
-); \
-
-160 
-	`c⁄f_af
-(
-TX1_PIN
-, 
-AF7
-);\
-
-161 
-	`c⁄f_pö
-(
-RX1_PIN
-, 
-ALTERNATE
-, 
-PUSH_PULL
-, 
-LOW_S
-, 
-NO_PULL_UP
-); \
-
-162 
-	`c⁄f_af
-(
-RX1_PIN
-, 
-AF7
-);\
-
-163 
 	`c⁄f_pö
 (
 GENERAL_PIN_0
@@ -9173,7 +9439,7 @@ FAST_S
 NO_PULL_UP
 );\
 
-164 
+157 
 	`c⁄f_pö
 (
 GENERAL_PIN_1
@@ -9187,7 +9453,7 @@ FAST_S
 NO_PULL_UP
 );\
 
-165 
+158 
 	`c⁄f_pö
 (
 GENERAL_PIN_2
@@ -9201,7 +9467,7 @@ FAST_S
 NO_PULL_UP
 );\
 
-166 
+159 
 	`c⁄f_pö
 (
 GENERAL_PIN_3
@@ -9215,7 +9481,7 @@ FAST_S
 NO_PULL_UP
 );\
 
-167 
+160 
 	`c⁄f_pö
 (
 GENERAL_PIN_4
@@ -9229,7 +9495,7 @@ FAST_S
 NO_PULL_UP
 );\
 
-168 
+161 
 	`c⁄f_pö
 (
 GENERAL_PIN_5
@@ -9243,7 +9509,7 @@ FAST_S
 NO_PULL_UP
 );\
 
-169 
+162 
 	`c⁄f_pö
 (
 GENERAL_PIN_6
@@ -9257,7 +9523,7 @@ FAST_S
 NO_PULL_UP
 );\
 
-170 
+163 
 	`c⁄f_pö
 (
 GENERAL_PIN_7
@@ -9271,7 +9537,7 @@ FAST_S
 NO_PULL_UP
 );\
 
-171 
+164 
 	`c⁄f_pö
 (
 GENERAL_PIN_8
@@ -9285,7 +9551,7 @@ FAST_S
 NO_PULL_UP
 );\
 
-172 
+165 
 	`c⁄f_pö
 (
 GENERAL_PIN_9
@@ -9299,7 +9565,7 @@ FAST_S
 NO_PULL_UP
 );\
 
-173 
+166 
 	`c⁄f_pö
 (
 EXTI1_PIN
@@ -9310,10 +9576,10 @@ PUSH_PULL
 , 
 FAST_S
 , 
-PULL_DOWN
+PULL_UP
 );\
 
-174 
+167 
 	`c⁄f_pö
 (
 EXTI2_PIN
@@ -9324,10 +9590,10 @@ PUSH_PULL
 , 
 FAST_S
 , 
-PULL_DOWN
+PULL_UP
 );\
 
-175 
+168 
 	`c⁄f_pö
 (
 EXTI3_PIN
@@ -9338,10 +9604,10 @@ PUSH_PULL
 , 
 FAST_S
 , 
-PULL_DOWN
+PULL_UP
 );\
 
-176 
+169 
 	`c⁄f_pö
 (
 EXTI4_PIN
@@ -9352,10 +9618,10 @@ PUSH_PULL
 , 
 FAST_S
 , 
-PULL_DOWN
+PULL_UP
 );\
 
-177 
+170 
 	`c⁄f_pö
 (
 EXTI5_PIN
@@ -9369,7 +9635,7 @@ FAST_S
 PULL_DOWN
 );\
 
-178 
+171 
 	`c⁄f_pö
 (
 EXTI6_PIN
@@ -9383,7 +9649,7 @@ FAST_S
 PULL_DOWN
 );\
 
-179 
+172 
 	`c⁄f_pö
 (
 EXTI7_PIN
@@ -9397,7 +9663,7 @@ FAST_S
 PULL_DOWN
 );\
 
-180 
+173 
 	`c⁄f_pö
 (
 EXTI8_PIN
@@ -9411,7 +9677,7 @@ FAST_S
 PULL_DOWN
 );\
 
-181 
+174 
 	`c⁄f_pö
 (
 EXTI9_PIN
@@ -9425,7 +9691,7 @@ FAST_S
 PULL_DOWN
 );\
 
-182 
+175 
 	`c⁄f_pö
 (
 EXTI10_PIN
@@ -9439,7 +9705,7 @@ FAST_S
 PULL_DOWN
 );\
 
-183 
+176 
 	`c⁄f_pö
 (
 	`pö_id
@@ -9455,7 +9721,7 @@ LOW_S
 PULL_UP
 );\
 
-184 
+177 
 	`c⁄f_af
 (
 	`pö_id
@@ -9465,7 +9731,7 @@ PORTA
 AF8
 );\
 
-185 
+178 
 	`c⁄f_pö
 (
 	`pö_id
@@ -9481,7 +9747,7 @@ LOW_S
 PULL_UP
 );\
 
-186 
+179 
 	`c⁄f_af
 (
 	`pö_id
@@ -9491,7 +9757,7 @@ PORTA
 AF8
 );\
 
-187 }
+180 }
 
 	)
 
@@ -9527,7 +9793,7 @@ ch4
 	`C⁄fCh™√lsTim
 (
 TIM
-,6,6,
+,6,6,6,6,
 ch1
 ,
 ch2
@@ -9602,7 +9868,9 @@ TIM
 (
 TIM
 ,
-‰eq
+PSC
+,
+ARR
 ) {\
 
 40 
@@ -9616,7 +9884,9 @@ TIM
 (
 TIM
 ,
-‰eq
+PSC
+,
+ARR
 ); \
 
 42 
@@ -9812,6 +10082,10 @@ mode1
 ,
 mode2
 ,
+mode3
+,
+mode4
+,
 ch1
 ,
 ch2
@@ -9827,7 +10101,9 @@ ch4
 TIM
 ,
 mode1
-,mode1,
+,
+mode2
+,
 ch1
 ,
 ch2
@@ -9838,8 +10114,10 @@ ch2
 (
 TIM
 ,
-mode2
-,mode2,
+mode3
+,
+mode4
+,
 ch3
 ,
 ch4
@@ -9886,38 +10164,30 @@ ch4
 (
 TIM
 ,
-‰eq
+PSC
+,
+ARR
 ) {\
 
-96 if(
-‰eq
- =
-FREQ_10_Hz
-); \
-
-97 
+96 
 	`C⁄fTimPSC
 (
 TIM
-,(
-	`CÆcPSC
-(
-‰eq
-))); \
+,
+PSC
+); \
 
-98 
+97 
 	`C⁄fTimARR
 (
 TIM
-,(
-	`CÆcARR
-(
-‰eq
-))); }
+,
+ARR
+); }
 
 	)
 
-100 
+99 
 	#C⁄fFªq
 (
 TIM
@@ -9927,7 +10197,7 @@ TIM
 aut‹e£t
 ) {\
 
-101 
+100 
 	`C⁄fTimPSC
 (
 TIM
@@ -9935,7 +10205,7 @@ TIM
 ¥esˇÀr
 ); \
 
-102 
+101 
 	`C⁄fTimARR
 (
 TIM
@@ -9945,19 +10215,19 @@ aut‹e£t
 
 	)
 
-104 
+103 
 	#C⁄fTimSèπ
 (
 TIM
 ) {\
 
-105 
+104 
 	`C⁄fTimCou¡î
 (
 TIM
 ,0x1); \
 
-106 
+105 
 	`C⁄fTimPªlﬂdARR
 (
 TIM
@@ -9965,7 +10235,7 @@ TIM
 
 	)
 
-108 
+107 
 	#C⁄fTimCCR
 (
 TIM
@@ -9981,7 +10251,7 @@ duty4
 
 	)
 
-110 
+109 
 	#C⁄fTimPSC
 (
 TIM
@@ -9995,7 +10265,7 @@ uöt32_t
 	`TimID
 (TIM) + 0x28)) = \
 
-111 ((* ((
+110 ((* ((
 uöt32_t
  *)(
 	`TimBa£
@@ -10011,7 +10281,7 @@ PSC
 
 	)
 
-113 
+112 
 	#C⁄fTimARR
 (
 TIM
@@ -10025,7 +10295,7 @@ uöt32_t
 	`TimID
 (TIM) + 0x2C)) = \
 
-114 ((* ((
+113 ((* ((
 uöt32_t
  *)(
 	`TimBa£
@@ -10041,7 +10311,7 @@ ARR
 
 	)
 
-116 
+115 
 	#C⁄fTimCou¡î
 (
 TIM
@@ -10055,7 +10325,7 @@ uöt32_t
 	`TimID
 (TIM) + 0x00)) = \
 
-117 ((* ((
+116 ((* ((
 uöt32_t
  *)(
 	`TimBa£
@@ -10071,7 +10341,7 @@ TIM
 
 	)
 
-119 
+118 
 	#C⁄fTimPªlﬂdARR
 (
 TIM
@@ -10085,7 +10355,7 @@ uöt32_t
 	`TimID
 (TIM) + 0x00)) = \
 
-120 ((* ((
+119 ((* ((
 uöt32_t
  *)(
 	`TimBa£
@@ -10101,7 +10371,7 @@ TIM
 
 	)
 
-122 
+121 
 	#C⁄fTimUpd©eReque°
 (
 TIM
@@ -10115,7 +10385,7 @@ uöt32_t
 	`TimID
 (TIM) + 0x00)) = \
 
-123 ((* ((
+122 ((* ((
 uöt32_t
  *)(
 	`TimBa£
@@ -10131,7 +10401,7 @@ urs
 
 	)
 
-125 
+124 
 	#C⁄fTimOuçutCom∑ª1
 (
 TIM
@@ -10151,7 +10421,7 @@ uöt32_t
 	`TimID
 (TIM) + 0x18)) = \
 
-126 ((* ((
+125 ((* ((
 uöt32_t
  *)(
 	`TimBa£
@@ -10173,7 +10443,7 @@ ch2
 
 	)
 
-128 
+127 
 	#C⁄fTimOuçutCom∑ª2
 (
 TIM
@@ -10193,7 +10463,7 @@ uöt32_t
 	`TimID
 (TIM) + 0x1C)) = \
 
-129 ((* ((
+128 ((* ((
 uöt32_t
  *)(
 	`TimBa£
@@ -10215,7 +10485,7 @@ ch4
 
 	)
 
-131 
+130 
 	#C⁄fTimCom∑ªFa°1
 (
 TIM
@@ -10235,7 +10505,7 @@ uöt32_t
 	`TimID
 (TIM) + 0x18)) = \
 
-132 ((* ((
+131 ((* ((
 uöt32_t
  *)(
 	`TimBa£
@@ -10257,7 +10527,7 @@ ch2
 
 	)
 
-134 
+133 
 	#C⁄fTimCom∑ªFa°2
 (
 TIM
@@ -10277,7 +10547,7 @@ uöt32_t
 	`TimID
 (TIM) + 0x1C)) = \
 
-135 ((* ((
+134 ((* ((
 uöt32_t
  *)(
 	`TimBa£
@@ -10299,7 +10569,7 @@ ch4
 
 	)
 
-137 
+136 
 	#C⁄fTimC≠tuª
 (
 TIM
@@ -10327,7 +10597,7 @@ uöt32_t
 	`TimID
 (TIM) + 0x20)) = \
 
-138 ((* ((
+137 ((* ((
 uöt32_t
  *)(
 	`TimBa£
@@ -10357,7 +10627,7 @@ ch4
 
 	)
 
-140 
+139 
 	#C⁄fTimUpd©eI¡îru±
 (
 TIM
@@ -10371,7 +10641,7 @@ uöt32_t
 	`TimID
 (TIM) + 0x0C)) = \
 
-141 ((* ((
+140 ((* ((
 uöt32_t
  *)(
 	`TimBa£
@@ -10387,7 +10657,7 @@ uõ
 
 	)
 
-143 
+142 
 	#C⁄fTimMaöOuçut
 (
 TIM
@@ -10401,7 +10671,7 @@ uöt32_t
 	`TimID
 (TIM) + 0x44)) = \
 
-144 ((* ((
+143 ((* ((
 uöt32_t
  *)(
 	`TimBa£
@@ -10417,7 +10687,7 @@ m€
 
 	)
 
-146 
+145 
 	#C⁄fTimAutom©icOuçut
 (
 TIM
@@ -10431,7 +10701,7 @@ uöt32_t
 	`TimID
 (TIM) + 0x44)) = \
 
-147 ((* ((
+146 ((* ((
 uöt32_t
  *)(
 	`TimBa£
@@ -10447,7 +10717,7 @@ a€
 
 	)
 
-149 
+148 
 	#C⁄fTimUpd©eGíî©i⁄
 (
 TIM
@@ -10461,7 +10731,7 @@ uöt32_t
 	`TimID
 (TIM) + 0x14)) = \
 
-150 ((* ((
+149 ((* ((
 uöt32_t
  *)(
 	`TimBa£
@@ -10477,7 +10747,7 @@ ug
 
 	)
 
-152 
+151 
 	#C⁄fCCR1
 (
 TIM
@@ -10491,7 +10761,7 @@ uöt32_t
 	`TimID
 (TIM) + 0x34)) = \
 
-153 ((* ((
+152 ((* ((
 uöt32_t
  *)(
 	`TimBa£
@@ -10507,7 +10777,7 @@ vÆue
 
 	)
 
-155 
+154 
 	#C⁄fCCR2
 (
 TIM
@@ -10521,7 +10791,7 @@ uöt32_t
 	`TimID
 (TIM) + 0x38)) = \
 
-156 ((* ((
+155 ((* ((
 uöt32_t
  *)(
 	`TimBa£
@@ -10537,7 +10807,7 @@ vÆue
 
 	)
 
-158 
+157 
 	#C⁄fCCR3
 (
 TIM
@@ -10551,7 +10821,7 @@ uöt32_t
 	`TimID
 (TIM) + 0x3C)) = \
 
-159 ((* ((
+158 ((* ((
 uöt32_t
  *)(
 	`TimBa£
@@ -10567,7 +10837,7 @@ vÆue
 
 	)
 
-161 
+160 
 	#C⁄fCCR4
 (
 TIM
@@ -10581,7 +10851,7 @@ uöt32_t
 	`TimID
 (TIM) + 0x40)) = \
 
-162 ((* ((
+161 ((* ((
 uöt32_t
  *)(
 	`TimBa£
@@ -10597,7 +10867,7 @@ vÆue
 
 	)
 
-164 
+163 
 	#C⁄fSMS
 (
 TIM
@@ -10611,7 +10881,7 @@ uöt32_t
 	`TimID
 (TIM) + 0x08)) = \
 
-165 ((* ((
+164 ((* ((
 uöt32_t
  *)(
 	`TimBa£
@@ -10627,7 +10897,7 @@ sms
 
 	)
 
-167 
+166 
 	#C⁄fEtf
 (
 TIM
@@ -10641,7 +10911,7 @@ uöt32_t
 	`TimID
 (TIM) + 0x08)) = \
 
-168 ((* ((
+167 ((* ((
 uöt32_t
  *)(
 	`TimBa£
@@ -10657,7 +10927,7 @@ TIM
 
 	)
 
-170 
+169 
 	#C⁄fC≠tuªSñe˘i⁄1
 (
 TIM
@@ -10675,7 +10945,7 @@ uöt32_t
 	`TimID
 (TIM) + 0x18)) = \
 
-171 ((* ((
+170 ((* ((
 uöt32_t
  *)(
 	`TimBa£
@@ -10695,7 +10965,7 @@ ch1
 
 	)
 
-173 
+172 
 	#C⁄fC≠tuªSñe˘i⁄2
 (
 TIM
@@ -10713,7 +10983,7 @@ uöt32_t
 	`TimID
 (TIM) + 0x1C)) = \
 
-174 ((* ((
+173 ((* ((
 uöt32_t
  *)(
 	`TimBa£
@@ -10733,7 +11003,7 @@ ch2
 
 	)
 
-176 
+175 
 	#C⁄fC≠tuªPﬁ¨ôy
 (
 TIM
@@ -10757,7 +11027,7 @@ uöt32_t
 	`TimID
 (TIM) + 0x20)) = \
 
-177 ((* ((
+176 ((* ((
 uöt32_t
  *)(
 	`TimBa£
@@ -10783,7 +11053,7 @@ ch2
 
 	)
 
-179 
+178 
 	#C⁄fC≠tuªCom∂emíèryPﬁ¨ôy
 (
 TIM
@@ -10807,7 +11077,7 @@ uöt32_t
 	`TimID
 (TIM) + 0x20)) = \
 
-180 ((* ((
+179 ((* ((
 uöt32_t
  *)(
 	`TimBa£
@@ -10833,7 +11103,7 @@ ch2
 
 	)
 
-182 
+181 
 	#C⁄fTriggîSñe˘i⁄
 (
 TIM
@@ -10847,7 +11117,7 @@ uöt32_t
 	`TimID
 (TIM) + 0x08)) = \
 
-183 ((* ((
+182 ((* ((
 uöt32_t
  *)(
 	`TimBa£
@@ -10863,7 +11133,7 @@ ts
 
 	)
 
-185 
+184 
 	#C⁄fO√Pul£Mode
 (
 TIM
@@ -10877,7 +11147,7 @@ uöt32_t
 	`TimID
 (TIM))) = \
 
-186 ((* ((
+185 ((* ((
 uöt32_t
  *)(
 	`TimBa£
@@ -10893,7 +11163,7 @@ TIM
 
 	)
 
-189 
+188 
 	#CÆcPSC
 (
 FREQ
@@ -10907,7 +11177,7 @@ MAX_PWM
 
 	)
 
-190 
+189 
 	#CÆcARR
 (
 FREQ
@@ -10921,97 +11191,97 @@ cuºít_APB1
 
 	)
 
-193 
+192 
 	#Tim1
  16
 
 	)
 
-194 
+193 
 	#Tim2
  0
 
 	)
 
-195 
+194 
 	#Tim3
  1
 
 	)
 
-196 
+195 
 	#Tim4
  2
 
 	)
 
-197 
+196 
 	#Tim5
  3
 
 	)
 
-198 
+197 
 	#Tim6
  4
 
 	)
 
-199 
+198 
 	#Tim7
  5
 
 	)
 
-200 
+199 
 	#Tim8
  17
 
 	)
 
-201 
+200 
 	#Tim9
  32
 
 	)
 
-202 
+201 
 	#Tim10
  33
 
 	)
 
-203 
+202 
 	#Tim11
  34
 
 	)
 
-204 
+203 
 	#Tim12
  6
 
 	)
 
-205 
+204 
 	#Tim13
  7
 
 	)
 
-206 
+205 
 	#Tim14
  8
 
 	)
 
-207 
+206 
 	#πc
  10
 
 	)
 
-209 
+208 
 	#TimOff£t
  ((
 uöt32_t
@@ -11019,7 +11289,7 @@ uöt32_t
 
 	)
 
-210 
+209 
 	#TimBa£
 (
 TIM
@@ -11029,7 +11299,7 @@ PERIPH_BASE
 
 	)
 
-211 
+210 
 	#TimID
 (
 TIM
@@ -11041,7 +11311,7 @@ TimOff£t
 
 	)
 
-213 
+212 
 	#TimCNT
 (
 CNT
@@ -11051,7 +11321,7 @@ uöt16_t
 
 	)
 
-214 
+213 
 	#TimCEN
 (
 CEN
@@ -11061,7 +11331,7 @@ uöt16_t
 
 	)
 
-215 
+214 
 	#TimPªlﬂdARR
 (
 ARPE
@@ -11071,7 +11341,7 @@ uöt16_t
 
 	)
 
-216 
+215 
 	#TimUpd©eReque°
 (
 URS
@@ -11081,7 +11351,7 @@ uöt16_t
 
 	)
 
-217 
+216 
 	#TimPSC
 (
 PSC
@@ -11091,7 +11361,7 @@ uöt16_t
 
 	)
 
-218 
+217 
 	#TimARR
 (
 ARR
@@ -11101,7 +11371,7 @@ uöt32_t
 
 	)
 
-219 
+218 
 	#TimOuçutCom∑ª1
 (
 OC1M
@@ -11117,7 +11387,7 @@ uöt16_t
 
 	)
 
-220 
+219 
 	#TimOuçutCom∑ª2
 (
 OC3M
@@ -11133,7 +11403,7 @@ uöt16_t
 
 	)
 
-221 
+220 
 	#TimOuçutCom∑ªFa°1
 (
 OC1FE
@@ -11149,7 +11419,7 @@ uöt16_t
 
 	)
 
-222 
+221 
 	#TimOuçutCom∑ªFa°2
 (
 OC3FE
@@ -11165,7 +11435,7 @@ uöt16_t
 
 	)
 
-223 
+222 
 	#TimC≠tuª
 (
 CC1E
@@ -11189,7 +11459,7 @@ uöt16_t
 
 	)
 
-224 
+223 
 	#TimC≠tuªSñe˘i⁄1
 (
 CC1S
@@ -11203,7 +11473,7 @@ uöt16_t
 
 	)
 
-225 
+224 
 	#TimC≠tuªSñe˘i⁄2
 (
 CC3S
@@ -11217,7 +11487,7 @@ uöt16_t
 
 	)
 
-226 
+225 
 	#TimUpd©eI¡îru±
 (
 UIE
@@ -11227,7 +11497,7 @@ uöt16_t
 
 	)
 
-227 
+226 
 	#TimMaöOuçut
 (
 MOE
@@ -11237,7 +11507,7 @@ uöt16_t
 
 	)
 
-228 
+227 
 	#TimAutom©icOuçut
 (
 AOE
@@ -11247,7 +11517,7 @@ uöt16_t
 
 	)
 
-229 
+228 
 	#TimUpd©eGíî©i⁄
 (
 UG
@@ -11257,7 +11527,7 @@ uöt16_t
 
 	)
 
-230 
+229 
 	#TimCCR1
 (
 CCR
@@ -11267,7 +11537,7 @@ uöt16_t
 
 	)
 
-231 
+230 
 	#TimCCR2
 (
 CCR
@@ -11277,7 +11547,7 @@ uöt16_t
 
 	)
 
-232 
+231 
 	#TimCCR3
 (
 CCR
@@ -11287,7 +11557,7 @@ uöt16_t
 
 	)
 
-233 
+232 
 	#TimCCR4
 (
 CCR
@@ -11297,7 +11567,7 @@ uöt16_t
 
 	)
 
-234 
+233 
 	#TimSMS
 (
 SMS
@@ -11307,7 +11577,7 @@ uöt16_t
 
 	)
 
-235 
+234 
 	#TimETF
 (
 ETF
@@ -11317,7 +11587,7 @@ uöt16_t
 
 	)
 
-236 
+235 
 	#TimC≠tuªPﬁ¨ôy
 (
 CC1P
@@ -11337,7 +11607,7 @@ uöt16_t
 
 	)
 
-237 
+236 
 	#TimC≠tuªCom∂emíèryPﬁ¨ôy
 (
 CC1NP
@@ -11357,7 +11627,7 @@ uöt16_t
 
 	)
 
-238 
+237 
 	#TimTriggîSñe˘i⁄
 (
 TS
@@ -11367,7 +11637,7 @@ uöt16_t
 
 	)
 
-239 
+238 
 	#TimSR
 (
 SR
@@ -11377,7 +11647,7 @@ uöt16_t
 
 	)
 
-240 
+239 
 	#TimOPM
 (
 OPM
@@ -11387,7 +11657,7 @@ uöt16_t
 
 	)
 
-243 
+242 
 	#Re£tTimCNT
 (
 TIM
@@ -11403,7 +11673,7 @@ uöt32_t
 
 	)
 
-244 
+243 
 	#Re£tTimPSC
 (
 TIM
@@ -11419,7 +11689,7 @@ uöt32_t
 
 	)
 
-245 
+244 
 	#Re£tTimARR
 (
 TIM
@@ -11435,7 +11705,7 @@ uöt32_t
 
 	)
 
-246 
+245 
 	#Re£tTimCCR1
 (
 TIM
@@ -11451,7 +11721,7 @@ uöt32_t
 
 	)
 
-247 
+246 
 	#Re£tTimCCR2
 (
 TIM
@@ -11467,7 +11737,7 @@ uöt32_t
 
 	)
 
-248 
+247 
 	#Re£tTimCCR3
 (
 TIM
@@ -11483,7 +11753,7 @@ uöt32_t
 
 	)
 
-249 
+248 
 	#Re£tTimCCR4
 (
 TIM
@@ -11499,7 +11769,7 @@ uöt32_t
 
 	)
 
-250 
+249 
 	#Re£tTimSR
 (
 TIM
@@ -11515,7 +11785,7 @@ uöt32_t
 
 	)
 
-253 
+252 
 	#GëTimCNT
 (
 TIM
@@ -11529,7 +11799,7 @@ uöt32_t
 
 	)
 
-254 
+253 
 	#GëTimARR
 (
 TIM
@@ -11543,7 +11813,7 @@ uöt32_t
 
 	)
 
-255 
+254 
 	#GëTimSR
 (
 TIM
@@ -11557,7 +11827,7 @@ uöt32_t
 
 	)
 
-258 
+257 
 	#TimSèπ
 (
 TIM
@@ -11571,7 +11841,7 @@ uöt32_t
 
 	)
 
-259 
+258 
 	#SëTimPªlﬂdARR
 (
 TIM
@@ -11589,7 +11859,7 @@ uöt32_t
 
 	)
 
-260 
+259 
 	#SëTimUpd©eReque°
 (
 TIM
@@ -11607,7 +11877,7 @@ uöt32_t
 
 	)
 
-261 
+260 
 	#SëTimO√Pul£Mode
 (
 TIM
@@ -11625,7 +11895,7 @@ uöt32_t
 
 	)
 
-262 
+261 
 	#SëTimPSC
 (
 TIM
@@ -11643,7 +11913,7 @@ uöt32_t
 
 	)
 
-263 
+262 
 	#SëTimARR
 (
 TIM
@@ -11661,7 +11931,7 @@ uöt32_t
 
 	)
 
-264 
+263 
 	#SëTimOuçuãCom∑ª1
 (
 TIM
@@ -11685,7 +11955,7 @@ uöt32_t
 
 	)
 
-265 
+264 
 	#SëTimOuçuãCom∑ª2
 (
 TIM
@@ -11709,7 +11979,7 @@ uöt32_t
 
 	)
 
-266 
+265 
 	#£t_com∑ª_Á°1
 (
 TIM
@@ -11733,7 +12003,7 @@ uöt32_t
 
 	)
 
-267 
+266 
 	#£t_com∑ª_Á°2
 (
 TIM
@@ -11757,7 +12027,7 @@ uöt32_t
 
 	)
 
-268 
+267 
 	#£t_ˇ±uª
 (
 TIM
@@ -11789,7 +12059,7 @@ uöt32_t
 
 	)
 
-269 
+268 
 	#£t_upd©e_öãºu±
 (
 TIM
@@ -11807,7 +12077,7 @@ uöt32_t
 
 	)
 
-270 
+269 
 	#£t_maö_ouçut
 (
 TIM
@@ -11825,7 +12095,7 @@ uöt32_t
 
 	)
 
-271 
+270 
 	#£t_autom©ic_ouçut
 (
 TIM
@@ -11843,7 +12113,7 @@ uöt32_t
 
 	)
 
-272 
+271 
 	#£t_upd©e_gíî©i⁄
 (
 TIM
@@ -11861,7 +12131,7 @@ uöt32_t
 
 	)
 
-273 
+272 
 	#£t_c¸1
 (
 TIM
@@ -11879,7 +12149,7 @@ uöt32_t
 
 	)
 
-274 
+273 
 	#£t_c¸2
 (
 TIM
@@ -11897,7 +12167,7 @@ uöt32_t
 
 	)
 
-275 
+274 
 	#£t_c¸3
 (
 TIM
@@ -11915,7 +12185,7 @@ uöt32_t
 
 	)
 
-276 
+275 
 	#£t_c¸4
 (
 TIM
@@ -11933,7 +12203,7 @@ uöt32_t
 
 	)
 
-277 
+276 
 	#£t_sms
 (
 TIM
@@ -11951,7 +12221,7 @@ uöt32_t
 
 	)
 
-278 
+277 
 	#£t_ëf
 (
 TIM
@@ -11969,7 +12239,7 @@ uöt32_t
 
 	)
 
-279 
+278 
 	#£t_ˇ±uª_£À˘i⁄1
 (
 TIM
@@ -11991,7 +12261,7 @@ uöt32_t
 
 	)
 
-280 
+279 
 	#£t_ˇ±uª_£À˘i⁄2
 (
 TIM
@@ -12013,7 +12283,7 @@ uöt32_t
 
 	)
 
-281 
+280 
 	#£t_ˇ±uª_pﬁ¨ôy
 (
 TIM
@@ -12041,7 +12311,7 @@ uöt32_t
 
 	)
 
-282 
+281 
 	#£t_ˇ±uª_com∂emíèry_pﬁ¨ôy
 (
 TIM
@@ -12069,7 +12339,7 @@ uöt32_t
 
 	)
 
-283 
+282 
 	#£t_åiggî_£À˘i⁄
 (
 TIM
@@ -13199,35 +13469,27 @@ ußπ
 	gEº‹
 ;
 
-12 c⁄° 
-	gRe•⁄£Suc˚ss
-[3] = {':', 'O', 'K'};
-
-13 c⁄° 
-	gRe•⁄£Eº‹
-[4] = {':', 'E', 'R', 'R'};
-
-14 
+12 
 	#UART_SIMULATION
  1
 
 	)
 
-21 
+19 
 	$ModBus_Inô
 () {
 
-23 
+21 
 Eº‹
  = 0;
 
-24 
+22 
 UARTBuf„rSèπMsgPoöãr
  = 
 UART_Buf„r
 ;
 
-25 
+23 
 UARTBuf„rEndMsgPoöãr
  = 
 UART_Buf„r
@@ -13235,27 +13497,27 @@ UART_Buf„r
 UART_BUFFER_SIZE
  - 1 );
 
-26 
+24 
 UARTBuf„rLRCIndex
  = 
 UARTBuf„rEndMsgPoöãr
- - 5;
+ - 3;
 
-27 
+25 
 UARTRe˚ivî_Fœg
  = 0;
 
-28 
+26 
 	`ModBus_CÀ¨Msgs
 ();
 
-30 
+28 
 Queue_SèπIndex
  = 
 QueueBuf„r_To_UART
 ;
 
-31 
+29 
 Queue_EndIndex
  = 
 Queue_SèπIndex
@@ -13263,29 +13525,29 @@ Queue_SèπIndex
 QueueSize
  - 1 );
 
-32 
+30 
 Queue_Index
  = 
 Queue_SèπIndex
 ;
 
-34 #i‡(
+32 #i‡(
 UART_SIMULATION
  == 1)
 
-35 
+33 
 D©a
 [
 UART_BUFFER_SIZE
-] = {':', 'D', '2', '0', '6', '2', '0', '+', '5', '5', '5', 'B', 'E', '0', '\r', '0', '\n' };
+] = {':', 'D', '2', '0', '6', '2', '0', '+', '5', '5', '5', 'B', 'E', '\r', '\n' };
 
-36 
+34 
 i
  = 0; i < 
 UART_BUFFER_SIZE
 ; i++)
 
-38 
+36 
 UART_Buf„r
 [
 i
@@ -13293,21 +13555,21 @@ i
 D©a
 [i];
 
-39 
+37 
 UARTBuf„rIndex
 ++;
 
-41 
+39 
 D©
 ;
 
-42 
+40 
 Eº‹
  = 
 	`ModBus_CheckFøme
 ();
 
-43 (
+41 (
 Eº‹
  =0Ë? 
 D©
@@ -13317,25 +13579,29 @@ D©
 	`ModBus_CÀ¨Msgs
 ();
 
-44 
+42 
 	`ModBus_CÀ¨Msgs
 ();
 
-47 
+43 
+	`ModBus_SídRe•⁄£
+(":D00600+555C2\r\n");
+
+45 
 	}
 }
 
-49 
+47 
 	$ModBus_QueueCÀ¨
 ()
 
-51 
+49 
 Queue_SèπIndex
  = 
 QueueBuf„r_To_UART
 ;
 
-52 
+50 
 Queue_EndIndex
  = 
 Queue_SèπIndex
@@ -13343,23 +13609,23 @@ Queue_SèπIndex
 QueueSize
  - 1 );
 
-53 
+51 
 Queue_Index
  = 
 Queue_SèπIndex
 ;
 
-54 
+52 
 i
  = 0; i <5; i++Ë{
 QueueBuf„r_To_UART
 [i] = 0;}
 
-55 
+53 
 	}
 }
 
-62 
+60 
 	$LRC_Cou¡ög
 (*
 buf
@@ -13367,35 +13633,35 @@ buf
 bsize
 ) {
 
-63 * 
+61 * 
 pD©a
  = 
 buf
 ;
 
-64 
+62 
 LRC
  = 0;
 
-65 
+63 
 bsize
 --)
 
-67 
+65 
 LRC
  +*
 pD©a
 ++;
 
-69  (()(-(()
+67  (()(-(()
 LRC
 )));
 
-70 
+68 
 	}
 }
 
-72 
+70 
 	$ModBus_ASCII_TO_HEX_C⁄vîãr
 (*
 ASCII_Poöãr
@@ -13403,7 +13669,7 @@ ASCII_Poöãr
 bsize
 )
 
-74 
+72 
 HEX
 , 
 i
@@ -13411,7 +13677,7 @@ i
 Resu…
 ;
 
-75 
+73 
 Resu…
  = 0; 
 HEX
@@ -13419,13 +13685,13 @@ HEX
 i
  = 0;
 
-76 
+74 
 i
  = 0; i <
 bsize
 ; i++)
 
-78 
+76 
 HEX
  = (()*(
 ASCII_Poöãr
@@ -13433,15 +13699,15 @@ ASCII_Poöãr
 i
 ));
 
-79 i‡((()(
+77 i‡((()(
 HEX
 )) > '9') { HEX = ()(HEX&0xF) + 9; }
 
-80 { 
+78 { 
 HEX
  &= 0xF;}
 
-81 
+79 
 Resu…
  |(Ë(
 HEX
@@ -13451,73 +13717,73 @@ bsize
 i
 )));
 
-83  
+81  
 Resu…
 ;
 
-84 
+82 
 	}
 }
 
-91 
+89 
 	$ModBus_CÀ¨Msgs
 () {
 
-93 
+91 
 i
  = 0; i < (
 UART_Buf„r
 );i++)
 
-95 
+93 
 UART_Buf„r
 [
 i
 ] = 0;
 
-98 
+96 
 UARTBuf„rIndex
  = 
 UART_Buf„r
 ;
 
-99 
+97 
 	}
 }
 
-106 
+104 
 	$ModBus_CheckFøme
 () {
 
-108 if–*
+106 if–*
 UARTBuf„rSèπMsgPoöãr
  == ':')
 
-110 c⁄° 
+108 c⁄° 
 EndFøme
-[4] = {'0', '\r', '0', '\n'};
+[2] = { 13, 10};
 
-111 
+109 
 Tmp
-[4];
+[2];
 
-112 
+110 
 cou¡s
  = 0;
 
-113 
+111 
 i
- = 0; i <= 3; i++)
+ = 0; i <= 1; i++)
 
-115 
+113 
 Tmp
 [
 i
 ] = *(
 UARTBuf„rEndMsgPoöãr
- - (3 - i));
+ - (1 - i));
 
-116 i‡(
+114 i‡(
 Tmp
 [
 i
@@ -13527,45 +13793,45 @@ EndFøme
 cou¡s
 ++;}
 
-118 if(
+116 if(
 cou¡s
- == 4) { 0;} { 1;}
+ == 2) { 0;} { 1;}
 
-121 
+119 
 	}
 }
 
-123 
+121 
 	$ModBus_P¨£Packë
 () {
 
-124 *
+122 *
 UARTBuf„rSœveAddrIndex
 ;
 
-125 c⁄° 
+123 c⁄° 
 Sœve_Addªss
 [2] = {'D', '2'};
 
-127 
+125 
 Tmp
 [2];
 
-128 
+126 
 UARTBuf„rSœveAddrIndex
  = 
 UARTBuf„rSèπMsgPoöãr
  + 1;
 
-129 
+127 
 cou¡s
  = 0;
 
-130 
+128 
 i
  = 0; i <= 1; i++)
 
-132 
+130 
 Tmp
 [
 i
@@ -13573,7 +13839,7 @@ i
 UARTBuf„rSœveAddrIndex
  + i);
 
-133 if(
+131 if(
 Tmp
 [
 i
@@ -13583,17 +13849,17 @@ Sœve_Addªss
 cou¡s
 ++;}
 
-135 if(
+133 if(
 cou¡s
  =2Ë{ 
 UARTRe˚ivî_Fœg
  = 1; }
 
-136 if(
+134 if(
 UARTRe˚ivî_Fœg
  == 0) { 0;}
 
-138 
+136 
 TmpLRC
  = 
 	`LRC_Cou¡ög
@@ -13601,13 +13867,13 @@ TmpLRC
 UARTBuf„rSèπMsgPoöãr
 ,
 
-139 ()(–
+137 ()(–
 UARTBuf„rEndMsgPoöãr
- - 6 ) - 
+ - 4 ) - 
 UARTBuf„rSèπMsgPoöãr
 ) + 1);
 
-140 
+138 
 LRCMsgs
  = 
 	`ModBus_ASCII_TO_HEX_C⁄vîãr
@@ -13615,31 +13881,31 @@ LRCMsgs
 UARTBuf„rLRCIndex
 ,
 
-141 (()((
+139 (()((
 UARTBuf„rLRCIndex
  + 1) - UARTBufferLRCIndex)));
 
-143 if–
+141 if–
 TmpLRC
  =
 LRCMsgs
 )
 
-145 *
+143 *
 UARTBuf„rFun°i⁄MsgPoöãr
 ;
 
-146 
+144 
 UARTBuf„rFun°i⁄MsgPoöãr
  = 
 UARTBuf„rSèπMsgPoöãr
  + 3;
 
-147 
+145 
 MesßgeMode
 ;
 
-149 
+147 
 MesßgeMode
  = 
 	`ModBus_ASCII_TO_HEX_C⁄vîãr
@@ -13647,25 +13913,25 @@ MesßgeMode
 UARTBuf„rFun°i⁄MsgPoöãr
 ,
 
-150 (()((
+148 (()((
 UARTBuf„rFun°i⁄MsgPoöãr
  + 1) - UARTBufferFunstionMsgPointer)));
 
-152 
+150 
 MesßgeMode
 )
 
-157 *
+155 *
 UARTBuf„rD©aMsgPoöãr
 ;
 
-158 
+156 
 UARTBuf„rD©aMsgPoöãr
- = ()(
+ = 
 UARTBuf„rSèπMsgPoöãr
- + 5);
+ + 5;
 
-159 
+157 
 M™ageSe˘‹
  = 
 	`ModBus_ASCII_TO_HEX_C⁄vîãr
@@ -13673,163 +13939,169 @@ M™ageSe˘‹
 UARTBuf„rD©aMsgPoöãr
 ,
 
-160 (()((
+158 (()((
 UARTBuf„rD©aMsgPoöãr
  + 1) - UARTBufferDataMsgPointer)));
 
-161 if(
+159 if(
 M™ageSe˘‹
  == 0x20)
 
-163 
+161 
 UARTBuf„rDúMsg
  = *(
 UARTBuf„rSèπMsgPoöãr
  + 7);
 
-164 
+162 
 UARTBuf„rD©aMsgPoöãr
  = 
 UARTBuf„rSèπMsgPoöãr
  + 8;
 
-166 
-D©a
+164 
+D©a_hex
  = 
 	`ModBus_ASCII_TO_HEX_C⁄vîãr
 (
 UARTBuf„rD©aMsgPoöãr
 ,
 
-167 (()((
+165 (()((
 UARTBuf„rD©aMsgPoöãr
  + 2) - UARTBufferDataMsgPointer)));
 
-168 if–
-D©a
- > 0x555) { Data = 0x555; }
+166 if–
+D©a_hex
+ > 0x555) { Data_hex = 0x555; }
+
+167 
+D©a_hex
+ = (()((()(Data_hex * 3331)) >> 13));
+
+168 
+D©a_Dec
+ = (()
+D©a_hex
+) / 100;
 
 169 i‡(
 UARTBuf„rDúMsg
  ='-'Ë{
-D©a
- |= 0x8000;} {Data &= 0xFFF;}
+D©a_Dec
+ = -Data_Dec;}
 
 170 
 UARTRe˚ivî_Fœg
  = 0;
 
-171 
-UARTTønsmô_Fœg
- = 1;
-
-172  
-D©a
+171  
+D©a_Dec
 ;
 
-174 if(
-M™ageSe˘‹
- == 0x21)
+176 
+UARTTønsmô_Fœg
+ = 0;
 
-181 
+177 
 UARTRe˚ivî_Fœg
  = 0;
 
-182 
+179 
 	}
 }
 
-184 
+181 
 	$ModBus_IsFuŒ_Queue
 ()
 
-186 
+183 
 UARTTønsmô_Fœg
 )
 
-190 if–
+187 if–
 Queue_Index
  > (
-Queue_EndIndex
- - 3) ) {  1; }
+Queue_SèπIndex
+ + 4) ) {  1; }
 
-197 if–
+194 if–
 Queue_Index
  > 
-Queue_EndIndex
- - 2 ) {  1; }
+Queue_SèπIndex
+ + 5 ) {  1; }
 
-204 if–
+201 if–
 Queue_Index
  > 
 Queue_EndIndex
  ) {  1; }
 
-215 
+212 
 	}
 }
 
-217 
+214 
 	$ModBus_SídRe•⁄£
 –c⁄° * 
 Re•
 )
 
-219 *
+216 *
 Re•
  !'\0'Ë{ 
 	`ModBus_SídByã
 (*Resp); Resp++; }
 
-220 
+217 
 	}
 }
 
-222 
+219 
 	$ModBus_PutQueue
 (c⁄° vﬁ©ûê
 D©a
 )
 
-224 if–
+221 if–
 	`ModBus_IsFuŒ_Queue
 () == 1 )
 
-226 
+223 
 Queue_Index
  = 
 Queue_SèπIndex
 ;
 
-227 
+224 
 i
 ;
 
-228 
+225 
 i
  = 0; i <3; i++ ) { 
 QueueBuf„r_To_UART
 [i] = 0;}
 
-230 *
+227 *
 Queue_Index
 ++ = 
 D©a
 ;
 
-231 
+228 
 	}
 }
 
-233 *
+230 *
 	gQueueIndexTx
 ;
 
-234 
+231 
 	gout
 ;
 
-235 
+232 
 	$Gë_Queue
 (Ë{  *
 QueueIndexTx
@@ -13837,13 +14109,13 @@ QueueIndexTx
 	}
 }
 
-236 
+233 
 	$ModBus_SídByã
 (c⁄° 
 D©a
 )
 
-238 !
+235 !
 	`USARTGëSètus
 (
 ußπ3
@@ -13851,33 +14123,33 @@ ußπ3
 TønsmôRegEm±y
 )) {}
 
-239 
+236 
 	`ModBus_PutQueue
 (
 D©a
 );
 
-240 i‡–
+237 i‡–
 	`ModBus_IsFuŒ_Queue
 () == 1)
 
-242 
+239 
 QueueIndexTx
  = 
 Queue_SèπIndex
 ;
 
-243 *
+240 *
 QueueIndexTx
  != '\0')
 
-245 if((
+242 if((
 USART3
 ->
 SR
  & 0x80) >> 7)
 
-247 vﬁ©ûê
+244 vﬁ©ûê
 uöt8_t
  
 Da
@@ -13885,23 +14157,23 @@ Da
 	`Gë_Queue
 ());
 
-248 
+245 
 USART3
 ->
 DR
- = 
+ = ()
 Da
 ;
 
-251 
+248 
 UARTTønsmô_Fœg
  = 0;
 
-252 
+249 
 	`ModBus_QueueCÀ¨
 ();
 
-254 
+251 
 	}
 }
 
@@ -13917,7 +14189,9 @@ UARTTønsmô_Fœg
 
 3 
 	#UART_BUFFER_SIZE
- 17
+ 15
+
+4 
 
 	)
 
@@ -13945,7 +14219,7 @@ UART_BUFFER_SIZE
 
 11 
 	#QueueSize
- 6
+ 15
 
 	)
 
@@ -13995,9 +14269,21 @@ ModBus_CÀ¨Msgs
 ModBus_CheckFøme
 ();
 
-29 
+29 
 ModBus_P¨£Packë
 ();
+
+31 
+ModBus_SídRe•⁄£
+–c⁄° * 
+Re•
+);
+
+33 
+ModBus_SídByã
+(c⁄° 
+D©a
+);
 
 	@C:\Users\Caska\Desktop\projects\RCR\Robocross\STM32F407.svd
 
@@ -88813,7 +89099,11 @@ __˝lu•lus
 	~<FûC⁄fig.h
 >
 
-14 #ifde‡
+15 
+	~"C¨M™agemít.h
+"
+
+16 #ifde‡
 __˝lu•lus
 
 
@@ -88824,8 +89114,8 @@ __˝lu•lus
 
 
 2 
-	~<FûC⁄fig.h
->
+	~"maö.h
+"
 
 9 
 vInôMaöSe˘‹s
@@ -88834,56 +89124,56 @@ pvP¨amëîs
 );
 
 11 
+xTaskH™dÀ
+ 
+	gxWaôögH™gÀ
+;
+
+12 
+vWaôögEvít
+–*
+pvP¨amëîs
+);
+
+14 
 xQueueH™dÀ
  
 	gxQueue20H™dÀ
 ;
 
-12 
-xQueueH™dÀ
- 
-	gxQueue21H™dÀ
-;
-
-13 
-xQueueH™dÀ
- 
-	gxQueue22H™dÀ
-;
-
-14 
+15 
 xTaskH™dÀ
  
-	gxTaskQueueM™agH™dÀ
+	gxQueueM™agH™dÀ
 ;
 
-15 
+16 
 vSecurôyMem‹yM™agemít
 –*
 pvP¨amëîs
 );
 
-17 
+18 
 xTaskH™dÀ
  
 	gxGórsH™dÀ
 ;
 
-18 
+19 
 vM™agemítGórsBox
-(*
+–*
 pvP¨amëîs
 );
 
-20 
+21 
 xTaskH™dÀ
  
 	gxModBusH™dÀ
 ;
 
-21 
+22 
 vModBusM™agemít
-(*
+–*
 pvP¨amëîs
 );
 
@@ -89023,7 +89313,7 @@ HSE_VALUE
 	#HSE_VALUE
  ((
 uöt32_t
-)25000000Ë
+)8000000Ë
 
 	)
 
@@ -159933,55 +160223,443 @@ Sy°emC‹eClockUpd©e
 __˝lu•lus
 
 
+	@C:\Users\Caska\Desktop\projects\RCR\Robocross\src\CarManagement.c
+
+1 
+	~"C¨M™agemít.h
+"
+
+4 
+_Boﬁ
+ 
+	$Move_Clutch
+(
+dúe˘i⁄
+)
+
+6 if–
+dúe˘i⁄
+ =1Ë{
+	`SëPWM
+(4, 0.5);}
+
+7 { 
+	`SëPWM
+(4, -0.5);}
+
+9 
+i
+ = 0; i <
+Pul£ToClutch
+; )
+
+11 if–
+	`pö_vÆ
+(
+EXTI3_PIN
+)Ë{
+	`SëPWM
+(4, 0);  1;}
+
+12 if(!(
+TIM11
+->
+CR1
+&0x1)Ë{
+	`TimSèπ
+(
+Tim11
+); 
+i
+++;}
+
+14 
+	`SëPWM
+(4, 0xFFFF);
+
+16 
+	}
+}
+
+18 
+_Boﬁ
+ 
+	$Së_Tønsmissi⁄
+(
+å™smissi⁄
+)
+
+20 if–
+Clutch_Fœg
+ == 0 )  0;
+
+21 
+å™smissi⁄
+)
+
+23 
+N
+:
+
+25 if–
+Clutch_Fœg
+ == 1 ) { }
+
+29 
+R
+:
+
+31 if–
+Clutch_Fœg
+ == 1 ) { }
+
+35 
+F1
+:
+
+37 if–
+Clutch_Fœg
+ == 1 ) { }
+
+47 
+	}
+}
+
+49 
+	$Së_Bøke
+(
+°©e
+)
+
+51 (
+°©e
+ =1Ë? 
+	`£t_pö
+(
+PIN1_12V
+Ë: 
+	`ª£t_pö
+(PIN1_12V);
+
+52 
+Bøke_Fœg
+ = 1;
+
+53 
+	}
+}
+
+55 
+	#Fªq
+ 5
+
+	)
+
+56 
+	#PI
+ 3.14157
+
+	)
+
+57 
+	#R_Whìl
+ 0.28
+
+	)
+
+58 
+	#SãpInMëîs
+ ((2*
+PI
+*
+R_Whìl
+)/48)
+
+	)
+
+60 
+	$S≥ed_CÆc
+(
+uöt16_t
+ 
+À·Whìl
+, uöt16_à
+rightWhìl
+)
+
+62 
+S≥ed
+;
+
+63 
+uöt16_t
+ 
+sum
+;
+
+64 if(
+À·Whìl
+ =0 && 
+rightWhìl
+ !0Ë{ 
+sum
+ =ÑightWheel;}
+
+65 if(
+rightWhìl
+ =0 && 
+À·Whìl
+ !0Ë{ 
+sum
+ =ÜeftWheel;}
+
+66 if(
+rightWhìl
+ !0 && 
+À·Whìl
+ !0Ë{ 
+sum
+ = (leftWheel +ÑightWheel) / 2;}
+
+67 
+S≥ed
+ = 
+sum
+ * 0.03665 * 10 ;
+
+68 
+RPul£Whìl
+ = 0; 
+LPul£Whìl
+ = 0;
+
+69  
+S≥ed
+;
+
+70 
+	}
+}
+
+72 
+	gP_k
+,
+	gI_k
+;
+
+73 
+	gSum_îr‹
+,
+	gEº‹
+;
+
+74 
+	gS≥ed_out
+;
+
+76 
+	$PI_Inô
+()
+
+78 
+P_k
+ = 1.0;
+
+79 
+I_k
+ = 0.0;
+
+80 
+Sum_îr‹
+ = 0.0;
+
+81 
+Eº‹
+ = 0.0;
+
+82 
+	}
+}
+
+84 
+	$PI_CÆc
+(
+Vñocôy
+)
+
+86 
+Eº_p
+, 
+Eº_i
+;
+
+87 
+S≥ed_ªf
+ = 0.0;
+
+88 
+Eº‹
+ = 
+Vñocôy
+ - 
+Cuºít_Vñocôy
+;
+
+90 
+Eº_p
+ = 
+Eº‹
+ * 
+P_k
+;
+
+91 i‡(
+S≥ed_out
+ <= 5.55 && Speed_out >= -5.55)
+
+96 
+	}
+}
+
+	@C:\Users\Caska\Desktop\projects\RCR\Robocross\src\CarManagement.h
+
+2 #¥agm®
+⁄˚
+
+
+3 
+	~"maö.h
+"
+
+5 
+	gCuºít_Vñocôy
+;
+
+7 
+	gBøke_Fœg
+;
+
+8 
+Së_Bøke
+(
+°©e
+);
+
+10 
+	#Pul£ToClutch
+ 2778
+
+	)
+
+11 
+	gClutch_Fœg
+;
+
+12 
+_Boﬁ
+ 
+Move_Clutch
+(
+dúe˘i⁄
+);
+
+14 
+	#N
+ 0
+
+	)
+
+15 
+	#R
+ -1
+
+	)
+
+16 
+	#F1
+ 1
+
+	)
+
+17 
+	#F2
+ 2
+
+	)
+
+18 
+	gTønsmissi⁄_Fœg
+;
+
+19 
+_Boﬁ
+ 
+Së_Tønsmissi⁄
+(
+å™smissi⁄
+);
+
+21 
+	#PI_Timî
+ 0.1
+
+22 
+	#SãpWhìl
+ 0.0375
+
+23 vﬁ©ûê
+uöt16_t
+ 
+LPul£Whìl
+,
+RPul£Whìl
+;
+
+	)
+
+24 
+S≥ed_CÆc
+(
+uöt16_t
+ 
+À·Whìl
+, uöt16_à
+rightWhìl
+);
+
+26 
+PI_Inô
+();
+
+28 
+PI_CÆc
+(
+S≥ed
+);
+
 	@C:\Users\Caska\Desktop\projects\RCR\Robocross\src\main.c
 
 1 
 	~"maö.h
 "
 
+3 
+	$maö
+()
+
 5 
-uöt32_t
- 
-	m∂lvco
-;
-
-6 
-uöt32_t
- 
-	mSy°ick
-;
-
-7 
-uöt32_t
- 
-	mAHB
-;
+	`BﬂrdSèπ
+();
 
 8 
 uöt32_t
  
-	mAPB1
+sy°ick
+ = 
+cuºít_Sy°ick
 ;
 
 9 
-uöt32_t
- 
-	mAPB2
-;
-
-11 } 
-	gClocks
-;
-
-13 
-	$maö
-()
-
-16 
-BﬂrdSèπ
-;
-
-17 
 	`xTaskCª©e
 (
 vInôMaöSe˘‹s
@@ -159991,7 +160669,7 @@ c⁄figMINIMAL_STACK_SIZE
 NULL
 , 3, NULL );
 
-18 
+11 
 	`xTaskCª©e
 (
 vM™agemítGórsBox
@@ -159999,11 +160677,11 @@ vM™agemítGórsBox
 c⁄figMINIMAL_STACK_SIZE
 , 
 NULL
-, 2, &
+, 1, &
 xGórsH™dÀ
  );
 
-19 
+12 
 	`xTaskCª©e
 (
 vModBusM™agemít
@@ -160011,11 +160689,11 @@ vModBusM™agemít
 c⁄figMINIMAL_STACK_SIZE
 , 
 NULL
-, 1, &
+, 2, &
 xModBusH™dÀ
  );
 
-20 
+13 
 	`xTaskCª©e
 (
 vSecurôyMem‹yM™agemít
@@ -160023,17 +160701,27 @@ vSecurôyMem‹yM™agemít
 c⁄figMINIMAL_STACK_SIZE
 , 
 NULL
-, 2, &
-xTaskQueueM™agH™dÀ
+, 1, &
+xQueueM™agH™dÀ
  );
 
-22 
+15 
+	`£t_pö
+(
+PIN4_12V
+); së_pö(
+PIN5_12V
+); së_pö(
+PIN6_12V
+);
+
+16 
 xQueue20H™dÀ
  = 
 	`xQueueCª©e
-(3, ());
+(3, ());
 
-25 if–
+18 if–
 xQueue20H™dÀ
  !
 NULL
@@ -160041,7 +160729,7 @@ NULL
 	`vTaskSèπScheduÀr
 (); }
 
-28 
+21 
 	}
 }
 
@@ -160057,21 +160745,21 @@ NULL
 
 8 
 	$vAµliˇti⁄TickHook
-(){
+()
 
-14 
+15 
 	}
 }
 
-16 
+17 
 	$vAµliˇti⁄IdÀHook
 ()
 
-19 
+20 
 	}
 }
 
-21 
+22 
 	$vAµliˇti⁄SèckOvîÊowHook
 –
 TaskH™dÀ_t
@@ -160081,119 +160769,201 @@ xTask
 pcTaskName
  )
 
-28 
+29 
 	}
 }
 
-30 
+31 
 	$vAµliˇti⁄MÆlocFaûedHook
 ( )
 
-33 
+34 
 	}
 }
 
-37 
+40 
 	$vInôMaöSe˘‹s
 –*
 pvP¨amëîs
 )
 
-39 
+42 
 Eº‹Task
  = 0;
 
-40 
+43 
+	`PI_Inô
+();
+
+44 
 	`ModBus_Inô
 ();
 
-41 
+45 
 	`vTaskDñëe
 (
 NULL
 );
 
-42 
+46 
 	}
 }
 
-44 
-	$vM™agemítGórsBox
+49 
+	$vWaôögEvít
 –*
 pvP¨amëîs
- )
-
-46 
-uöt32_t
- 
-time
-;
-
-49 
-time
-++;
-
-50 
-	`£t_pö
-(
-PIN5_12V
-);
+)
 
 51 
-UARTTønsmô_Fœg
- = 1;
+p‹tBASE_TYPE
+ 
+Tick_begö
+ = 
+	`xTaskGëTickCou¡
+();
 
-52 if–
-time
- > 100000)
+52 
+p‹tBASE_TYPE
+ 
+Tick_dódTime
+;
 
-54 
-time
- = 0;
-
-55 
-	`ModBus_SídRe•⁄£
-(":Œ ");
-
-58 
+56 
 	`ª£t_pö
 (
 PIN5_12V
 );
 
-60 
+57 
+	`ª£t_pö
+(
+PIN6_12V
+);
+
+58 
+	`£t_pö
+(
+PIN4_12V
+);
+
+59 if(
+UART_Buf„r
+[
+UART_BUFFER_SIZE
+ - 1] != 0)
+
+61 
+	`ª£t_pö
+(
+PIN4_12V
+);
+
+62 
+	`vTaskPri‹ôySë
+(
+xModBusH™dÀ
+, 3);
+
+64 
+Tick_dódTime
+ = 
+	`xTaskGëTickCou¡
+();
+
+65 if–
+Tick_dódTime
+ - 
+Tick_begö
+ >= 1000 )
+
+67 
+UARTTønsmô_Fœg
+ = 3;
+
+68 
+	`ModBus_SídRe•⁄£
+(":D00600-555C0\r\n");
+
+69 
+Tick_begö
+ = 
+Tick_dódTime
+;
+
+73 
 	`vTaskDñëe
 (
 NULL
 );
 
-61 
+74 
 	}
 }
 
-63 
+77 
+	$vM™agemítGórsBox
+–*
+pvP¨amëîs
+ )
+
+79 
+Vñocôy
+;
+
+82 
+	`£t_pö
+(
+PIN5_12V
+);
+
+83 
+	`xQueueRe˚ive
+(
+xQueue20H™dÀ
+, &
+Vñocôy
+, 0);
+
+84 
+	`ª£t_pö
+(
+PIN5_12V
+);
+
+86 
+	`vTaskDñëe
+(
+NULL
+);
+
+87 
+	}
+}
+
+91 
 	$vModBusM™agemít
 –*
 pvP¨amëîs
  )
 
-65 
+93 
 D©a
 ;
 
-68 
+96 
 	`£t_pö
 (
 PIN6_12V
 );
 
-69 
+97 
 Eº‹Task
  = 
 	`ModBus_CheckFøme
 ();
 
-70 (
+98 (
 Eº‹Task
  =0Ë? 
 D©a
@@ -160203,49 +160973,117 @@ D©a
 	`ModBus_CÀ¨Msgs
 ();
 
-72 
+99 
+UARTTønsmô_Fœg
+ = 1;
+
+101 if(
+D©a
+ !0.00Ë{
 	`xQueueSíd
 (
 xQueue20H™dÀ
-, &
-D©a
-, 0);
+, &Data, 0);}
 
-73 
-	`vTaskPri‹ôySë
-(
-xModBusH™dÀ
-, 1);
+102 
+	`ModBus_CÀ¨Msgs
+();
 
-74 
+103 
+Eº‹Task
+ = 0;
+
+104 
 	`ª£t_pö
 (
 PIN6_12V
 );
 
-76 
+105 
+	`vTaskPri‹ôySë
+(
+xQueueM™agH™dÀ
+, 3);
+
+107 
 	`vTaskDñëe
 (
 NULL
 );
 
-77 
+108 
 	}
 }
 
-79 
+111 
 	$vSecurôyMem‹yM™agemít
  ( *
 pvP¨amëîs
 )
 
-86 
+113 
+Vñocôy
+;
+
+114 c⁄° 
+Vñ_Dividî
+ = 1.0;
+
+115 
+p‹tBASE_TYPE
+ 
+xSètus
+;
+
+118 
+	`vTaskPri‹ôySë
+(
+xModBusH™dÀ
+, 1);
+
+119 
+xSètus
+ = 
+	`xQueuePìk
+(
+xQueue20H™dÀ
+, &
+Vñocôy
+, 0);
+
+120 if–
+xSètus
+ =
+pdPASS
+)
+
+122 if–(
+Vñocôy
+ - 
+Cuºít_Vñocôy
+ > 
+Vñ_Dividî
+) || (Velocity - Current_Velocity < -Vel_Divider) )
+
+124 
+	`vTaskPri‹ôySë
+(
+xGórsH™dÀ
+, 2);
+
+126 } { 
+	`vTaskPri‹ôySë
+(
+xQueueM™agH™dÀ
+, 1); }
+
+128 
 	`vTaskDñëe
 (
 NULL
 );
 
-87 
+129 
 	}
 }
 
@@ -162505,7 +163343,7 @@ STM32F469_479xx
 
 371 
 	#PLL_M
- 25
+ 8
 
 	)
 
@@ -165545,8 +166383,8 @@ __HópLimô
 1
 .
 0
-61
-4141
+64
+4347
 C:\Users\Caska\Desktop\projects\RCR\ROBOCR~1\FILLIB~1\ADC.h
 C:\Users\Caska\Desktop\projects\RCR\ROBOCR~1\FILLIB~1\DMA.h
 C:\Users\Caska\Desktop\projects\RCR\ROBOCR~1\FILLIB~1\FILCON~1.H
@@ -165555,6 +166393,7 @@ C:\Users\Caska\Desktop\projects\RCR\ROBOCR~1\FILLIB~1\INTERR~1.C
 C:\Users\Caska\Desktop\projects\RCR\ROBOCR~1\FILLIB~1\RCC.h
 C:\Users\Caska\Desktop\projects\RCR\ROBOCR~1\FILLIB~1\RCRDST~1\RCR_CU~1.H
 C:\Users\Caska\Desktop\projects\RCR\ROBOCR~1\FILLIB~1\RCRDST~1\RCR_PI~1.H
+C:\Users\Caska\Desktop\projects\RCR\ROBOCR~1\FILLIB~1\RCRDST~1\RCR_SE~1.C
 C:\Users\Caska\Desktop\projects\RCR\ROBOCR~1\FILLIB~1\RCRDST~1\RCR_SE~1.H
 C:\Users\Caska\Desktop\projects\RCR\ROBOCR~1\FILLIB~1\RCRDST~1\RCR_SE~2.H
 C:\Users\Caska\Desktop\projects\RCR\ROBOCR~1\FILLIB~1\TIM.h
@@ -165603,6 +166442,8 @@ C:\Users\Caska\Desktop\projects\RCR\Robocross\inc\main.h
 C:\Users\Caska\Desktop\projects\RCR\Robocross\inc\robot_tasks.h
 C:\Users\Caska\Desktop\projects\RCR\Robocross\inc\stm32f4xx.h
 C:\Users\Caska\Desktop\projects\RCR\Robocross\inc\system_stm32f4xx.h
+C:\Users\Caska\Desktop\projects\RCR\Robocross\src\CarManagement.c
+C:\Users\Caska\Desktop\projects\RCR\Robocross\src\CarManagement.h
 C:\Users\Caska\Desktop\projects\RCR\Robocross\src\main.c
 C:\Users\Caska\Desktop\projects\RCR\Robocross\src\robot_tasks.c
 C:\Users\Caska\Desktop\projects\RCR\Robocross\src\startup_stm32f407xx.S

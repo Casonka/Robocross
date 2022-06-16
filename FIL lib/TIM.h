@@ -36,9 +36,9 @@
     *       @arg TIM - number of timer
     *       @arg freq - target frequency for calculating
     */
-    #define TimPIDConfigure(TIM,freq)       {\
+    #define TimPIDConfigure(TIM,PSC,ARR)   {\
         ResetTimCNT(TIM);                   \
-        ConfPIDFreq(TIM,freq);              \
+        ConfPIDFreq(TIM,PSC,ARR);              \
         ConfTimUpdateInterrupt(TIM,1);      \
         TimStart(TIM);                      }
 
@@ -92,10 +92,9 @@
         ConfTimCompareFast2(TIM,1,1,ch3,ch4);                 \
         ConfTimCapture(TIM,1,1,1,1,ch1,ch2,ch3,ch4);          }
 
-    #define ConfPIDFreq(TIM,freq)           {\
-        if(freq == FREQ_10_Hz);             \
-        ConfTimPSC(TIM,(CalcPSC(freq)));    \
-        ConfTimARR(TIM,(CalcARR(freq)));    }
+    #define ConfPIDFreq(TIM,PSC,ARR)       {\
+        ConfTimPSC(TIM,PSC);    \
+        ConfTimARR(TIM,ARR);    }
 
     #define ConfFreq(TIM,prescaler,autoreset)   {\
         ConfTimPSC(TIM,prescaler);              \

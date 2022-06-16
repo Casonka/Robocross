@@ -1,14 +1,16 @@
 
-#include <FilConfig.h>
+#include "CarManagement.h"
 
 extern unsigned char UART_Buffer[UART_BUFFER_SIZE];
 unsigned int status;
 volatile uint32_t globalTime;
+extern volatile uint16_t LPulseWheel, RPulseWheel;
+
 //---------------------------------------------------------//
 //----------------------USART Interrupts-------------------//
 //---------------------------------------------------------//
-void USART3_IRQHandler(void) {
-
+void USART3_IRQHandler(void)
+{
     while ((USART3->SR & 0x20) >> 5)
              {
              *UARTBufferIndex++ =  USART3->DR;
@@ -20,36 +22,49 @@ void USART3_IRQHandler(void) {
 //----------------------Timer Interrupts-------------------//
 //---------------------------------------------------------//
 
-void TIM1_IRQHandler(void) {
+void TIM1_IRQHandler(void)
+{
 TIM1->SR = 0;
 }
 
-void TIM2_IRQHandler(void) {
+void TIM2_IRQHandler(void)
+{
 TIM2->SR = 0;
 }
 
-void TIM3_IRQHandler(void) {
+void TIM3_IRQHandler(void)
+{
 TIM3->SR = 0;
 }
 
-void TIM4_IRQHandler(void) {
+void TIM4_IRQHandler(void)
+{
 
 TIM4->SR = 0;
 }
 
-void TIM5_IRQHandler(void) {
+void TIM5_IRQHandler(void)
+{
 TIM5->SR = 0;
 }
 
-void TIM6_DAC_IRQHandler(void) {    // Custom Regulator
+void TIM6_DAC_IRQHandler(void) // Speed Regulator transmission box
+{
 TIM6->SR = 0;
 }
+float globalSpeed = 0;
+void TIM7_IRQHandler(void) // Speed Regulator Car
+{
 
-void TIM7_IRQHandler(void) {    // moving Regulator
-TIM7->SR = 0;
+      Current_Velocity = Speed_Calc(LPulseWheel, RPulseWheel);
+      globalSpeed += Current_Velocity*0.1;
+      Current_Velocity = 0;
+
+    TIM7->SR = 0;
 }
 
-void TIM8_UP_TIM13_IRQHandler(void) {
+void TIM8_UP_TIM13_IRQHandler(void)
+{
 TIM13->SR = 0;
 }
 
@@ -57,27 +72,35 @@ TIM13->SR = 0;
 //----------------------External Interrupts----------------//
 //---------------------------------------------------------//
 
-void EXTI0_IRQHandler(void) {
+void EXTI0_IRQHandler(void) // left Wheel
+{
+    LPulseWheel++;
     EXTI->PR=0x1;
 }
 
-void EXTI1_IRQHandler(void) {
+void EXTI1_IRQHandler(void) // right Wheel
+{
+    RPulseWheel++;
     EXTI->PR=0x2;
 }
 
-void EXTI2_IRQHandler(void) {
+void EXTI2_IRQHandler(void)
+{
   EXTI->PR=0x4;
 }
 
-void EXTI3_IRQHandler(void) {
+void EXTI3_IRQHandler(void)
+{
   EXTI->PR=0x8;
 }
 
-void EXTI4_IRQHandler(void) {
+void EXTI4_IRQHandler(void)
+{
   EXTI->PR=0x10;
 }
 
-void EXTI9_5_IRQHandler(void) {
+void EXTI9_5_IRQHandler(void)
+{
   if (EXTI->PR&(1<<6))
   {
     EXTI->PR=(1<<6);
@@ -99,7 +122,8 @@ void EXTI9_5_IRQHandler(void) {
 }
 }
 
-void EXTI15_10_IRQHandler(void) {
+void EXTI15_10_IRQHandler(void)
+{
 
   if (EXTI->PR&(1<<10))
   {

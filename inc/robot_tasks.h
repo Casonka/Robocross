@@ -18,9 +18,6 @@ void vSecurityMemoryManagement( void *pvParameters);
 xTaskHandle xGearsHandle;
 void vManagementGearsBox( void *pvParameters);
 
-xTaskHandle xClutchHandle;
-void vClutchManagement( void *pvPatameters);
-
 xTaskHandle xModBusHandle;
 void vModBusManagement( void *pvParameters);
 //--------------------------------------------
