@@ -52,20 +52,22 @@ void Set_Brake(int state)   // Тормоз
     Brake_Flag = 1;
 }
 
-#define Freq    5
-#define PI      3.14157
-#define R_Wheel 0.28
-#define StepInMeters    ((2*PI*R_Wheel)/48)
-
 float Speed_Calc(uint16_t leftWheel, uint16_t rightWheel)
 {
     float Speed;
-    uint16_t sum;
-    if(leftWheel == 0 || rightWheel != 0) { sum = rightWheel;}
-    if(rightWheel == 0 || leftWheel != 0) { sum = leftWheel;}
-    //if(rightWheel != 0 && leftWheel != 0) { sum = (leftWheel + rightWheel) / 2;}
-    Speed = sum * 0.03665 * 10 ;
-    //RPulseWheel = 0; LPulseWheel = 0;
+    uint16_t sum = 0;
+
+    Current_Velocity = 0;
+
+    if(rightWheel - leftWheel >= (rightWheel/2)) {leftWheel = 0;} // левый датчик сломан, не учитывается в расчете
+    if(leftWheel - rightWheel >= (leftWheel/2)) {rightWheel = 0;}  // правый датчик сломан, не учитывается в расчете
+
+    if(leftWheel == 0 && rightWheel != 0) { sum = rightWheel;}  // учет поломки датчика
+    if(rightWheel == 0 && leftWheel != 0) { sum = leftWheel;}   // учет поломки датчика
+
+    if(rightWheel != 0 && leftWheel != 0) { sum = (leftWheel + rightWheel) / 2;}    // все хорошо, берем среднее арифметическое
+    Speed = sum * StepWheel / Freq_Timer;   // скорость
+    RPulseWheel = 0; LPulseWheel = 0;   // обнуление показаний
     return Speed;
 }
 

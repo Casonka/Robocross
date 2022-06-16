@@ -17,7 +17,6 @@ void USART3_IRQHandler(void)
              if( UARTBufferIndex > UARTBufferEndMsgPointer) {UARTBufferIndex = UARTBufferStartMsgPointer;}
              }
 }
-
 //---------------------------------------------------------//
 //----------------------Timer Interrupts-------------------//
 //---------------------------------------------------------//
@@ -53,12 +52,12 @@ void TIM6_DAC_IRQHandler(void) // Speed Regulator transmission box
 TIM6->SR = 0;
 }
 float globalSpeed = 0;
-void TIM7_IRQHandler(void) // Speed Regulator Car
+void TIM7_IRQHandler(void) // Speed Regulator Car 10Hz
 {
-
+//    LPulseWheel = 2;
+//    RPulseWheel = 38;
       Current_Velocity = Speed_Calc(LPulseWheel, RPulseWheel);
-      globalSpeed += Current_Velocity*0.1;
-      Current_Velocity = 0;
+      globalSpeed += Current_Velocity * 0.1;
 
     TIM7->SR = 0;
 }

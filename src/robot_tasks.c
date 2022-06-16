@@ -65,7 +65,7 @@ void vWaitingEvent( void *pvParameters)
         if( Tick_deadTime - Tick_begin >= 1000 )
         {
                 UARTTransmit_Flag = 3;
-                ModBus_SendResponse(":D00600-555C0\r\n");
+                ModBus_SendResponse("123");
                 Tick_begin = Tick_deadTime;
         }
 

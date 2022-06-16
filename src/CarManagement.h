@@ -18,8 +18,8 @@ _Bool Move_Clutch(int direction); // engine on and moving
 int Transmission_Flag;  // флаг передачи
 _Bool Set_Transmission(int transmission);    // 2 engines on end move transmission
 
-#define PI_Timer    0.1      // 10 Hz  1/10 = 0.1 сек
-#define StepWheel   0.0375    // метров за один шаг колеса (48 магнитов)
+#define Freq_Timer    0.1      // 10 Hz  1/10 = 0.1 сек
+#define StepWheel   0.03665    // метров за один шаг колеса (48 магнитов)
 volatile uint16_t LPulseWheel,RPulseWheel;
 float Speed_Calc(uint16_t leftWheel, uint16_t rightWheel);
 
