@@ -9,13 +9,18 @@
 
 */
 static unsigned int Error;
-#define UART_SIMULATION     1
+#define UART_SIMULATION     0
 
 /*!
 *   @brief ModBus_Init - function for initialize ModBus protocol
 *       @arg - NONE
 */
 
+// To send the velocity
+
+unsigned char StartFrameSend[15] = {':', 'D', '0', '0', '6', '0', '0', '+', '0', '0', '0', 'A', 'A', '\r', '\n'};
+unsigned char *StartDataSendIndex;
+unsigned char *LRCPointer;
 void ModBus_Init(void) {
 
     Error = 0;
@@ -24,6 +29,9 @@ void ModBus_Init(void) {
     UARTBufferLRCIndex = UARTBufferEndMsgPointer - 3;
     UARTReceiver_Flag = 0;
     ModBus_ClearMsgs();
+
+    StartDataSendIndex = StartFrameSend + 8;
+    LRCPointer = StartFrameSend + 11;
 
     Queue_StartIndex = QueueBuffer_To_UART;
     Queue_EndIndex = Queue_StartIndex + ( QueueSize - 1 );
@@ -65,6 +73,34 @@ unsigned char LRC_Counting(unsigned char *buf, unsigned short bsize) {
         LRC += *pData++;
     }
     return ((unsigned char)(-((char)LRC)));
+}
+
+void ModBus_DEC_TO_ASCII_Converter(unsigned int *DEC_Pointer, unsigned short bsize)
+{
+    unsigned char ASCII;
+    ASCII = 0;
+    for(int i = 0; i <= bsize; i++)
+    {
+        ASCII = *DEC_Pointer++;
+        ASCII |= 0x30;
+        *StartDataSendIndex++ = ASCII;
+    }
+    StartDataSendIndex = StartFrameSend + 8;
+}
+
+void ModBus_HEX_TO_ASCII_Converter(unsigned int *HEX_Pointer, unsigned short bsize)
+{
+    unsigned char ASCII;
+    ASCII = 0;
+    for(int i = 0; i <= bsize; i++)
+    {
+        ASCII = *HEX_Pointer++;
+        if( ASCII > 0x9) { ASCII -= 0xA; ASCII |= 0x41;}
+        if( ASCII >= 0x00 && ASCII <= 0x9) { ASCII |= 0x30;}
+        *LRCPointer = ASCII;
+        LRCPointer++;
+    }
+    LRCPointer = StartFrameSend + 11;
 }
 
 unsigned int ModBus_ASCII_TO_HEX_Converter(unsigned char *ASCII_Pointer, unsigned short bsize)
@@ -211,7 +247,7 @@ unsigned int ModBus_IsFull_Queue(void)
     }
 }
 
-void ModBus_SendResponse( const char* Resp)
+void ModBus_SendResponse(unsigned  char* Resp)
 {
     while(*Resp != '\0') { ModBus_SendByte(*Resp); Resp++; }
 }
@@ -227,9 +263,31 @@ void ModBus_PutQueue(const volatile char Data)
     *Queue_Index++ = Data;
 }
 
+void ModBus_SendResponseSpeed(float Speed)
+{
+    unsigned int DataBuf[3] = {0, 0, 0};
+
+    DataBuf[0] = Speed/100;
+    DataBuf[1] = Speed/10 - ((unsigned int)(Speed/100))*10;
+    DataBuf[2] = Speed - ((unsigned int)(Speed/10))*10;
+
+    ModBus_DEC_TO_ASCII_Converter(DataBuf, (unsigned short)((*DataBuf + 2) - (*DataBuf)));
+    if(Transmission_Flag == R) {*(StartDataSendIndex - 1) = '-';}
+    else {*(StartDataSendIndex - 1) = '+';}
+
+    unsigned char Tmp  = LRC_Counting(StartFrameSend,
+            ((unsigned short)(( StartDataSendIndex + 3) - StartFrameSend)));
+    unsigned int Buf[2];
+    Buf[0] = Tmp >> 4;
+    Buf[1] = Tmp&0xF;
+    ModBus_HEX_TO_ASCII_Converter(Buf, ((unsigned short)((LRCPointer + 1) - LRCPointer)));
+    ModBus_SendResponse(StartFrameSend);
+}
+
 unsigned char *QueueIndexTx;
-unsigned int out;
+
 unsigned int Get_Queue(void) { return *QueueIndexTx++; }
+
 void ModBus_SendByte(const char Data)
 {
     while (!USARTGetStatus(usart3,TransmitRegEmpty)) {}

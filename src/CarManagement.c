@@ -15,6 +15,17 @@ _Bool Move_Clutch(int direction)
 return 1;
 }
 
+void GetTransmission(void)
+{
+    if( adc_data[0] > 250 && adc_data[0] <= 600 )   {Transmission_Flag = S1;}
+    if( adc_data[0] > 600 && adc_data[0] <= 1000 )   {Transmission_Flag = F2;}
+    if( adc_data[0] > 1000 && adc_data[0] <= 1450 )  {Transmission_Flag = F1;}
+    if( adc_data[0] > 1450 && adc_data[0] <= 2750 ) {Transmission_Flag = N;}
+    if( adc_data[0] > 2750 && adc_data[0] <= 3250 ) {Transmission_Flag = R;}
+    if( adc_data[0] > 3250 && adc_data[0] <= 3750)  {Transmission_Flag = S2;}
+    if( adc_data[0] <= 250 || adc_data[0] > 3750) {Transmission_Flag = NONE;}
+}
+
 _Bool Set_Transmission(int transmission)
 {
     if( Clutch_Flag == 0 ) return 0;
@@ -22,26 +33,27 @@ _Bool Set_Transmission(int transmission)
     {
         case N:
             {
-                if( Clutch_Flag == 1 )  {  }
+
                 return 1;
                 break;
             }
         case R:
             {
-                if( Clutch_Flag == 1 ) { }
+
                 return 1;
                 break;
             }
         case F1:
             {
-                if( Clutch_Flag == 1 ) { }
+                while(Transmission_Flag != 3) { Test(1, 0.2);}
+                while(Transmission_Flag != 1) { Test(2, 0.2);}
                 return 1;
                 break;
             }
-//        case F2:
-//            {
-//                break;
-//            }
+        case F2:
+            {
+                break;
+            }
     }
     return 0;
 }
@@ -52,48 +64,32 @@ void Set_Brake(int state)   // Тормоз
     Brake_Flag = 1;
 }
 
-float Speed_Calc(uint16_t leftWheel, uint16_t rightWheel)
+void GoZero(void)
 {
-    float Speed;
-    uint16_t sum = 0;
 
-    Current_Velocity = 0;
-
-    if(rightWheel - leftWheel >= (rightWheel/2)) {leftWheel = 0;} // левый датчик сломан, не учитывается в расчете
-    if(leftWheel - rightWheel >= (leftWheel/2)) {rightWheel = 0;}  // правый датчик сломан, не учитывается в расчете
-
-    if(leftWheel == 0 && rightWheel != 0) { sum = rightWheel;}  // учет поломки датчика
-    if(rightWheel == 0 && leftWheel != 0) { sum = leftWheel;}   // учет поломки датчика
-
-    if(rightWheel != 0 && leftWheel != 0) { sum = (leftWheel + rightWheel) / 2;}    // все хорошо, берем среднее арифметическое
-    Speed = sum * StepWheel / Freq_Timer;   // скорость
-    RPulseWheel = 0; LPulseWheel = 0;   // обнуление показаний
-    return Speed;
 }
 
-static float P_k,I_k;
-static float Sum_error,Error;
-static float Speed_out;
-
-void PI_Init(void)
+void Test(int direction, float Speed)
 {
-    P_k = 1.0;
-    I_k = 0.0;
-    Sum_error = 0.0;
-    Error = 0.0;
-}
-
-float PI_Calc(float Velocity)
-{
-    float Err_p, Err_i;
-    float Speed_ref = 0.0;
-    Error = Velocity - Current_Velocity;
-
-    Err_p = Error * P_k;
-    if (Speed_out <= 5.55  && Speed_out >= -5.55)
+    switch(direction)
     {
+    case 0: TransmissionReg[0].TargetSpeed = 0.0; TransmissionReg[1].TargetSpeed = 0.0;
+    break;
 
+    case 1: TransmissionReg[0].TargetSpeed = Speed; TransmissionReg[1].TargetSpeed = Speed;
+    break;
+
+    case 2: TransmissionReg[0].TargetSpeed = Speed; TransmissionReg[1].TargetSpeed = -Speed;
+    break;
+
+    case 3: TransmissionReg[0].TargetSpeed = -Speed; TransmissionReg[1].TargetSpeed = Speed;
+    break;
+
+    case 4: TransmissionReg[0].TargetSpeed = -Speed; TransmissionReg[1].TargetSpeed = -Speed;
+    break;
     }
 
+
 }
+
 

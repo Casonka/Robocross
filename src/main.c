@@ -6,6 +6,7 @@ int main(void)
     BoardStart();
 
     //Move_Clutch(1);
+    PID_Init();
     xTaskCreate(vInitMainSectors, (char *) "STM", configMINIMAL_STACK_SIZE, NULL, 3, NULL );
     xTaskCreate(vWaitingEvent, (char * )"Wait", configMINIMAL_STACK_SIZE, NULL,2, &xWaitingHangle );
     xTaskCreate(vManagementGearsBox, (char *) "GEAR", configMINIMAL_STACK_SIZE, NULL, 1, &xGearsHandle );

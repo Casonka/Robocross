@@ -28,6 +28,8 @@ unsigned int ModBus_CheckFrame(void);   /// Check buffer for 0x3A.../r/n
 
 float ModBus_ParsePacket(void);  /// Check and get answer, write new value
 
-void ModBus_SendResponse( const char* Resp);
+void ModBus_SendResponse( unsigned char* Resp);
+
+void ModBus_SendResponseSpeed(float Speed);
 
 void ModBus_SendByte(const char Data);

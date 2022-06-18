@@ -2,7 +2,7 @@
 
 
 unsigned int ErrorTask;
-
+_Bool ZeroMesFlag;
 // System functions
 //--------------------------------------------------------------------------------------------------------------------
 void vApplicationTickHook(void)
@@ -40,7 +40,6 @@ void vApplicationMallocFailedHook( void )
 void vInitMainSectors( void *pvParameters)
 {
     ErrorTask = 0;
-    PI_Init();
     ModBus_Init();
     vTaskDelete(NULL);
 }
@@ -62,13 +61,16 @@ void vWaitingEvent( void *pvParameters)
             vTaskPrioritySet(xModBusHandle, 3);
         }
         Tick_deadTime = xTaskGetTickCount();
-        if( Tick_deadTime - Tick_begin >= 1000 )
+        if( Tick_deadTime - Tick_begin >= 500 )
         {
-                UARTTransmit_Flag = 3;
-                ModBus_SendResponse("123");
+            //ZeroMesFlag = 0; принудительная отправка
+                if(ZeroMesFlag == 0)
+                {
+                    UARTTransmit_Flag = 3;
+                    ModBus_SendResponseSpeed(Current_Velocity*100);
+                }
                 Tick_begin = Tick_deadTime;
         }
-
     }
     vTaskDelete(NULL);
 }

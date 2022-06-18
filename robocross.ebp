@@ -180,6 +180,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src\CarManagement.h" />
+		<Unit filename="src\CarRegulators.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src\CarRegulators.h" />
 		<Unit filename="src\main.c">
 			<Option compilerVar="CC" />
 		</Unit>

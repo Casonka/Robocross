@@ -1,14 +1,14 @@
 # depslib dependency file v1.0
-1645518261 source:c:\users\caska\desktop\projects\rcr\robocross\src\startup_stm32f407xx.s
+1655441001 source:c:\users\caska\desktop\projects\rcr\robocross\src\startup_stm32f407xx.s
 
-1608062068 source:c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\event_groups.c
+1655441001 source:c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\event_groups.c
 	<stdlib.h>
 	"FreeRTOS.h"
 	"task.h"
 	"timers.h"
 	"event_groups.h"
 
-1608062068 c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\freertos.h
+1655441001 c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\freertos.h
 	<stddef.h>
 	<stdint.h>
 	"FreeRTOSConfig.h"
@@ -16,25 +16,25 @@
 	"portable.h"
 	<reent.h>
 
-1655283292 c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\freertosconfig.h
+1655441001 c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\freertosconfig.h
 	"stm32f4xx.h"
 	<stdint.h>
 
-1655385313 c:\users\caska\desktop\projects\rcr\robocross\inc\stm32f4xx.h
+1655441001 c:\users\caska\desktop\projects\rcr\robocross\inc\stm32f4xx.h
 	"core_cm4.h"
 	"system_stm32f4xx.h"
 	<stdint.h>
 	"stm32f4xx_conf.h"
 
-1645518261 c:\users\caska\desktop\projects\rcr\robocross\cmsis\core_cm4.h
+1655441001 c:\users\caska\desktop\projects\rcr\robocross\cmsis\core_cm4.h
 	<stdint.h>
 	"cmsis_version.h"
 	"cmsis_compiler.h"
 	"mpu_armv7.h"
 
-1645518261 c:\users\caska\desktop\projects\rcr\robocross\cmsis\cmsis_version.h
+1655441001 c:\users\caska\desktop\projects\rcr\robocross\cmsis\cmsis_version.h
 
-1645518261 c:\users\caska\desktop\projects\rcr\robocross\cmsis\cmsis_compiler.h
+1655441001 c:\users\caska\desktop\projects\rcr\robocross\cmsis\cmsis_compiler.h
 	<stdint.h>
 	"cmsis_armcc.h"
 	"cmsis_armclang_ltm.h"
@@ -44,20 +44,20 @@
 	<cmsis_ccs.h>
 	<cmsis_csm.h>
 
-1645518261 c:\users\caska\desktop\projects\rcr\robocross\cmsis\cmsis_gcc.h
+1655441001 c:\users\caska\desktop\projects\rcr\robocross\cmsis\cmsis_gcc.h
 
-1645518261 c:\users\caska\desktop\projects\rcr\robocross\cmsis\mpu_armv7.h
+1655441001 c:\users\caska\desktop\projects\rcr\robocross\cmsis\mpu_armv7.h
 
-1645518261 c:\users\caska\desktop\projects\rcr\robocross\inc\system_stm32f4xx.h
+1655441001 c:\users\caska\desktop\projects\rcr\robocross\inc\system_stm32f4xx.h
 
-1608062068 c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\projdefs.h
+1655441001 c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\projdefs.h
 
-1608062068 c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\portable.h
+1655441001 c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\portable.h
 	"deprecated_definitions.h"
 	"portmacro.h"
 	"mpu_wrappers.h"
 
-1608062068 c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\deprecated_definitions.h
+1655441001 c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\deprecated_definitions.h
 	"..\..\Source\portable\owatcom\16bitdos\pc\portmacro.h"
 	"..\..\Source\portable\owatcom\16bitdos\flsh186\portmacro.h"
 	"../portable/GCC/ATMega323/portmacro.h"
@@ -116,36 +116,36 @@
 	"../../Source/portable/IAR/78K0R/portmacro.h"
 	"../../Source/portable/IAR/78K0R/portmacro.h"
 
-1608062068 c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\portmacro.h
+1655441001 c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\portmacro.h
 
-1608062068 c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\mpu_wrappers.h
+1655441001 c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\mpu_wrappers.h
 
-1608062068 c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\task.h
+1655441001 c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\task.h
 	"list.h"
 
-1608062068 c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\list.h
+1655441001 c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\list.h
 
-1608062068 c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\timers.h
+1655441001 c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\timers.h
 	"task.h"
 
-1608062068 c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\event_groups.h
+1655441001 c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\event_groups.h
 	"timers.h"
 
-1608062068 source:c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\heap_2.c
+1655441001 source:c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\heap_2.c
 	<stdlib.h>
 	"FreeRTOS.h"
 	"task.h"
 
-1608062068 source:c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\list.c
+1655441001 source:c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\list.c
 	<stdlib.h>
 	"FreeRTOS.h"
 	"list.h"
 
-1608062068 source:c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\port.c
+1655441001 source:c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\port.c
 	"FreeRTOS.h"
 	"task.h"
 
-1608062068 source:c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\queue.c
+1655441001 source:c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\queue.c
 	<stdlib.h>
 	<string.h>
 	"FreeRTOS.h"
@@ -153,22 +153,22 @@
 	"queue.h"
 	"croutine.h"
 
-1608062068 c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\queue.h
+1655441001 c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\queue.h
 	"task.h"
 
-1608062068 c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\croutine.h
+1655441001 c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\croutine.h
 	"list.h"
 
-1608062068 source:c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\stream_buffer.c
+1655441001 source:c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\stream_buffer.c
 	<stdint.h>
 	<string.h>
 	"FreeRTOS.h"
 	"task.h"
 	"stream_buffer.h"
 
-1608062068 c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\stream_buffer.h
+1655441001 c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\stream_buffer.h
 
-1608062068 source:c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\tasks.c
+1655441001 source:c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\tasks.c
 	<stdlib.h>
 	<string.h>
 	"FreeRTOS.h"
@@ -179,44 +179,45 @@
 	"tasks_test_access_functions.h"
 	"freertos_tasks_c_additions.h"
 
-1608062068 c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\stack_macros.h
+1655441001 c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\stack_macros.h
 
-1608062068 source:c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\timers.c
+1655441001 source:c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\timers.c
 	<stdlib.h>
 	"FreeRTOS.h"
 	"task.h"
 	"queue.h"
 	"timers.h"
 
-1608062068 source:c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\croutine.c
+1655441001 source:c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\croutine.c
 	"FreeRTOS.h"
 	"task.h"
 	"croutine.h"
 
-1655390162 source:c:\users\caska\desktop\projects\rcr\robocross\src\system_stm32f4xx.c
+1655441001 source:c:\users\caska\desktop\projects\rcr\robocross\src\system_stm32f4xx.c
 	"stm32f4xx.h"
 
-1655387038 source:c:\users\caska\desktop\projects\rcr\robocross\src\main.c
+1655549886 source:c:\users\caska\desktop\projects\rcr\robocross\src\main.c
 	"main.h"
 
-1655360681 c:\users\caska\desktop\projects\rcr\robocross\inc\main.h
+1655537053 c:\users\caska\desktop\projects\rcr\robocross\inc\main.h
 	"stm32f4xx.h"
 	<FilConfig.h>
 	"CarManagement.h"
+	"CarRegulators.h"
 
 1645518741 c:\users\caska\desktop\projects\rcr\robocross\src\robot_tasks.h
 	"main.h"
 
-1655387028 source:c:\users\caska\desktop\projects\rcr\robocross\src\robot_tasks.c
+1655550196 source:c:\users\caska\desktop\projects\rcr\robocross\src\robot_tasks.c
 	"robot_tasks.h"
 
-1608062068 c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\semphr.h
+1655441001 c:\users\caska\desktop\projects\rcr\robocross\freertos_lib\semphr.h
 	"queue.h"
 
-1655358317 c:\users\caska\desktop\projects\rcr\robocross\inc\robot_tasks.h
+1655441001 c:\users\caska\desktop\projects\rcr\robocross\inc\robot_tasks.h
 	"main.h"
 
-1655181898 c:\users\caska\desktop\projects\rcr\robocross\fil lib\filconfig.h
+1655441001 c:\users\caska\desktop\projects\rcr\robocross\fil lib\filconfig.h
 	<main.h>
 	<stdio.h>
 	"RCC.h"
@@ -238,30 +239,30 @@
 	"robot_tasks.h"
 	"ModBus.h"
 
-1652691785 c:\users\caska\desktop\projects\rcr\robocross\fil lib\rcr dstu\rcr_pinsboard.h
+1655441001 c:\users\caska\desktop\projects\rcr\robocross\fil lib\rcr dstu\rcr_pinsboard.h
 
-1655283974 c:\users\caska\desktop\projects\rcr\robocross\fil lib\rcr dstu\rcr_custom.h
+1655441001 c:\users\caska\desktop\projects\rcr\robocross\fil lib\rcr dstu\rcr_custom.h
 
-1655269078 c:\users\caska\desktop\projects\rcr\robocross\fil lib\rcc.h
+1655441001 c:\users\caska\desktop\projects\rcr\robocross\fil lib\rcc.h
 
-1655380198 c:\users\caska\desktop\projects\rcr\robocross\fil lib\rcr dstu\rcr_setupcustom.h
+1655560399 c:\users\caska\desktop\projects\rcr\robocross\fil lib\rcr dstu\rcr_setupcustom.h
 	<FilConfig.h>
 
-1650516893 c:\users\caska\desktop\projects\rcr\robocross\fil lib\gpio.h
+1655441001 c:\users\caska\desktop\projects\rcr\robocross\fil lib\gpio.h
 
-1655378177 c:\users\caska\desktop\projects\rcr\robocross\fil lib\tim.h
+1655441001 c:\users\caska\desktop\projects\rcr\robocross\fil lib\tim.h
 	"FilConfig.h"
 
-1655395083 source:c:\users\caska\desktop\projects\rcr\robocross\fil lib\interrupts.c
+1655558731 source:c:\users\caska\desktop\projects\rcr\robocross\fil lib\interrupts.c
 	"CarManagement.h"
 
-1652691520 c:\users\caska\desktop\projects\rcr\robocross\fil lib\adc.h
+1655476815 c:\users\caska\desktop\projects\rcr\robocross\fil lib\adc.h
 	<FilConfig.h>
 
-1652700743 c:\users\caska\desktop\projects\rcr\robocross\fil lib\dma.h
+1655563977 c:\users\caska\desktop\projects\rcr\robocross\fil lib\dma.h
 	<FilConfig.h>
 
-1655221722 c:\users\caska\desktop\projects\rcr\robocross\fil lib\usart.h
+1655443229 c:\users\caska\desktop\projects\rcr\robocross\fil lib\usart.h
 	<FilConfig.h>
 
 1478569716 c:\users\caska\desktop\projects\rcr\robocross\usb_lib\cdc\inc\usbd_cdc_core.h
@@ -621,19 +622,19 @@
 1655403973 source:c:\users\caska\desktop\projects\robocross\modbus\modbus.c
 	"ModBus.h"
 
-1655357516 source:c:\users\caska\desktop\projects\rcr\robocross\modbus\modbus.c
+1655470097 source:c:\users\caska\desktop\projects\rcr\robocross\modbus\modbus.c
 	"ModBus.h"
 
-1655357516 c:\users\caska\desktop\projects\rcr\robocross\modbus\modbus.h
+1655470116 c:\users\caska\desktop\projects\rcr\robocross\modbus\modbus.h
 	<FilConfig.h>
 
-1655395113 source:c:\users\caska\desktop\projects\rcr\robocross\src\carmanagement.c
+1655563977 source:c:\users\caska\desktop\projects\rcr\robocross\src\carmanagement.c
 	"CarManagement.h"
 
-1655370396 c:\users\caska\desktop\projects\rcr\robocross\src\carmanagement.h
-	"main.h"
+1655558670 c:\users\caska\desktop\projects\rcr\robocross\src\carmanagement.h
+	"FilConfig.h"
 
-1655394794 source:c:\users\caska\desktop\projects\rcr\robocross\fil lib\rcr dstu\rcr_setupcustom.c
+1655551072 source:c:\users\caska\desktop\projects\rcr\robocross\fil lib\rcr dstu\rcr_setupcustom.c
 	"RCR_SetupCustom.h"
 
 1655410543 source:c:\users\caska\desktop\projects\robocross\fil lib\rcr dstu\rcr_setupcustom.c
@@ -644,4 +645,10 @@
 
 1655409526 source:c:\users\caska\desktop\projects\robocross\src\carmanagement.c
 	"CarManagement.h"
+
+1655555940 c:\users\caska\desktop\projects\rcr\robocross\src\carregulators.h
+	"main.h"
+
+1655558733 source:c:\users\caska\desktop\projects\rcr\robocross\src\carregulators.c
+	"CarRegulators.h"
 

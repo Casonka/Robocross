@@ -1,4 +1,4 @@
-cscope 15 $HOME\Desktop\projects\RCR\Robocross"               0002165925
+cscope 15 $HOME\Desktop\projects\RCR\robocross"               0002170753
 	@C:\Users\Caska\Desktop\projects\RCR\ROBOCR~1\FILLIB~1\ADC.h
 
 2 #¥agm®
@@ -9,69 +9,107 @@ cscope 15 $HOME\Desktop\projects\RCR\Robocross"               0002165925
 	~<FûC⁄fig.h
 >
 
-5 #if(
+5 
+	#_ADC1
+ 0
+
+	)
+
+6 
+	#_ADC2
+ 1
+
+	)
+
+7 
+	#_ADC3
+ 2
+
+	)
+
+9 
+	#_ADC_BASE
+ ((
+uöt32_t
+)(0x40012000))
+
+	)
+
+10 
+	#ADC_off£t
+ ((
+uöt32_t
+)0x100)
+
+	)
+
+11 
+	#ADC_ID
+(
+ADC
+Ë((
+uöt32_t
+)(ADC*
+ADC_off£t
+))
+
+	)
+
+14 #if(
 _DeÁu…Se˘‹In˛udeH™dÀr
  != 0)
 
-7 
+16 
 	#ADCSˇnC⁄figuª
 (
 ADC
 ,
 LENGTH
+,
+PîùhAddªss
 , \
 
-8 
-ch1
+17 
+CH1
 ,
-ch2
+CH2
 ,
-ch3
+CH3
 ,
-ch4
+CH4
 ,
-ch5
+CH5
 ,
-ch6
+CH6
 ,
-ch7
+CH7
 ,
-ch8
+CH8
 ,
-ch9
+CH9
 ,
-ch10
+CH10
 ,
-ch11
+CH11
 ,
-ch12
+CH12
 ,
-ch13
+CH13
 ,
-ch14
+CH14
 ,
-ch15
+CH15
 ,
-ch16
+CH16
 , \
 
-9 
-numb_sm¥
-,
-cy˛es
-) { \
-
-10 
-	`C⁄fADCSm¥
-(
-ADC
-,
+18 
 NUMBER
 ,
 CYCLES
-) \
+) { \
 
-11 
+19 
 	`SëADCLígth
 (
 ADC
@@ -79,45 +117,95 @@ ADC
 LENGTH
 ); \
 
-12 
+20 
+	`C⁄fADCSQ1
+(
+ADC
+,
+CH1
+,
+CH2
+,
+CH3
+,
+CH4
+); \
+
+21 
+	`C⁄fADCSQ2
+(
+ADC
+,
+CH5
+,
+CH6
+,
+CH7
+,
+CH8
+,
+CH9
+,
+CH10
+); \
+
+22 
+	`C⁄fADCSQ3
+(
+ADC
+,
+CH11
+,
+CH12
+,
+CH13
+,
+CH14
+,
+CH15
+,
+CH16
+); \
+
+23 
+	`C⁄fADCSm¥
+(
+ADC
+,
+NUMBER
+,
+CYCLES
+); \
+
+24 
 	`SëADCSˇn
 (
 ADC
 ); \
 
-13 
+25 
+	`SëADCDDS
+(
+ADC
+); \
+
+26 
+	`SëADCDMA
+(
+ADC
+); \
+
+27 
 	`SëADCC⁄t
 (
 ADC
 ); \
 
-14 
-	`SëADCDMA
-(
-adc
-); \
-
-15 
-	`SëADCDDS
-(
-adc
-); \
-
-16 
-	`SëADCAd⁄
-(
-adc
-); \
-
-17 
-	`SëADCSWSèπ
-(
-adc
-); }
+28 }
 
 	)
 
-19 
+30 
 	#SëADCSMP1
 (
 ADC
@@ -125,13 +213,17 @@ ADC
 CYCLES
 Ë(* (
 uöt32_t
- *)((ADCË+ 0x0CË|
+ *)((
+_ADC_BASE
+ + 
+	`ADC_ID
+(ADC)Ë+ 0x0CË|
 	`ADCSm¥1
-(CYCLES)
+(CYCLES))
 
 	)
 
-21 
+32 
 	#SëADCSMP2
 (
 ADC
@@ -139,27 +231,35 @@ ADC
 CYCLES
 Ë(* (
 uöt32_t
- *)((ADCË+ 0x10Ë|
+ *)((
+_ADC_BASE
+ + 
+	`ADC_ID
+(ADC)Ë+ 0x10Ë|
 	`ADCSm¥2
-(CYCLES)
+(CYCLES))
 
 	)
 
-23 
+34 
 	#SëADCLígth
 (
 ADC
 ,
 LENGTH
-Ë(* (
+Ë(* ((
 uöt32_t
- *)((ADCË+ 0x2CË|
+ *)((
+_ADC_BASE
+ + 
+	`ADC_ID
+(ADC)Ë+ 0x2C)Ë|
 	`ADCLígth
 (LENGTH))
 
 	)
 
-25 
+36 
 	#SëADCSQ1
 (
 ADC
@@ -173,13 +273,17 @@ CH3
 CH4
 Ë(* (
 uöt32_t
- *)((ADCË+ 0x2CË|
+ *)((
+_ADC_BASE
+ + 
+	`ADC_ID
+(ADC)Ë+ 0x2CË|
 	`ADCSQ1
-(CH1,CH2,CH3,CH4)
+(CH1,CH2,CH3,CH4))
 
 	)
 
-27 
+38 
 	#SëADCSQ2
 (
 ADC
@@ -197,13 +301,17 @@ CH9
 CH10
 Ë(* (
 uöt32_t
- *)((ADCË+ 0x30Ë|
+ *)((
+_ADC_BASE
+ + 
+	`ADC_ID
+(ADC)Ë+ 0x30Ë|
 	`ADCSQ2
-(CH5,CH6,CH7,CH8,CH9,CH10)
+(CH5,CH6,CH7,CH8,CH9,CH10))
 
 	)
 
-29 
+40 
 	#SëADCSQ3
 (
 ADC
@@ -221,89 +329,131 @@ CH15
 CH16
 Ë(* (
 uöt32_t
- *)((ADCË+ 0x34Ë|
+ *)((
+_ADC_BASE
+ + 
+	`ADC_ID
+(ADC)Ë+ 0x34Ë|
 	`ADCSQ3
-(CH11,CH12,CH13,CH14,CH15,CH16)
+(CH11,CH12,CH13,CH14,CH15,CH16))
 
 	)
 
-31 
+42 
 	#SëADCSˇn
 (
 ADC
 Ë(* (
 uöt32_t
- *)((ADCË+ 0x04Ë|0x1)
+ *)((
+_ADC_BASE
+ + 
+	`ADC_ID
+(ADC)Ë+ 0x04Ë|
+	`ADCSˇn
+(0x1))
 
 	)
 
-33 
+44 
 	#SëADCResﬁuti⁄
 (
-adc
+ADC
 ,
 RES
 Ë(* (
 uöt32_t
  *)((
-ADC
-Ë+ 0x04Ë|
-	`adc_ªsﬁuti⁄
-(RES))
+_ADC_BASE
+ + 
+	`ADC_ID
+(ADC)Ë+ 0x04Ë|
+	`ADCResﬁuti⁄
+(0x00))
 
 	)
 
-35 
+46 
 	#SëADCDMA
 (
 ADC
 Ë(* (
 uöt32_t
- *)((ADCË+ 0x08Ë|0x1)
+ *)((
+_ADC_BASE
+ + 
+	`ADC_ID
+(ADCË+ 0x08)Ë|
+	`ADCDMA
+(0x1))
 
 	)
 
-37 
+48 
 	#SëADCC⁄t
 (
 ADC
 Ë(* (
 uöt32_t
- *)((ADCË+ 0x08Ë|0x1)
+ *)((
+_ADC_BASE
+ + 
+	`ADC_ID
+(ADC)Ë+ 0x08Ë|
+	`ADCC⁄t
+(0x1))
 
 	)
 
-39 
+50 
 	#SëADCDDS
 (
 ADC
 Ë(* (
 uöt32_t
- *)((ADCË+ 0x08Ë|0x1)
+ *)((
+_ADC_BASE
+ + 
+	`ADC_ID
+(ADC)Ë+ 0x08Ë|
+	`ADCDDS
+(0x1))
 
 	)
 
-41 
+52 
 	#SëADCAd⁄
 (
 ADC
 Ë(* (
 uöt32_t
- *)((ADCË+ 0x08Ë|0x1)
+ *)((
+_ADC_BASE
+ + 
+	`ADC_ID
+(ADC)Ë+ 0x08Ë|
+	`ADCAd⁄
+(0x1))
 
 	)
 
-43 
+54 
 	#SëADCSWSèπ
 (
 ADC
 Ë(* (
 uöt32_t
- *)((ADCË+ 0x08Ë|0x1)
+ *)((
+_ADC_BASE
+ + 
+	`ADC_ID
+(ADC)Ë+ 0x08Ë|
+	`ADCSWSèπ
+(0x1))
 
 	)
 
-45 
+56 
 	#C⁄fADCLígth
 (
 ADC
@@ -311,13 +461,21 @@ ADC
 LENGTH
 Ë{* ((
 uöt32_t
- *)((ADC) + 0x2C)) = \
+ *)((
+_ADC_BASE
+ + 
+	`ADC_ID
+(ADC)) + 0x2C)) = \
 
-46 ((* ((
+57 ((* ((
 uöt32_t
  *)((
+_ADC_BASE
+ + 
+	`ADC_ID
+(
 ADC
-Ë+ 0x2C))&(~(0xF)))|
+)Ë+ 0x2C))&(~(0xF)))|
 	`ADCLígth
 (
 LENGTH
@@ -325,7 +483,7 @@ LENGTH
 
 	)
 
-48 
+59 
 	#C⁄fADCSQ1
 (
 ADC
@@ -339,13 +497,21 @@ CH3
 CH4
 Ë{* ((
 uöt32_t
- *)((ADC) + 0x2C)) = \
+ *)((
+_ADC_BASE
+ + 
+	`ADC_ID
+(ADC)) + 0x2C)) = \
 
-49 ((* ((
+60 ((* ((
 uöt32_t
  *)((
+_ADC_BASE
+ + 
+	`ADC_ID
+(
 ADC
-Ë+ 0x2C))&(~(0xFFFFF)))|
+)Ë+ 0x2C))&(~(0xFFFFF)))|
 	`ADCSQ1
 (
 CH1
@@ -359,7 +525,7 @@ CH4
 
 	)
 
-51 
+62 
 	#C⁄fADCSQ2
 (
 ADC
@@ -377,13 +543,21 @@ CH9
 CH10
 Ë{* ((
 uöt32_t
- *)((ADC) + 0x30)) = \
+ *)((
+_ADC_BASE
+ + 
+	`ADC_ID
+(ADC)) + 0x30)) = \
 
-52 ((* ((
+63 ((* ((
 uöt32_t
  *)((
+_ADC_BASE
+ + 
+	`ADC_ID
+(
 ADC
-Ë+ 0x30))&(~(0x3FFFFFFF)))|
+)Ë+ 0x30))&(~(0x3FFFFFFF)))|
 	`ADCSQ2
 (
 CH5
@@ -401,7 +575,7 @@ CH10
 
 	)
 
-54 
+65 
 	#C⁄fADCSQ3
 (
 ADC
@@ -419,13 +593,21 @@ CH15
 CH16
 Ë{* ((
 uöt32_t
- *)((ADC) + 0x34)) = \
+ *)((
+_ADC_BASE
+ + 
+	`ADC_ID
+(ADC)) + 0x34)) = \
 
-55 ((* ((
+66 ((* ((
 uöt32_t
  *)((
+_ADC_BASE
+ + 
+	`ADC_ID
+(
 ADC
-Ë+ 0x34))&(~(0x3FFFFFFF)))|
+)Ë+ 0x34))&(~(0x3FFFFFFF)))|
 	`ADCSQ3
 (
 CH11
@@ -443,7 +625,7 @@ CH16
 
 	)
 
-57 
+68 
 	#C⁄fADCSm¥1
 (
 ADC
@@ -451,13 +633,21 @@ ADC
 CYCLES
 Ë{* ((
 uöt32_t
- *)((ADC) + 0x0C)) = \
+ *)((
+_ADC_BASE
+ + 
+	`ADC_ID
+(ADC)) + 0x0C)) = \
 
-58 ((* ((
+69 ((* ((
 uöt32_t
  *)((
+_ADC_BASE
+ + 
+	`ADC_ID
+(
 ADC
-Ë+ 0x0C))&(~(0x7FFFFFF)))|
+)Ë+ 0x0C))&(~(0x7FFFFFF)))|
 	`ADCSm¥1
 (
 CYCLES
@@ -465,7 +655,7 @@ CYCLES
 
 	)
 
-60 
+71 
 	#C⁄fADCSm¥2
 (
 ADC
@@ -473,13 +663,21 @@ ADC
 CYCLES
 Ë{* ((
 uöt32_t
- *)((ADC) + 0x10)) = \
+ *)((
+_ADC_BASE
+ + 
+	`ADC_ID
+(ADC)) + 0x10)) = \
 
-61 ((* ((
+72 ((* ((
 uöt32_t
  *)((
+_ADC_BASE
+ + 
+	`ADC_ID
+(
 ADC
-Ë+ 0x10))&(~(0x3FFFFFFF)))|
+)Ë+ 0x10))&(~(0x3FFFFFFF)))|
 	`ADCSm¥2
 (
 CYCLES
@@ -487,7 +685,7 @@ CYCLES
 
 	)
 
-63 
+74 
 	#C⁄fADCSm¥
 (
 ADC
@@ -495,35 +693,35 @@ ADC
 NUMBER
 ,
 CYCLES
-) {\
+) { \
 
-64 (
+75 if(
 NUMBER
- > 0Ë(
+ > 0Ë
 	`C⁄fADCSm¥2
 (
 ADC
 ,
 CYCLES
-)) : \
+); \
 
-65 (
+76 if(
 NUMBER
- > 10Ë(
+ > 10Ë
 	`C⁄fADCSm¥1
 (
 ADC
 ,
 CYCLES
-)); }
+); }
 
 	)
 
-68 #if(
+78 #if(
 _Devñ›îDïªˇãdFun˘i⁄s
  == 1)
 
-72 
+82 
 	#£t_adc_sq1_6
 (
 adc
@@ -543,13 +741,19 @@ ch5
 ch6
 Ë(* (
 uöt32_t
- *)(◊dcË+ 0x34Ë|
+ *)((
+_ADC_BASE
+ + 
+	`ADC_ID
+(
+ADC
+)Ë+ 0x34Ë|
 	`numb_sq1_c⁄f
 “umbî,ch1,ch2,ch3,ch4,ch5,ch6))
 
 	)
 
-74 
+84 
 	#£t_adc_sq7_12
 (
 adc
@@ -569,13 +773,19 @@ ch11
 ch12
 Ë(* (
 uöt32_t
- *)(◊dcË+ 0x30Ë|
+ *)(((
+_ADC_BASE
+ + 
+	`ADC_ID
+(
+ADC
+)Ë+ 0x30Ë|
 	`numb_sq2_c⁄f
 “umbî,ch7,ch8,ch9,ch10,ch11,ch12))
 
 	)
 
-76 
+86 
 	#£t_adc_sq13_16
 (
 adc
@@ -591,13 +801,19 @@ ch15
 ch16
 Ë(* (
 uöt32_t
- *)(◊dcË+ 0x2CË|
+ *)((
+_ADC_BASE
+ + 
+	`ADC_ID
+(
+ADC
+)Ë+ 0x2CË|
 	`numb_sq3_c⁄f
 “umbî,ch13,ch14,ch15,ch16))
 
 	)
 
-78 
+88 
 	#numb_sq1_c⁄f
 (
 numbî
@@ -617,7 +833,7 @@ ch6
 
 	)
 
-80 
+90 
 	#numb_sq2_c⁄f
 (
 numbî
@@ -637,7 +853,7 @@ ch12
 
 	)
 
-82 
+92 
 	#numb_sq3_c⁄f
 (
 numbî
@@ -653,7 +869,7 @@ ch16
 
 	)
 
-84 
+94 
 	#£t_adc_smp10_18
 (
 adc
@@ -663,13 +879,19 @@ numbî
 smp
 Ë(* (
 uöt32_t
- *)(◊dcË+ 0x0CË|
+ *)((
+_ADC_BASE
+ + 
+	`ADC_ID
+(
+ADC
+)Ë+ 0x0CË|
 	`numb_sm¥1_c⁄f
 “umbî,smp))
 
 	)
 
-86 
+96 
 	#£t_adc_smp0_9
 (
 adc
@@ -679,13 +901,19 @@ numbî
 smp
 Ë(* (
 uöt32_t
- *)(◊dcË+ 0x10Ë|
+ *)((
+_ADC_BASE
+ + 
+	`ADC_ID
+(
+ADC
+)Ë+ 0x10Ë|
 	`numb_sm¥2_c⁄f
 “umbî,smp))
 
 	)
 
-88 
+98 
 	#numb_sm¥2_c⁄f
 (
 numbî
@@ -695,7 +923,7 @@ vÆue
 
 	)
 
-90 
+100 
 	#numb_sm¥1_c⁄f
 (
 numbî
@@ -705,7 +933,7 @@ vÆue
 
 	)
 
-92 
+102 
 	#c⁄fig_c⁄vîsi⁄s
 (
 adc
@@ -745,7 +973,7 @@ ch15
 ch16
 ) {\
 
-93 
+103 
 	`£t_adc_sq1_6
 (
 adc
@@ -765,7 +993,7 @@ ch5
 ch6
 ); \
 
-94 
+104 
 	`£t_adc_sq7_12
 (
 adc
@@ -785,7 +1013,7 @@ ch11
 ch12
 ); \
 
-95 
+105 
 	`£t_adc_sq13_16
 (
 adc
@@ -803,7 +1031,7 @@ ch16
 
 	)
 
-97 
+107 
 	#c⁄fig_sm¥
 (
 adc
@@ -813,7 +1041,7 @@ numbî
 vÆue
 ) { \
 
-98 
+108 
 	`£t_adc_smp0_9
 (
 adc
@@ -823,7 +1051,7 @@ numbî
 vÆue
 ); \
 
-99 
+109 
 	`£t_adc_smp10_18
 (
 adc
@@ -835,7 +1063,7 @@ vÆue
 
 	)
 
-103 
+113 
 	#ADCLígth
 (
 LENGTH
@@ -845,17 +1073,17 @@ uöt32_t
 
 	)
 
-105 
+115 
 	#ADCSˇn
 (
-sˇn
+SCAN
 Ë((
 uöt32_t
-)((sˇnË<< 8))
+)((SCANË<< 8))
 
 	)
 
-107 
+117 
 	#ADCC⁄t
 (
 c⁄t
@@ -865,17 +1093,17 @@ uöt32_t
 
 	)
 
-109 
+119 
 	#ADCDMA
 (
 dma
 Ë((
 uöt32_t
-)((dmaË<< 14))
+)((dmaË<< 8))
 
 	)
 
-111 
+121 
 	#ADCAd⁄
 (
 ad⁄
@@ -885,7 +1113,7 @@ uöt32_t
 
 	)
 
-113 
+123 
 	#ADCSWSèπ
 (
 SWS
@@ -895,17 +1123,27 @@ uöt32_t
 
 	)
 
-115 
+125 
 	#ADCDDS
 (
 dds
 Ë((
 uöt32_t
-)((ddsË<< 13))
+)((ddsË<< 9))
 
 	)
 
-117 
+127 
+	#ADCResﬁuti⁄
+(
+RES
+Ë((
+uöt32_t
+)((RESË<< 28))
+
+	)
+
+129 
 	#ADCSQ1
 (
 CH1
@@ -917,7 +1155,7 @@ CH3
 CH4
 ) (CH1 << 15) | (CH2 << 10) | \
 
-118 (
+130 (
 CH3
  << 5Ë| (
 CH4
@@ -925,7 +1163,7 @@ CH4
 
 	)
 
-121 
+133 
 	#ADCSQ2
 (
 CH5
@@ -941,13 +1179,13 @@ CH9
 CH10
 ) (CH5 << 25) | (CH6 << 20) | \
 
-122 (
+134 (
 CH7
  << 15Ë| (
 CH8
  << 10) | \
 
-123 (
+135 (
 CH9
  << 5Ë| (
 CH10
@@ -955,7 +1193,7 @@ CH10
 
 	)
 
-126 
+138 
 	#ADCSQ3
 (
 CH11
@@ -971,13 +1209,13 @@ CH15
 CH16
 ) (CH11 << 25) | (CH12 << 20) | \
 
-127 (
+139 (
 CH13
  << 15Ë| (
 CH14
  << 10) | \
 
-128 (
+140 (
 CH15
  << 5Ë| (
 CH16
@@ -985,39 +1223,39 @@ CH16
 
 	)
 
-130 
+142 
 	#ADCSm¥1
 (
 CYCLES
 ) (CYCLES << 24) | (CYCLES << 21) | (CYCLES << 18) | \
 
-131 (
+143 (
 CYCLES
  << 15) | (CYCLES << 12) | (CYCLES << 9) | \
 
-132 (
+144 (
 CYCLES
  << 6Ë| (CYCLES << 3Ë| (CYCLES)
 
 	)
 
-134 
+146 
 	#ADCSm¥2
 (
 CYCLES
 ) (CYCLES << 27) | (CYCLES << 24) | (CYCLES << 21) | \
 
-135 (
+147 (
 CYCLES
  << 18) | (CYCLES << 15) | (CYCLES << 12) | \
 
-136 (
+148 (
 CYCLES
  << 9Ë| (CYCLES << 6Ë| (CYCLES << 3Ë| (CYCLES)
 
 	)
 
-138 
+150 
 	#ADCOvîrun
 (
 ovr
@@ -1027,7 +1265,7 @@ uöt32_t
 
 	)
 
-140 
+152 
 	#ADCSåt
 (
 °π
@@ -1037,7 +1275,7 @@ uöt32_t
 
 	)
 
-142 
+154 
 	#ADCJ°π
 (
 j°π
@@ -1047,7 +1285,7 @@ uöt32_t
 
 	)
 
-144 
+156 
 	#ADCJeoc
 (
 jeoc
@@ -1057,7 +1295,7 @@ uöt32_t
 
 	)
 
-146 
+158 
 	#ADCEoc
 (
 eoc
@@ -1067,7 +1305,7 @@ uöt32_t
 
 	)
 
-148 
+160 
 	#ADCAwd
 (
 awd
@@ -1077,7 +1315,7 @@ uöt32_t
 
 	)
 
-150 
+162 
 	#ADCOvîIe
 (
 ovîõ
@@ -1087,7 +1325,7 @@ uöt32_t
 
 	)
 
-152 
+164 
 	#ADCRes
 (
 ªs
@@ -1097,7 +1335,7 @@ uöt32_t
 
 	)
 
-154 
+166 
 	#ADCAwdí
 (
 awdí
@@ -1107,7 +1345,7 @@ uöt32_t
 
 	)
 
-156 
+168 
 	#ADCJawdí
 (
 jawdí
@@ -1117,7 +1355,7 @@ uöt32_t
 
 	)
 
-158 
+170 
 	#ADCDis˙um
 (
 dis˙um
@@ -1127,7 +1365,7 @@ uöt32_t
 
 	)
 
-160 
+172 
 	#ADCJdis˚n
 (
 jdis˚n
@@ -1137,7 +1375,7 @@ uöt32_t
 
 	)
 
-162 
+174 
 	#ADCDis˚n
 (
 dis˚n
@@ -1147,7 +1385,7 @@ uöt32_t
 
 	)
 
-164 
+176 
 	#ADCJauto
 (
 jauto
@@ -1157,7 +1395,7 @@ uöt32_t
 
 	)
 
-166 
+178 
 	#ADCAwdsgl
 (
 awdsgl
@@ -1167,7 +1405,7 @@ uöt32_t
 
 	)
 
-168 
+180 
 	#ADCJeocIe
 (
 jeocõ
@@ -1177,7 +1415,7 @@ uöt32_t
 
 	)
 
-170 
+182 
 	#ADCAwdIe
 (
 awdõ
@@ -1187,7 +1425,7 @@ uöt32_t
 
 	)
 
-172 
+184 
 	#ADCEocIe
 (
 eocõ
@@ -1197,7 +1435,7 @@ uöt32_t
 
 	)
 
-174 
+186 
 	#ADCAwdch
 (
 awdch
@@ -1207,7 +1445,7 @@ uöt32_t
 
 	)
 
-176 
+188 
 	#ADCExã∫
 (
 exãn
@@ -1217,7 +1455,7 @@ uöt32_t
 
 	)
 
-178 
+190 
 	#ADCExt£l
 (
 ext£l
@@ -1229,7 +1467,7 @@ ext£é
 
 	)
 
-180 
+192 
 	#ADCJSWSèπ
 (
 jsw°¨t
@@ -1239,7 +1477,7 @@ uöt32_t
 
 	)
 
-182 
+194 
 	#ADCJõxã∫
 (
 jõxãn
@@ -1249,7 +1487,7 @@ uöt32_t
 
 	)
 
-184 
+196 
 	#ADCJõx£l
 (
 jõx£l
@@ -1259,7 +1497,7 @@ uöt32_t
 
 	)
 
-186 
+198 
 	#ADCAlign
 (
 Æign
@@ -1269,7 +1507,7 @@ uöt32_t
 
 	)
 
-188 
+200 
 	#ADCEocs
 (
 eocs
@@ -1279,7 +1517,7 @@ uöt32_t
 
 	)
 
-190 
+202 
 	#ADCJofs£t
 (
 joff£t
@@ -1289,7 +1527,7 @@ uöt32_t
 
 	)
 
-192 
+204 
 	#ADCHt
 (
 ht
@@ -1299,7 +1537,7 @@ uöt32_t
 
 	)
 
-194 
+206 
 	#ADCLå
 (
 …r
@@ -1309,7 +1547,7 @@ uöt32_t
 
 	)
 
-196 
+208 
 	#ADCJl
 (
 jl
@@ -1319,7 +1557,7 @@ uöt32_t
 
 	)
 
-198 
+210 
 	#ADCJd©a
 (
 jd©a
@@ -1329,7 +1567,7 @@ uöt32_t
 
 	)
 
-200 
+212 
 	#ADCDR
 (
 dr
@@ -1339,7 +1577,7 @@ uöt32_t
 
 	)
 
-202 
+214 
 	#ADCOvr3
 (
 ovr3
@@ -1349,7 +1587,7 @@ uöt32_t
 
 	)
 
-204 
+216 
 	#ADCSåt3
 (
 °π3
@@ -1359,7 +1597,7 @@ uöt32_t
 
 	)
 
-206 
+218 
 	#ADCJ°π3
 (
 j°π3
@@ -1369,7 +1607,7 @@ uöt32_t
 
 	)
 
-208 
+220 
 	#ADCJeoc3
 (
 jeoc3
@@ -1379,7 +1617,7 @@ uöt32_t
 
 	)
 
-210 
+222 
 	#ADCEoc3
 (
 eoc3
@@ -1389,7 +1627,7 @@ uöt32_t
 
 	)
 
-212 
+224 
 	#ADCAwd3
 (
 awd3
@@ -1399,7 +1637,7 @@ uöt32_t
 
 	)
 
-214 
+226 
 	#ADCOvr2
 (
 ovr2
@@ -1409,7 +1647,7 @@ uöt32_t
 
 	)
 
-216 
+228 
 	#ADCSåt2
 (
 °π2
@@ -1419,7 +1657,7 @@ uöt32_t
 
 	)
 
-218 
+230 
 	#ADCJ°π2
 (
 j°π2
@@ -1429,7 +1667,7 @@ uöt32_t
 
 	)
 
-220 
+232 
 	#ADCJeoc2
 (
 jeoc2
@@ -1439,7 +1677,7 @@ uöt32_t
 
 	)
 
-222 
+234 
 	#ADCEoc2
 (
 eoc2
@@ -1449,7 +1687,7 @@ uöt32_t
 
 	)
 
-224 
+236 
 	#ADCAwd2
 (
 awd2
@@ -1459,7 +1697,7 @@ uöt32_t
 
 	)
 
-226 
+238 
 	#ADCOvr1
 (
 ovr1
@@ -1469,7 +1707,7 @@ uöt32_t
 
 	)
 
-228 
+240 
 	#ADCSåt1
 (
 °π1
@@ -1479,7 +1717,7 @@ uöt32_t
 
 	)
 
-230 
+242 
 	#ADCJ°π1
 (
 j°π1
@@ -1489,7 +1727,7 @@ uöt32_t
 
 	)
 
-232 
+244 
 	#ADCJeoc1
 (
 jeoc1
@@ -1499,7 +1737,7 @@ uöt32_t
 
 	)
 
-234 
+246 
 	#ADCEoc1
 (
 eoc1
@@ -1509,7 +1747,7 @@ uöt32_t
 
 	)
 
-236 
+248 
 	#ADCAwd1
 (
 awd1
@@ -1519,7 +1757,7 @@ uöt32_t
 
 	)
 
-238 
+250 
 	#ADCTsvª„
 (
 tsvª„
@@ -1529,7 +1767,7 @@ uöt32_t
 
 	)
 
-240 
+252 
 	#ADCVb©e
 (
 vb©e
@@ -1539,7 +1777,7 @@ uöt32_t
 
 	)
 
-242 
+254 
 	#ADCAd˝ª
 (
 ad˝ª
@@ -1549,7 +1787,7 @@ uöt32_t
 
 	)
 
-244 
+256 
 	#ADCDñay
 (
 dñay
@@ -1559,7 +1797,7 @@ uöt32_t
 
 	)
 
-246 
+258 
 	#ADCMu…i
 (
 mu…i
@@ -1569,7 +1807,7 @@ uöt32_t
 
 	)
 
-248 
+260 
 	#ADCD©a1
 (
 d©a1
@@ -1579,7 +1817,7 @@ uöt32_t
 
 	)
 
-250 
+262 
 	#ADCD©a2
 (
 d©a2
@@ -1618,6 +1856,8 @@ dma
 ,
 evít
 ,
+ndå
+,
 ¥i‹ôy
 ,
 võw
@@ -1626,7 +1866,7 @@ addªss_1
 ,
 addªss_2
 ,
-size
+mpsize
 ) { \
 
 73 
@@ -1645,7 +1885,7 @@ dma
 evít
 ,((
 uöt32_t
-)&
+)
 addªss_1
 )); \
 
@@ -1657,7 +1897,7 @@ dma
 evít
 ,((
 uöt32_t
-)&
+)
 addªss_2
 )); \
 
@@ -1702,7 +1942,7 @@ dma
 ,
 evít
 ,
-size
+mpsize
 ); \
 
 81 
@@ -1712,7 +1952,7 @@ dma
 ,
 evít
 ,
-size
+mpsize
 ); \
 
 82 
@@ -1734,10 +1974,12 @@ evít
 84 
 	`c⁄f_dma_ndå
 (
-dma
+dma2
 ,
-evít
-,0x9); \
+ADC_1
+,(
+ndå
++1)); \
 
 85 
 	`£t_dma_í
@@ -1754,6 +1996,8 @@ evít
 (
 evít
 ,
+ndå
+,
 èrgë_addr
 ,
 ª˚ivî_addr
@@ -1761,7 +2005,7 @@ evít
 	`DMA_öô
 (
 dma2
-,evít,0x3,0x0,èrgë_addr,ª˚ivî_addr,0x1)
+,evít,ndå,0x3,0x0,èrgë_addr,ª˚ivî_addr,0x1)
 
 	)
 
@@ -1783,7 +2027,7 @@ dma
 uöt32_t
 )(
 dma_ba£
- + (((dma&0x2Ë>> 1 ) * ((uöt32_t)0x400)))
+ + (((dma&0x2Ë>> 1 ) * ((uöt32_t)0x400))))
 
 	)
 
@@ -2458,7 +2702,7 @@ uöt32_t
 (
 ndå
 Ë((
-uöt32_t
+uöt16_t
 )“då))
 
 	)
@@ -2541,7 +2785,7 @@ dma
 evít
 Ë(* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x10 + 
 	`check_°ªam
@@ -2551,7 +2795,7 @@ deÁu…_s
 	`dma_£À˘i⁄
 (
 	`∑r£_ch™√l
-”vít))
+”vít)))
 
 	)
 
@@ -2565,7 +2809,7 @@ evít
 mbur°
 Ë(* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x10 + 
 	`check_°ªam
@@ -2573,7 +2817,7 @@ uöt32_t
 deÁu…_s
 ,evít))Ë|
 	`dma_mbur°
-(mbur°)
+(mbur°))
 
 	)
 
@@ -2587,7 +2831,7 @@ evít
 pbur°
 Ë(* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x10 + 
 	`check_°ªam
@@ -2595,7 +2839,7 @@ uöt32_t
 deÁu…_s
 ,evít))Ë|
 	`dma_pbur°
-’bur°)
+’bur°))
 
 	)
 
@@ -2609,7 +2853,7 @@ evít
 ˘
 Ë(* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x10 + 
 	`check_°ªam
@@ -2617,7 +2861,7 @@ uöt32_t
 deÁu…_s
 ,evít))Ë|
 	`dma_˘
-(˘)
+(˘))
 
 	)
 
@@ -2631,7 +2875,7 @@ evít
 dbm
 Ë(* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x10 + 
 	`check_°ªam
@@ -2639,7 +2883,7 @@ uöt32_t
 deÁu…_s
 ,evít))Ë|
 	`dma_dbm
-(dbm)
+(dbm))
 
 	)
 
@@ -2653,7 +2897,7 @@ evít
 ∂
 Ë(* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x10 + 
 	`check_°ªam
@@ -2661,7 +2905,7 @@ uöt32_t
 deÁu…_s
 ,evít))Ë|
 	`dma_∂
-’l)
+’l))
 
 	)
 
@@ -2675,7 +2919,7 @@ evít
 pöcos
 Ë(* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x10 + 
 	`check_°ªam
@@ -2683,7 +2927,7 @@ uöt32_t
 deÁu…_s
 ,evít))Ë|
 	`dma_pöcos
-’öcos)
+’öcos))
 
 	)
 
@@ -2697,7 +2941,7 @@ evít
 msize
 Ë(* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x10 + 
 	`check_°ªam
@@ -2705,7 +2949,7 @@ uöt32_t
 deÁu…_s
 ,evít))Ë|
 	`dma_msize
-(msize)
+(msize))
 
 	)
 
@@ -2719,7 +2963,7 @@ evít
 psize
 Ë(* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x10 + 
 	`check_°ªam
@@ -2727,7 +2971,7 @@ uöt32_t
 deÁu…_s
 ,evít))Ë|
 	`dma_psize
-’size)
+’size))
 
 	)
 
@@ -2741,7 +2985,7 @@ evít
 möc
 Ë(* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x10 + 
 	`check_°ªam
@@ -2749,7 +2993,7 @@ uöt32_t
 deÁu…_s
 ,evít))Ë|
 	`dma_möc
-(möc)
+(möc))
 
 	)
 
@@ -2763,7 +3007,7 @@ evít
 pöc
 Ë(* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x10 + 
 	`check_°ªam
@@ -2771,7 +3015,7 @@ uöt32_t
 deÁu…_s
 ,evít))Ë|
 	`dma_pöc
-’öc)
+’öc))
 
 	)
 
@@ -2785,7 +3029,7 @@ evít
 cúc
 Ë(* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x10 + 
 	`check_°ªam
@@ -2793,7 +3037,7 @@ uöt32_t
 deÁu…_s
 ,evít))Ë|
 	`dma_cúc
-(cúc)
+(cúc))
 
 	)
 
@@ -2807,7 +3051,7 @@ evít
 dú
 Ë(* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x10 + 
 	`check_°ªam
@@ -2815,7 +3059,7 @@ uöt32_t
 deÁu…_s
 ,evít))Ë|
 	`dma_dú
-(dú))
+(dú)))
 
 	)
 
@@ -2829,7 +3073,7 @@ evít
 pf˘æ
 Ë(* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x10 + 
 	`check_°ªam
@@ -2837,7 +3081,7 @@ uöt32_t
 deÁu…_s
 ,evít))Ë|
 	`dma_pf˘æ
-’f˘æ)
+’f˘æ))
 
 	)
 
@@ -2851,7 +3095,7 @@ evít
 tcõ
 Ë(* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x10 + 
 	`check_°ªam
@@ -2859,7 +3103,7 @@ uöt32_t
 deÁu…_s
 ,evít))Ë|
 	`dma_tcõ
-—cõ)
+—cõ))
 
 	)
 
@@ -2873,7 +3117,7 @@ evít
 htõ
 Ë(* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x10 + 
 	`check_°ªam
@@ -2881,7 +3125,7 @@ uöt32_t
 deÁu…_s
 ,evít))Ë|
 	`dma_htõ
-(htõ)
+(htõ))
 
 	)
 
@@ -2895,7 +3139,7 @@ evít
 ãõ
 Ë(* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x10 + 
 	`check_°ªam
@@ -2903,7 +3147,7 @@ uöt32_t
 deÁu…_s
 ,evít))Ë|
 	`dma_ãõ
-—eõ)
+—eõ))
 
 	)
 
@@ -2917,7 +3161,7 @@ evít
 dmeõ
 Ë(* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x10 + 
 	`check_°ªam
@@ -2925,7 +3169,7 @@ uöt32_t
 deÁu…_s
 ,evít))Ë|
 	`dma_dmeõ
-(dmeõ)
+(dmeõ))
 
 	)
 
@@ -2939,7 +3183,7 @@ evít
 í
 Ë(* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x10 + 
 	`check_°ªam
@@ -2947,7 +3191,7 @@ uöt32_t
 deÁu…_s
 ,evít))Ë|
 	`dma_í
-”n)
+”n))
 
 	)
 
@@ -2961,7 +3205,7 @@ evít
 ndå
 Ë(* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x14 + 
 	`check_°ªam
@@ -2969,7 +3213,7 @@ uöt32_t
 deÁu…_s
 ,evít))Ë|
 	`dma_ndå
-“då)
+“då))
 
 	)
 
@@ -2983,7 +3227,7 @@ evít
 ∑r
 Ë(* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x18 + 
 	`check_°ªam
@@ -2991,7 +3235,7 @@ uöt32_t
 deÁu…_s
 ,evít))Ë|
 	`dma_∑r
-’¨)
+’¨))
 
 	)
 
@@ -3005,7 +3249,7 @@ evít
 m0a
 Ë(* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x1C + 
 	`check_°ªam
@@ -3013,7 +3257,7 @@ uöt32_t
 deÁu…_s
 ,evít))Ë|
 	`dma_m0a
-(m0a)
+(m0a))
 
 	)
 
@@ -3027,7 +3271,7 @@ evít
 m1a
 Ë(* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x20 + 
 	`check_°ªam
@@ -3035,7 +3279,7 @@ uöt32_t
 deÁu…_s
 ,evít))Ë|
 	`dma_m1a
-(m1a)
+(m1a))
 
 	)
 
@@ -3049,7 +3293,7 @@ evít
 „õ
 Ë(* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x24 + 
 	`check_°ªam
@@ -3057,7 +3301,7 @@ uöt32_t
 fifo_s
 ,evít))Ë|
 	`dma_„õ
-(„õ)
+(„õ))
 
 	)
 
@@ -3071,7 +3315,7 @@ evít
 fs
 Ë(* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x24 + 
 	`check_°ªam
@@ -3079,7 +3323,7 @@ uöt32_t
 fifo_s
 ,evít))Ë|
 	`dma_fs
-(fs)
+(fs))
 
 	)
 
@@ -3093,7 +3337,7 @@ evít
 dmdis
 Ë(* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x24 + 
 	`check_°ªam
@@ -3101,7 +3345,7 @@ uöt32_t
 fifo_s
 ,evít))Ë|
 	`dma_dmdis
-(dmdis)
+(dmdis))
 
 	)
 
@@ -3115,7 +3359,7 @@ evít
 ·h
 Ë(* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x24 + 
 	`check_°ªam
@@ -3123,7 +3367,7 @@ uöt32_t
 fifo_s
 ,evít))Ë|
 	`dma_·h
-(·h)
+(·h))
 
 	)
 
@@ -3135,7 +3379,7 @@ dma
 evít
 Ë(* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x10 + 
 	`check_°ªam
@@ -3143,7 +3387,7 @@ uöt32_t
 deÁu…_s
 ,evít))Ë&(~
 	`dma_£À˘i⁄
-(0x7))
+(0x7)))
 
 	)
 
@@ -3155,7 +3399,7 @@ dma
 evít
 Ë(* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x10 + 
 	`check_°ªam
@@ -3163,7 +3407,7 @@ uöt32_t
 deÁu…_s
 ,evít))Ë&(~
 	`dma_mbur°
-(0x3))
+(0x3)))
 
 	)
 
@@ -3175,7 +3419,7 @@ dma
 evít
 Ë(* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x10 + 
 	`check_°ªam
@@ -3183,7 +3427,7 @@ uöt32_t
 deÁu…_s
 ,evít))Ë&(~
 	`dma_pbur°
-(0x3))
+(0x3)))
 
 	)
 
@@ -3195,7 +3439,7 @@ dma
 evít
 Ë(* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x10 + 
 	`check_°ªam
@@ -3203,7 +3447,7 @@ uöt32_t
 deÁu…_s
 ,evít))Ë&(~
 	`dma_˘
-(0x1))
+(0x1)))
 
 	)
 
@@ -3215,7 +3459,7 @@ dma
 evít
 Ë(* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x10 + 
 	`check_°ªam
@@ -3223,7 +3467,7 @@ uöt32_t
 deÁu…_s
 ,evít))Ë&(~
 	`dma_dbm
-(0x1))
+(0x1)))
 
 	)
 
@@ -3235,7 +3479,7 @@ dma
 evít
 Ë(* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x10 + 
 	`check_°ªam
@@ -3243,7 +3487,7 @@ uöt32_t
 deÁu…_s
 ,evít))Ë&(~
 	`dma_∂
-(0x3))
+(0x3)))
 
 	)
 
@@ -3255,7 +3499,7 @@ dma
 evít
 Ë(* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x10 + 
 	`check_°ªam
@@ -3263,7 +3507,7 @@ uöt32_t
 deÁu…_s
 ,evít))Ë&(~
 	`dma_pöcos
-(0x1))
+(0x1)))
 
 	)
 
@@ -3275,7 +3519,7 @@ dma
 evít
 Ë(* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x10 + 
 	`check_°ªam
@@ -3283,7 +3527,7 @@ uöt32_t
 deÁu…_s
 ,evít))Ë&(~
 	`dma_msize
-(0x3))
+(0x3)))
 
 	)
 
@@ -3295,7 +3539,7 @@ dma
 evít
 Ë(* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x10 + 
 	`check_°ªam
@@ -3303,7 +3547,7 @@ uöt32_t
 deÁu…_s
 ,evít))Ë&(~
 	`dma_psize
-(0x3))
+(0x3)))
 
 	)
 
@@ -3315,7 +3559,7 @@ dma
 evít
 Ë(* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x10 + 
 	`check_°ªam
@@ -3323,7 +3567,7 @@ uöt32_t
 deÁu…_s
 ,evít))Ë&(~
 	`dma_möc
-(0x1))
+(0x1)))
 
 	)
 
@@ -3335,7 +3579,7 @@ dma
 evít
 Ë(* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x10 + 
 	`check_°ªam
@@ -3343,7 +3587,7 @@ uöt32_t
 deÁu…_s
 ,evít))Ë&(~
 	`dma_pöc
-(0x1))
+(0x1)))
 
 	)
 
@@ -3525,7 +3769,7 @@ deÁu…_s
 evít
 ))Ë&(~
 	`dma_ndå
-(0xFFFFFFFF))
+(0xFFFF))
 
 	)
 
@@ -3675,9 +3919,9 @@ fifo_s
 dma
 ,
 evít
-Ë{* ((
+Ë{* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x10 + 
 	`check_°ªam
@@ -3697,15 +3941,15 @@ dma
 deÁu…_s
 ,
 evít
-))))&(~
+)))&(~
 	`dma_£À˘i⁄
 (0x7)))|dma_£À˘i⁄(
 	`∑r£_ch™√l
-”vít));}
+”vít)));}
 
 	)
 
-297 
+298 
 	#c⁄f_dma_mbur°
 (
 dma
@@ -3713,9 +3957,9 @@ dma
 evít
 ,
 mbur°
-Ë{* ((
+Ë{* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x10 + 
 	`check_°ªam
@@ -3723,7 +3967,7 @@ uöt32_t
 deÁu…_s
 ,event))) = \
 
-298 ((* ((
+299 ((* ((
 uöt32_t
  *)(
 	`dma_id
@@ -3735,15 +3979,15 @@ dma
 deÁu…_s
 ,
 evít
-))))&(~
+)))&(~
 	`dma_mbur°
 (0x3)))|dma_mbur°(
 mbur°
-);}
+));}
 
 	)
 
-299 
+301 
 	#c⁄f_dma_pbur°
 (
 dma
@@ -3751,47 +3995,9 @@ dma
 evít
 ,
 pbur°
-Ë{* ((
+Ë{* (
 uöt32_t
- *)(
-	`dma_id
-(dma)Ë+ (0x10 + 
-	`check_°ªam
-(
-deÁu…_s
-,event))) = \
-
-300 ((* ((
-uöt32_t
- *)(
-	`dma_id
-(
-dma
-)Ë+ (0x10 + 
-	`check_°ªam
-(
-deÁu…_s
-,
-evít
-))))&(~
-	`dma_pbur°
-(0x3)))|dma_pbur°(
-pbur°
-);}
-
-	)
-
-301 
-	#c⁄f_dma_˘
-(
-dma
-,
-evít
-,
-˘
-Ë{* ((
-uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x10 + 
 	`check_°ªam
@@ -3811,15 +4017,53 @@ dma
 deÁu…_s
 ,
 evít
-))))&(~
-	`dma_˘
-(0x1)))|dma_˘(
-˘
-);}
+)))&(~
+	`dma_pbur°
+(0x3)))|dma_pbur°(
+pbur°
+));}
 
 	)
 
-303 
+304 
+	#c⁄f_dma_˘
+(
+dma
+,
+evít
+,
+˘
+Ë{* (
+uöt32_t
+ *)((
+	`dma_id
+(dma)Ë+ (0x10 + 
+	`check_°ªam
+(
+deÁu…_s
+,event))) = \
+
+305 ((* ((
+uöt32_t
+ *)(
+	`dma_id
+(
+dma
+)Ë+ (0x10 + 
+	`check_°ªam
+(
+deÁu…_s
+,
+evít
+)))&(~
+	`dma_˘
+(0x1)))|dma_˘(
+˘
+));}
+
+	)
+
+307 
 	#c⁄f_dma_dbm
 (
 dma
@@ -3827,91 +4071,15 @@ dma
 evít
 ,
 dbm
-Ë{* ((
+Ë{* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x10 + 
 	`check_°ªam
 (
 deÁu…_s
 ,event)))) = \
-
-304 ((* ((
-uöt32_t
- *)(
-	`dma_id
-(
-dma
-)Ë+ (0x10 + 
-	`check_°ªam
-(
-deÁu…_s
-,
-evít
-))))&(~
-	`dma_dbm
-(0x1)))|dma_dbm(
-dbm
-);}
-
-	)
-
-305 
-	#c⁄f_dma_∂
-(
-dma
-,
-evít
-,
-∂
-Ë{* ((
-uöt32_t
- *)(
-	`dma_id
-(dma)Ë+ (0x10 + 
-	`check_°ªam
-(
-deÁu…_s
-,event))) = \
-
-306 ((* ((
-uöt32_t
- *)(
-	`dma_id
-(
-dma
-)Ë+ (0x10 + 
-	`check_°ªam
-(
-deÁu…_s
-,
-evít
-))))&(~
-	`dma_∂
-(0x3)))|dma_∂(
-∂
-);}
-
-	)
-
-307 
-	#c⁄f_dma_pöcos
-(
-dma
-,
-evít
-,
-pöcos
-Ë{* ((
-uöt32_t
- *)(
-	`dma_id
-(dma)Ë+ (0x10 + 
-	`check_°ªam
-(
-deÁu…_s
-,event))) = \
 
 308 ((* ((
 uöt32_t
@@ -3925,25 +4093,25 @@ dma
 deÁu…_s
 ,
 evít
-))))&(~
-	`dma_pöcos
-(0x1)))|dma_pöcos(
-pöcos
-);}
+)))&(~
+	`dma_dbm
+(0x1)))|dma_dbm(
+dbm
+));}
 
 	)
 
-309 
-	#c⁄f_dma_msize
+310 
+	#c⁄f_dma_∂
 (
 dma
 ,
 evít
 ,
-msize
-Ë{* ((
+∂
+Ë{* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x10 + 
 	`check_°ªam
@@ -3951,7 +4119,7 @@ uöt32_t
 deÁu…_s
 ,event))) = \
 
-310 ((* ((
+311 ((* ((
 uöt32_t
  *)(
 	`dma_id
@@ -3963,63 +4131,25 @@ dma
 deÁu…_s
 ,
 evít
-))))&(~
-	`dma_msize
-(0x3)))|dma_msize(
-msize
-);}
-
-	)
-
-311 
-	#c⁄f_dma_psize
-(
-dma
-,
-evít
-,
-psize
-Ë{* ((
-uöt32_t
- *)(
-	`dma_id
-(dma)Ë+ (0x10 + 
-	`check_°ªam
-(
-deÁu…_s
-,event))) = \
-
-312 ((* ((
-uöt32_t
- *)(
-	`dma_id
-(
-dma
-)Ë+ (0x10 + 
-	`check_°ªam
-(
-deÁu…_s
-,
-evít
-))))&(~
-	`dma_psize
-(0x3)))|dma_psize(
-psize
-);}
+)))&(~
+	`dma_∂
+(0x3)))|dma_∂(
+∂
+));}
 
 	)
 
 313 
-	#c⁄f_dma_möc
+	#c⁄f_dma_pöcos
 (
 dma
 ,
 evít
 ,
-möc
-Ë{* ((
+pöcos
+Ë{* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x10 + 
 	`check_°ªam
@@ -4039,69 +4169,31 @@ dma
 deÁu…_s
 ,
 evít
-))))&(~
-	`dma_möc
-(0x1)))|dma_möc(
-möc
-);}
-
-	)
-
-315 
-	#c⁄f_dma_pöc
-(
-dma
-,
-evít
-,
-pöc
-Ë{* ((
-uöt32_t
- *)(
-	`dma_id
-(dma)Ë+ (0x10 + 
-	`check_°ªam
-(
-deÁu…_s
-,event))) = \
-
-316 ((* ((
-uöt32_t
- *)(
-	`dma_id
-(
-dma
-)Ë+ (0x10 + 
-	`check_°ªam
-(
-deÁu…_s
-,
-evít
-))))&(~
-	`dma_pöc
-(0x1)))|dma_pöc(
-pöc
-);}
+)))&(~
+	`dma_pöcos
+(0x1)))|dma_pöcos(
+pöcos
+));}
 
 	)
 
 317 
-	#c⁄f_dma_cúc
+	#c⁄f_dma_msize
 (
 dma
 ,
 evít
 ,
-cúc
+msize
 Ë{* ((
 uöt32_t
  *)(
 	`dma_id
-(dma)Ë+ (0x10 + 
+(dmaË+ (0x10Ë+ (
 	`check_°ªam
 (
 deÁu…_s
-,event))) = \
+,event)))) = \
 
 318 ((* ((
 uöt32_t
@@ -4115,25 +4207,25 @@ dma
 deÁu…_s
 ,
 evít
-))))&(~
-	`dma_cúc
-(0x1)))|dma_cúc(
-cúc
-);}
+)))&(~
+	`dma_msize
+(0x3)))|dma_msize(
+msize
+));}
 
 	)
 
-319 
-	#c⁄f_dma_dú
+320 
+	#c⁄f_dma_psize
 (
 dma
 ,
 evít
 ,
-dú
-Ë{* ((
+psize
+Ë{* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x10 + 
 	`check_°ªam
@@ -4141,7 +4233,7 @@ uöt32_t
 deÁu…_s
 ,event))) = \
 
-320 ((* ((
+321 ((* ((
 uöt32_t
  *)(
 	`dma_id
@@ -4153,63 +4245,25 @@ dma
 deÁu…_s
 ,
 evít
-))))&(~
-	`dma_dú
-(0x3)))|dma_dú(
-dú
-);}
-
-	)
-
-321 
-	#c⁄f_dma_pf˘æ
-(
-dma
-,
-evít
-,
-pf˘æ
-Ë{* ((
-uöt32_t
- *)(
-	`dma_id
-(dma)Ë+ (0x10 + 
-	`check_°ªam
-(
-deÁu…_s
-,event))) = \
-
-322 ((* ((
-uöt32_t
- *)(
-	`dma_id
-(
-dma
-)Ë+ (0x10 + 
-	`check_°ªam
-(
-deÁu…_s
-,
-evít
-))))&(~
-	`dma_pf˘æ
-(0x1)))|dma_pf˘æ(
-pf˘æ
-);}
+)))&(~
+	`dma_psize
+(0x3)))|dma_psize(
+psize
+));}
 
 	)
 
 323 
-	#c⁄f_dma_tcõ
+	#c⁄f_dma_möc
 (
 dma
 ,
 evít
 ,
-tcõ
-Ë{* ((
+möc
+Ë{* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x10 + 
 	`check_°ªam
@@ -4229,25 +4283,25 @@ dma
 deÁu…_s
 ,
 evít
-))))&(~
-	`dma_tcõ
-(0x1)))|dma_tcõ(
-tcõ
-);}
+)))&(~
+	`dma_möc
+(0x1)))|dma_möc(
+möc
+));}
 
 	)
 
-325 
-	#c⁄f_dma_htõ
+326 
+	#c⁄f_dma_pöc
 (
 dma
 ,
 evít
 ,
-htõ
-Ë{* ((
+pöc
+Ë{* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x10 + 
 	`check_°ªam
@@ -4255,7 +4309,7 @@ uöt32_t
 deÁu…_s
 ,event))) = \
 
-326 ((* ((
+327 ((* ((
 uöt32_t
  *)(
 	`dma_id
@@ -4267,63 +4321,25 @@ dma
 deÁu…_s
 ,
 evít
-))))&(~
-	`dma_htõ
-(0x1)))|dma_htõ(
-htõ
-);}
-
-	)
-
-327 
-	#c⁄f_dma_ãõ
-(
-dma
-,
-evít
-,
-ãõ
-Ë{* ((
-uöt32_t
- *)(
-	`dma_id
-(dma)Ë+ (0x10 + 
-	`check_°ªam
-(
-deÁu…_s
-,event))) = \
-
-328 ((* ((
-uöt32_t
- *)(
-	`dma_id
-(
-dma
-)Ë+ (0x10 + 
-	`check_°ªam
-(
-deÁu…_s
-,
-evít
-))))&(~
-	`dma_ãõ
-(0x1)))|dma_ãõ(
-ãõ
-);}
+)))&(~
+	`dma_pöc
+(0x1)))|dma_pöc(
+pöc
+));}
 
 	)
 
 329 
-	#c⁄f_dma_dmeõ
+	#c⁄f_dma_cúc
 (
 dma
 ,
 evít
 ,
-dmeõ
-Ë{* ((
+cúc
+Ë{* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x10 + 
 	`check_°ªam
@@ -4343,25 +4359,25 @@ dma
 deÁu…_s
 ,
 evít
-))))&(~
-	`dma_dmeõ
-(0x1)))|dma_dmeõ(
-dmeõ
-);}
+)))&(~
+	`dma_cúc
+(0x1)))|dma_cúc(
+cúc
+));}
 
 	)
 
-331 
-	#c⁄f_dma_í
+332 
+	#c⁄f_dma_dú
 (
 dma
 ,
 evít
 ,
-í
-Ë{* ((
+dú
+Ë{* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x10 + 
 	`check_°ªam
@@ -4369,7 +4385,7 @@ uöt32_t
 deÁu…_s
 ,event))) = \
 
-332 ((* ((
+333 ((* ((
 uöt32_t
  *)(
 	`dma_id
@@ -4381,65 +4397,27 @@ dma
 deÁu…_s
 ,
 evít
-))))&(~
-	`dma_í
-(0x1)))|dma_í(
-í
-);}
-
-	)
-
-333 
-	#c⁄f_dma_ndå
-(
-dma
-,
-evít
-,
-ndå
-Ë{* ((
-uöt32_t
- *)(
-	`dma_id
-(dma)Ë+ (0x14 + 
-	`check_°ªam
-(
-deÁu…_s
-,event))) = \
-
-334 ((* ((
-uöt32_t
- *)(
-	`dma_id
-(
-dma
-)Ë+ (0x14 + 
-	`check_°ªam
-(
-deÁu…_s
-,
-evít
-))))&(~
-	`dma_ndå
-(0xFFFFFFFF)))|dma_ndå(
-ndå
-);}
+)))&(~
+	`dma_dú
+(0x3)))|dma_dú(
+dú
+));}
 
 	)
 
 335 
-	#c⁄f_dma_∑r
+	#c⁄f_dma_pf˘æ
 (
 dma
 ,
 evít
 ,
-∑r
-Ë{* ((
+pf˘æ
+Ë{* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
-(dma)Ë+ (0x18 + 
+(dma)Ë+ (0x10 + 
 	`check_°ªam
 (
 deÁu…_s
@@ -4451,21 +4429,287 @@ uöt32_t
 	`dma_id
 (
 dma
+)Ë+ (0x10 + 
+	`check_°ªam
+(
+deÁu…_s
+,
+evít
+)))&(~
+	`dma_pf˘æ
+(0x1)))|dma_pf˘æ(
+pf˘æ
+));}
+
+	)
+
+338 
+	#c⁄f_dma_tcõ
+(
+dma
+,
+evít
+,
+tcõ
+Ë{* (
+uöt32_t
+ *)((
+	`dma_id
+(dma)Ë+ (0x10 + 
+	`check_°ªam
+(
+deÁu…_s
+,event))) = \
+
+339 ((* ((
+uöt32_t
+ *)(
+	`dma_id
+(
+dma
+)Ë+ (0x10 + 
+	`check_°ªam
+(
+deÁu…_s
+,
+evít
+)))&(~
+	`dma_tcõ
+(0x1)))|dma_tcõ(
+tcõ
+));}
+
+	)
+
+341 
+	#c⁄f_dma_htõ
+(
+dma
+,
+evít
+,
+htõ
+Ë{* (
+uöt32_t
+ *)((
+	`dma_id
+(dma)Ë+ (0x10 + 
+	`check_°ªam
+(
+deÁu…_s
+,event))) = \
+
+342 ((* ((
+uöt32_t
+ *)(
+	`dma_id
+(
+dma
+)Ë+ (0x10 + 
+	`check_°ªam
+(
+deÁu…_s
+,
+evít
+)))&(~
+	`dma_htõ
+(0x1)))|dma_htõ(
+htõ
+));}
+
+	)
+
+344 
+	#c⁄f_dma_ãõ
+(
+dma
+,
+evít
+,
+ãõ
+Ë{* (
+uöt32_t
+ *)((
+	`dma_id
+(dma)Ë+ (0x10 + 
+	`check_°ªam
+(
+deÁu…_s
+,event))) = \
+
+345 ((* ((
+uöt32_t
+ *)(
+	`dma_id
+(
+dma
+)Ë+ (0x10 + 
+	`check_°ªam
+(
+deÁu…_s
+,
+evít
+)))&(~
+	`dma_ãõ
+(0x1)))|dma_ãõ(
+ãõ
+));}
+
+	)
+
+347 
+	#c⁄f_dma_dmeõ
+(
+dma
+,
+evít
+,
+dmeõ
+Ë{* (
+uöt32_t
+ *)((
+	`dma_id
+(dma)Ë+ (0x10 + 
+	`check_°ªam
+(
+deÁu…_s
+,event))) = \
+
+348 ((* ((
+uöt32_t
+ *)(
+	`dma_id
+(
+dma
+)Ë+ (0x10 + 
+	`check_°ªam
+(
+deÁu…_s
+,
+evít
+)))&(~
+	`dma_dmeõ
+(0x1)))|dma_dmeõ(
+dmeõ
+));}
+
+	)
+
+350 
+	#c⁄f_dma_í
+(
+dma
+,
+evít
+,
+í
+Ë{* (
+uöt32_t
+ *)((
+	`dma_id
+(dma)Ë+ (0x10 + 
+	`check_°ªam
+(
+deÁu…_s
+,event))) = \
+
+351 ((* ((
+uöt32_t
+ *)(
+	`dma_id
+(
+dma
+)Ë+ (0x10 + 
+	`check_°ªam
+(
+deÁu…_s
+,
+evít
+)))&(~
+	`dma_í
+(0x1)))|dma_í(
+í
+));}
+
+	)
+
+353 
+	#c⁄f_dma_ndå
+(
+dma
+,
+evít
+,
+ndå
+Ë{* (
+uöt32_t
+ *)((
+	`dma_id
+(dma)Ë+ (0x14 + 
+	`check_°ªam
+(
+deÁu…_s
+,event))) = \
+
+354 ((* ((
+uöt32_t
+ *)(
+	`dma_id
+(
+dma
+)Ë+ (0x14 + 
+	`check_°ªam
+(
+deÁu…_s
+,
+evít
+)))&(~
+	`dma_ndå
+(0xFFFF)))|dma_ndå(
+ndå
+));}
+
+	)
+
+356 
+	#c⁄f_dma_∑r
+(
+dma
+,
+evít
+,
+∑r
+Ë{* (
+uöt32_t
+ *)((
+	`dma_id
+(dma)Ë+ (0x18 + 
+	`check_°ªam
+(
+deÁu…_s
+,event))) = \
+
+357 ((* (
+uöt32_t
+ *)((
+	`dma_id
+(
+dma
 )Ë+ (0x18 + 
 	`check_°ªam
 (
 deÁu…_s
 ,
 evít
-))))&(~
+)))&(~
 	`dma_∑r
 (0xFFFFFFFF)))|dma_∑r(
 ∑r
-);}
+));}
 
 	)
 
-337 
+359 
 	#c⁄f_dma_m0a
 (
 dma
@@ -4473,9 +4717,9 @@ dma
 evít
 ,
 m0a
-Ë{* ((
+Ë{* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x1C + 
 	`check_°ªam
@@ -4483,9 +4727,9 @@ uöt32_t
 deÁu…_s
 ,event))) = \
 
-338 ((* ((
+360 ((* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (
 dma
@@ -4495,15 +4739,15 @@ dma
 deÁu…_s
 ,
 evít
-))))&(~
+)))&(~
 	`dma_m0a
 (0xFFFFFFFF)))|dma_m0a(
 m0a
-);}
+));}
 
 	)
 
-339 
+362 
 	#c⁄f_dma_m1a
 (
 dma
@@ -4511,9 +4755,9 @@ dma
 evít
 ,
 m1a
-Ë{* ((
+Ë{* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x20 + 
 	`check_°ªam
@@ -4521,7 +4765,7 @@ uöt32_t
 deÁu…_s
 ,event))) = \
 
-340 ((* ((
+363 ((* ((
 uöt32_t
  *)(
 	`dma_id
@@ -4533,15 +4777,15 @@ dma
 deÁu…_s
 ,
 evít
-))))&(~
+)))&(~
 	`dma_m1a
 (0xFFFFFFFF)))|dma_m1a(
 m1a
-);}
+));}
 
 	)
 
-341 
+365 
 	#c⁄f_dma_„õ
 (
 dma
@@ -4549,9 +4793,9 @@ dma
 evít
 ,
 „õ
-Ë{* ((
+Ë{* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x24 + 
 	`check_°ªam
@@ -4559,7 +4803,7 @@ uöt32_t
 fifo_s
 ,event))) = \
 
-342 ((* ((
+366 ((* ((
 uöt32_t
  *)(
 	`dma_id
@@ -4571,15 +4815,15 @@ dma
 fifo_s
 ,
 evít
-))))&(~
+))&(~
 	`dma_„õ
 (0x1)))|dma_„õ(
 „õ
-);}
+));}
 
 	)
 
-343 
+368 
 	#c⁄f_dma_fs
 (
 dma
@@ -4587,9 +4831,9 @@ dma
 evít
 ,
 fs
-Ë{* ((
+Ë{* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x24 + 
 	`check_°ªam
@@ -4597,7 +4841,7 @@ uöt32_t
 fifo_s
 ,event))) = \
 
-344 ((* ((
+369 ((* ((
 uöt32_t
  *)(
 	`dma_id
@@ -4609,15 +4853,15 @@ dma
 fifo_s
 ,
 evít
-))))&(~
+)))&(~
 	`dma_fs
 (0x5)))|dma_fs(
 fs
-);}
+));}
 
 	)
 
-345 
+371 
 	#c⁄f_dma_dmdis
 (
 dma
@@ -4625,9 +4869,9 @@ dma
 evít
 ,
 dmdis
-Ë{* ((
+Ë{* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x24 + 
 	`check_°ªam
@@ -4635,7 +4879,7 @@ uöt32_t
 fifo_s
 ,event))) = \
 
-346 ((* ((
+372 ((* ((
 uöt32_t
  *)(
 	`dma_id
@@ -4647,15 +4891,15 @@ dma
 fifo_s
 ,
 evít
-))))&(~
+)))&(~
 	`dma_dmdis
 (0x1)))|dma_dmdis(
 dmdis
-);}
+));}
 
 	)
 
-347 
+374 
 	#c⁄f_dma_·h
 (
 dma
@@ -4663,9 +4907,9 @@ dma
 evít
 ,
 ·h
-Ë{* ((
+Ë{* (
 uöt32_t
- *)(
+ *)((
 	`dma_id
 (dma)Ë+ (0x24 + 
 	`check_°ªam
@@ -4673,7 +4917,7 @@ uöt32_t
 fifo_s
 ,event))) = \
 
-348 ((* ((
+375 ((* ((
 uöt32_t
  *)(
 	`dma_id
@@ -4685,11 +4929,11 @@ dma
 fifo_s
 ,
 evít
-))))&(~
+)))&(~
 	`dma_·h
 (0x2)))|dma_·h(
 ·h
-);}
+));}
 
 	)
 
@@ -5703,17 +5947,7 @@ UART_Buf„r
 UART_BUFFER_SIZE
 ];
 
-5 
-	g°©us
-;
-
-6 vﬁ©ûê
-uöt32_t
- 
-	gglobÆTime
-;
-
-7 vﬁ©ûê
+5 vﬁ©ûê
 uöt16_t
  
 LPul£Whìl
@@ -5721,17 +5955,17 @@ LPul£Whìl
 RPul£Whìl
 ;
 
-12 
+9 
 	$USART3_IRQH™dÀr
 ()
 
-14 (
+11 (
 USART3
 ->
 SR
  & 0x20) >> 5)
 
-16 *
+13 *
 UARTBuf„rIndex
 ++ = 
 USART3
@@ -5739,7 +5973,7 @@ USART3
 DR
 ;
 
-17 if–
+14 if–
 UARTBuf„rIndex
  > 
 UARTBuf„rEndMsgPoöãr
@@ -5747,293 +5981,291 @@ UARTBuf„rEndMsgPoöãr
 UARTBuf„rSèπMsgPoöãr
 ;}
 
-19 
+16 
 	}
 }
 
-25 
+21 
 	$TIM1_IRQH™dÀr
 ()
 
-27 
+23 
 TIM1
 ->
 SR
  = 0;
 
-28 
+24 
 	}
 }
 
-30 
+26 
 	$TIM2_IRQH™dÀr
 ()
 
-32 
+28 
 TIM2
 ->
 SR
  = 0;
 
-33 
+29 
 	}
 }
 
-35 
+31 
 	$TIM3_IRQH™dÀr
 ()
 
-37 
+33 
 TIM3
 ->
 SR
  = 0;
 
-38 
+34 
 	}
 }
 
-40 
+36 
 	$TIM4_IRQH™dÀr
 ()
 
-43 
+39 
 TIM4
 ->
 SR
  = 0;
 
-44 
+40 
 	}
 }
 
-46 
+42 
 	$TIM5_IRQH™dÀr
 ()
 
-48 
+44 
 TIM5
 ->
 SR
  = 0;
 
-49 
+45 
 	}
 }
 
-51 
+47 
 	$TIM6_DAC_IRQH™dÀr
 ()
 
-53 
+51 
 TIM6
 ->
 SR
  = 0;
 
-54 
+52 
 	}
 }
 
-55 
-	gglobÆS≥ed
- = 0;
+54 
+	gglobÆR™geC¨
+;
 
-56 
+55 
+	gglobÆR™geTønsmissi⁄
+;
+
+56 
+öt32_t
+ 
+	gícD©a
+[2];
+
+57 
 	$TIM7_IRQH™dÀr
 ()
 
-59 
-Cuºít_Vñocôy
- = 
-	`S≥ed_CÆc
-(
-LPul£Whìl
-, 
-RPul£Whìl
-);
-
 60 
-globÆS≥ed
- +
-Cuºít_Vñocôy
-*0.1;
+	`S≥ed_CÆc_Tønsmissi⁄
+();
 
-62 
+63 
 TIM7
 ->
 SR
  = 0;
 
-63 
+64 
 	}
 }
 
-65 
+66 
 	$TIM8_UP_TIM13_IRQH™dÀr
 ()
 
-67 
+68 
 TIM13
 ->
 SR
  = 0;
 
-68 
+69 
 	}
 }
 
-74 
+75 
 	$EXTI0_IRQH™dÀr
 ()
 
-76 
+77 
 LPul£Whìl
 ++;
 
-77 
+78 
 EXTI
 ->
 PR
 =0x1;
 
-78 
+79 
 	}
 }
 
-80 
+81 
 	$EXTI1_IRQH™dÀr
 ()
 
-82 
+83 
 RPul£Whìl
 ++;
 
-83 
+84 
 EXTI
 ->
 PR
 =0x2;
 
-84 
+85 
 	}
 }
 
-86 
+87 
 	$EXTI2_IRQH™dÀr
 ()
 
-88 
+89 
 EXTI
 ->
 PR
 =0x4;
 
-89 
+90 
 	}
 }
 
-91 
+92 
 	$EXTI3_IRQH™dÀr
 ()
 
-93 
+94 
 EXTI
 ->
 PR
 =0x8;
 
-94 
+95 
 	}
 }
 
-96 
+97 
 	$EXTI4_IRQH™dÀr
 ()
 
-98 
+99 
 EXTI
 ->
 PR
 =0x10;
 
-99 
+100 
 	}
 }
 
-101 
+102 
 	$EXTI9_5_IRQH™dÀr
 ()
 
-103 i‡(
+104 i‡(
 EXTI
 ->
 PR
 &(1<<6))
 
-105 
+106 
 EXTI
 ->
 PR
 =(1<<6);
 
-108 i‡(
+109 i‡(
 EXTI
 ->
 PR
 &(1<<7))
 
-110 
+111 
 EXTI
 ->
 PR
 =(1<<7);
 
-113 i‡(
+114 i‡(
 EXTI
 ->
 PR
 &(1<<8))
 
-115 
+116 
 EXTI
 ->
 PR
 =(1<<8);
 
-118 i‡(
+119 i‡(
 EXTI
 ->
 PR
 &(1<<9))
 
-120 
+121 
 EXTI
 ->
 PR
 =(1<<9);
 
-122 
+123 
 	}
 }
 
-124 
+125 
 	$EXTI15_10_IRQH™dÀr
 ()
 
-127 i‡(
+128 i‡(
 EXTI
 ->
 PR
 &(1<<10))
 
-129 
+130 
 EXTI
 ->
 PR
 =(1<<10);
 
-132 
+133 
 	}
 }
 
@@ -7827,19 +8059,121 @@ PORTC
 
 	)
 
-7 
-	$BﬂrdSèπ
-()
+6 
+uöt16_t
+ 
+adc_d©a
+[8];
 
 10 
-ClocksInô
+uöt32_t
+ 
+	mSy°ick
 ;
 
 11 
+uöt32_t
+ 
+	mAHB
+;
+
+12 
+uöt32_t
+ 
+	mAPB1
+;
+
+13 
+uöt32_t
+ 
+	mAPB2
+;
+
+14 }
+	gClocks
+;
+
+19 
+uöt32_t
+ 
+	gDIR_Li°
+[10] = { 
+BTN1_DIR_PIN
+, 
+BTN2_DIR_PIN
+,
+
+20 
+BTN3_DIR_PIN
+, 
+BTN4_DIR_PIN
+,
+
+21 
+BTN5_DIR_PIN
+, 
+BTN6_DIR_PIN
+,
+
+22 
+BTN7_DIR_PIN
+, 
+BTN8_DIR_PIN
+,
+
+23 
+BTN9_DIR_PIN
+, 
+BTN10_DIR_PIN
+ };
+
+28 
+uöt32_t
+ *
+	gPWM_Li°
+[10] = { 
+BTN1_CCR
+, 
+BTN2_CCR
+,
+
+29 
+BTN3_CCR
+, 
+BTN4_CCR
+,
+
+30 
+BTN5_CCR
+, 
+BTN6_CCR
+,
+
+31 
+BTN7_CCR
+, 
+BTN8_CCR
+,
+
+32 
+BTN9_CCR
+, 
+BTN10_CCR
+ };
+
+35 
+	$BﬂrdSèπ
+()
+
+37 
+ClocksInô
+;
+
+38 
 	`__dißbÀ_úq
 ();
 
-12 
+39 
 PWR
 ->
 CR
@@ -7847,61 +8181,97 @@ CR
 PWR_CR_DBP
 ;
 
-13 
+40 
 	`SysTick_C⁄fig
 (168000000);
 
-14 
+41 
+Clocks
+.
+Sy°ick
+ = 
+cuºít_Sy°ick
+;
+
+42 
+Clocks
+.
+AHB
+ = 
+cuºít_AHB
+;
+
+43 
+Clocks
+.
+APB1
+ = 
+cuºít_APB1
+;
+
+44 
+Clocks
+.
+APB2
+ = 
+cuºít_APB2
+;
+
+45 
 InôPîùh
 ;
 
-15 
+46 
+	`ADC_Inô
+();
+
+47 
 	`TimPWMC⁄figuª
 (
 Tim4
-,168,100,1,1,1,1);
+,83,200,1,1,1,1);
 
-16 
+48 
 	`TimEngöeClutchC⁄figuª
 ();
 
-17 
-	`TimEncodîC⁄figuª
-(
-Tim8
-);
-
-18 
-	`TimEncodîC⁄figuª
-(
-Tim1
-);
-
-19 
-	`TimEncodîC⁄figuª
-(
-Tim3
-);
-
-20 
-	`TimEncodîC⁄figuª
-(
-Tim2
-);
-
-21 
+49 
 	`TimPIDC⁄figuª
 (
 Tim7
 ,8399,1000);
 
-31 
+50 
+	`TimEncodîC⁄figuª
+(
+Tim8
+);
+
+51 
+	`TimEncodîC⁄figuª
+(
+Tim1
+);
+
+52 
+	`TimEncodîC⁄figuª
+(
+Tim3
+);
+
+53 
+	`TimEncodîC⁄figuª
+(
+Tim2
+);
+
+54 
 	`USARTBŸhC⁄figuª
 (
 ußπ3
-, 121 , 0, 1);
+, 0x16C , 0, 1);
 
-32 
+55 
 	`add_ext_öãºu±
 (
 EXTI1_PIN
@@ -7909,163 +8279,281 @@ EXTI1_PIN
 EXTI_RISING_EDGE
 );
 
-33 
+56 
 	`add_ext_öãºu±
 (
 EXTI2_PIN
 , 
-EXTI_RISING_EDGE
+EXTI_FALLING_EDGE
 );
 
-41 
+59 
 	`I¡îru±sE«bÀ
 ();
 
-42 
+60 
 	`__íabÀ_úq
 ();
 
-43 
+61 
 	}
 }
 
-45 
-	$Re£tClock
+63 
+	$ADC_Inô
 ()
 
-47 
-RCC
+65 
+ADC1
 ->
-PLLCFGR
- = 0;
+SQR1
+ |= 8 << 20;
 
-48 
-RCC
+66 
+ADC1
 ->
-CFGR
- = 0;
+SQR3
+ |= 0 | (1 << 5) | (2 << 10) | (3 << 15) | (8 << 20) | (9 << 25);
 
-49 
-RCC
+67 
+ADC1
+->
+SQR2
+ |= 11| (12 << 5) | (14 << 10) | (15 << 15);
+
+69 
+ADC1
+->
+SMPR2
+ |= (7 << 3) | (7 << 6) | (7 << 12) | (7 << 15);
+
+70 
+ADC1
+->
+SMPR1
+ |= (7) | (7 << 3) | (7 << 6) | (7 << 9) | (7 << 24) | (7 << 27);
+
+72 
+ADC1
+->
+CR1
+ |= 0x100 ;
+
+73 
+ADC1
+->
+CR2
+ |= 0x302;
+
+76 
+DMA2_Såóm0
 ->
 CR
- = 0;
+ |= 0 << 25;
 
-51 
-RCC
+77 
+DMA2_Såóm0
+->
+PAR
+ |(
+uöt32_t
+Ë&
+ADC1
+->
+DR
+;
+
+78 
+DMA2_Såóm0
+->
+M0AR
+ |(
+uöt32_t
+Ë&
+adc_d©a
+;
+
+79 
+DMA2_Såóm0
 ->
 CR
- |= 0x1000000;
+ &~
+DMA_SxCR_DIR
+;
 
-52 
-RCC
+80 
+DMA2_Såóm0
 ->
-PLLCFGR
- |= 0x11;
+NDTR
+ = 8+1;
 
-53 
-RCC
+81 
+DMA2_Såóm0
 ->
-CFGR
- |= 0x600000;
+CR
+ &~
+DMA_SxCR_PINC
+;
 
-54 
-RCC
+82 
+DMA2_Såóm0
 ->
-CFGR
- |= 0x940A;
+CR
+ |
+DMA_SxCR_MINC
+|
+DMA_SxCR_CIRC
+;
 
-55 
+83 
+DMA2_Såóm0
+->
+CR
+ |
+DMA_SxCR_PSIZE_0
+;
+
+84 
+DMA2_Såóm0
+->
+CR
+ |
+DMA_SxCR_MSIZE_0
+;
+
+85 
+DMA2_Såóm0
+->
+CR
+ |
+DMA_SxCR_PL
+;
+
+86 
+DMA2_Såóm0
+->
+CR
+ |
+DMA_SxCR_TCIE
+;
+
+89 
+DMA2_Såóm0
+->
+CR
+ |
+DMA_SxCR_EN
+ | 
+DMA_SxCR_TCIE
+;
+
+90 
+ADC1
+->
+CR2
+ |
+ADC_CR2_ADON
+;
+
+91 
+ADC1
+->
+CR2
+ |
+ADC_CR2_SWSTART
+;
+
+92 
 	}
 }
 
-57 
+94 
 	$I¡îru±sE«bÀ
 ()
 
-59 
+96 
 	`NVIC_E«bÀIRQ
 (
 TIM7_IRQn
 );
 
-60 
+97 
 	`NVIC_E«bÀIRQ
 (
 USART3_IRQn
 );
 
-61 
+98 
 	`NVIC_E«bÀIRQ
 (
 EXTI0_IRQn
 );
 
-62 
+99 
 	`NVIC_E«bÀIRQ
 (
 EXTI1_IRQn
 );
 
-63 
+100 
 	`NVIC_E«bÀIRQ
 (
 EXTI2_IRQn
 );
 
-69 
+101 
 	}
 }
 
-71 
+103 
 	$TimEngöeClutchC⁄figuª
 ()
 
-73 
+105 
 	`C⁄fCh™√lsTim
 (
 Tim11
 ,7,0,0,0,1,0,0,0);
 
-74 
+106 
 	`C⁄fFªq
 (
 Tim11
 ,52,200);
 
-75 
+107 
 	`SëTimO√Pul£Mode
 (
 Tim11
 ,1);
 
-76 
+108 
 	`C⁄fTimMaöOuçut
 (
 Tim11
 ,1);
 
-77 
+109 
 	`Re£tTimCCR1
 (
 Tim11
 );
 
-78 
+110 
 	`SëPWM
 (4,0xFFFF);
 
-79 
+111 
 	`TimSèπ
 (
 Tim11
 );
 
-80 
+112 
 	}
 }
 
-82 
+114 
 	$add_ext_öãºu±
 (
 pö
@@ -8073,7 +8561,7 @@ pö
 edge
 )
 
-84 
+116 
 SYSCFG
 ->
 EXTICR
@@ -8081,7 +8569,7 @@ EXTICR
 pö
 )&0xF) >> 0x02] |= (pin>>4) << ((((pin)&0xF) % 4) << 0x02);
 
-85 
+117 
 EXTI
 ->
 IMR
@@ -8089,15 +8577,15 @@ IMR
 pö
 )&0xF));
 
-87 
+119 
 edge
 )
 
-89 
+121 
 EXTI_FALLING_EDGE
 :
 
-91 
+123 
 EXTI
 ->
 FTSR
@@ -8105,7 +8593,7 @@ FTSR
 pö
 )&0xF));
 
-92 
+124 
 EXTI
 ->
 RTSR
@@ -8113,11 +8601,11 @@ RTSR
 pö
 )&0xF));
 
-96 
+128 
 EXTI_RISING_EDGE
 :
 
-98 
+130 
 EXTI
 ->
 FTSR
@@ -8125,7 +8613,7 @@ FTSR
 pö
 )&0xF));
 
-99 
+131 
 EXTI
 ->
 RTSR
@@ -8133,11 +8621,11 @@ RTSR
 pö
 )&0xF));
 
-103 
+135 
 EXTI_BOTH_EDGES
 :
 
-105 
+137 
 EXTI
 ->
 RTSR
@@ -8145,7 +8633,7 @@ RTSR
 pö
 )&0xF));
 
-106 
+138 
 EXTI
 ->
 FTSR
@@ -8153,11 +8641,1255 @@ FTSR
 pö
 )&0xF));
 
-110 
+142 
+	}
+}
+
+143 
+	$SëPWM
+(
+CHANNEL
+,
+duty
+) {
+
+144 i‡(
+duty
+ > 1) duty = 1.0;
+
+145 i‡(
+duty
+ < -1) duty = -1.0;
+
+146 i‡(
+duty
+ < 0 )
+
+148 *
+PWM_Li°
+[
+CHANNEL
+] = ((
+öt32_t
+)(
+MAX_PWM
+ + (
+duty
+ * MAX_PWM)));
+
+149 
+	`£t_pö
+(
+DIR_Li°
+[
+CHANNEL
+]);
+
+151 i‡(
+duty
+ >= 0)
+
+153 *
+PWM_Li°
+[
+CHANNEL
+] = ((
+öt32_t
+Ë(
+duty
+ * 
+MAX_PWM
+));
+
+154 
+	`ª£t_pö
+(
+DIR_Li°
+[
+CHANNEL
+]);
+
+156 
 	}
 }
 
 	@C:\Users\Caska\Desktop\projects\RCR\ROBOCR~1\FILLIB~1\RCRDST~1\RCR_SE~1.H
+
+2 #¥agm®
+⁄˚
+
+
+3 
+	~<FûC⁄fig.h
+>
+
+6 
+	#MAX_PWM
+ 200
+
+	)
+
+13 
+BﬂrdSèπ
+();
+
+15 
+TimEngöeClutchC⁄figuª
+();
+
+17 
+add_ext_öãºu±
+(
+pö
+, 
+edge
+);
+
+19 
+I¡îru±sE«bÀ
+();
+
+21 
+ADC_Inô
+();
+
+23 
+SëPWM
+(
+CHANNEL
+,
+DUTY
+);
+
+29 #if–
+_Adv™˚dCÆcuœtögTimîs
+ == 1 )
+
+47 
+	#ClocksInô
+ {\
+
+48 
+£t_pwr
+; \
+
+49 
+£t_gpiﬂ
+; \
+
+50 
+£t_gpiob
+; \
+
+51 
+£t_gpioc
+; \
+
+52 
+£t_gpiod
+; \
+
+53 
+£t_gpi€
+; \
+
+54 
+£t_tim1
+; \
+
+55 
+£t_tim2
+; \
+
+56 
+£t_tim3
+; \
+
+57 
+£t_tim4
+; \
+
+58 
+£t_tim5
+; \
+
+59 
+£t_tim6
+; \
+
+60 
+£t_tim7
+; \
+
+61 
+£t_tim8
+; \
+
+62 
+£t_tim9
+; \
+
+63 
+£t_tim10
+; \
+
+64 
+£t_tim11
+; \
+
+65 
+£t_tim12
+; \
+
+66 
+£t_tim13
+; \
+
+67 
+£t_tim14
+; \
+
+68 
+£t_dma1
+; \
+
+69 
+£t_dma2
+; \
+
+70 
+£t_adc1
+; \
+
+71 
+£t_ußπ3
+;\
+
+72 
+£t_syscfg
+;}
+
+	)
+
+74 
+	#InôPîùh
+ {\
+
+75 
+	`c⁄f_pö
+(
+BTN1_DIR_PIN
+, 
+GENERAL
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+NO_PULL_UP
+);\
+
+76 
+	`c⁄f_pö
+(
+BTN2_DIR_PIN
+, 
+GENERAL
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+NO_PULL_UP
+); \
+
+77 
+	`c⁄f_pö
+(
+BTN3_DIR_PIN
+, 
+GENERAL
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+NO_PULL_UP
+); \
+
+78 
+	`c⁄f_pö
+(
+BTN4_DIR_PIN
+, 
+GENERAL
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+NO_PULL_UP
+); \
+
+79 
+	`c⁄f_pö
+(
+BTN5_DIR_PIN
+, 
+GENERAL
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+NO_PULL_UP
+); \
+
+80 
+	`c⁄f_pö
+(
+BTN6_DIR_PIN
+, 
+GENERAL
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+NO_PULL_UP
+); \
+
+81 
+	`c⁄f_pö
+(
+BTN7_DIR_PIN
+, 
+GENERAL
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+NO_PULL_UP
+); \
+
+82 
+	`c⁄f_pö
+(
+BTN8_DIR_PIN
+, 
+GENERAL
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+NO_PULL_UP
+); \
+
+83 
+	`c⁄f_pö
+(
+BTN9_DIR_PIN
+, 
+GENERAL
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+NO_PULL_UP
+); \
+
+84 
+	`c⁄f_pö
+(
+BTN10_DIR_PIN
+, 
+GENERAL
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+NO_PULL_UP
+); \
+
+85 
+	`c⁄f_pö
+(
+PWM_INHIBIT
+, 
+GENERAL
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+NO_PULL_UP
+); \
+
+86 
+	`c⁄f_pö
+(
+PIN1_12V
+, 
+GENERAL
+, 
+PUSH_PULL
+, 
+HIGH_S
+, 
+NO_PULL_UP
+); \
+
+87 
+	`c⁄f_pö
+(
+PIN2_12V
+, 
+GENERAL
+, 
+PUSH_PULL
+, 
+HIGH_S
+, 
+NO_PULL_UP
+); \
+
+88 
+	`c⁄f_pö
+(
+PIN3_12V
+, 
+GENERAL
+, 
+PUSH_PULL
+, 
+HIGH_S
+, 
+NO_PULL_UP
+); \
+
+89 
+	`c⁄f_pö
+(
+PIN4_12V
+, 
+GENERAL
+, 
+PUSH_PULL
+, 
+HIGH_S
+, 
+NO_PULL_UP
+); \
+
+90 
+	`c⁄f_pö
+(
+PIN5_12V
+, 
+GENERAL
+, 
+PUSH_PULL
+, 
+LOW_S
+, 
+NO_PULL_UP
+); \
+
+91 
+	`c⁄f_pö
+(
+PIN6_12V
+, 
+GENERAL
+, 
+PUSH_PULL
+, 
+LOW_S
+, 
+NO_PULL_UP
+); \
+
+92 
+	`c⁄f_pö
+(
+BTN1_PWM_PIN
+, 
+ALTERNATE
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+NO_PULL_UP
+); \
+
+93 
+	`c⁄f_af
+(
+BTN1_PWM_PIN
+, 
+AF2
+); \
+
+94 
+	`c⁄f_pö
+(
+BTN2_PWM_PIN
+, 
+ALTERNATE
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+NO_PULL_UP
+); \
+
+95 
+	`c⁄f_af
+(
+BTN2_PWM_PIN
+, 
+AF2
+);\
+
+96 
+	`c⁄f_pö
+(
+BTN3_PWM_PIN
+, 
+ALTERNATE
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+NO_PULL_UP
+); \
+
+97 
+	`c⁄f_af
+(
+BTN3_PWM_PIN
+, 
+AF2
+);\
+
+98 
+	`c⁄f_pö
+(
+BTN4_PWM_PIN
+, 
+ALTERNATE
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+NO_PULL_UP
+); \
+
+99 
+	`c⁄f_af
+(
+BTN4_PWM_PIN
+, 
+AF2
+);\
+
+100 
+	`c⁄f_pö
+(
+BTN5_PWM_PIN
+, 
+ALTERNATE
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+NO_PULL_UP
+); \
+
+101 
+	`c⁄f_af
+(
+BTN5_PWM_PIN
+, 
+AF3
+);\
+
+102 
+	`c⁄f_pö
+(
+BTN6_PWM_PIN
+, 
+ALTERNATE
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+NO_PULL_UP
+); \
+
+103 
+	`c⁄f_af
+(
+BTN6_PWM_PIN
+, 
+AF3
+);\
+
+104 
+	`c⁄f_pö
+(
+BTN7_PWM_PIN
+, 
+ALTERNATE
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+NO_PULL_UP
+); \
+
+105 
+	`c⁄f_af
+(
+BTN7_PWM_PIN
+, 
+AF3
+);\
+
+106 
+	`c⁄f_pö
+(
+BTN8_PWM_PIN
+, 
+ALTERNATE
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+NO_PULL_UP
+); \
+
+107 
+	`c⁄f_af
+(
+BTN8_PWM_PIN
+, 
+AF3
+);\
+
+108 
+	`c⁄f_pö
+(
+BTN9_PWM_PIN
+, 
+ALTERNATE
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+NO_PULL_UP
+); \
+
+109 
+	`c⁄f_af
+(
+BTN9_PWM_PIN
+, 
+AF9
+);\
+
+110 
+	`c⁄f_pö
+(
+BTN10_PWM_PIN
+, 
+ALTERNATE
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+NO_PULL_UP
+); \
+
+111 
+	`c⁄f_af
+(
+BTN10_PWM_PIN
+, 
+AF9
+);\
+
+112 
+	`c⁄f_pö
+(
+ENCODER1A_PIN
+, 
+ALTERNATE
+, 
+PUSH_PULL
+, 
+LOW_S
+, 
+PULL_UP
+);\
+
+113 
+	`c⁄f_af
+(
+ENCODER1A_PIN
+, 
+AF3
+);\
+
+114 
+	`c⁄f_pö
+(
+ENCODER1B_PIN
+, 
+ALTERNATE
+, 
+PUSH_PULL
+, 
+LOW_S
+, 
+PULL_UP
+); \
+
+115 
+	`c⁄f_af
+(
+ENCODER1B_PIN
+, 
+AF3
+);\
+
+116 
+	`c⁄f_pö
+(
+ENCODER2A_PIN
+, 
+ALTERNATE
+, 
+PUSH_PULL
+, 
+LOW_S
+, 
+PULL_UP
+);\
+
+117 
+	`c⁄f_af
+(
+ENCODER2A_PIN
+, 
+AF1
+);\
+
+118 
+	`c⁄f_pö
+(
+ENCODER2B_PIN
+, 
+ALTERNATE
+, 
+PUSH_PULL
+, 
+LOW_S
+, 
+PULL_UP
+); \
+
+119 
+	`c⁄f_af
+(
+ENCODER2B_PIN
+, 
+AF1
+);\
+
+120 
+	`c⁄f_pö
+(
+ENCODER3A_PIN
+, 
+ALTERNATE
+, 
+PUSH_PULL
+, 
+LOW_S
+, 
+PULL_UP
+); \
+
+121 
+	`c⁄f_af
+(
+ENCODER3A_PIN
+, 
+AF2
+);\
+
+122 
+	`c⁄f_pö
+(
+ENCODER3B_PIN
+, 
+ALTERNATE
+, 
+PUSH_PULL
+, 
+LOW_S
+, 
+PULL_UP
+); \
+
+123 
+	`c⁄f_af
+(
+ENCODER3B_PIN
+, 
+AF2
+);\
+
+124 
+	`c⁄f_pö
+(
+ENCODER4A_PIN
+, 
+ALTERNATE
+, 
+PUSH_PULL
+, 
+LOW_S
+, 
+PULL_UP
+);\
+
+125 
+	`c⁄f_af
+(
+ENCODER4A_PIN
+, 
+AF1
+);\
+
+126 
+	`c⁄f_pö
+(
+ENCODER4B_PIN
+, 
+ALTERNATE
+, 
+PUSH_PULL
+, 
+LOW_S
+, 
+PULL_UP
+); \
+
+127 
+	`c⁄f_af
+(
+ENCODER4B_PIN
+, 
+AF1
+);\
+
+128 
+	`c⁄f_pö
+(
+TX1_PIN
+, 
+ALTERNATE
+, 
+PUSH_PULL
+, 
+LOW_S
+, 
+NO_PULL_UP
+); \
+
+129 
+	`c⁄f_af
+(
+TX1_PIN
+, 
+AF7
+);\
+
+130 
+	`c⁄f_pö
+(
+RX1_PIN
+, 
+ALTERNATE
+, 
+PUSH_PULL
+, 
+LOW_S
+, 
+NO_PULL_UP
+); \
+
+131 
+	`c⁄f_af
+(
+RX1_PIN
+, 
+AF7
+);\
+
+132 
+	`c⁄f_pö
+(
+GENERAL_PIN_0
+, 
+ANALOG
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+NO_PULL_UP
+);\
+
+133 
+	`c⁄f_pö
+(
+GENERAL_PIN_1
+, 
+ANALOG
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+NO_PULL_UP
+);\
+
+134 
+	`c⁄f_pö
+(
+GENERAL_PIN_2
+, 
+ANALOG
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+NO_PULL_UP
+);\
+
+135 
+	`c⁄f_pö
+(
+GENERAL_PIN_3
+, 
+ANALOG
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+NO_PULL_UP
+);\
+
+136 
+	`c⁄f_pö
+(
+GENERAL_PIN_4
+, 
+ANALOG
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+NO_PULL_UP
+);\
+
+137 
+	`c⁄f_pö
+(
+GENERAL_PIN_5
+, 
+ANALOG
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+NO_PULL_UP
+);\
+
+138 
+	`c⁄f_pö
+(
+GENERAL_PIN_6
+, 
+ANALOG
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+NO_PULL_UP
+);\
+
+139 
+	`c⁄f_pö
+(
+GENERAL_PIN_7
+, 
+ANALOG
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+NO_PULL_UP
+);\
+
+140 
+	`c⁄f_pö
+(
+GENERAL_PIN_8
+, 
+ANALOG
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+NO_PULL_UP
+);\
+
+141 
+	`c⁄f_pö
+(
+GENERAL_PIN_9
+, 
+ANALOG
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+NO_PULL_UP
+);\
+
+142 
+	`c⁄f_pö
+(
+EXTI1_PIN
+, 
+INPUT
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+PULL_UP
+);\
+
+143 
+	`c⁄f_pö
+(
+EXTI2_PIN
+, 
+INPUT
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+PULL_UP
+);\
+
+144 
+	`c⁄f_pö
+(
+EXTI3_PIN
+, 
+INPUT
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+PULL_UP
+);\
+
+145 
+	`c⁄f_pö
+(
+EXTI4_PIN
+, 
+INPUT
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+PULL_UP
+);\
+
+146 
+	`c⁄f_pö
+(
+EXTI5_PIN
+, 
+INPUT
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+PULL_DOWN
+);\
+
+147 
+	`c⁄f_pö
+(
+EXTI6_PIN
+, 
+INPUT
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+PULL_DOWN
+);\
+
+148 
+	`c⁄f_pö
+(
+EXTI7_PIN
+, 
+INPUT
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+PULL_DOWN
+);\
+
+149 
+	`c⁄f_pö
+(
+EXTI8_PIN
+, 
+INPUT
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+PULL_DOWN
+);\
+
+150 
+	`c⁄f_pö
+(
+EXTI9_PIN
+, 
+INPUT
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+PULL_DOWN
+);\
+
+151 
+	`c⁄f_pö
+(
+EXTI10_PIN
+, 
+INPUT
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+PULL_DOWN
+);\
+
+152 
+	`c⁄f_pö
+(
+	`pö_id
+(
+PORTA
+,9), 
+ALTERNATE
+, 
+PUSH_PULL
+, 
+LOW_S
+, 
+PULL_UP
+);\
+
+153 
+	`c⁄f_af
+(
+	`pö_id
+(
+PORTA
+,9), 
+AF8
+);\
+
+154 
+	`c⁄f_pö
+(
+	`pö_id
+(
+PORTA
+,10), 
+ALTERNATE
+, 
+PUSH_PULL
+, 
+LOW_S
+, 
+PULL_UP
+);\
+
+155 
+	`c⁄f_af
+(
+	`pö_id
+(
+PORTA
+,10), 
+AF8
+);\
+
+156 }
+
+	)
+
+	@C:\Users\Caska\Desktop\projects\RCR\ROBOCR~1\FILLIB~1\RCRDST~1\RCR_SE~2.H
 
 1 #¥agm®
 ⁄˚
@@ -8448,1316 +10180,6 @@ NO_PULL_UP
 (
 Tim1
 }
-
-	)
-
-	@C:\Users\Caska\Desktop\projects\RCR\ROBOCR~1\FILLIB~1\RCRDST~1\RCR_SE~2.H
-
-2 #¥agm®
-⁄˚
-
-
-3 
-	~<FûC⁄fig.h
->
-
-6 
-	#MAX_PWM
- 200
-
-	)
-
-13 
-BﬂrdSèπ
-();
-
-15 
-TimEngöeClutchC⁄figuª
-();
-
-17 
-add_ext_öãºu±
-(
-pö
-, 
-edge
-);
-
-23 #if–
-_Adv™˚dCÆcuœtögTimîs
- == 1 )
-
-34 
-	#SëPWM
-(
-CHANNEL
-,
-DUTY
-) {\
-
-35 
-duty
- = 
-DUTY
-; \
-
-36 i‡(
-duty
- > 1) duty = 1.0; \
-
-37 i‡(
-duty
- < -1) duty = -1.0; \
-
-38 i‡(
-duty
- < 0 ) \
-
-40 *
-PWM_Li°
-[
-CHANNEL
-] = ((
-öt32_t
-)(
-MAX_PWM
- + (
-duty
- * MAX_PWM)));\
-
-41 
-	`£t_pö
-(
-DIR_Li°
-[
-CHANNEL
-]); \
-
-43 i‡(
-duty
- > 0) \
-
-45 *
-PWM_Li°
-[
-CHANNEL
-] = ((
-öt32_t
-Ë(
-duty
- * 
-MAX_PWM
-)); \
-
-46 
-	`ª£t_pö
-(
-DIR_Li°
-[
-CHANNEL
-]); \
-
-48 }
-
-	)
-
-55 
-__©åibuã__
-((
-unu£d
-)Ë
-uöt32_t
- 
-	gDIR_Li°
-[10] = { 
-BTN1_DIR_PIN
-, 
-BTN2_DIR_PIN
-,
-
-56 
-BTN3_DIR_PIN
-, 
-BTN4_DIR_PIN
-,
-
-57 
-BTN5_DIR_PIN
-, 
-BTN6_DIR_PIN
-,
-
-58 
-BTN7_DIR_PIN
-, 
-BTN8_DIR_PIN
-,
-
-59 
-BTN9_DIR_PIN
-, 
-BTN10_DIR_PIN
- };
-
-64 
-__©åibuã__
-((
-unu£d
-)Ë
-uöt32_t
- *
-	gPWM_Li°
-[10] = { 
-BTN1_CCR
-, 
-BTN2_CCR
-,
-
-65 
-BTN3_CCR
-, 
-BTN4_CCR
-,
-
-66 
-BTN5_CCR
-, 
-BTN6_CCR
-,
-
-67 
-BTN7_CCR
-, 
-BTN8_CCR
-,
-
-68 
-BTN9_CCR
-, 
-BTN10_CCR
- };
-
-71 
-	#ClocksInô
- {\
-
-72 
-£t_pwr
-; \
-
-73 
-£t_gpiﬂ
-; \
-
-74 
-£t_gpiob
-; \
-
-75 
-£t_gpioc
-; \
-
-76 
-£t_gpiod
-; \
-
-77 
-£t_gpi€
-; \
-
-78 
-£t_tim1
-; \
-
-79 
-£t_tim2
-; \
-
-80 
-£t_tim3
-; \
-
-81 
-£t_tim4
-; \
-
-82 
-£t_tim5
-; \
-
-83 
-£t_tim6
-; \
-
-84 
-£t_tim7
-; \
-
-85 
-£t_tim8
-; \
-
-86 
-£t_tim9
-; \
-
-87 
-£t_tim10
-; \
-
-88 
-£t_tim11
-; \
-
-89 
-£t_tim12
-; \
-
-90 
-£t_tim13
-; \
-
-91 
-£t_tim14
-; \
-
-92 
-£t_dma1
-; \
-
-93 
-£t_dma2
-; \
-
-94 
-£t_adc1
-; \
-
-95 
-£t_ußπ3
-;\
-
-96 
-£t_syscfg
-;}
-
-	)
-
-98 
-	#InôPîùh
- {\
-
-99 
-	`c⁄f_pö
-(
-BTN1_DIR_PIN
-, 
-GENERAL
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-NO_PULL_UP
-);\
-
-100 
-	`c⁄f_pö
-(
-BTN2_DIR_PIN
-, 
-GENERAL
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-NO_PULL_UP
-); \
-
-101 
-	`c⁄f_pö
-(
-BTN3_DIR_PIN
-, 
-GENERAL
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-NO_PULL_UP
-); \
-
-102 
-	`c⁄f_pö
-(
-BTN4_DIR_PIN
-, 
-GENERAL
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-NO_PULL_UP
-); \
-
-103 
-	`c⁄f_pö
-(
-BTN5_DIR_PIN
-, 
-GENERAL
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-NO_PULL_UP
-); \
-
-104 
-	`c⁄f_pö
-(
-BTN6_DIR_PIN
-, 
-GENERAL
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-NO_PULL_UP
-); \
-
-105 
-	`c⁄f_pö
-(
-BTN7_DIR_PIN
-, 
-GENERAL
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-NO_PULL_UP
-); \
-
-106 
-	`c⁄f_pö
-(
-BTN8_DIR_PIN
-, 
-GENERAL
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-NO_PULL_UP
-); \
-
-107 
-	`c⁄f_pö
-(
-BTN9_DIR_PIN
-, 
-GENERAL
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-NO_PULL_UP
-); \
-
-108 
-	`c⁄f_pö
-(
-BTN10_DIR_PIN
-, 
-GENERAL
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-NO_PULL_UP
-); \
-
-109 
-	`c⁄f_pö
-(
-PWM_INHIBIT
-, 
-GENERAL
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-NO_PULL_UP
-); \
-
-110 
-	`c⁄f_pö
-(
-PIN1_12V
-, 
-GENERAL
-, 
-PUSH_PULL
-, 
-HIGH_S
-, 
-NO_PULL_UP
-); \
-
-111 
-	`c⁄f_pö
-(
-PIN2_12V
-, 
-GENERAL
-, 
-PUSH_PULL
-, 
-HIGH_S
-, 
-NO_PULL_UP
-); \
-
-112 
-	`c⁄f_pö
-(
-PIN3_12V
-, 
-GENERAL
-, 
-PUSH_PULL
-, 
-HIGH_S
-, 
-NO_PULL_UP
-); \
-
-113 
-	`c⁄f_pö
-(
-PIN4_12V
-, 
-GENERAL
-, 
-PUSH_PULL
-, 
-HIGH_S
-, 
-NO_PULL_UP
-); \
-
-114 
-	`c⁄f_pö
-(
-PIN5_12V
-, 
-GENERAL
-, 
-PUSH_PULL
-, 
-LOW_S
-, 
-NO_PULL_UP
-); \
-
-115 
-	`c⁄f_pö
-(
-PIN6_12V
-, 
-GENERAL
-, 
-PUSH_PULL
-, 
-LOW_S
-, 
-NO_PULL_UP
-); \
-
-116 
-	`c⁄f_pö
-(
-BTN1_PWM_PIN
-, 
-ALTERNATE
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-NO_PULL_UP
-); \
-
-117 
-	`c⁄f_af
-(
-BTN1_PWM_PIN
-, 
-AF2
-); \
-
-118 
-	`c⁄f_pö
-(
-BTN2_PWM_PIN
-, 
-ALTERNATE
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-NO_PULL_UP
-); \
-
-119 
-	`c⁄f_af
-(
-BTN2_PWM_PIN
-, 
-AF2
-);\
-
-120 
-	`c⁄f_pö
-(
-BTN3_PWM_PIN
-, 
-ALTERNATE
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-NO_PULL_UP
-); \
-
-121 
-	`c⁄f_af
-(
-BTN3_PWM_PIN
-, 
-AF2
-);\
-
-122 
-	`c⁄f_pö
-(
-BTN4_PWM_PIN
-, 
-ALTERNATE
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-NO_PULL_UP
-); \
-
-123 
-	`c⁄f_af
-(
-BTN4_PWM_PIN
-, 
-AF2
-);\
-
-124 
-	`c⁄f_pö
-(
-BTN5_PWM_PIN
-, 
-ALTERNATE
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-NO_PULL_UP
-); \
-
-125 
-	`c⁄f_af
-(
-BTN5_PWM_PIN
-, 
-AF3
-);\
-
-126 
-	`c⁄f_pö
-(
-BTN6_PWM_PIN
-, 
-ALTERNATE
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-NO_PULL_UP
-); \
-
-127 
-	`c⁄f_af
-(
-BTN6_PWM_PIN
-, 
-AF3
-);\
-
-128 
-	`c⁄f_pö
-(
-BTN7_PWM_PIN
-, 
-ALTERNATE
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-NO_PULL_UP
-); \
-
-129 
-	`c⁄f_af
-(
-BTN7_PWM_PIN
-, 
-AF3
-);\
-
-130 
-	`c⁄f_pö
-(
-BTN8_PWM_PIN
-, 
-ALTERNATE
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-NO_PULL_UP
-); \
-
-131 
-	`c⁄f_af
-(
-BTN8_PWM_PIN
-, 
-AF3
-);\
-
-132 
-	`c⁄f_pö
-(
-BTN9_PWM_PIN
-, 
-ALTERNATE
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-NO_PULL_UP
-); \
-
-133 
-	`c⁄f_af
-(
-BTN9_PWM_PIN
-, 
-AF9
-);\
-
-134 
-	`c⁄f_pö
-(
-BTN10_PWM_PIN
-, 
-ALTERNATE
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-NO_PULL_UP
-); \
-
-135 
-	`c⁄f_af
-(
-BTN10_PWM_PIN
-, 
-AF9
-);\
-
-136 
-	`c⁄f_pö
-(
-ENCODER1A_PIN
-, 
-ALTERNATE
-, 
-PUSH_PULL
-, 
-LOW_S
-, 
-PULL_UP
-);\
-
-137 
-	`c⁄f_af
-(
-ENCODER1A_PIN
-, 
-AF3
-);\
-
-138 
-	`c⁄f_pö
-(
-ENCODER1B_PIN
-, 
-ALTERNATE
-, 
-PUSH_PULL
-, 
-LOW_S
-, 
-PULL_UP
-); \
-
-139 
-	`c⁄f_af
-(
-ENCODER1B_PIN
-, 
-AF3
-);\
-
-140 
-	`c⁄f_pö
-(
-ENCODER2A_PIN
-, 
-ALTERNATE
-, 
-PUSH_PULL
-, 
-LOW_S
-, 
-PULL_UP
-);\
-
-141 
-	`c⁄f_af
-(
-ENCODER2A_PIN
-, 
-AF1
-);\
-
-142 
-	`c⁄f_pö
-(
-ENCODER2B_PIN
-, 
-ALTERNATE
-, 
-PUSH_PULL
-, 
-LOW_S
-, 
-PULL_UP
-); \
-
-143 
-	`c⁄f_af
-(
-ENCODER2B_PIN
-, 
-AF1
-);\
-
-144 
-	`c⁄f_pö
-(
-ENCODER3A_PIN
-, 
-ALTERNATE
-, 
-PUSH_PULL
-, 
-LOW_S
-, 
-PULL_UP
-); \
-
-145 
-	`c⁄f_af
-(
-ENCODER3A_PIN
-, 
-AF2
-);\
-
-146 
-	`c⁄f_pö
-(
-ENCODER3B_PIN
-, 
-ALTERNATE
-, 
-PUSH_PULL
-, 
-LOW_S
-, 
-PULL_UP
-); \
-
-147 
-	`c⁄f_af
-(
-ENCODER3B_PIN
-, 
-AF2
-);\
-
-148 
-	`c⁄f_pö
-(
-ENCODER4A_PIN
-, 
-ALTERNATE
-, 
-PUSH_PULL
-, 
-LOW_S
-, 
-PULL_UP
-);\
-
-149 
-	`c⁄f_af
-(
-ENCODER4A_PIN
-, 
-AF1
-);\
-
-150 
-	`c⁄f_pö
-(
-ENCODER4B_PIN
-, 
-ALTERNATE
-, 
-PUSH_PULL
-, 
-LOW_S
-, 
-PULL_UP
-); \
-
-151 
-	`c⁄f_af
-(
-ENCODER4B_PIN
-, 
-AF1
-);\
-
-152 
-	`c⁄f_pö
-(
-TX1_PIN
-, 
-ALTERNATE
-, 
-PUSH_PULL
-, 
-LOW_S
-, 
-NO_PULL_UP
-); \
-
-153 
-	`c⁄f_af
-(
-TX1_PIN
-, 
-AF7
-);\
-
-154 
-	`c⁄f_pö
-(
-RX1_PIN
-, 
-ALTERNATE
-, 
-PUSH_PULL
-, 
-LOW_S
-, 
-NO_PULL_UP
-); \
-
-155 
-	`c⁄f_af
-(
-RX1_PIN
-, 
-AF7
-);\
-
-156 
-	`c⁄f_pö
-(
-GENERAL_PIN_0
-, 
-ANALOG
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-NO_PULL_UP
-);\
-
-157 
-	`c⁄f_pö
-(
-GENERAL_PIN_1
-, 
-ANALOG
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-NO_PULL_UP
-);\
-
-158 
-	`c⁄f_pö
-(
-GENERAL_PIN_2
-, 
-ANALOG
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-NO_PULL_UP
-);\
-
-159 
-	`c⁄f_pö
-(
-GENERAL_PIN_3
-, 
-ANALOG
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-NO_PULL_UP
-);\
-
-160 
-	`c⁄f_pö
-(
-GENERAL_PIN_4
-, 
-ANALOG
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-NO_PULL_UP
-);\
-
-161 
-	`c⁄f_pö
-(
-GENERAL_PIN_5
-, 
-ANALOG
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-NO_PULL_UP
-);\
-
-162 
-	`c⁄f_pö
-(
-GENERAL_PIN_6
-, 
-ANALOG
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-NO_PULL_UP
-);\
-
-163 
-	`c⁄f_pö
-(
-GENERAL_PIN_7
-, 
-ANALOG
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-NO_PULL_UP
-);\
-
-164 
-	`c⁄f_pö
-(
-GENERAL_PIN_8
-, 
-ANALOG
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-NO_PULL_UP
-);\
-
-165 
-	`c⁄f_pö
-(
-GENERAL_PIN_9
-, 
-ANALOG
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-NO_PULL_UP
-);\
-
-166 
-	`c⁄f_pö
-(
-EXTI1_PIN
-, 
-INPUT
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-PULL_UP
-);\
-
-167 
-	`c⁄f_pö
-(
-EXTI2_PIN
-, 
-INPUT
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-PULL_UP
-);\
-
-168 
-	`c⁄f_pö
-(
-EXTI3_PIN
-, 
-INPUT
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-PULL_UP
-);\
-
-169 
-	`c⁄f_pö
-(
-EXTI4_PIN
-, 
-INPUT
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-PULL_UP
-);\
-
-170 
-	`c⁄f_pö
-(
-EXTI5_PIN
-, 
-INPUT
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-PULL_DOWN
-);\
-
-171 
-	`c⁄f_pö
-(
-EXTI6_PIN
-, 
-INPUT
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-PULL_DOWN
-);\
-
-172 
-	`c⁄f_pö
-(
-EXTI7_PIN
-, 
-INPUT
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-PULL_DOWN
-);\
-
-173 
-	`c⁄f_pö
-(
-EXTI8_PIN
-, 
-INPUT
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-PULL_DOWN
-);\
-
-174 
-	`c⁄f_pö
-(
-EXTI9_PIN
-, 
-INPUT
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-PULL_DOWN
-);\
-
-175 
-	`c⁄f_pö
-(
-EXTI10_PIN
-, 
-INPUT
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-PULL_DOWN
-);\
-
-176 
-	`c⁄f_pö
-(
-	`pö_id
-(
-PORTA
-,9), 
-ALTERNATE
-, 
-PUSH_PULL
-, 
-LOW_S
-, 
-PULL_UP
-);\
-
-177 
-	`c⁄f_af
-(
-	`pö_id
-(
-PORTA
-,9), 
-AF8
-);\
-
-178 
-	`c⁄f_pö
-(
-	`pö_id
-(
-PORTA
-,10), 
-ALTERNATE
-, 
-PUSH_PULL
-, 
-LOW_S
-, 
-PULL_UP
-);\
-
-179 
-	`c⁄f_af
-(
-	`pö_id
-(
-PORTA
-,10), 
-AF8
-);\
-
-180 }
 
 	)
 
@@ -13459,7 +13881,7 @@ ußπ
 
 	)
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\ModBus\ModBus.c
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\ModBus\ModBus.c
 
 2 
 	~"ModBus.h
@@ -13471,25 +13893,37 @@ ußπ
 
 12 
 	#UART_SIMULATION
- 1
+ 0
 
 	)
 
-19 
+21 
+	gSèπFømeSíd
+[15] = {':', 'D', '0', '0', '6', '0', '0', '+', '0', '0', '0', 'A', 'A', '\r', '\n'};
+
+22 *
+	gSèπD©aSídIndex
+;
+
+23 *
+	gLRCPoöãr
+;
+
+24 
 	$ModBus_Inô
 () {
 
-21 
+26 
 Eº‹
  = 0;
 
-22 
+27 
 UARTBuf„rSèπMsgPoöãr
  = 
 UART_Buf„r
 ;
 
-23 
+28 
 UARTBuf„rEndMsgPoöãr
  = 
 UART_Buf„r
@@ -13497,27 +13931,39 @@ UART_Buf„r
 UART_BUFFER_SIZE
  - 1 );
 
-24 
+29 
 UARTBuf„rLRCIndex
  = 
 UARTBuf„rEndMsgPoöãr
  - 3;
 
-25 
+30 
 UARTRe˚ivî_Fœg
  = 0;
 
-26 
+31 
 	`ModBus_CÀ¨Msgs
 ();
 
-28 
+33 
+SèπD©aSídIndex
+ = 
+SèπFømeSíd
+ + 8;
+
+34 
+LRCPoöãr
+ = 
+SèπFømeSíd
+ + 11;
+
+36 
 Queue_SèπIndex
  = 
 QueueBuf„r_To_UART
 ;
 
-29 
+37 
 Queue_EndIndex
  = 
 Queue_SèπIndex
@@ -13525,29 +13971,29 @@ Queue_SèπIndex
 QueueSize
  - 1 );
 
-30 
+38 
 Queue_Index
  = 
 Queue_SèπIndex
 ;
 
-32 #i‡(
+40 #i‡(
 UART_SIMULATION
  == 1)
 
-33 
+41 
 D©a
 [
 UART_BUFFER_SIZE
 ] = {':', 'D', '2', '0', '6', '2', '0', '+', '5', '5', '5', 'B', 'E', '\r', '\n' };
 
-34 
+42 
 i
  = 0; i < 
 UART_BUFFER_SIZE
 ; i++)
 
-36 
+44 
 UART_Buf„r
 [
 i
@@ -13555,21 +14001,21 @@ i
 D©a
 [i];
 
-37 
+45 
 UARTBuf„rIndex
 ++;
 
-39 
+47 
 D©
 ;
 
-40 
+48 
 Eº‹
  = 
 	`ModBus_CheckFøme
 ();
 
-41 (
+49 (
 Eº‹
  =0Ë? 
 D©
@@ -13579,29 +14025,29 @@ D©
 	`ModBus_CÀ¨Msgs
 ();
 
-42 
+50 
 	`ModBus_CÀ¨Msgs
 ();
 
-43 
+51 
 	`ModBus_SídRe•⁄£
 (":D00600+555C2\r\n");
 
-45 
+53 
 	}
 }
 
-47 
+55 
 	$ModBus_QueueCÀ¨
 ()
 
-49 
+57 
 Queue_SèπIndex
  = 
 QueueBuf„r_To_UART
 ;
 
-50 
+58 
 Queue_EndIndex
  = 
 Queue_SèπIndex
@@ -13609,23 +14055,23 @@ Queue_SèπIndex
 QueueSize
  - 1 );
 
-51 
+59 
 Queue_Index
  = 
 Queue_SèπIndex
 ;
 
-52 
+60 
 i
  = 0; i <5; i++Ë{
 QueueBuf„r_To_UART
 [i] = 0;}
 
-53 
+61 
 	}
 }
 
-60 
+68 
 	$LRC_Cou¡ög
 (*
 buf
@@ -13633,35 +14079,139 @@ buf
 bsize
 ) {
 
-61 * 
+69 * 
 pD©a
  = 
 buf
 ;
 
-62 
+70 
 LRC
  = 0;
 
-63 
+71 
 bsize
 --)
 
-65 
+73 
 LRC
  +*
 pD©a
 ++;
 
-67  (()(-(()
+75  (()(-(()
 LRC
 )));
 
-68 
+76 
 	}
 }
 
-70 
+78 
+	$ModBus_DEC_TO_ASCII_C⁄vîãr
+(*
+DEC_Poöãr
+, 
+bsize
+)
+
+80 
+ASCII
+;
+
+81 
+ASCII
+ = 0;
+
+82 
+i
+ = 0; i <
+bsize
+; i++)
+
+84 
+ASCII
+ = *
+DEC_Poöãr
+++;
+
+85 
+ASCII
+ |= 0x30;
+
+86 *
+SèπD©aSídIndex
+++ = 
+ASCII
+;
+
+88 
+SèπD©aSídIndex
+ = 
+SèπFømeSíd
+ + 8;
+
+89 
+	}
+}
+
+91 
+	$ModBus_HEX_TO_ASCII_C⁄vîãr
+(*
+HEX_Poöãr
+, 
+bsize
+)
+
+93 
+ASCII
+;
+
+94 
+ASCII
+ = 0;
+
+95 
+i
+ = 0; i <
+bsize
+; i++)
+
+97 
+ASCII
+ = *
+HEX_Poöãr
+++;
+
+98 if–
+ASCII
+ > 0x9) { ASCII -= 0xA; ASCII |= 0x41;}
+
+99 if–
+ASCII
+ >= 0x00 && ASCII <= 0x9) { ASCII |= 0x30;}
+
+100 *
+LRCPoöãr
+ = 
+ASCII
+;
+
+101 
+LRCPoöãr
+++;
+
+103 
+LRCPoöãr
+ = 
+SèπFømeSíd
+ + 11;
+
+104 
+	}
+}
+
+106 
 	$ModBus_ASCII_TO_HEX_C⁄vîãr
 (*
 ASCII_Poöãr
@@ -13669,7 +14219,7 @@ ASCII_Poöãr
 bsize
 )
 
-72 
+108 
 HEX
 , 
 i
@@ -13677,7 +14227,7 @@ i
 Resu…
 ;
 
-73 
+109 
 Resu…
  = 0; 
 HEX
@@ -13685,13 +14235,13 @@ HEX
 i
  = 0;
 
-74 
+110 
 i
  = 0; i <
 bsize
 ; i++)
 
-76 
+112 
 HEX
  = (()*(
 ASCII_Poöãr
@@ -13699,15 +14249,15 @@ ASCII_Poöãr
 i
 ));
 
-77 i‡((()(
+113 i‡((()(
 HEX
 )) > '9') { HEX = ()(HEX&0xF) + 9; }
 
-78 { 
+114 { 
 HEX
  &= 0xF;}
 
-79 
+115 
 Resu…
  |(Ë(
 HEX
@@ -13717,65 +14267,65 @@ bsize
 i
 )));
 
-81  
+117  
 Resu…
 ;
 
-82 
+118 
 	}
 }
 
-89 
+125 
 	$ModBus_CÀ¨Msgs
 () {
 
-91 
+127 
 i
  = 0; i < (
 UART_Buf„r
 );i++)
 
-93 
+129 
 UART_Buf„r
 [
 i
 ] = 0;
 
-96 
+132 
 UARTBuf„rIndex
  = 
 UART_Buf„r
 ;
 
-97 
+133 
 	}
 }
 
-104 
+140 
 	$ModBus_CheckFøme
 () {
 
-106 if–*
+142 if–*
 UARTBuf„rSèπMsgPoöãr
  == ':')
 
-108 c⁄° 
+144 c⁄° 
 EndFøme
 [2] = { 13, 10};
 
-109 
+145 
 Tmp
 [2];
 
-110 
+146 
 cou¡s
  = 0;
 
-111 
+147 
 i
  = 0; i <= 1; i++)
 
-113 
+149 
 Tmp
 [
 i
@@ -13783,7 +14333,7 @@ i
 UARTBuf„rEndMsgPoöãr
  - (1 - i));
 
-114 i‡(
+150 i‡(
 Tmp
 [
 i
@@ -13793,45 +14343,45 @@ EndFøme
 cou¡s
 ++;}
 
-116 if(
+152 if(
 cou¡s
  == 2) { 0;} { 1;}
 
-119 
+155 
 	}
 }
 
-121 
+157 
 	$ModBus_P¨£Packë
 () {
 
-122 *
+158 *
 UARTBuf„rSœveAddrIndex
 ;
 
-123 c⁄° 
+159 c⁄° 
 Sœve_Addªss
 [2] = {'D', '2'};
 
-125 
+161 
 Tmp
 [2];
 
-126 
+162 
 UARTBuf„rSœveAddrIndex
  = 
 UARTBuf„rSèπMsgPoöãr
  + 1;
 
-127 
+163 
 cou¡s
  = 0;
 
-128 
+164 
 i
  = 0; i <= 1; i++)
 
-130 
+166 
 Tmp
 [
 i
@@ -13839,7 +14389,7 @@ i
 UARTBuf„rSœveAddrIndex
  + i);
 
-131 if(
+167 if(
 Tmp
 [
 i
@@ -13849,17 +14399,17 @@ Sœve_Addªss
 cou¡s
 ++;}
 
-133 if(
+169 if(
 cou¡s
  =2Ë{ 
 UARTRe˚ivî_Fœg
  = 1; }
 
-134 if(
+170 if(
 UARTRe˚ivî_Fœg
  == 0) { 0;}
 
-136 
+172 
 TmpLRC
  = 
 	`LRC_Cou¡ög
@@ -13867,13 +14417,13 @@ TmpLRC
 UARTBuf„rSèπMsgPoöãr
 ,
 
-137 ()(–
+173 ()(–
 UARTBuf„rEndMsgPoöãr
  - 4 ) - 
 UARTBuf„rSèπMsgPoöãr
 ) + 1);
 
-138 
+174 
 LRCMsgs
  = 
 	`ModBus_ASCII_TO_HEX_C⁄vîãr
@@ -13881,31 +14431,31 @@ LRCMsgs
 UARTBuf„rLRCIndex
 ,
 
-139 (()((
+175 (()((
 UARTBuf„rLRCIndex
  + 1) - UARTBufferLRCIndex)));
 
-141 if–
+177 if–
 TmpLRC
  =
 LRCMsgs
 )
 
-143 *
+179 *
 UARTBuf„rFun°i⁄MsgPoöãr
 ;
 
-144 
+180 
 UARTBuf„rFun°i⁄MsgPoöãr
  = 
 UARTBuf„rSèπMsgPoöãr
  + 3;
 
-145 
+181 
 MesßgeMode
 ;
 
-147 
+183 
 MesßgeMode
  = 
 	`ModBus_ASCII_TO_HEX_C⁄vîãr
@@ -13913,25 +14463,25 @@ MesßgeMode
 UARTBuf„rFun°i⁄MsgPoöãr
 ,
 
-148 (()((
+184 (()((
 UARTBuf„rFun°i⁄MsgPoöãr
  + 1) - UARTBufferFunstionMsgPointer)));
 
-150 
+186 
 MesßgeMode
 )
 
-155 *
+191 *
 UARTBuf„rD©aMsgPoöãr
 ;
 
-156 
+192 
 UARTBuf„rD©aMsgPoöãr
  = 
 UARTBuf„rSèπMsgPoöãr
  + 5;
 
-157 
+193 
 M™ageSe˘‹
  = 
 	`ModBus_ASCII_TO_HEX_C⁄vîãr
@@ -13939,27 +14489,27 @@ M™ageSe˘‹
 UARTBuf„rD©aMsgPoöãr
 ,
 
-158 (()((
+194 (()((
 UARTBuf„rD©aMsgPoöãr
  + 1) - UARTBufferDataMsgPointer)));
 
-159 if(
+195 if(
 M™ageSe˘‹
  == 0x20)
 
-161 
+197 
 UARTBuf„rDúMsg
  = *(
 UARTBuf„rSèπMsgPoöãr
  + 7);
 
-162 
+198 
 UARTBuf„rD©aMsgPoöãr
  = 
 UARTBuf„rSèπMsgPoöãr
  + 8;
 
-164 
+200 
 D©a_hex
  = 
 	`ModBus_ASCII_TO_HEX_C⁄vîãr
@@ -13967,141 +14517,231 @@ D©a_hex
 UARTBuf„rD©aMsgPoöãr
 ,
 
-165 (()((
+201 (()((
 UARTBuf„rD©aMsgPoöãr
  + 2) - UARTBufferDataMsgPointer)));
 
-166 if–
+202 if–
 D©a_hex
  > 0x555) { Data_hex = 0x555; }
 
-167 
+203 
 D©a_hex
  = (()((()(Data_hex * 3331)) >> 13));
 
-168 
+204 
 D©a_Dec
  = (()
 D©a_hex
 ) / 100;
 
-169 i‡(
+205 i‡(
 UARTBuf„rDúMsg
  ='-'Ë{
 D©a_Dec
  = -Data_Dec;}
 
-170 
+206 
 UARTRe˚ivî_Fœg
  = 0;
 
-171  
+207  
 D©a_Dec
 ;
 
-176 
+212 
 UARTTønsmô_Fœg
  = 0;
 
-177 
+213 
 UARTRe˚ivî_Fœg
  = 0;
 
-179 
+215 
 	}
 }
 
-181 
+217 
 	$ModBus_IsFuŒ_Queue
 ()
 
-183 
+219 
 UARTTønsmô_Fœg
 )
 
-187 if–
+223 if–
 Queue_Index
  > (
 Queue_SèπIndex
  + 4) ) {  1; }
 
-194 if–
+230 if–
 Queue_Index
  > 
 Queue_SèπIndex
  + 5 ) {  1; }
 
-201 if–
+237 if–
 Queue_Index
  > 
 Queue_EndIndex
  ) {  1; }
 
-212 
+248 
 	}
 }
 
-214 
+250 
 	$ModBus_SídRe•⁄£
-–c⁄° * 
+(* 
 Re•
 )
 
-216 *
+252 *
 Re•
  !'\0'Ë{ 
 	`ModBus_SídByã
 (*Resp); Resp++; }
 
-217 
+253 
 	}
 }
 
-219 
+255 
 	$ModBus_PutQueue
 (c⁄° vﬁ©ûê
 D©a
 )
 
-221 if–
+257 if–
 	`ModBus_IsFuŒ_Queue
 () == 1 )
 
-223 
+259 
 Queue_Index
  = 
 Queue_SèπIndex
 ;
 
-224 
+260 
 i
 ;
 
-225 
+261 
 i
  = 0; i <3; i++ ) { 
 QueueBuf„r_To_UART
 [i] = 0;}
 
-227 *
+263 *
 Queue_Index
 ++ = 
 D©a
 ;
 
-228 
+264 
 	}
 }
 
-230 *
+266 
+	$ModBus_SídRe•⁄£S≥ed
+(
+S≥ed
+)
+
+268 
+D©aBuf
+[3] = {0, 0, 0};
+
+270 
+D©aBuf
+[0] = 
+S≥ed
+/100;
+
+271 
+D©aBuf
+[1] = 
+S≥ed
+/10 - (()(Speed/100))*10;
+
+272 
+D©aBuf
+[2] = 
+S≥ed
+ - (()(Speed/10))*10;
+
+274 
+	`ModBus_DEC_TO_ASCII_C⁄vîãr
+(
+D©aBuf
+, ()((*DataBuf + 2) - (*DataBuf)));
+
+275 if(
+Tønsmissi⁄_Fœg
+ =
+R
+Ë{*(
+SèπD©aSídIndex
+ - 1) = '-';}
+
+276 {*(
+SèπD©aSídIndex
+ - 1) = '+';}
+
+278 
+Tmp
+ = 
+	`LRC_Cou¡ög
+(
+SèπFømeSíd
+,
+
+279 (()(–
+SèπD©aSídIndex
+ + 3Ë- 
+SèπFømeSíd
+)));
+
+280 
+Buf
+[2];
+
+281 
+Buf
+[0] = 
+Tmp
+ >> 4;
+
+282 
+Buf
+[1] = 
+Tmp
+&0xF;
+
+283 
+	`ModBus_HEX_TO_ASCII_C⁄vîãr
+(
+Buf
+, (()((
+LRCPoöãr
+ + 1) - LRCPointer)));
+
+284 
+	`ModBus_SídRe•⁄£
+(
+SèπFømeSíd
+);
+
+285 
+	}
+}
+
+287 *
 	gQueueIndexTx
 ;
 
-231 
-	gout
-;
-
-232 
+289 
 	$Gë_Queue
 (Ë{  *
 QueueIndexTx
@@ -14109,13 +14749,13 @@ QueueIndexTx
 	}
 }
 
-233 
+291 
 	$ModBus_SídByã
 (c⁄° 
 D©a
 )
 
-235 !
+293 !
 	`USARTGëSètus
 (
 ußπ3
@@ -14123,33 +14763,33 @@ ußπ3
 TønsmôRegEm±y
 )) {}
 
-236 
+294 
 	`ModBus_PutQueue
 (
 D©a
 );
 
-237 i‡–
+295 i‡–
 	`ModBus_IsFuŒ_Queue
 () == 1)
 
-239 
+297 
 QueueIndexTx
  = 
 Queue_SèπIndex
 ;
 
-240 *
+298 *
 QueueIndexTx
  != '\0')
 
-242 if((
+300 if((
 USART3
 ->
 SR
  & 0x80) >> 7)
 
-244 vﬁ©ûê
+302 vﬁ©ûê
 uöt8_t
  
 Da
@@ -14157,7 +14797,7 @@ Da
 	`Gë_Queue
 ());
 
-245 
+303 
 USART3
 ->
 DR
@@ -14165,19 +14805,19 @@ DR
 Da
 ;
 
-248 
+306 
 UARTTønsmô_Fœg
  = 0;
 
-249 
+307 
 	`ModBus_QueueCÀ¨
 ();
 
-251 
+309 
 	}
 }
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\ModBus\ModBus.h
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\ModBus\ModBus.h
 
 1 #¥agm®
 ⁄˚
@@ -14275,17 +14915,23 @@ ModBus_P¨£Packë
 
 31 
 ModBus_SídRe•⁄£
-–c⁄° * 
+–* 
 Re•
 );
 
 33 
+ModBus_SídRe•⁄£S≥ed
+(
+S≥ed
+);
+
+35 
 ModBus_SídByã
 (c⁄° 
 D©a
 );
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\STM32F407.svd
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\STM32F407.svd
 
 1 <?
 xml
@@ -27217,7 +27863,7 @@ DISOOFP
 devi˚
 >
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\cmsis\cmsis_compiler.h
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\cmsis\cmsis_compiler.h
 
 25 #i‚de‡
 __CMSIS_COMPILER_H
@@ -28309,7 +28955,7 @@ Unknown
 compûî
 .
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\cmsis\cmsis_gcc.h
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\cmsis\cmsis_gcc.h
 
 25 #i‚de‡
 __CMSIS_GCC_H
@@ -34667,7 +35313,7 @@ dügno°ic
 p›
 
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\cmsis\cmsis_version.h
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\cmsis\cmsis_version.h
 
 25 #i‡ 
 deföed
@@ -34725,7 +35371,7 @@ __CM_CMSIS_VERSION_SUB
 
 	)
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\cmsis\core_cm4.h
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\cmsis\core_cm4.h
 
 25 #i‡ 
 deföed
@@ -41445,7 +42091,7 @@ ITM_RXBUFFER_EMPTY
 __˝lu•lus
 
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\cmsis\mpu_armv7.h
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\cmsis\mpu_armv7.h
 
 25 #i‡ 
 deföed
@@ -42223,7 +42869,7 @@ rowW‹dSize
 	}
 }
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\cmsis\mpu_armv8.h
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\cmsis\mpu_armv8.h
 
 25 #i‡ 
 deföed
@@ -43237,7 +43883,7 @@ MPU_NS
 	}
 }
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\cmsis\tz_context.h
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\cmsis\tz_context.h
 
 25 #i‡ 
 deföed
@@ -43343,7 +43989,7 @@ TZ_Mem‹yId_t
 id
 );
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\FreeRTOS.h
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\FreeRTOS.h
 
 27 #i‚de‡
 INC_FREERTOS_H
@@ -47051,7 +47697,7 @@ SèticSåómBuf„r_t
 __˝lu•lus
 
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\FreeRTOSConfig.h
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\FreeRTOSConfig.h
 
 29 #i‚de‡
 FREERTOS_CONFIG_H
@@ -47369,7 +48015,7 @@ SysTick_H™dÀr
 
 	)
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\StackMacros.h
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\StackMacros.h
 
 28 #i‚de‡
 _MSC_VER
@@ -47433,7 +48079,7 @@ futuª
 	~"°ack_ma¸os.h
 "
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\atomic.h
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\atomic.h
 
 36 #i‚de‡
 ATOMIC_H
@@ -48045,7 +48691,7 @@ ulCuºít
 __˝lu•lus
 
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\croutine.c
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\croutine.c
 
 27 
 	~"FªeRTOS.h
@@ -48867,7 +49513,7 @@ xRëu∫
 	}
 }
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\croutine.h
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\croutine.h
 
 27 #i‚de‡
 CO_ROUTINE_H
@@ -49283,7 +49929,7 @@ pxEvítLi°
 __˝lu•lus
 
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\deprecated_definitions.h
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\deprecated_definitions.h
 
 27 #i‚de‡
 DEPRECATED_DEFINITIONS_H
@@ -49789,7 +50435,7 @@ __IAR_78K0R_Kx3L__
 	~"../../Sour˚/p‹èbÀ/IAR/78K0R/p‹tma¸o.h
 "
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\event_groups.c
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\event_groups.c
 
 28 
 	~<°dlib.h
@@ -51641,7 +52287,7 @@ uxEvítGroupNumbî
 	}
 }
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\event_groups.h
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\event_groups.h
 
 27 #i‚de‡
 EVENT_GROUPS_H
@@ -52017,7 +52663,7 @@ PRIVILEGED_FUNCTION
 __˝lu•lus
 
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\heap_2.c
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\heap_2.c
 
 36 
 	~<°dlib.h
@@ -52659,7 +53305,7 @@ xEnd
 	}
 }
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\list.c
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\list.c
 
 28 
 	~<°dlib.h
@@ -53087,7 +53733,7 @@ uxNumbîOfIãms
 	}
 }
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\list.h
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\list.h
 
 56 #i‚de‡
 LIST_H
@@ -53739,7 +54385,7 @@ pxIãmToRemove
 __˝lu•lus
 
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\message_buffer.h
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\message_buffer.h
 
 61 #i‚de‡
 FREERTOS_MESSAGE_BUFFER_H
@@ -54087,7 +54733,7 @@ deföed
 __˝lu•lus
  )
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\mpu_prototypes.h
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\mpu_prototypes.h
 
 36 #i‚de‡
 MPU_PROTOTYPES_H
@@ -55805,7 +56451,7 @@ pxSèticSåómBuf„r
 FREERTOS_SYSTEM_CALL
 ;
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\mpu_wrappers.h
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\mpu_wrappers.h
 
 27 #i‚de‡
 MPU_WRAPPERS_H
@@ -56673,7 +57319,7 @@ MPU_xSåómBuf„rGíîicCª©eSètic
 
 	)
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\port.c
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\port.c
 
 32 
 	~"FªeRTOS.h
@@ -57981,7 +58627,7 @@ ulMaxPRIGROUPVÆue
 	}
 }
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\portable.h
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\portable.h
 
 31 #i‚de‡
 PORTABLE_H
@@ -58407,7 +59053,7 @@ PRIVILEGED_FUNCTION
 __˝lu•lus
 
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\portmacro.h
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\portmacro.h
 
 29 #i‚de‡
 PORTMACRO_H
@@ -59037,7 +59683,7 @@ __asm
 __˝lu•lus
 
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\projdefs.h
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\projdefs.h
 
 27 #i‚de‡
 PROJDEFS_H
@@ -59429,7 +60075,7 @@ pdFREERTOS_BIG_ENDIAN
 
 	)
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\queue.c
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\queue.c
 
 27 
 	~<°dlib.h
@@ -66315,7 +66961,7 @@ xRëu∫
 	}
 }
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\queue.h
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\queue.h
 
 28 #i‚de‡
 QUEUE_H
@@ -67413,7 +68059,7 @@ PRIVILEGED_FUNCTION
 __˝lu•lus
 
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\semphr.h
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\semphr.h
 
 27 #i‚de‡
 SEMAPHORE_H
@@ -67787,7 +68433,7 @@ QueueH™dÀ_t
 
 	)
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\stack_macros.h
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\stack_macros.h
 
 27 #i‚de‡
 STACK_MACROS_H
@@ -68009,7 +68655,7 @@ pcTaskName
 
 	)
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\stdint.readme
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\stdint.readme
 
 27 #i‚de‡
 FREERTOS_STDINT
@@ -68045,7 +68691,7 @@ FREERTOS_STDINT
 	tuöt32_t
 ;
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\stream_buffer.c
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\stream_buffer.c
 
 28 
 	~<°döt.h
@@ -71639,7 +72285,7 @@ sbFLAGS_IS_MESSAGE_BUFFER
 	}
 }
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\stream_buffer.h
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\stream_buffer.h
 
 50 #i‚de‡
 STREAM_BUFFER_H
@@ -72071,7 +72717,7 @@ deföed
 __˝lu•lus
  )
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\task.h
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\task.h
 
 28 #i‚de‡
 INC_TASK_H
@@ -74113,7 +74759,7 @@ PRIVILEGED_FUNCTION
 __˝lu•lus
 
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\tasks.c
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\tasks.c
 
 28 
 	~<°dlib.h
@@ -85359,7 +86005,7 @@ FREERTOS_TASKS_C_ADDITIONS_INIT
 	}
 }
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\timers.c
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\timers.c
 
 28 
 	~<°dlib.h
@@ -88371,7 +89017,7 @@ uxTimîNumbî
 	}
 }
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\timers.h
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\timers.h
 
 28 #i‚de‡
 TIMERS_H
@@ -89075,7 +89721,7 @@ pulTimîTaskSèckSize
 __˝lu•lus
 
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\inc\main.h
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\inc\main.h
 
 1 #i‚de‡
 MAIN_H_INCLUDED
@@ -89099,15 +89745,23 @@ __˝lu•lus
 	~<FûC⁄fig.h
 >
 
+14 
+PWM
+;
+
 15 
 	~"C¨M™agemít.h
 "
 
-16 #ifde‡
+16 
+	~"C¨Reguœt‹s.h
+"
+
+17 #ifde‡
 __˝lu•lus
 
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\inc\robot_tasks.h
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\inc\robot_tasks.h
 
 1 #¥agm®
 ⁄˚
@@ -89177,7 +89831,7 @@ vModBusM™agemít
 pvP¨amëîs
 );
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\inc\stm32f4xx.h
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\inc\stm32f4xx.h
 
 53 #i‚de‡
 __STM32F4xx_H
@@ -160189,7 +160843,7 @@ __˝lu•lus
 	}
 }
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\inc\system_stm32f4xx.h
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\inc\system_stm32f4xx.h
 
 39 #i‚de‡
 __SYSTEM_STM32F4XX_H
@@ -160223,7 +160877,7 @@ Sy°emC‹eClockUpd©e
 __˝lu•lus
 
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\src\CarManagement.c
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\src\CarManagement.c
 
 1 
 	~"C¨M™agemít.h
@@ -160321,6 +160975,10 @@ F1
 Clutch_Fœg
  == 1 ) { }
 
+41 
+F2
+:
+
 47 
 	}
 }
@@ -160349,191 +161007,21 @@ Bøke_Fœg
 	}
 }
 
-55 
-	#Fªq
- 5
-
-	)
-
-56 
-	#PI
- 3.14157
-
-	)
-
-57 
-	#R_Whìl
- 0.28
-
-	)
-
-58 
-	#SãpInMëîs
- ((2*
-PI
-*
-R_Whìl
-)/48)
-
-	)
-
-60 
-	$S≥ed_CÆc
-(
-uöt16_t
- 
-À·Whìl
-, uöt16_à
-rightWhìl
-)
-
-62 
-S≥ed
-;
-
-63 
-uöt16_t
- 
-sum
-;
-
-64 if(
-À·Whìl
- =0 && 
-rightWhìl
- !0Ë{ 
-sum
- =ÑightWheel;}
-
-65 if(
-rightWhìl
- =0 && 
-À·Whìl
- !0Ë{ 
-sum
- =ÜeftWheel;}
-
-66 if(
-rightWhìl
- !0 && 
-À·Whìl
- !0Ë{ 
-sum
- = (leftWheel +ÑightWheel) / 2;}
-
-67 
-S≥ed
- = 
-sum
- * 0.03665 * 10 ;
-
-68 
-RPul£Whìl
- = 0; 
-LPul£Whìl
- = 0;
-
-69  
-S≥ed
-;
-
-70 
-	}
-}
-
-72 
-	gP_k
-,
-	gI_k
-;
-
-73 
-	gSum_îr‹
-,
-	gEº‹
-;
-
-74 
-	gS≥ed_out
-;
-
-76 
-	$PI_Inô
-()
-
-78 
-P_k
- = 1.0;
-
-79 
-I_k
- = 0.0;
-
-80 
-Sum_îr‹
- = 0.0;
-
-81 
-Eº‹
- = 0.0;
-
-82 
-	}
-}
-
-84 
-	$PI_CÆc
-(
-Vñocôy
-)
-
-86 
-Eº_p
-, 
-Eº_i
-;
-
-87 
-S≥ed_ªf
- = 0.0;
-
-88 
-Eº‹
- = 
-Vñocôy
- - 
-Cuºít_Vñocôy
-;
-
-90 
-Eº_p
- = 
-Eº‹
- * 
-P_k
-;
-
-91 i‡(
-S≥ed_out
- <= 5.55 && Speed_out >= -5.55)
-
-96 
-	}
-}
-
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\src\CarManagement.h
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\src\CarManagement.h
 
 2 #¥agm®
 ⁄˚
 
 
 3 
-	~"maö.h
+	~"FûC⁄fig.h
 "
 
-5 
-	gCuºít_Vñocôy
-;
+4 
+uöt16_t
+ 
+	gadc_d©a
+[8];
 
 7 
 	gBøke_Fœg
@@ -160599,15 +161087,225 @@ Së_Tønsmissi⁄
 å™smissi⁄
 );
 
-21 
-	#PI_Timî
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\src\CarRegulators.c
+
+1 
+	~"C¨Reguœt‹s.h
+"
+
+3 
+_Boﬁ
+ 
+ZîoMesFœg
+;
+
+4 
+öt32_t
+ 
+	gícD©a
+[2];
+
+6 
+	$S≥ed_CÆc_C¨
+(
+uöt16_t
+ 
+À·Whìl
+, uöt16_à
+rightWhìl
+)
+
+8 
+S≥ed
+;
+
+9 
+uöt16_t
+ 
+sum
+ = 0;
+
+11 
+Cuºít_Vñocôy
+ = 0;
+
+13 if(
+rightWhìl
+ - 
+À·Whìl
+ >= (rightWheel/2)) {leftWheel = 0;}
+
+14 if(
+À·Whìl
+ - 
+rightWhìl
+ >= (leftWheel/2)) {rightWheel = 0;}
+
+16 if(
+À·Whìl
+ =0 && 
+rightWhìl
+ !0Ë{ 
+sum
+ =ÑightWheel;}
+
+17 if(
+rightWhìl
+ =0 && 
+À·Whìl
+ !0Ë{ 
+sum
+ =ÜeftWheel;}
+
+19 if(
+rightWhìl
+ !0 && 
+À·Whìl
+ !0Ë{ 
+sum
+ = (leftWheel +ÑightWheel) / 2;}
+
+20 
+S≥ed
+ = ( 
+sum
+ * 
+SãpWhìl
+ ) / 
+Fªq_Timî
+;
+
+21 
+RPul£Whìl
+ = 0; 
+LPul£Whìl
+ = 0;
+
+23 if–
+S≥ed
+ < 0.001 && 
+Cuºít_Vñocôy
+ < 0.001Ë{ 
+ZîoMesFœg
+ = 1;}
+
+24 {
+ZîoMesFœg
+ = 0;}
+
+25  
+S≥ed
+;
+
+26 
+	}
+}
+
+28 
+	gvCuºítVñocôy
+[2];
+
+29 
+	$S≥ed_CÆc_Tønsmissi⁄
+()
+
+31 
+ícD©a
+[0] = 
+TIM8
+->
+CNT
+;
+
+32 
+ícD©a
+[1] = 
+TIM2
+->
+CNT
+;
+
+34 
+i
+ = 0; i <= 1; i++)
+
+36 
+vCuºítVñocôy
+[
+i
+] = (
+ícD©a
+[i] * 
+SãpTønsmissi⁄
+Ë/ 
+Fªq_Timî
+;
+
+40 
+	}
+}
+
+42 
+	$PI_Inô
+()
+
+45 
+P_k
+ = 0.0;
+
+46 
+I_k
+ = 0.0;
+
+47 
+Sum_îr‹
+ = 0.0;
+
+48 
+Eº‹
+ = 0.0;
+
+49 
+S≥ed_out
+ = 0.0;
+
+51 
+	}
+}
+
+54 
+	$PI_CÆc
+(
+Vñocôy
+)
+
+60 
+	}
+}
+
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\src\CarRegulators.h
+
+1 #¥agm®
+⁄˚
+
+
+3 
+	~"maö.h
+"
+
+5 
+	gCuºít_Vñocôy
+;
+
+7 
+	#Fªq_Timî
  0.1
 
-22 
+8 
 	#SãpWhìl
- 0.0375
+ 0.03665
 
-23 vﬁ©ûê
+9 vﬁ©ûê
 uöt16_t
  
 LPul£Whìl
@@ -160617,8 +161315,8 @@ RPul£Whìl
 
 	)
 
-24 
-S≥ed_CÆc
+10 
+S≥ed_CÆc_C¨
 (
 uöt16_t
  
@@ -160627,37 +161325,63 @@ uöt16_t
 rightWhìl
 );
 
-26 
+12 
+	#PI2
+ 6.28314
+
+	)
+
+13 
+	#Redu˘i⁄
+ 92
+
+	)
+
+14 
+	#Cou¡îOnO√RŸ©e
+ 93700
+
+	)
+
+15 
+	#SãpTønsmissi⁄
+ ( (
+PI2
+/
+Cou¡îOnO√RŸ©e
+Ë* 
+Redu˘i⁄
+ )
+
+	)
+
+16 
+S≥ed_CÆc_Tønsmissi⁄
+();
+
+18 
 PI_Inô
 ();
 
-28 
+20 
 PI_CÆc
 (
 S≥ed
 );
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\src\main.c
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\src\main.c
 
 1 
 	~"maö.h
 "
 
-3 
+4 
 	$maö
 ()
 
-5 
+6 
 	`BﬂrdSèπ
 ();
-
-8 
-uöt32_t
- 
-sy°ick
- = 
-cuºít_Sy°ick
-;
 
 9 
 	`xTaskCª©e
@@ -160668,6 +161392,18 @@ c⁄figMINIMAL_STACK_SIZE
 , 
 NULL
 , 3, NULL );
+
+10 
+	`xTaskCª©e
+(
+vWaôögEvít
+, (* )"Waô", 
+c⁄figMINIMAL_STACK_SIZE
+, 
+NULL
+,2, &
+xWaôögH™gÀ
+ );
 
 11 
 	`xTaskCª©e
@@ -160689,7 +161425,7 @@ vModBusM™agemít
 c⁄figMINIMAL_STACK_SIZE
 , 
 NULL
-, 2, &
+, 1, &
 xModBusH™dÀ
  );
 
@@ -160733,7 +161469,7 @@ NULL
 	}
 }
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\src\robot_tasks.c
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\src\robot_tasks.c
 
 1 
 	~"robŸ_èsks.h
@@ -160741,6 +161477,12 @@ NULL
 
 4 
 	gEº‹Task
+;
+
+5 
+_Boﬁ
+ 
+	gZîoMesFœg
 ;
 
 8 
@@ -160790,10 +161532,6 @@ pvP¨amëîs
 42 
 Eº‹Task
  = 0;
-
-43 
-	`PI_Inô
-();
 
 44 
 	`ModBus_Inô
@@ -160875,49 +161613,55 @@ Tick_dódTime
 Tick_dódTime
  - 
 Tick_begö
- >= 1000 )
+ >= 500 )
 
-67 
+68 if(
+ZîoMesFœg
+ == 0)
+
+70 
 UARTTønsmô_Fœg
  = 3;
 
-68 
-	`ModBus_SídRe•⁄£
-(":D00600-555C0\r\n");
+71 
+	`ModBus_SídRe•⁄£S≥ed
+(
+Cuºít_Vñocôy
+*100);
 
-69 
+73 
 Tick_begö
  = 
 Tick_dódTime
 ;
 
-73 
+76 
 	`vTaskDñëe
 (
 NULL
 );
 
-74 
+77 
 	}
 }
 
-77 
+80 
 	$vM™agemítGórsBox
 –*
 pvP¨amëîs
  )
 
-79 
+82 
 Vñocôy
 ;
 
-82 
+85 
 	`£t_pö
 (
 PIN5_12V
 );
 
-83 
+86 
 	`xQueueRe˚ive
 (
 xQueue20H™dÀ
@@ -160925,45 +161669,45 @@ xQueue20H™dÀ
 Vñocôy
 , 0);
 
-84 
+87 
 	`ª£t_pö
 (
 PIN5_12V
 );
 
-86 
+89 
 	`vTaskDñëe
 (
 NULL
 );
 
-87 
+90 
 	}
 }
 
-91 
+94 
 	$vModBusM™agemít
 –*
 pvP¨amëîs
  )
 
-93 
+96 
 D©a
 ;
 
-96 
+99 
 	`£t_pö
 (
 PIN6_12V
 );
 
-97 
+100 
 Eº‹Task
  = 
 	`ModBus_CheckFøme
 ();
 
-98 (
+101 (
 Eº‹Task
  =0Ë? 
 D©a
@@ -160973,11 +161717,11 @@ D©a
 	`ModBus_CÀ¨Msgs
 ();
 
-99 
+102 
 UARTTønsmô_Fœg
  = 1;
 
-101 if(
+104 if(
 D©a
  !0.00Ë{
 	`xQueueSíd
@@ -160985,63 +161729,63 @@ D©a
 xQueue20H™dÀ
 , &Data, 0);}
 
-102 
+105 
 	`ModBus_CÀ¨Msgs
 ();
 
-103 
+106 
 Eº‹Task
  = 0;
 
-104 
+107 
 	`ª£t_pö
 (
 PIN6_12V
 );
 
-105 
+108 
 	`vTaskPri‹ôySë
 (
 xQueueM™agH™dÀ
 , 3);
 
-107 
+110 
 	`vTaskDñëe
 (
 NULL
 );
 
-108 
+111 
 	}
 }
 
-111 
+114 
 	$vSecurôyMem‹yM™agemít
  ( *
 pvP¨amëîs
 )
 
-113 
+116 
 Vñocôy
 ;
 
-114 c⁄° 
+117 c⁄° 
 Vñ_Dividî
  = 1.0;
 
-115 
+118 
 p‹tBASE_TYPE
  
 xSètus
 ;
 
-118 
+121 
 	`vTaskPri‹ôySë
 (
 xModBusH™dÀ
 , 1);
 
-119 
+122 
 xSètus
  = 
 	`xQueuePìk
@@ -161051,13 +161795,13 @@ xQueue20H™dÀ
 Vñocôy
 , 0);
 
-120 if–
+123 if–
 xSètus
  =
 pdPASS
 )
 
-122 if–(
+125 if–(
 Vñocôy
  - 
 Cuºít_Vñocôy
@@ -161065,29 +161809,29 @@ Cuºít_Vñocôy
 Vñ_Dividî
 ) || (Velocity - Current_Velocity < -Vel_Divider) )
 
-124 
+127 
 	`vTaskPri‹ôySë
 (
 xGórsH™dÀ
 , 2);
 
-126 } { 
+129 } { 
 	`vTaskPri‹ôySë
 (
 xQueueM™agH™dÀ
 , 1); }
 
-128 
+131 
 	`vTaskDñëe
 (
 NULL
 );
 
-129 
+132 
 	}
 }
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\src\startup_stm32f407xx.S
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\src\startup_stm32f407xx.S
 
 44 .
 sy¡ax
@@ -163269,7 +164013,7 @@ thumb_£t
 	gDeÁu…_H™dÀr
 
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\src\system_stm32f4xx.c
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\src\system_stm32f4xx.c
 
 317 
 	~"°m32f4xx.h
@@ -165907,7 +166651,7 @@ tm¥eg
 	}
 }
 
-	@C:\Users\Caska\Desktop\projects\RCR\Robocross\stm32f407vg_flash.ld
+	@C:\Users\Caska\Desktop\projects\RCR\robocross\stm32f407vg_flash.ld
 
 48 
 	$ENTRY
@@ -166383,8 +167127,8 @@ __HópLimô
 1
 .
 0
-64
-4347
+66
+4479
 C:\Users\Caska\Desktop\projects\RCR\ROBOCR~1\FILLIB~1\ADC.h
 C:\Users\Caska\Desktop\projects\RCR\ROBOCR~1\FILLIB~1\DMA.h
 C:\Users\Caska\Desktop\projects\RCR\ROBOCR~1\FILLIB~1\FILCON~1.H
@@ -166398,54 +167142,56 @@ C:\Users\Caska\Desktop\projects\RCR\ROBOCR~1\FILLIB~1\RCRDST~1\RCR_SE~1.H
 C:\Users\Caska\Desktop\projects\RCR\ROBOCR~1\FILLIB~1\RCRDST~1\RCR_SE~2.H
 C:\Users\Caska\Desktop\projects\RCR\ROBOCR~1\FILLIB~1\TIM.h
 C:\Users\Caska\Desktop\projects\RCR\ROBOCR~1\FILLIB~1\USART.h
-C:\Users\Caska\Desktop\projects\RCR\Robocross\ModBus\ModBus.c
-C:\Users\Caska\Desktop\projects\RCR\Robocross\ModBus\ModBus.h
-C:\Users\Caska\Desktop\projects\RCR\Robocross\STM32F407.svd
-C:\Users\Caska\Desktop\projects\RCR\Robocross\cmsis\cmsis_compiler.h
-C:\Users\Caska\Desktop\projects\RCR\Robocross\cmsis\cmsis_gcc.h
-C:\Users\Caska\Desktop\projects\RCR\Robocross\cmsis\cmsis_version.h
-C:\Users\Caska\Desktop\projects\RCR\Robocross\cmsis\core_cm4.h
-C:\Users\Caska\Desktop\projects\RCR\Robocross\cmsis\mpu_armv7.h
-C:\Users\Caska\Desktop\projects\RCR\Robocross\cmsis\mpu_armv8.h
-C:\Users\Caska\Desktop\projects\RCR\Robocross\cmsis\tz_context.h
-C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\FreeRTOS.h
-C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\FreeRTOSConfig.h
-C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\StackMacros.h
-C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\atomic.h
-C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\croutine.c
-C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\croutine.h
-C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\deprecated_definitions.h
-C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\event_groups.c
-C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\event_groups.h
-C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\heap_2.c
-C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\list.c
-C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\list.h
-C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\message_buffer.h
-C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\mpu_prototypes.h
-C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\mpu_wrappers.h
-C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\port.c
-C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\portable.h
-C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\portmacro.h
-C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\projdefs.h
-C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\queue.c
-C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\queue.h
-C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\semphr.h
-C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\stack_macros.h
-C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\stdint.readme
-C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\stream_buffer.c
-C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\stream_buffer.h
-C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\task.h
-C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\tasks.c
-C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\timers.c
-C:\Users\Caska\Desktop\projects\RCR\Robocross\freertos_lib\timers.h
-C:\Users\Caska\Desktop\projects\RCR\Robocross\inc\main.h
-C:\Users\Caska\Desktop\projects\RCR\Robocross\inc\robot_tasks.h
-C:\Users\Caska\Desktop\projects\RCR\Robocross\inc\stm32f4xx.h
-C:\Users\Caska\Desktop\projects\RCR\Robocross\inc\system_stm32f4xx.h
-C:\Users\Caska\Desktop\projects\RCR\Robocross\src\CarManagement.c
-C:\Users\Caska\Desktop\projects\RCR\Robocross\src\CarManagement.h
-C:\Users\Caska\Desktop\projects\RCR\Robocross\src\main.c
-C:\Users\Caska\Desktop\projects\RCR\Robocross\src\robot_tasks.c
-C:\Users\Caska\Desktop\projects\RCR\Robocross\src\startup_stm32f407xx.S
-C:\Users\Caska\Desktop\projects\RCR\Robocross\src\system_stm32f4xx.c
-C:\Users\Caska\Desktop\projects\RCR\Robocross\stm32f407vg_flash.ld
+C:\Users\Caska\Desktop\projects\RCR\robocross\ModBus\ModBus.c
+C:\Users\Caska\Desktop\projects\RCR\robocross\ModBus\ModBus.h
+C:\Users\Caska\Desktop\projects\RCR\robocross\STM32F407.svd
+C:\Users\Caska\Desktop\projects\RCR\robocross\cmsis\cmsis_compiler.h
+C:\Users\Caska\Desktop\projects\RCR\robocross\cmsis\cmsis_gcc.h
+C:\Users\Caska\Desktop\projects\RCR\robocross\cmsis\cmsis_version.h
+C:\Users\Caska\Desktop\projects\RCR\robocross\cmsis\core_cm4.h
+C:\Users\Caska\Desktop\projects\RCR\robocross\cmsis\mpu_armv7.h
+C:\Users\Caska\Desktop\projects\RCR\robocross\cmsis\mpu_armv8.h
+C:\Users\Caska\Desktop\projects\RCR\robocross\cmsis\tz_context.h
+C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\FreeRTOS.h
+C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\FreeRTOSConfig.h
+C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\StackMacros.h
+C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\atomic.h
+C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\croutine.c
+C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\croutine.h
+C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\deprecated_definitions.h
+C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\event_groups.c
+C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\event_groups.h
+C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\heap_2.c
+C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\list.c
+C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\list.h
+C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\message_buffer.h
+C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\mpu_prototypes.h
+C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\mpu_wrappers.h
+C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\port.c
+C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\portable.h
+C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\portmacro.h
+C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\projdefs.h
+C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\queue.c
+C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\queue.h
+C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\semphr.h
+C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\stack_macros.h
+C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\stdint.readme
+C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\stream_buffer.c
+C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\stream_buffer.h
+C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\task.h
+C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\tasks.c
+C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\timers.c
+C:\Users\Caska\Desktop\projects\RCR\robocross\freertos_lib\timers.h
+C:\Users\Caska\Desktop\projects\RCR\robocross\inc\main.h
+C:\Users\Caska\Desktop\projects\RCR\robocross\inc\robot_tasks.h
+C:\Users\Caska\Desktop\projects\RCR\robocross\inc\stm32f4xx.h
+C:\Users\Caska\Desktop\projects\RCR\robocross\inc\system_stm32f4xx.h
+C:\Users\Caska\Desktop\projects\RCR\robocross\src\CarManagement.c
+C:\Users\Caska\Desktop\projects\RCR\robocross\src\CarManagement.h
+C:\Users\Caska\Desktop\projects\RCR\robocross\src\CarRegulators.c
+C:\Users\Caska\Desktop\projects\RCR\robocross\src\CarRegulators.h
+C:\Users\Caska\Desktop\projects\RCR\robocross\src\main.c
+C:\Users\Caska\Desktop\projects\RCR\robocross\src\robot_tasks.c
+C:\Users\Caska\Desktop\projects\RCR\robocross\src\startup_stm32f407xx.S
+C:\Users\Caska\Desktop\projects\RCR\robocross\src\system_stm32f4xx.c
+C:\Users\Caska\Desktop\projects\RCR\robocross\stm32f407vg_flash.ld

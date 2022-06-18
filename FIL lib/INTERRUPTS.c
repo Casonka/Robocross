@@ -2,10 +2,9 @@
 #include "CarManagement.h"
 
 extern unsigned char UART_Buffer[UART_BUFFER_SIZE];
-unsigned int status;
-volatile uint32_t globalTime;
 extern volatile uint16_t LPulseWheel, RPulseWheel;
-
+float TransmissionPWM = 0.0;
+int direction = 0;
 //---------------------------------------------------------//
 //----------------------USART Interrupts-------------------//
 //---------------------------------------------------------//
@@ -47,19 +46,35 @@ void TIM5_IRQHandler(void)
 TIM5->SR = 0;
 }
 
+float globalRangeTransmission;
 void TIM6_DAC_IRQHandler(void) // Speed Regulator transmission box
 {
+    Speed_Calc_Transmission();
+    for(int i = 0; i <=1 ; i++)
+    {
+         PID_Calc(&TransmissionReg[i]);
+    }
+    globalRangeTransmission += TransmissionReg[1].CurrentSpeed * Freq_Timer;
+    SetPWM(8,TransmissionReg[0].Out);
+    SetPWM(9,TransmissionReg[1].Out);
 TIM6->SR = 0;
 }
-float globalSpeed = 0;
+
+float globalRangeCar;
+
+
+
 void TIM7_IRQHandler(void) // Speed Regulator Car 10Hz
 {
-//    LPulseWheel = 2;
-//    RPulseWheel = 38;
-      Current_Velocity = Speed_Calc(LPulseWheel, RPulseWheel);
-      globalSpeed += Current_Velocity * 0.1;
+    set_pin(PIN2_12V);
+   //GetTransmission();
+    Test(direction,TransmissionPWM);
+   //globalRangeTransmission += TransmissionReg[0].CurrentSpeed * 0.1;
+    //Current_Velocity = Speed_Calc_Car(LPulseWheel, RPulseWheel);
+    // globalRangeCar += Current_Velocity * 0.1;
 
-    TIM7->SR = 0;
+    reset_pin(PIN2_12V);
+TIM7->SR = 0;
 }
 
 void TIM8_UP_TIM13_IRQHandler(void)

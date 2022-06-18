@@ -1,8 +1,8 @@
 
 #pragma once
-#include "main.h"
+#include "FilConfig.h"
+uint16_t adc_data[8];
 
-float Current_Velocity; // текущая скорость
 
 int Brake_Flag;  // тормоз
 void Set_Brake(int state);
@@ -15,14 +15,12 @@ _Bool Move_Clutch(int direction); // engine on and moving
 #define R   -1
 #define F1  1
 #define F2  2
+#define S1  3
+#define S2  4
+#define NONE -3
 int Transmission_Flag;  // флаг передачи
 _Bool Set_Transmission(int transmission);    // 2 engines on end move transmission
 
-#define Freq_Timer    0.1      // 10 Hz  1/10 = 0.1 сек
-#define StepWheel   0.03665    // метров за один шаг колеса (48 магнитов)
-volatile uint16_t LPulseWheel,RPulseWheel;
-float Speed_Calc(uint16_t leftWheel, uint16_t rightWheel);
+void Test(int direction, float Speed);
 
-void PI_Init(void);
-
-float PI_Calc(float Speed);
+void GetTransmission(void);   // получить данные о состоянии коробки
