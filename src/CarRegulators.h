@@ -34,6 +34,6 @@ float Speed_Calc_Car(uint16_t leftWheel, uint16_t rightWheel);
 #define StepTransmission   ( PI2/CounterOnOneRotate )
 void Speed_Calc_Transmission(void);
 
-void PI_Init(void);
+void PID_Init(void);
 
 void PID_Calc(Regulator *PID_Calc);

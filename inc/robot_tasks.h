@@ -6,7 +6,8 @@
 //--------------------------------------------
 /// Tasks
 
-void vInitMainSectors( void *pvParameters);
+xTaskHandle xStartHandle;
+void vStart( void *pvParameters);
 
 xTaskHandle xWaitingHangle;
 void vWaitingEvent( void *pvParameters);

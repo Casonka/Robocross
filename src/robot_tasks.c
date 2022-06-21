@@ -1,8 +1,13 @@
 #include "robot_tasks.h"
 
+#define TestingTransmission  0
+#define TestingClutch        0
+#define TestingModBus        0
+#define TestingGas           0
 
 unsigned int ErrorTask;
 _Bool ZeroMesFlag;
+_Bool StartCarFlag;
 // System functions
 //--------------------------------------------------------------------------------------------------------------------
 void vApplicationTickHook(void)
@@ -36,28 +41,86 @@ void vApplicationMallocFailedHook( void )
 // Tasks functions
 //----------------------------------------------------------------------------------------------------------------------
 
-// No handle (one step mode)
-void vInitMainSectors( void *pvParameters)
+//xStartHandle
+void vStart( void *pvParameters)        // заходит при старте и перезагрузке
 {
-    ErrorTask = 0;
-    ModBus_Init();
-    vTaskDelete(NULL);
+    for(;;)
+    {
+        set_pin(PIN6_12V);
+#if (TestingGas == 1)
+
+
+
+#endif
+#if (TestingTransmission == 1)
+             GetTransmission();
+            if( Transmission_Flag != N && Transmission_Flag != NONE && Clutch_Flag == 1)
+            {
+                if( Set_Transmission(N) == N)
+                {
+                    reset_pin(PIN6_12V);
+                    vTaskPrioritySet(xStartHandle, 1);
+                    StartCarFlag = 1;
+                }
+                // попытка вернуться в исходное положение
+                else if(Transmission_Flag == NONE) { Recovery_Transmission(); }
+            }
+#endif
+#if (TestingModBus == 1)
+            ModBus_Init();
+            vTaskPrioritySet(xStartHandle, 1);
+#endif
+#if (TestingClutch == 1)
+             GetClutch();
+            if( pin_out(PIN1_12V) ) { Set_Brake(0); }
+            if( Clutch_Flag == 0 ) Move_Clutch(1);
+#endif
+#if (TestingTransmission == 0 && \
+     TestingClutch == 0 && \
+     TestingModBus == 0 && \
+     TestingGas == 0)
+        if( !StartCarFlag )
+        {
+            ModBus_Init();
+            PID_Init();
+            GetClutch();
+            if( pin_out(PIN1_12V) ) { Set_Brake(0); }
+            if( Clutch_Flag == 0 ) Move_Clutch(1);
+            GetTransmission();
+            if( Transmission_Flag != N && Transmission_Flag != NONE && Clutch_Flag == 1)
+            {
+                if( Set_Transmission(N) == N)
+                {
+                    reset_pin(PIN6_12V);
+                    vTaskPrioritySet(xStartHandle, 1);
+                    StartCarFlag = 1;
+                }
+                // попытка вернуться в исходное положение
+                else if(Transmission_Flag == NONE) { Recovery_Transmission(); }
+            }
+        }
+    /*!
+    *   @note Если программа проходит этот участок более одного раза, то
+    *   возникла проблема с коробкой передач.
+    */
+        StartCarFlag = 0;
+#endif
+    }
+vTaskDelete(NULL);
 }
 
 // xWaitingHangle
-void vWaitingEvent( void *pvParameters)
+void vWaitingEvent( void *pvParameters)    // ждем команду когда все сделано до этого и отправляем скорость (если изменяется)
 {
     portBASE_TYPE Tick_begin = xTaskGetTickCount();
     portBASE_TYPE Tick_deadTime;
 
     for(;;)
     {
-        reset_pin(PIN5_12V);
-        reset_pin(PIN6_12V);
-        set_pin(PIN4_12V);
+        set_pin(PIN5_12V);
         if(UART_Buffer[UART_BUFFER_SIZE - 1] != 0)
         {
-            reset_pin(PIN4_12V);
+
             vTaskPrioritySet(xModBusHandle, 3);
         }
         Tick_deadTime = xTaskGetTickCount();
@@ -81,9 +144,9 @@ void vManagementGearsBox( void *pvParameters )  //car management gears box ( ent
     float Velocity;
     for(;;)
     {
-        set_pin(PIN5_12V);
         xQueueReceive(xQueue20Handle, &Velocity, 0);
-        reset_pin(PIN5_12V);
+        if( Velocity > 0) { GetTransmission(); Set_Transmission(F1); }
+
     }
     vTaskDelete(NULL);
 }
@@ -95,7 +158,6 @@ void vModBusManagement( void *pvParameters )      // UART management: check buff
     float Data;
     for(;;)
     {
-        set_pin(PIN6_12V);
         ErrorTask = ModBus_CheckFrame();
         (ErrorTask == 0) ? Data = ModBus_ParsePacket() : ModBus_ClearMsgs();
         UARTTransmit_Flag = 1;
@@ -103,7 +165,6 @@ void vModBusManagement( void *pvParameters )      // UART management: check buff
         if(Data != 0.00) {xQueueSend(xQueue20Handle, &Data, 0);}
         ModBus_ClearMsgs();
         ErrorTask = 0;
-        reset_pin(PIN6_12V);
         vTaskPrioritySet(xQueueManagHandle, 3);
     }
 vTaskDelete(NULL);

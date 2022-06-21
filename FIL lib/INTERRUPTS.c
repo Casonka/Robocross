@@ -47,7 +47,7 @@ TIM5->SR = 0;
 }
 
 float globalRangeTransmission;
-void TIM6_DAC_IRQHandler(void) // Speed Regulator transmission box
+void TIM6_DAC_IRQHandler(void) // Speed Regulator transmission box 100Hz
 {
     Speed_Calc_Transmission();
     for(int i = 0; i <=1 ; i++)
@@ -57,23 +57,20 @@ void TIM6_DAC_IRQHandler(void) // Speed Regulator transmission box
     globalRangeTransmission += TransmissionReg[1].CurrentSpeed * Freq_Timer;
     SetPWM(8,TransmissionReg[0].Out);
     SetPWM(9,TransmissionReg[1].Out);
+
 TIM6->SR = 0;
 }
 
 float globalRangeCar;
 
-
-
 void TIM7_IRQHandler(void) // Speed Regulator Car 10Hz
 {
-    set_pin(PIN2_12V);
-   //GetTransmission();
-    Test(direction,TransmissionPWM);
-   //globalRangeTransmission += TransmissionReg[0].CurrentSpeed * 0.1;
+    Clutch_Flag = 1;
+    //MoveTo(direction,TransmissionPWM);
+    GetTransmission();
+    globalRangeTransmission += TransmissionReg[0].CurrentSpeed * 0.1;
     //Current_Velocity = Speed_Calc_Car(LPulseWheel, RPulseWheel);
-    // globalRangeCar += Current_Velocity * 0.1;
-
-    reset_pin(PIN2_12V);
+    globalRangeCar += Current_Velocity * 0.1;
 TIM7->SR = 0;
 }
 

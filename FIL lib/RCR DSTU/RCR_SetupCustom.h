@@ -21,6 +21,8 @@
     void ADC_Init(void);
 
     void SetPWM(unsigned char CHANNEL,float DUTY);
+
+    void TimGasConfigure(void);
 /*!
 *   END NATIVE CODE
 *
@@ -141,14 +143,14 @@
     conf_pin(GENERAL_PIN_9, ANALOG, PUSH_PULL, FAST_S, NO_PULL_UP);\
     conf_pin(EXTI1_PIN, INPUT, PUSH_PULL, FAST_S, PULL_UP);\
     conf_pin(EXTI2_PIN, INPUT, PUSH_PULL, FAST_S, PULL_UP);\
-    conf_pin(EXTI3_PIN, INPUT, PUSH_PULL, FAST_S, PULL_UP);\
-    conf_pin(EXTI4_PIN, INPUT, PUSH_PULL, FAST_S, PULL_UP);\
-    conf_pin(EXTI5_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
-    conf_pin(EXTI6_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
-    conf_pin(EXTI7_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
-    conf_pin(EXTI8_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
-    conf_pin(EXTI9_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
-    conf_pin(EXTI10_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
+    conf_pin(EXTI3_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
+    conf_pin(EXTI4_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
+    conf_pin(EXTI5_PIN, INPUT, PUSH_PULL, FAST_S, PULL_UP);\
+    conf_pin(EXTI6_PIN, INPUT, PUSH_PULL, FAST_S, PULL_UP);\
+    conf_pin(EXTI7_PIN, INPUT, PUSH_PULL, FAST_S, PULL_UP);\
+    conf_pin(EXTI8_PIN, INPUT, PUSH_PULL, FAST_S, PULL_UP);\
+    conf_pin(EXTI9_PIN, INPUT, PUSH_PULL, FAST_S, PULL_UP);\
+    conf_pin(EXTI10_PIN, INPUT, PUSH_PULL, FAST_S, PULL_UP);\
     conf_pin(pin_id(PORTA,9), ALTERNATE, PUSH_PULL, LOW_S, PULL_UP);\
     conf_af(pin_id(PORTA,9), AF8);\
     conf_pin(pin_id(PORTA,10), ALTERNATE, PUSH_PULL, LOW_S, PULL_UP);\

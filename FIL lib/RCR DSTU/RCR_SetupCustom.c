@@ -1,5 +1,6 @@
 #include "RCR_SetupCustom.h"
 
+
 #define EXTI_RISING_EDGE    1
 #define EXTI_FALLING_EDGE   2
 #define EXTI_BOTH_EDGES     3
@@ -43,9 +44,10 @@ void BoardStart(void)
     Clocks.APB1 = current_APB1;
     Clocks.APB2 = current_APB2;
     InitPeriph;
-    ADC_Init();
+    //ADC_Init();
     TimPWMConfigure(Tim4,83,200,1,1,1,1);   // 5kHz
     TimEngineClutchConfigure(); // one pulse mode
+    TimGasConfigure();      // one pulse mode
     TimPIDConfigure(Tim7,8399,1000);    // 10 Hz
     TimPIDConfigure(Tim6,8399,100);    // 100 Hz
     TimPWMConfigure(Tim12,83,200,1,1,0,0);
@@ -106,14 +108,23 @@ void InterruptsEnable(void)
 void TimEngineClutchConfigure(void)
 {
     ConfChannelsTim(Tim11,7,0,0,0,1,0,0,0);
-    ConfFreq(Tim11,52,200);
+    ConfFreq(Tim11,167,200);        // было раньше 83 200 20.06.2022 хз что это
     SetTimOnePulseMode(Tim11,1);
     ConfTimMainOutput(Tim11,1);
     ResetTimCCR1(Tim11);
-    SetPWM(4,0xFFFF);
+    SetPWM(4,0.5);
     TimStart(Tim11);
 }
 
+void TimGasConfigure(void)
+{
+    ConfChannelsTim(Tim10,7,0,0,0,1,0,0,0);
+    ConfFreq(Tim10,167,200);
+    SetTimOnePulseMode(Tim10,1);
+    ConfTimMainOutput(Tim10, 1);
+    SetPWM(5,0.5);
+    TimStart(Tim10);
+}
 void add_ext_interrupt(unsigned char pin, char edge)
 {
  SYSCFG->EXTICR [((pin)&0xF) >> 0x02] |= (pin>>4) << ((((pin)&0xF) % 4) << 0x02);

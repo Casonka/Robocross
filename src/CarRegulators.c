@@ -22,7 +22,7 @@ float Speed_Calc_Car(uint16_t leftWheel, uint16_t rightWheel)
     Speed = ( sum * StepWheel ) / Freq_Timer;   // скорость
     RPulseWheel = 0; LPulseWheel = 0;   // обнуление показаний
 
-    if( Speed < 0.001 && Current_Velocity < 0.001) { ZeroMesFlag = 1;}
+    if( Speed == Current_Velocity ) { ZeroMesFlag = 1;}
     else {ZeroMesFlag = 0;}
     return Speed;
 }

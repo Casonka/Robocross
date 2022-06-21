@@ -12,6 +12,7 @@ extern "C" {
 #include <FilConfig.h>
 //-----------------------------------------------------------------
 extern float PWM;
+extern _Bool StartCarFlag;
 #include "CarManagement.h"
 #include "CarRegulators.h"
 #ifdef __cplusplus
