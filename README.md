@@ -1,16 +1,7 @@
 # Robocross
-ANNOTATION
+АННОТАЦИЯ
 
-This project created for All-Russian competitions of unmanned vehicles. This project include functions for initialization main interfaces for conencting, parsing and sending information to the car, personal compter and many others. Project works with controller area network (CAN) for receive the information from car. 
-
-Project was created in DSTU, laboratory of unmanned transport systems for agricultural and general purposes.
-
-Project was created by Alexandr Nazarov (Caska).
-
-Fast Initialization Library (FIL) for stm32 controllers was created by Alexandr Nazarov.
-
-Project works with Real Time Operating System (FreeRTOS), https://www.freertos.org/index.html.
-![1594804849_msaaaghxa-a-960](https://user-images.githubusercontent.com/91759086/162691340-2d11431d-ac2e-4534-87ee-3c7cf3acb598.jpg)
-
+Проект был создан для участия в РОБОКРОСС 2022 - ежегодные всероссийские испытания беспилотного транспорта. Проект создан при поддержке Донского государственного технического университета и структурного подразделения Ресурсного Центра Робототехники (РЦР). Работа была начата в октябре 2021 года на серийном автомобиле ВАЗ-1111, а в марте 2022 года университетом был предоставлен серийный автомобиль более нового образца - Лада гранта. Так как автомобиль необходимо собрать, в рамках соревнований, беспилотным, то были проведены следующие работы: автономность поворота электроусилителя руля(ЭУРа), автономность системы нажатия педалей (сцепление, газ, тормоз), автономность механической коробки передач.
 ______________________________________________________________________________________________________________________________
 
+1. Начало 
