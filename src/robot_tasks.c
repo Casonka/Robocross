@@ -48,7 +48,7 @@ void vStart( void *pvParameters)        // заходит при старте и перезагрузке
     {
         set_pin(PIN6_12V);
 #if (TestingGas == 1)
-
+    Set_Gas(1,32);
 
 
 #endif

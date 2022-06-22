@@ -25,11 +25,7 @@ int main(void)
         /*!
         *   @note здесь можно запустить функцию для теста вручную
         */
-        if(flag == 1)
-        {
-            Set_Transmission(Transmission);
-            flag = 0;
-        }
+
     }
 #endif
 }
