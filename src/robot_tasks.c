@@ -4,10 +4,14 @@
 #define TestingClutch        0
 #define TestingModBus        0
 #define TestingGas           0
+#define TestingBrake         0
+#define RecoverySector       0
 
 unsigned int ErrorTask;
 _Bool ZeroMesFlag;
 _Bool StartCarFlag;
+
+
 // System functions
 //--------------------------------------------------------------------------------------------------------------------
 void vApplicationTickHook(void)
@@ -44,68 +48,89 @@ void vApplicationMallocFailedHook( void )
 //xStartHandle
 void vStart( void *pvParameters)        // заходит при старте и перезагрузке
 {
+    StartFlags.StartCarFlag_Brake = 0;
+    StartFlags.StartCarFlag_Clutch = 0;
+    StartFlags.StartCarFlag_Gas = 0;
+    StartFlags.StartCarFlag_ModBus = 0;
+    StartFlags.StartCarFlag_Transmission = 0;
+
     for(;;)
     {
-        set_pin(PIN6_12V);
-#if (TestingGas == 1)
-    Set_Gas(1,32);
-
-
-#endif
-#if (TestingTransmission == 1)
-             GetTransmission();
-            if( Transmission_Flag != N && Transmission_Flag != NONE && Clutch_Flag == 1)
-            {
-                if( Set_Transmission(N) == N)
-                {
-                    reset_pin(PIN6_12V);
-                    vTaskPrioritySet(xStartHandle, 1);
-                    StartCarFlag = 1;
-                }
-                // попытка вернуться в исходное положение
-                else if(Transmission_Flag == NONE) { Recovery_Transmission(); }
-            }
-#endif
-#if (TestingModBus == 1)
-            ModBus_Init();
-            vTaskPrioritySet(xStartHandle, 1);
-#endif
-#if (TestingClutch == 1)
-             GetClutch();
-            if( pin_out(PIN1_12V) ) { Set_Brake(0); }
-            if( Clutch_Flag == 0 ) Move_Clutch(1);
-#endif
-#if (TestingTransmission == 0 && \
-     TestingClutch == 0 && \
-     TestingModBus == 0 && \
-     TestingGas == 0)
-        if( !StartCarFlag )
+        if( StartCarFlag == 0)
         {
-            ModBus_Init();
-            PID_Init();
-            GetClutch();
-            if( pin_out(PIN1_12V) ) { Set_Brake(0); }
-            if( Clutch_Flag == 0 ) Move_Clutch(1);
-            GetTransmission();
-            if( Transmission_Flag != N && Transmission_Flag != NONE && Clutch_Flag == 1)
+        vTaskPrioritySet(xClutchHandle, 3);  // проверка сцепления
+        StartCarFlag = 1;
+        vTaskResume(xClutchHandle);
+
+        }
+
+
+    }
+vTaskDelete(NULL);
+}
+
+// xClutchHandle
+void vClutchManagement( void *pvParameters)
+{
+    /*!
+    *   @note robot_tasks: < Управление сцеплением >
+    */
+    uint8_t status = 1;
+    if ( !StartFlags.StartCarFlag_Clutch )
+        {
+            Get_Clutch();
+            if( Clutch_Flag != Full ) Move_Clutch(Full);
+            StartFlags.StartCarFlag_Clutch = 1;
+            vTaskSuspend(xClutchHandle);
+        }
+    for(;;)
+    {
+        if( StartCarFlag == 1)
+        {
+             switch( status )
             {
-                if( Set_Transmission(N) == N)
+              case 1:   // слегка отпустить сцепление
                 {
-                    reset_pin(PIN6_12V);
-                    vTaskPrioritySet(xStartHandle, 1);
-                    StartCarFlag = 1;
+                    Move_Clutch(Back_First);
+                    status = 2;
+                    vTaskDelay(1000);
+                    break;
                 }
-                // попытка вернуться в исходное положение
-                else if(Transmission_Flag == NONE) { Recovery_Transmission(); }
+             case 2: // довести передачу до конца
+                {
+                    Move_Clutch(Back_Second);
+                    status = 3;
+                    break;
+                }
+             default:
+                {
+                    status = 1;
+                    vTaskSuspend(xClutchHandle);
+                    break;
+                }
             }
         }
-    /*!
-    *   @note Если программа проходит этот участок более одного раза, то
-    *   возникла проблема с коробкой передач.
-    */
-        StartCarFlag = 0;
-#endif
     }
+
+// сюда не доходит задача
+vTaskDelete(NULL);
+}
+
+// xBrakeHandle
+void vBrakeManagement ( void *pvParameters)
+{
+    /*!
+    *   @note Управление тормозом
+    */
+    uint8_t status = 1;
+    if ( !StartFlags.StartCarFlag_Brake ) { Move_Clutch(Full); StartFlags.StartCarFlag_Brake = 1; }
+    for(;;)
+    {
+        if( StartFlags.StartCarFlag_Brake ) { vTaskSuspend(xBrakeHandle); }
+
+
+    }
+
 vTaskDelete(NULL);
 }
 
@@ -145,7 +170,7 @@ void vManagementGearsBox( void *pvParameters )  //car management gears box ( ent
     for(;;)
     {
         xQueueReceive(xQueue20Handle, &Velocity, 0);
-        if( Velocity > 0) { GetTransmission(); Set_Transmission(F1); }
+        if( Velocity > 0) { Get_Transmission(); Set_Transmission(F1); }
 
     }
     vTaskDelete(NULL);

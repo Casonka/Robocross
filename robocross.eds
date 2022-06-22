@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <EmBitz_debug_session>
 	<debuggerLastSession>
+		<breakpoints>
+			<break type="0" enabled="1" file="src/robot_tasks.c" line="107" />
+			<break type="0" enabled="1" file="src/robot_tasks.c" line="81" />
+		</breakpoints>
 		<watches>
 			<watch key="Clocks" format="0" array="0" start="0" count="0" expanded="0" live="0" />
 			<watch key="Current_Velocity" format="0" array="0" start="0" count="0" expanded="0" live="1" />
-			<watch key="Data" format="0" array="0" start="0" count="0" expanded="1" live="1" />
+			<watch key="Data" format="0" array="0" start="0" count="0" expanded="1" live="0" />
 			<watch key="Transmission_Flag" format="0" array="0" start="0" count="0" expanded="0" live="1" />
 			<watch key="TransmissionReg" format="0" array="0" start="0" count="0" expanded="0" live="1" />
 			<watch key="Clutch_Flag" format="0" array="0" start="0" count="0" expanded="0" live="1" />
-			<watch key="Transmission" format="0" array="0" start="0" count="0" expanded="0" live="1" />
-			<watch key="flag" format="0" array="0" start="0" count="0" expanded="0" live="1" />
+			<watch key="Transmission" format="0" array="0" start="0" count="0" expanded="0" live="0" />
+			<watch key="flag" format="0" array="0" start="0" count="0" expanded="0" live="0" />
+			<watch key="StartCarFlag" format="0" array="0" start="0" count="0" expanded="0" live="0" />
 		</watches>
 		<memory_view address="0x0" locked="0" live="0" options="290" />
 	</debuggerLastSession>

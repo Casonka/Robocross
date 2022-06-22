@@ -1,6 +1,15 @@
 #pragma once
 #include "main.h"
 
+struct
+{
+    _Bool StartCarFlag_Clutch;
+    _Bool StartCarFlag_Brake;
+    _Bool StartCarFlag_Transmission;
+    _Bool StartCarFlag_ModBus;
+    _Bool StartCarFlag_Gas;
+
+}StartFlags;
 /// FreeRTOS structures
 
 //--------------------------------------------
@@ -8,6 +17,12 @@
 
 xTaskHandle xStartHandle;
 void vStart( void *pvParameters);
+
+xTaskHandle xClutchHandle;
+void vClutchManagement( void *pvParameters);
+
+xTaskHandle xBrakeHandle;
+void vBrakeManagement( void *pvParameters);
 
 xTaskHandle xWaitingHangle;
 void vWaitingEvent( void *pvParameters);

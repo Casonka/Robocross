@@ -652,3 +652,287 @@
 1655712217 source:c:\users\caska\desktop\projects\rcr\robocross\src\carregulators.c
 	"CarRegulators.h"
 
+1655441001 source:c:\users\caska\desktop\projects\rcr\3. robocross\robocross\src\startup_stm32f407xx.s
+
+1655907883 source:c:\users\caska\desktop\projects\rcr\3. robocross\robocross\fil lib\rcr dstu\rcr_setupcustom.c
+	"RCR_SetupCustom.h"
+
+1655899721 c:\users\caska\desktop\projects\rcr\3. robocross\robocross\fil lib\rcr dstu\rcr_setupcustom.h
+	<FilConfig.h>
+
+1655441001 c:\users\caska\desktop\projects\rcr\3. robocross\robocross\fil lib\filconfig.h
+	<main.h>
+	<stdio.h>
+	"RCC.h"
+	"GPIO.h"
+	"TIM.h"
+	"ADC.h"
+	"DMA.h"
+	"USART.h"
+	"RCR_PinsBoard.h"
+	"RCR_Custom.h"
+	"RCR_SetupCustom.h"
+	"FreeRTOS.h"
+	"FreeRTOSConfig.h"
+	"task.h"
+	"queue.h"
+	"semphr.h"
+	"croutine.h"
+	"timers.h"
+	"robot_tasks.h"
+	"ModBus.h"
+
+1655723044 c:\users\caska\desktop\projects\rcr\3. robocross\robocross\inc\main.h
+	"stm32f4xx.h"
+	<FilConfig.h>
+	"CarManagement.h"
+	"CarRegulators.h"
+
+1655441001 c:\users\caska\desktop\projects\rcr\3. robocross\robocross\inc\stm32f4xx.h
+	"core_cm4.h"
+	"system_stm32f4xx.h"
+	<stdint.h>
+	"stm32f4xx_conf.h"
+
+1655441001 c:\users\caska\desktop\projects\rcr\3. robocross\robocross\cmsis\core_cm4.h
+	<stdint.h>
+	"cmsis_version.h"
+	"cmsis_compiler.h"
+	"mpu_armv7.h"
+
+1655441001 c:\users\caska\desktop\projects\rcr\3. robocross\robocross\cmsis\cmsis_version.h
+
+1655441001 c:\users\caska\desktop\projects\rcr\3. robocross\robocross\cmsis\cmsis_compiler.h
+	<stdint.h>
+	"cmsis_armcc.h"
+	"cmsis_armclang_ltm.h"
+	"cmsis_armclang.h"
+	"cmsis_gcc.h"
+	<cmsis_iccarm.h>
+	<cmsis_ccs.h>
+	<cmsis_csm.h>
+
+1655441001 c:\users\caska\desktop\projects\rcr\3. robocross\robocross\cmsis\cmsis_gcc.h
+
+1655441001 c:\users\caska\desktop\projects\rcr\3. robocross\robocross\cmsis\mpu_armv7.h
+
+1655441001 c:\users\caska\desktop\projects\rcr\3. robocross\robocross\inc\system_stm32f4xx.h
+
+1655916626 c:\users\caska\desktop\projects\rcr\3. robocross\robocross\src\carmanagement.h
+	"FilConfig.h"
+
+1655707713 c:\users\caska\desktop\projects\rcr\3. robocross\robocross\src\carregulators.h
+	"main.h"
+
+1655441001 c:\users\caska\desktop\projects\rcr\3. robocross\robocross\fil lib\rcc.h
+
+1655441001 c:\users\caska\desktop\projects\rcr\3. robocross\robocross\fil lib\gpio.h
+
+1655441001 c:\users\caska\desktop\projects\rcr\3. robocross\robocross\fil lib\tim.h
+	"FilConfig.h"
+
+1655476815 c:\users\caska\desktop\projects\rcr\3. robocross\robocross\fil lib\adc.h
+	<FilConfig.h>
+
+1655563977 c:\users\caska\desktop\projects\rcr\3. robocross\robocross\fil lib\dma.h
+	<FilConfig.h>
+
+1655443229 c:\users\caska\desktop\projects\rcr\3. robocross\robocross\fil lib\usart.h
+	<FilConfig.h>
+
+1655441001 c:\users\caska\desktop\projects\rcr\3. robocross\robocross\fil lib\rcr dstu\rcr_pinsboard.h
+
+1655441001 c:\users\caska\desktop\projects\rcr\3. robocross\robocross\fil lib\rcr dstu\rcr_custom.h
+
+1655441001 c:\users\caska\desktop\projects\rcr\3. robocross\robocross\freertos_lib\freertos.h
+	<stddef.h>
+	<stdint.h>
+	"FreeRTOSConfig.h"
+	"projdefs.h"
+	"portable.h"
+	<reent.h>
+
+1655441001 c:\users\caska\desktop\projects\rcr\3. robocross\robocross\freertos_lib\freertosconfig.h
+	"stm32f4xx.h"
+	<stdint.h>
+
+1655441001 c:\users\caska\desktop\projects\rcr\3. robocross\robocross\freertos_lib\projdefs.h
+
+1655441001 c:\users\caska\desktop\projects\rcr\3. robocross\robocross\freertos_lib\portable.h
+	"deprecated_definitions.h"
+	"portmacro.h"
+	"mpu_wrappers.h"
+
+1655441001 c:\users\caska\desktop\projects\rcr\3. robocross\robocross\freertos_lib\deprecated_definitions.h
+	"..\..\Source\portable\owatcom\16bitdos\pc\portmacro.h"
+	"..\..\Source\portable\owatcom\16bitdos\flsh186\portmacro.h"
+	"../portable/GCC/ATMega323/portmacro.h"
+	"../portable/IAR/ATMega323/portmacro.h"
+	"../../Source/portable/MPLAB/PIC24_dsPIC/portmacro.h"
+	"../../Source/portable/MPLAB/PIC24_dsPIC/portmacro.h"
+	"../../Source/portable/MPLAB/PIC18F/portmacro.h"
+	"../../Source/portable/MPLAB/PIC32MX/portmacro.h"
+	"libFreeRTOS/Include/portmacro.h"
+	"../../Source/portable/SDCC/Cygnal/portmacro.h"
+	"../../Source/portable/GCC/ARM7_LPC2000/portmacro.h"
+	"portmacro.h"
+	"../../Source/portable/GCC/ARM7_LPC23xx/portmacro.h"
+	"..\..\Source\portable\IAR\MSP430\portmacro.h"
+	"../../Source/portable/GCC/MSP430F449/portmacro.h"
+	"../../Source/portable/Rowley/MSP430F449/portmacro.h"
+	"..\..\Source\portable\RVDS\ARM7_LPC21xx\portmacro.h"
+	"../../Source/portable/GCC/ARM7_AT91SAM7S/portmacro.h"
+	"..\..\Source\portable\IAR\AtmelSAM7S64\portmacro.h"
+	"..\..\Source\portable\IAR\AtmelSAM9XE\portmacro.h"
+	"..\..\Source\portable\IAR\LPC2000\portmacro.h"
+	"..\..\Source\portable\IAR\STR71x\portmacro.h"
+	"..\..\Source\portable\IAR\STR75x\portmacro.h"
+	"..\..\Source\portable\GCC\STR75x\portmacro.h"
+	"..\..\Source\portable\IAR\STR91x\portmacro.h"
+	"../../Source/portable/GCC/H8S2329/portmacro.h"
+	"../../Source/portable/GCC/ARM7_AT91FR40008/portmacro.h"
+	"../../Source/portable/RVDS/ARM_CM3/portmacro.h"
+	"../../Source/portable/GCC/ARM_CM3/portmacro.h"
+	"../../Source/portable/GCC/ARM_CM3/portmacro.h"
+	"../../Source/portable/IAR/ARM_CM3/portmacro.h"
+	"../../Source/portable/IAR/ARM_CM3/portmacro.h"
+	"../../Source/portable/CodeWarrior/HCS12/portmacro.h"
+	"../../Source/portable/GCC/MicroBlaze/portmacro.h"
+	"..\..\Source\portable\Paradigm\Tern_EE\small\portmacro.h"
+	"../../Source/portable/GCC/HCS12/portmacro.h"
+	"../../Source/portable/GCC/MCF5235/portmacro.h"
+	"../../../Source/portable/GCC/ColdFire_V2/portmacro.h"
+	"../../Source/portable/CodeWarrior/ColdFire_V2/portmacro.h"
+	"../../Source/portable/GCC/PPC405_Xilinx/portmacro.h"
+	"../../Source/portable/GCC/PPC440_Xilinx/portmacro.h"
+	"..\..\Source\portable\Softune\MB96340\portmacro.h"
+	"frconfig.h"
+	"..\portable\BCC\16BitDOS\PC\prtmacro.h"
+	"frconfig.h"
+	"..\portable\BCC\16BitDOS\flsh186\prtmacro.h"
+	"portmacro.h"
+	"portmacro.h"
+	"portmacro.h"
+	"portmacro.h"
+	"../../Source/portable/IAR/V850ES/portmacro.h"
+	"../../Source/portable/IAR/V850ES/portmacro.h"
+	"../../Source/portable/IAR/V850ES/portmacro.h"
+	"../../Source/portable/IAR/V850ES/portmacro.h"
+	"../../Source/portable/IAR/V850ES/portmacro.h"
+	"../../Source/portable/IAR/78K0R/portmacro.h"
+	"../../Source/portable/IAR/78K0R/portmacro.h"
+
+1655441001 c:\users\caska\desktop\projects\rcr\3. robocross\robocross\freertos_lib\portmacro.h
+
+1655441001 c:\users\caska\desktop\projects\rcr\3. robocross\robocross\freertos_lib\mpu_wrappers.h
+
+1655441001 c:\users\caska\desktop\projects\rcr\3. robocross\robocross\freertos_lib\task.h
+	"list.h"
+
+1655441001 c:\users\caska\desktop\projects\rcr\3. robocross\robocross\freertos_lib\list.h
+
+1655441001 c:\users\caska\desktop\projects\rcr\3. robocross\robocross\freertos_lib\queue.h
+	"task.h"
+
+1655441001 c:\users\caska\desktop\projects\rcr\3. robocross\robocross\freertos_lib\semphr.h
+	"queue.h"
+
+1655441001 c:\users\caska\desktop\projects\rcr\3. robocross\robocross\freertos_lib\croutine.h
+	"list.h"
+
+1655441001 c:\users\caska\desktop\projects\rcr\3. robocross\robocross\freertos_lib\timers.h
+	"task.h"
+
+1655909496 c:\users\caska\desktop\projects\rcr\3. robocross\robocross\inc\robot_tasks.h
+	"main.h"
+
+1655470116 c:\users\caska\desktop\projects\rcr\3. robocross\robocross\modbus\modbus.h
+	<FilConfig.h>
+
+1655441001 source:c:\users\caska\desktop\projects\rcr\3. robocross\robocross\freertos_lib\croutine.c
+	"FreeRTOS.h"
+	"task.h"
+	"croutine.h"
+
+1655441001 source:c:\users\caska\desktop\projects\rcr\3. robocross\robocross\freertos_lib\event_groups.c
+	<stdlib.h>
+	"FreeRTOS.h"
+	"task.h"
+	"timers.h"
+	"event_groups.h"
+
+1655441001 c:\users\caska\desktop\projects\rcr\3. robocross\robocross\freertos_lib\event_groups.h
+	"timers.h"
+
+1655441001 source:c:\users\caska\desktop\projects\rcr\3. robocross\robocross\freertos_lib\heap_2.c
+	<stdlib.h>
+	"FreeRTOS.h"
+	"task.h"
+
+1655441001 source:c:\users\caska\desktop\projects\rcr\3. robocross\robocross\freertos_lib\list.c
+	<stdlib.h>
+	"FreeRTOS.h"
+	"list.h"
+
+1655441001 source:c:\users\caska\desktop\projects\rcr\3. robocross\robocross\freertos_lib\port.c
+	"FreeRTOS.h"
+	"task.h"
+
+1655441001 source:c:\users\caska\desktop\projects\rcr\3. robocross\robocross\freertos_lib\queue.c
+	<stdlib.h>
+	<string.h>
+	"FreeRTOS.h"
+	"task.h"
+	"queue.h"
+	"croutine.h"
+
+1655441001 source:c:\users\caska\desktop\projects\rcr\3. robocross\robocross\freertos_lib\stream_buffer.c
+	<stdint.h>
+	<string.h>
+	"FreeRTOS.h"
+	"task.h"
+	"stream_buffer.h"
+
+1655441001 c:\users\caska\desktop\projects\rcr\3. robocross\robocross\freertos_lib\stream_buffer.h
+
+1655441001 source:c:\users\caska\desktop\projects\rcr\3. robocross\robocross\freertos_lib\tasks.c
+	<stdlib.h>
+	<string.h>
+	"FreeRTOS.h"
+	"task.h"
+	"timers.h"
+	"stack_macros.h"
+	<stdio.h>
+	"tasks_test_access_functions.h"
+	"freertos_tasks_c_additions.h"
+
+1655441001 c:\users\caska\desktop\projects\rcr\3. robocross\robocross\freertos_lib\stack_macros.h
+
+1655441001 source:c:\users\caska\desktop\projects\rcr\3. robocross\robocross\freertos_lib\timers.c
+	<stdlib.h>
+	"FreeRTOS.h"
+	"task.h"
+	"queue.h"
+	"timers.h"
+
+1655470097 source:c:\users\caska\desktop\projects\rcr\3. robocross\robocross\modbus\modbus.c
+	"ModBus.h"
+
+1655913622 source:c:\users\caska\desktop\projects\rcr\3. robocross\robocross\src\carmanagement.c
+	"CarManagement.h"
+
+1655712217 source:c:\users\caska\desktop\projects\rcr\3. robocross\robocross\src\carregulators.c
+	"CarRegulators.h"
+
+1655912538 source:c:\users\caska\desktop\projects\rcr\3. robocross\robocross\src\main.c
+	"main.h"
+
+1655914225 source:c:\users\caska\desktop\projects\rcr\3. robocross\robocross\src\robot_tasks.c
+	"robot_tasks.h"
+
+1655896705 source:c:\users\caska\desktop\projects\rcr\3. robocross\robocross\fil lib\interrupts.c
+	"CarManagement.h"
+
+1655441001 source:c:\users\caska\desktop\projects\rcr\3. robocross\robocross\src\system_stm32f4xx.c
+	"stm32f4xx.h"
+

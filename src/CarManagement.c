@@ -8,27 +8,36 @@ static uint16_t TransmissionManagementMatrix[4][4] = { 0x00, 0x43, 0x12, 0x13,  
 
 void Move_Clutch(int direction)
 {
-    if( direction == 1) {SetPWM(4, 0.5);}
-    else { SetPWM(4, -0.5);}
+    int Pulses = 0;
 
-    for(int i = 0; i < PulseToClutch; )
-    {
-        if( pin_val(EXTI4_PIN) && direction == 0) {SetPWM(4, 0); i = PulseToClutch; break;}
-        if( pin_val(EXTI3_PIN) && direction == 1) {SetPWM(4, 0); i = PulseToClutch; break;}
-        if(!(TIM11->CR1&0x1)) {TimStart(Tim11); i++;}
-    }
+    if( direction == Full) {SetPWM(4, 0.5); Pulses = PulseToClutch_UP;}
+    else
+        {
+            SetPWM(4, -0.5);
+            if( direction == Back_First) { Pulses = PulseToClutch_First; }
+            if( direction == Back_Second) { Pulses = PulseToClutch_Second; }
+        }
+        for(int i = 0; i < Pulses; )
+        {
+            if( !pin_val(EXTI3_PIN) && direction == 0) {SetPWM(4, 0); i = Pulses; break;}
+            if( !pin_val(EXTI4_PIN) && direction == 1) {SetPWM(4, 0); i = Pulses; break;}
+            if(!(TIM11->CR1&0x1)) {TimStart(Tim11); i++;}
+        }
     SetPWM(4, 0xFFFF);
-    Clutch_Flag = direction == 1 ? 1 : 0;
+//    Clutch_Flag = direction == 1 ? Full : Back;
 }
 
-void GetClutch(void)
+void Get_Clutch(void)
 {
-    Clutch_Flag = pin_val(EXTI3_PIN) ? 1 : pin_val(EXTI2_PIN) ? 0 : -1;
+    Clutch_Flag = !pin_val(EXTI3_PIN) ? Back_Second : !pin_val(EXTI4_PIN) ? Full : -1;
 }
 
 
-void GetTransmission(void)
+void Get_Transmission(void)
 {
+    /*!
+    *   @note CarManagement: < флаги трансмиссии >
+    */
     Transmission_Flag = NONE;
     if( !pin_val(EXTI5_PIN) )   {Transmission_Flag = N;}
     if( !pin_val(EXTI6_PIN) )   {Transmission_Flag = R;}
@@ -52,7 +61,7 @@ _Bool Set_Transmission(int transmission)
     {
         while(Pointers[i] != 0)
         {
-            GetTransmission();
+            Get_Transmission();
             MoveTo(Pointers[i], SpeedTransmission);
             if( Transmission_Flag != Transmission_Flag_begin && Transmission_Flag != NONE)
             {
@@ -69,20 +78,81 @@ _Bool Set_Transmission(int transmission)
     if (Transmission_Flag == NONE) return 0; else return 1;
 }
 
-void Set_Gas(int direction, int Pulses)
+#define Slow     48
+#define Zero     80
+#define Fast     96
+#define WEWE     144    // c виви осторожно, сделано дл€ фана
+void Set_Gas(int Pulses)
 {
-    if( direction == 1) {SetPWM(5, -0.5);}
-    else { SetPWM(5, 0.5);}
-    for(int i = 0; i < Pulses; )
+    /*!
+    *   @note CarManagement: < управление газом автомобил€ >
+    */
+    int delay = 0;
+    SetPWM(5, 0.5);
+    switch(Pulses)
     {
-        if(!(TIM10->CR1&0x1)) {TimStart(Tim10); i++;}
-    }
-    SetPWM(5, 0);
 
+        case Fast:
+        {
+            delay = 0xAAFF;
+            for(int i = 0; i < Pulses; )   // пр€мой ход
+            {
+                if(!(TIM10->CR1&0x1)) {TimStart(Tim10); i++;}
+            }
+            SetPWM(5, -0.5);
+            while(delay > 0) {delay--;}
+            for(int i = 0; i < Pulses; )    // обратный ход через задержку
+            {
+                if(!(TIM10->CR1&0x1)) {TimStart(Tim10); i++;}
+            }
+            break;
+        }
+
+        case Slow:
+        {
+            for(int i = 0; i < Pulses; )   // пр€мой ход
+            {
+                if(!(TIM10->CR1&0x1)) {TimStart(Tim10); i++;}
+            }
+            break;
+        }
+
+        case Zero:
+        {
+            SetPWM(5, -0.5);
+            for(int i = 0; i < Pulses; )   // пр€мой ход
+            {
+                if(!(TIM10->CR1&0x1)) {TimStart(Tim10); i++;}
+            }
+            break;
+        }
+
+        case WEWE:
+        {
+            int Wewe_counter = 3;
+            while( Wewe_counter > 0)
+            {
+            for(int i = 0; i < Pulses; )   // пр€мой ход
+            {
+                if(!(TIM10->CR1&0x1)) {TimStart(Tim10); i++;}
+            }
+            for(int i = 0; i < Pulses; )    // обратный ход через задержку
+            {
+                if(!(TIM10->CR1&0x1)) {TimStart(Tim10); i++;}
+            }
+             Wewe_counter--;
+            }
+            break;
+        }
+
+        default: break;
+    }
+            SetPWM(5, 0);
 }
 
 void Set_Brake(int state)   // “ормоз
 {
+#if (Brake_mode == 0)
     if( state == 0) // отпустить педаль тормоза
         {
             set_pin(PIN1_12V);
@@ -93,12 +163,66 @@ void Set_Brake(int state)   // “ормоз
             reset_pin(PIN1_12V);
             Brake_Flag = 1;
         }
+#elif (Brake_mode == 1)
+
+
+#endif
 }
 
-void Recovery_Transmission(void)    //попытатьс€ вернуть коробку в нужное положение
+#define RecoverySpeed   1.0
+#define TriggerErrorValue   3.0
+
+void Recovery_Transmission(void)
 {
+    /*!
+    *   @note CarManagement: < вернуть коробку если потер€лс€ >
+    */
+    int Move_Dir = 1;
+    while( Transmission_Flag == NONE)
+    {
+        Get_Transmission();
+        if( Transmission_Flag != NONE ) break;  // нашел датчик
 
+        MoveTo(Move_Dir,RecoverySpeed);
 
+        if( TransmissionReg[0].Sum_Error > TriggerErrorValue &&
+            TransmissionReg[1].Sum_Error > TriggerErrorValue)
+            {
+                // движение вверх, если застр€ли на нейтрали
+                if( Move_Dir == 1) {       TransmissionReg[0].Sum_Error = 0;
+                                           TransmissionReg[1].Sum_Error = 0;
+                                           Move_Dir = 3; continue;}
+
+                // движение в сторону первой передачи и реверса, если застр€ли на полосе рабочих передач
+                if( Move_Dir == 3) {       TransmissionReg[0].Sum_Error = 0;
+                                           TransmissionReg[1].Sum_Error = 0;
+                                           Move_Dir = 0; break;}
+            }
+    }
+    if( Transmission_Flag == NONE ) {return;} // не удалось выйти на нужное положение
+    if( Transmission_Flag == S1) // нашли S1
+        {
+            while(Transmission_Flag != N)
+            {
+                Get_Transmission();
+                if( TransmissionReg[0].Sum_Error > TriggerErrorValue &&
+                    TransmissionReg[1].Sum_Error > TriggerErrorValue) break;
+                MoveTo(4,RecoverySpeed);
+            }
+        }
+
+    if( Transmission_Flag == S2) // нашли S2
+        {
+            while(Transmission_Flag != N)
+            {
+                Get_Transmission();
+                if( TransmissionReg[0].Sum_Error > TriggerErrorValue &&
+                    TransmissionReg[1].Sum_Error > TriggerErrorValue) break;
+                MoveTo(1,RecoverySpeed);
+            }
+        }
+    if( Transmission_Flag < 4) {Set_Transmission(N);}
+    MoveTo(0,0.0);
 }
 
 void MoveTo(int direction, float Speed)
