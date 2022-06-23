@@ -57,7 +57,7 @@ void ModBus_QueueClear(void)
     Queue_StartIndex = QueueBuffer_To_UART;
     Queue_EndIndex = Queue_StartIndex + ( QueueSize - 1 );
     Queue_Index = Queue_StartIndex;
-    for(int i = 0; i <= 5; i++) {QueueBuffer_To_UART[i] = 0;}
+    for(int i = 0; i <= (QueueSize - 1); i++) {QueueBuffer_To_UART[i] = 0;}
 }
 
 /*!
@@ -149,9 +149,9 @@ unsigned int ModBus_CheckFrame(void) {
                 Tmp[i] = *(UARTBufferEndMsgPointer - (1 - i));
                 if (Tmp[i] == EndFrame[i]) {counts++;}
             }
-           if(counts == 2) {return 0;} else {return 1;}
+           if(counts == 2) {return 0x00;} else {return 0x08;}
         }
-    return 1;
+    return 0x08;
 }
 
 float ModBus_ParsePacket(void) {

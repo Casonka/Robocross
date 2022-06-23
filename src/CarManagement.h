@@ -35,8 +35,8 @@ _Bool Set_Transmission(int transmission);    // 2 engines on end move transmissi
 #define Low_Speed         48
 #define Zero_Speed        80
 #define High_Speed        96
-#define WEWE_Speed        144    // c виви осторожно, сделано для фана
-#define ZeWE_Speed        144
+#define WEWE_Speed        32    // c виви осторожно, сделано для фана
+#define ZeWE_Speed        33
 void Set_Gas(int Pulses);
 
 void Recovery_Transmission(void);

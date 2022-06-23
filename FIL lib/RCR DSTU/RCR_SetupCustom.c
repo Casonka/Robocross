@@ -55,7 +55,7 @@ void BoardStart(void)
     TimEncoderConfigure(Tim1);
     TimEncoderConfigure(Tim3);
     TimEncoderConfigure(Tim2);
-    USARTBothConfigure(usart3, 0x16C , 0, 1);
+    USARTBothConfigure(usart3, 0x16C , 0, 1);   //0x16C
     add_ext_interrupt(EXTI1_PIN, EXTI_RISING_EDGE);    // Hall Sensor 1 - left wheel
     add_ext_interrupt(EXTI2_PIN, EXTI_FALLING_EDGE);    // Hall Sensor 2 - right wheel
     //add_ext_interrupt(EXTI3_PIN, EXTI_RISING_EDGE);     // Clutch Sensor +
@@ -118,12 +118,12 @@ void TimEngineClutchConfigure(void)
 
 void TimGasConfigure(void)
 {
-    ConfChannelsTim(Tim10,7,0,0,0,1,0,0,0);
-    ConfFreq(Tim10,167,200);
-    SetTimOnePulseMode(Tim10,1);
-    ConfTimMainOutput(Tim10, 1);
-    SetPWM(5,0.5);
-    TimStart(Tim10);
+    ConfChannelsTim(Tim9,7,0,0,0,1,0,0,0);
+    ConfFreq(Tim9,167,200);
+    SetTimOnePulseMode(Tim9,1);
+    ConfTimMainOutput(Tim9, 1);
+    SetPWM(7,0.5);
+    TimStart(Tim9);
 }
 void add_ext_interrupt(unsigned char pin, char edge)
 {

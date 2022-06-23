@@ -84,12 +84,14 @@ void Set_Gas(int Pulses)
     /*!
     *   @note CarManagement: < управление газом автомобил€ >
     */
-    SetPWM(5, 0.5);
+    if (Pulses == WEWE_Speed)  SetPWM(7, -0.5);
+    if (Pulses == ZeWE_Speed)  SetPWM(7, 0.5);
+
     for(int i = 0; i < Pulses; )  // пр€мой ход
     {
-        if(!(TIM10->CR1&0x1)) {TimStart(Tim10); i++;}
+        if(!(TIM9->CR1&0x1)) {TimStart(Tim9); i++;}
     }
-    SetPWM(5, 0);
+    SetPWM(7, 0);
 }
 
 void Set_Brake(int state)   // “ормоз
