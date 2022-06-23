@@ -1,30 +1,31 @@
 Archive member included to satisfy reference by file (symbol)
 
-d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldf3.o)
+g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldf3.o)
                               obj\debug\src\carregulators.o (__aeabi_dmul)
-d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
+g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
                               obj\debug\fil lib\interrupts.o (__aeabi_dadd)
-d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
+g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
                               obj\debug\src\carregulators.o (__aeabi_ddiv)
-d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
+g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
                               obj\debug\src\carregulators.o (__aeabi_d2f)
-d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-exit.o)
-                              d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/crt0.o (exit)
-d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-impure.o)
-                              d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-exit.o) (_global_impure_ptr)
-d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-init.o)
-                              d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/crt0.o (__libc_init_array)
-d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memcpy-stub.o)
+g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-exit.o)
+                              g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/crt0.o (exit)
+g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-impure.o)
+                              g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-exit.o) (_global_impure_ptr)
+g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-init.o)
+                              g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/crt0.o (__libc_init_array)
+g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memcpy-stub.o)
                               obj\debug\freertos_lib\queue.o (memcpy)
-d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memset.o)
-                              d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/crt0.o (memset)
-d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libnosys.a(_exit.o)
-                              d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-exit.o) (_exit)
+g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memset.o)
+                              g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/crt0.o (memset)
+g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libnosys.a(_exit.o)
+                              g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-exit.o) (_exit)
 
 Allocating common symbols
 Common symbol       size              file
 
 xStartHandle        0x4               obj\debug\fil lib\rcr dstu\rcr_setupcustom.o
+xGasHandle          0x4               obj\debug\fil lib\rcr dstu\rcr_setupcustom.o
 LPulseWheel         0x2               obj\debug\fil lib\rcr dstu\rcr_setupcustom.o
 UARTBufferEndMsgPointer
                     0x4               obj\debug\fil lib\rcr dstu\rcr_setupcustom.o
@@ -39,7 +40,9 @@ xQueueRegistry      0x40              obj\debug\freertos_lib\queue.o
 ZeroMesFlag         0x1               obj\debug\src\robot_tasks.o
 Queue_StartIndex    0x4               obj\debug\fil lib\rcr dstu\rcr_setupcustom.o
 Step                0x4               obj\debug\src\carregulators.o
-StartCarFlag        0x1               obj\debug\src\robot_tasks.o
+xQueueBrakeHandle   0x4               obj\debug\fil lib\rcr dstu\rcr_setupcustom.o
+xQueueTransmissionHandle
+                    0x4               obj\debug\fil lib\rcr dstu\rcr_setupcustom.o
 UART_Buffer         0xf               obj\debug\fil lib\rcr dstu\rcr_setupcustom.o
 ErrorTask           0x4               obj\debug\src\robot_tasks.o
 Brake_Flag          0x4               obj\debug\fil lib\rcr dstu\rcr_setupcustom.o
@@ -52,7 +55,7 @@ xGearsHandle        0x4               obj\debug\fil lib\rcr dstu\rcr_setupcustom
 LRCPointer          0x4               obj\debug\modbus\modbus.o
 Queue_EndIndex      0x4               obj\debug\fil lib\rcr dstu\rcr_setupcustom.o
 StartDataSendIndex  0x4               obj\debug\modbus\modbus.o
-StartFlags          0x5               obj\debug\fil lib\rcr dstu\rcr_setupcustom.o
+StartFlags          0x6               obj\debug\fil lib\rcr dstu\rcr_setupcustom.o
 adc_data            0x10              obj\debug\fil lib\rcr dstu\rcr_setupcustom.o
 QueueBuffer_To_UART
                     0xf               obj\debug\fil lib\rcr dstu\rcr_setupcustom.o
@@ -71,17 +74,17 @@ UARTBufferStartMsgPointer
 
 Discarded input sections
 
- .text          0x00000000        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crti.o
- .data          0x00000000        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crti.o
- .bss           0x00000000        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crti.o
- .data          0x00000000        0x4 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
- .text          0x00000000       0x7c d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/crt0.o
- .data          0x00000000        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/crt0.o
- .bss           0x00000000        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/crt0.o
- .ARM.extab     0x00000000        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/crt0.o
- .ARM.exidx     0x00000000       0x10 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/crt0.o
+ .text          0x00000000        0x0 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crti.o
+ .data          0x00000000        0x0 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crti.o
+ .bss           0x00000000        0x0 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crti.o
+ .data          0x00000000        0x4 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+ .text          0x00000000       0x7c g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/crt0.o
+ .data          0x00000000        0x0 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/crt0.o
+ .bss           0x00000000        0x0 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/crt0.o
+ .ARM.extab     0x00000000        0x0 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/crt0.o
+ .ARM.exidx     0x00000000       0x10 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/crt0.o
  .ARM.attributes
-                0x00000000       0x1c d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/crt0.o
+                0x00000000       0x1c g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/crt0.o
  .text          0x00000000       0x14 obj\debug\src\startup_stm32f407xx.o
  .data          0x00000000        0x0 obj\debug\src\startup_stm32f407xx.o
  .bss           0x00000000        0x0 obj\debug\src\startup_stm32f407xx.o
@@ -98,7 +101,7 @@ Discarded input sections
  .debug_aranges
                 0x00000000       0x18 obj\debug\freertos_lib\croutine.o
  .debug_line    0x00000000       0xd2 obj\debug\freertos_lib\croutine.o
- .debug_str     0x00000000      0x1db obj\debug\freertos_lib\croutine.o
+ .debug_str     0x00000000      0x1ca obj\debug\freertos_lib\croutine.o
  .comment       0x00000000       0x4d obj\debug\freertos_lib\croutine.o
  .ARM.attributes
                 0x00000000       0x39 obj\debug\freertos_lib\croutine.o
@@ -135,7 +138,7 @@ Discarded input sections
                 0x00000000       0x78 obj\debug\freertos_lib\event_groups.o
  .debug_ranges  0x00000000       0x68 obj\debug\freertos_lib\event_groups.o
  .debug_line    0x00000000      0x5fd obj\debug\freertos_lib\event_groups.o
- .debug_str     0x00000000      0x9c0 obj\debug\freertos_lib\event_groups.o
+ .debug_str     0x00000000      0x9af obj\debug\freertos_lib\event_groups.o
  .comment       0x00000000       0x4d obj\debug\freertos_lib\event_groups.o
  .debug_frame   0x00000000      0x1d0 obj\debug\freertos_lib\event_groups.o
  .ARM.attributes
@@ -261,7 +264,7 @@ Discarded input sections
                 0x00000000       0xd8 obj\debug\freertos_lib\stream_buffer.o
  .debug_ranges  0x00000000       0xc8 obj\debug\freertos_lib\stream_buffer.o
  .debug_line    0x00000000      0xa7b obj\debug\freertos_lib\stream_buffer.o
- .debug_str     0x00000000      0xc06 obj\debug\freertos_lib\stream_buffer.o
+ .debug_str     0x00000000      0xbf5 obj\debug\freertos_lib\stream_buffer.o
  .comment       0x00000000       0x4d obj\debug\freertos_lib\stream_buffer.o
  .debug_frame   0x00000000      0x3a8 obj\debug\freertos_lib\stream_buffer.o
  .ARM.attributes
@@ -375,9 +378,6 @@ Discarded input sections
  .bss           0x00000000        0x0 obj\debug\src\carmanagement.o
  .data.prescaler_table
                 0x00000000       0x10 obj\debug\src\carmanagement.o
- .text.Set_Gas  0x00000000      0x1b4 obj\debug\src\carmanagement.o
- .text.Set_Brake
-                0x00000000       0x40 obj\debug\src\carmanagement.o
  .text.Recovery_Transmission
                 0x00000000      0x160 obj\debug\src\carmanagement.o
  .text          0x00000000        0x0 obj\debug\src\carregulators.o
@@ -414,66 +414,66 @@ Discarded input sections
                 0x00000000       0x10 obj\debug\src\system_stm32f4xx.o
  .text.SystemCoreClockUpdate
                 0x00000000      0x104 obj\debug\src\system_stm32f4xx.o
- .text          0x00000000      0x254 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldf3.o)
- .data          0x00000000        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldf3.o)
- .bss           0x00000000        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldf3.o)
- .debug_frame   0x00000000       0x30 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldf3.o)
+ .text          0x00000000      0x254 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldf3.o)
+ .data          0x00000000        0x0 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldf3.o)
+ .bss           0x00000000        0x0 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldf3.o)
+ .debug_frame   0x00000000       0x30 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldf3.o)
  .ARM.attributes
-                0x00000000       0x1e d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldf3.o)
- .data          0x00000000        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
- .bss           0x00000000        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
- .data          0x00000000        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
- .bss           0x00000000        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
- .data          0x00000000        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
- .bss           0x00000000        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
- .text          0x00000000        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-exit.o)
- .data          0x00000000        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-exit.o)
- .bss           0x00000000        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-exit.o)
- .text.exit     0x00000000       0x28 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-exit.o)
- .debug_frame   0x00000000       0x28 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-exit.o)
+                0x00000000       0x1e g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldf3.o)
+ .data          0x00000000        0x0 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
+ .bss           0x00000000        0x0 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
+ .data          0x00000000        0x0 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
+ .bss           0x00000000        0x0 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
+ .data          0x00000000        0x0 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
+ .bss           0x00000000        0x0 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
+ .text          0x00000000        0x0 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-exit.o)
+ .data          0x00000000        0x0 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-exit.o)
+ .bss           0x00000000        0x0 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-exit.o)
+ .text.exit     0x00000000       0x28 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-exit.o)
+ .debug_frame   0x00000000       0x28 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-exit.o)
  .ARM.attributes
-                0x00000000       0x34 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-exit.o)
- .text          0x00000000        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-impure.o)
- .data          0x00000000        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-impure.o)
- .bss           0x00000000        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-impure.o)
+                0x00000000       0x34 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-exit.o)
+ .text          0x00000000        0x0 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-impure.o)
+ .data          0x00000000        0x0 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-impure.o)
+ .bss           0x00000000        0x0 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-impure.o)
  .data._impure_ptr
-                0x00000000        0x4 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-impure.o)
+                0x00000000        0x4 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-impure.o)
  .data.impure_data
-                0x00000000       0x60 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-impure.o)
+                0x00000000       0x60 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-impure.o)
  .rodata._global_impure_ptr
-                0x00000000        0x4 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-impure.o)
+                0x00000000        0x4 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-impure.o)
  .ARM.attributes
-                0x00000000       0x32 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-impure.o)
- .text          0x00000000        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-init.o)
- .data          0x00000000        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-init.o)
- .bss           0x00000000        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-init.o)
+                0x00000000       0x32 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-impure.o)
+ .text          0x00000000        0x0 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-init.o)
+ .data          0x00000000        0x0 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-init.o)
+ .bss           0x00000000        0x0 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-init.o)
  .text.__libc_init_array
-                0x00000000       0x48 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-init.o)
- .debug_frame   0x00000000       0x2c d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-init.o)
+                0x00000000       0x48 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-init.o)
+ .debug_frame   0x00000000       0x2c g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-init.o)
  .ARM.attributes
-                0x00000000       0x34 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-init.o)
- .text          0x00000000        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memcpy-stub.o)
- .data          0x00000000        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memcpy-stub.o)
- .bss           0x00000000        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memcpy-stub.o)
- .text          0x00000000        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memset.o)
- .data          0x00000000        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memset.o)
- .bss           0x00000000        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memset.o)
- .text          0x00000000        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libnosys.a(_exit.o)
- .data          0x00000000        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libnosys.a(_exit.o)
- .bss           0x00000000        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libnosys.a(_exit.o)
- .text._exit    0x00000000        0x4 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libnosys.a(_exit.o)
- .debug_frame   0x00000000       0x20 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libnosys.a(_exit.o)
+                0x00000000       0x34 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-init.o)
+ .text          0x00000000        0x0 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memcpy-stub.o)
+ .data          0x00000000        0x0 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memcpy-stub.o)
+ .bss           0x00000000        0x0 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memcpy-stub.o)
+ .text          0x00000000        0x0 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memset.o)
+ .data          0x00000000        0x0 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memset.o)
+ .bss           0x00000000        0x0 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memset.o)
+ .text          0x00000000        0x0 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libnosys.a(_exit.o)
+ .data          0x00000000        0x0 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libnosys.a(_exit.o)
+ .bss           0x00000000        0x0 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libnosys.a(_exit.o)
+ .text._exit    0x00000000        0x4 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libnosys.a(_exit.o)
+ .debug_frame   0x00000000       0x20 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libnosys.a(_exit.o)
  .ARM.attributes
-                0x00000000       0x34 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libnosys.a(_exit.o)
- .text          0x00000000        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtend.o
- .data          0x00000000        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtend.o
- .bss           0x00000000        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtend.o
- .eh_frame      0x00000000        0x4 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtend.o
+                0x00000000       0x34 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libnosys.a(_exit.o)
+ .text          0x00000000        0x0 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtend.o
+ .data          0x00000000        0x0 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtend.o
+ .bss           0x00000000        0x0 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtend.o
+ .eh_frame      0x00000000        0x4 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtend.o
  .ARM.attributes
-                0x00000000       0x32 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtend.o
- .text          0x00000000        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtn.o
- .data          0x00000000        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtn.o
- .bss           0x00000000        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtn.o
+                0x00000000       0x32 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtend.o
+ .text          0x00000000        0x0 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtn.o
+ .data          0x00000000        0x0 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtn.o
+ .bss           0x00000000        0x0 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtn.o
 
 Memory Configuration
 
@@ -485,9 +485,9 @@ CCMRAM           0x10000000         0x00010000         xrw
 
 Linker script and memory map
 
-LOAD d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crti.o
-LOAD d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
-LOAD d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/crt0.o
+LOAD g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crti.o
+LOAD g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+LOAD g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/crt0.o
                 0x00000000                __HEAP_SIZE = 0x0
                 0x00000100                __STACK_SIZE = 0x100
                 0x00000000                _Min_Heap_Size = __HEAP_SIZE
@@ -501,11 +501,11 @@ LOAD d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-non
                 0x08000000                g_pfnVectors
                 0x08000188                . = ALIGN (0x4)
 
-.text           0x08000190     0x68d0
+.text           0x08000190     0x6bb8
                 0x08000190                . = ALIGN (0x4)
  *(.text)
- .text          0x08000190       0x40 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
- .text          0x080001d0      0x378 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
+ .text          0x08000190       0x40 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+ .text          0x080001d0      0x378 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
                 0x080001d0                __aeabi_drsub
                 0x080001d8                __aeabi_dsub
                 0x080001d8                __subdf3
@@ -521,12 +521,12 @@ LOAD d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-non
                 0x080004dc                __aeabi_ul2d
                 0x080004ec                __floatdidf
                 0x080004ec                __aeabi_l2d
- .text          0x08000548      0x424 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
+ .text          0x08000548      0x424 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
                 0x08000548                __aeabi_dmul
                 0x08000548                __muldf3
                 0x0800079c                __divdf3
                 0x0800079c                __aeabi_ddiv
- .text          0x0800096c       0xa0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
+ .text          0x0800096c       0xa0 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
                 0x0800096c                __truncdfsf2
                 0x0800096c                __aeabi_d2f
  *(.text*)
@@ -870,194 +870,202 @@ LOAD d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-non
                 0x08005864       0x84 obj\debug\modbus\modbus.o
                 0x08005864                ModBus_SendByte
  .text.Move_Clutch
-                0x080058e8       0xdc obj\debug\src\carmanagement.o
+                0x080058e8       0xe8 obj\debug\src\carmanagement.o
                 0x080058e8                Move_Clutch
  .text.Get_Clutch
-                0x080059c4       0x40 obj\debug\src\carmanagement.o
-                0x080059c4                Get_Clutch
+                0x080059d0       0x40 obj\debug\src\carmanagement.o
+                0x080059d0                Get_Clutch
  .text.Get_Transmission
-                0x08005a04       0x8c obj\debug\src\carmanagement.o
-                0x08005a04                Get_Transmission
+                0x08005a10       0x8c obj\debug\src\carmanagement.o
+                0x08005a10                Get_Transmission
  .text.Set_Transmission
-                0x08005a90      0x124 obj\debug\src\carmanagement.o
-                0x08005a90                Set_Transmission
- .text.MoveTo   0x08005bb4       0xa8 obj\debug\src\carmanagement.o
-                0x08005bb4                MoveTo
- *fill*         0x08005c5c        0x4 
+                0x08005a9c      0x124 obj\debug\src\carmanagement.o
+                0x08005a9c                Set_Transmission
+ .text.Set_Gas  0x08005bc0       0x5c obj\debug\src\carmanagement.o
+                0x08005bc0                Set_Gas
+ .text.Set_Brake
+                0x08005c1c       0x40 obj\debug\src\carmanagement.o
+                0x08005c1c                Set_Brake
+ .text.MoveTo   0x08005c5c       0xa8 obj\debug\src\carmanagement.o
+                0x08005c5c                MoveTo
+ *fill*         0x08005d04        0x4 
  .text.Speed_Calc_Car
-                0x08005c60      0x110 obj\debug\src\carregulators.o
-                0x08005c60                Speed_Calc_Car
+                0x08005d08      0x110 obj\debug\src\carregulators.o
+                0x08005d08                Speed_Calc_Car
  .text.Speed_Calc_Transmission
-                0x08005d70       0xc4 obj\debug\src\carregulators.o
-                0x08005d70                Speed_Calc_Transmission
+                0x08005e18       0xc4 obj\debug\src\carregulators.o
+                0x08005e18                Speed_Calc_Transmission
  .text.PID_Init
-                0x08005e34      0x128 obj\debug\src\carregulators.o
-                0x08005e34                PID_Init
+                0x08005edc      0x128 obj\debug\src\carregulators.o
+                0x08005edc                PID_Init
  .text.PID_Calc
-                0x08005f5c      0x146 obj\debug\src\carregulators.o
-                0x08005f5c                PID_Calc
- *fill*         0x080060a2        0x2 
- .text.main     0x080060a4      0x12c obj\debug\src\main.o
-                0x080060a4                main
+                0x08006004      0x146 obj\debug\src\carregulators.o
+                0x08006004                PID_Calc
+ *fill*         0x0800614a        0x2 
+ .text.main     0x0800614c      0x178 obj\debug\src\main.o
+                0x0800614c                main
  .text.vApplicationTickHook
-                0x080061d0        0xe obj\debug\src\robot_tasks.o
-                0x080061d0                vApplicationTickHook
+                0x080062c4        0xe obj\debug\src\robot_tasks.o
+                0x080062c4                vApplicationTickHook
  .text.vApplicationIdleHook
-                0x080061de        0xe obj\debug\src\robot_tasks.o
-                0x080061de                vApplicationIdleHook
+                0x080062d2        0xe obj\debug\src\robot_tasks.o
+                0x080062d2                vApplicationIdleHook
  .text.vApplicationStackOverflowHook
-                0x080061ec       0x16 obj\debug\src\robot_tasks.o
-                0x080061ec                vApplicationStackOverflowHook
+                0x080062e0       0x16 obj\debug\src\robot_tasks.o
+                0x080062e0                vApplicationStackOverflowHook
  .text.vApplicationMallocFailedHook
-                0x08006202        0xe obj\debug\src\robot_tasks.o
-                0x08006202                vApplicationMallocFailedHook
- .text.vStart   0x08006210       0x60 obj\debug\src\robot_tasks.o
-                0x08006210                vStart
+                0x080062f6        0xe obj\debug\src\robot_tasks.o
+                0x080062f6                vApplicationMallocFailedHook
+ .text.vStart   0x08006304       0xb4 obj\debug\src\robot_tasks.o
+                0x08006304                vStart
  .text.vClutchManagement
-                0x08006270       0x94 obj\debug\src\robot_tasks.o
-                0x08006270                vClutchManagement
+                0x080063b8      0x140 obj\debug\src\robot_tasks.o
+                0x080063b8                vClutchManagement
  .text.vBrakeManagement
-                0x08006304       0x44 obj\debug\src\robot_tasks.o
-                0x08006304                vBrakeManagement
+                0x080064f8       0xa4 obj\debug\src\robot_tasks.o
+                0x080064f8                vBrakeManagement
+ .text.vGasManagement
+                0x0800659c       0xa8 obj\debug\src\robot_tasks.o
+                0x0800659c                vGasManagement
  .text.vWaitingEvent
-                0x08006348       0x8c obj\debug\src\robot_tasks.o
-                0x08006348                vWaitingEvent
+                0x08006644       0x8c obj\debug\src\robot_tasks.o
+                0x08006644                vWaitingEvent
  .text.vManagementGearsBox
-                0x080063d4       0x38 obj\debug\src\robot_tasks.o
-                0x080063d4                vManagementGearsBox
+                0x080066d0       0x38 obj\debug\src\robot_tasks.o
+                0x080066d0                vManagementGearsBox
  .text.vModBusManagement
-                0x0800640c       0x78 obj\debug\src\robot_tasks.o
-                0x0800640c                vModBusManagement
+                0x08006708       0x78 obj\debug\src\robot_tasks.o
+                0x08006708                vModBusManagement
  .text.vSecurityMemoryManagement
-                0x08006484       0xa0 obj\debug\src\robot_tasks.o
-                0x08006484                vSecurityMemoryManagement
+                0x08006780       0x90 obj\debug\src\robot_tasks.o
+                0x08006780                vSecurityMemoryManagement
  .text.USART3_IRQHandler
-                0x08006524       0x58 obj\debug\fil lib\interrupts.o
-                0x08006524                USART3_IRQHandler
+                0x08006810       0x58 obj\debug\fil lib\interrupts.o
+                0x08006810                USART3_IRQHandler
  .text.TIM2_IRQHandler
-                0x0800657c       0x16 obj\debug\fil lib\interrupts.o
-                0x0800657c                TIM2_IRQHandler
- *fill*         0x08006592        0x2 
+                0x08006868       0x16 obj\debug\fil lib\interrupts.o
+                0x08006868                TIM2_IRQHandler
+ *fill*         0x0800687e        0x2 
  .text.TIM3_IRQHandler
-                0x08006594       0x18 obj\debug\fil lib\interrupts.o
-                0x08006594                TIM3_IRQHandler
+                0x08006880       0x18 obj\debug\fil lib\interrupts.o
+                0x08006880                TIM3_IRQHandler
  .text.TIM4_IRQHandler
-                0x080065ac       0x18 obj\debug\fil lib\interrupts.o
-                0x080065ac                TIM4_IRQHandler
+                0x08006898       0x18 obj\debug\fil lib\interrupts.o
+                0x08006898                TIM4_IRQHandler
  .text.TIM5_IRQHandler
-                0x080065c4       0x18 obj\debug\fil lib\interrupts.o
-                0x080065c4                TIM5_IRQHandler
- *fill*         0x080065dc        0x4 
+                0x080068b0       0x18 obj\debug\fil lib\interrupts.o
+                0x080068b0                TIM5_IRQHandler
  .text.TIM6_DAC_IRQHandler
-                0x080065e0       0xb4 obj\debug\fil lib\interrupts.o
-                0x080065e0                TIM6_DAC_IRQHandler
- *fill*         0x08006694        0x4 
+                0x080068c8       0xb4 obj\debug\fil lib\interrupts.o
+                0x080068c8                TIM6_DAC_IRQHandler
+ *fill*         0x0800697c        0x4 
  .text.TIM7_IRQHandler
-                0x08006698       0xe0 obj\debug\fil lib\interrupts.o
-                0x08006698                TIM7_IRQHandler
+                0x08006980       0xe0 obj\debug\fil lib\interrupts.o
+                0x08006980                TIM7_IRQHandler
  .text.TIM8_UP_TIM13_IRQHandler
-                0x08006778       0x18 obj\debug\fil lib\interrupts.o
-                0x08006778                TIM8_UP_TIM13_IRQHandler
+                0x08006a60       0x18 obj\debug\fil lib\interrupts.o
+                0x08006a60                TIM8_UP_TIM13_IRQHandler
  .text.EXTI0_IRQHandler
-                0x08006790       0x2c obj\debug\fil lib\interrupts.o
-                0x08006790                EXTI0_IRQHandler
+                0x08006a78       0x2c obj\debug\fil lib\interrupts.o
+                0x08006a78                EXTI0_IRQHandler
  .text.EXTI1_IRQHandler
-                0x080067bc       0x2c obj\debug\fil lib\interrupts.o
-                0x080067bc                EXTI1_IRQHandler
+                0x08006aa4       0x2c obj\debug\fil lib\interrupts.o
+                0x08006aa4                EXTI1_IRQHandler
  .text.EXTI2_IRQHandler
-                0x080067e8       0x18 obj\debug\fil lib\interrupts.o
-                0x080067e8                EXTI2_IRQHandler
+                0x08006ad0       0x18 obj\debug\fil lib\interrupts.o
+                0x08006ad0                EXTI2_IRQHandler
  .text.EXTI3_IRQHandler
-                0x08006800       0x18 obj\debug\fil lib\interrupts.o
-                0x08006800                EXTI3_IRQHandler
+                0x08006ae8       0x18 obj\debug\fil lib\interrupts.o
+                0x08006ae8                EXTI3_IRQHandler
  .text.EXTI4_IRQHandler
-                0x08006818       0x18 obj\debug\fil lib\interrupts.o
-                0x08006818                EXTI4_IRQHandler
+                0x08006b00       0x18 obj\debug\fil lib\interrupts.o
+                0x08006b00                EXTI4_IRQHandler
  .text.EXTI9_5_IRQHandler
-                0x08006830       0x60 obj\debug\fil lib\interrupts.o
-                0x08006830                EXTI9_5_IRQHandler
+                0x08006b18       0x60 obj\debug\fil lib\interrupts.o
+                0x08006b18                EXTI9_5_IRQHandler
  .text.EXTI15_10_IRQHandler
-                0x08006890       0x28 obj\debug\fil lib\interrupts.o
-                0x08006890                EXTI15_10_IRQHandler
+                0x08006b78       0x28 obj\debug\fil lib\interrupts.o
+                0x08006b78                EXTI15_10_IRQHandler
  .text.SystemInit
-                0x080068b8       0x6c obj\debug\src\system_stm32f4xx.o
-                0x080068b8                SystemInit
+                0x08006ba0       0x6c obj\debug\src\system_stm32f4xx.o
+                0x08006ba0                SystemInit
  .text.SetSysClock
-                0x08006924       0xf8 obj\debug\src\system_stm32f4xx.o
- .text.memcpy   0x08006a1c       0x1c d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memcpy-stub.o)
-                0x08006a1c                memcpy
- .text.memset   0x08006a38       0x10 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memset.o)
-                0x08006a38                memset
+                0x08006c0c       0xf8 obj\debug\src\system_stm32f4xx.o
+ .text.memcpy   0x08006d04       0x1c g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memcpy-stub.o)
+                0x08006d04                memcpy
+ .text.memset   0x08006d20       0x10 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memset.o)
+                0x08006d20                memset
  *(.glue_7)
- .glue_7        0x08006a48        0x0 linker stubs
+ .glue_7        0x08006d30        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x08006a48        0x0 linker stubs
+ .glue_7t       0x08006d30        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x08006a48        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+ .eh_frame      0x08006d30        0x0 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
  *(.init)
- .init          0x08006a48        0x4 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crti.o
-                0x08006a48                _init
- .init          0x08006a4c        0x8 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtn.o
+ .init          0x08006d30        0x4 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crti.o
+                0x08006d30                _init
+ .init          0x08006d34        0x8 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtn.o
  *(.fini)
- .fini          0x08006a54        0x4 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crti.o
-                0x08006a54                _fini
- .fini          0x08006a58        0x8 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtn.o
-                0x08006a60                . = ALIGN (0x4)
-                0x08006a60                _etext = .
+ .fini          0x08006d3c        0x4 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crti.o
+                0x08006d3c                _fini
+ .fini          0x08006d40        0x8 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtn.o
+                0x08006d48                . = ALIGN (0x4)
+                0x08006d48                _etext = .
 
-.vfp11_veneer   0x08006a60        0x0
- .vfp11_veneer  0x08006a60        0x0 linker stubs
+.vfp11_veneer   0x08006d48        0x0
+ .vfp11_veneer  0x08006d48        0x0 linker stubs
 
-.v4_bx          0x08006a60        0x0
- .v4_bx         0x08006a60        0x0 linker stubs
+.v4_bx          0x08006d48        0x0
+ .v4_bx         0x08006d48        0x0 linker stubs
 
-.iplt           0x08006a60        0x0
- .iplt          0x08006a60        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+.iplt           0x08006d48        0x0
+ .iplt          0x08006d48        0x0 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
 
-.rodata         0x08006a60       0x50
-                0x08006a60                . = ALIGN (0x4)
+.rodata         0x08006d48       0x60
+                0x08006d48                . = ALIGN (0x4)
  *(.rodata)
- .rodata        0x08006a60        0x5 obj\debug\freertos_lib\tasks.o
- *fill*         0x08006a65        0x3 
- .rodata        0x08006a68        0xd obj\debug\freertos_lib\timers.o
- *fill*         0x08006a75        0x3 
- .rodata        0x08006a78       0x36 obj\debug\src\main.o
+ .rodata        0x08006d48        0x5 obj\debug\freertos_lib\tasks.o
+ *fill*         0x08006d4d        0x3 
+ .rodata        0x08006d50        0xd obj\debug\freertos_lib\timers.o
+ *fill*         0x08006d5d        0x3 
+ .rodata        0x08006d60       0x3a obj\debug\src\main.o
+ *fill*         0x08006d9a        0x2 
+ .rodata        0x08006d9c        0xc obj\debug\src\robot_tasks.o
  *(.rodata*)
-                0x08006ab0                . = ALIGN (0x4)
- *fill*         0x08006aae        0x2 
+                0x08006da8                . = ALIGN (0x4)
 
-.rel.dyn        0x08006ab0        0x0
- .rel.iplt      0x08006ab0        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+.rel.dyn        0x08006da8        0x0
+ .rel.iplt      0x08006da8        0x0 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
 
-.ARM            0x08006ab0        0x0
-                0x08006ab0                __exidx_start = .
+.ARM            0x08006da8        0x0
+                0x08006da8                __exidx_start = .
  *(.ARM.exidx*)
-                0x08006ab0                __exidx_end = .
+                0x08006da8                __exidx_end = .
 
-.preinit_array  0x08006ab0        0x0
-                0x08006ab0                PROVIDE (__preinit_array_start = .)
+.preinit_array  0x08006da8        0x0
+                0x08006da8                PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
-                0x08006ab0                PROVIDE (__preinit_array_end = .)
+                0x08006da8                PROVIDE (__preinit_array_end = .)
 
-.init_array     0x08006ab0        0x4
-                0x08006ab0                PROVIDE (__init_array_start = .)
+.init_array     0x08006da8        0x4
+                0x08006da8                PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array*)
- .init_array    0x08006ab0        0x4 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
-                0x08006ab4                PROVIDE (__init_array_end = .)
+ .init_array    0x08006da8        0x4 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+                0x08006dac                PROVIDE (__init_array_end = .)
 
-.fini_array     0x08006ab4        0x4
+.fini_array     0x08006dac        0x4
                 [!provide]                PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x08006ab4        0x4 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+ .fini_array    0x08006dac        0x4 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
                 [!provide]                PROVIDE (__fini_array_end = .)
-                0x08006ab8                _sidata = LOADADDR (.data)
+                0x08006db0                _sidata = LOADADDR (.data)
 
-.data           0x20000000       0xb0 load address 0x08006ab8
+.data           0x20000000       0xb0 load address 0x08006db0
                 0x20000000                . = ALIGN (0x4)
                 0x20000000                _sdata = .
  *(.data)
@@ -1090,15 +1098,15 @@ LOAD d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-non
                 0x200000b0                . = ALIGN (0x4)
                 0x200000b0                _edata = .
 
-.igot.plt       0x200000b0        0x0 load address 0x08006b68
- .igot.plt      0x200000b0        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+.igot.plt       0x200000b0        0x0 load address 0x08006e60
+ .igot.plt      0x200000b0        0x0 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
                 0x200000b0                . = ALIGN (0x4)
 
-.bss            0x200000b0    0x12eec load address 0x08006b68
+.bss            0x200000b0    0x12ef8 load address 0x08006e60
                 0x200000b0                _sbss = .
                 0x200000b0                __bss_start__ = _sbss
  *(.bss)
- .bss           0x200000b0       0x1c d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+ .bss           0x200000b0       0x1c g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
  *(.bss*)
  .bss.ucHeap    0x200000cc    0x12c00 obj\debug\freertos_lib\heap_2.o
  .bss.xStart    0x20012ccc        0x8 obj\debug\freertos_lib\heap_2.o
@@ -1167,78 +1175,80 @@ LOAD d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-non
                 0x20012e20        0x4 obj\debug\freertos_lib\timers.o
  .bss.xLastTime.8467
                 0x20012e24        0x4 obj\debug\freertos_lib\timers.o
- .bss.UARTBufferSlaveAddrIndex.8938
+ .bss.UARTBufferSlaveAddrIndex.8944
                 0x20012e28        0x4 obj\debug\modbus\modbus.o
  .bss.Data      0x20012e2c        0x8 obj\debug\src\carregulators.o
                 0x20012e2c                Data
  *(COMMON)
- COMMON         0x20012e34      0x104 obj\debug\fil lib\rcr dstu\rcr_setupcustom.o
+ COMMON         0x20012e34      0x110 obj\debug\fil lib\rcr dstu\rcr_setupcustom.o
                 0x20012e34                xStartHandle
-                0x20012e38                LPulseWheel
-                0x20012e3c                UARTBufferEndMsgPointer
-                0x20012e40                xQueueManagHandle
-                0x20012e44                UARTReceiver_Flag
-                0x20012e48                xWaitingHangle
-                0x20012e4c                xBrakeHandle
-                0x20012e50                Queue_StartIndex
-                0x20012e54                UART_Buffer
-                0x20012e64                Brake_Flag
-                0x20012e68                UARTBufferIndex
-                0x20012e6c                UARTTransmit_Flag
-                0x20012e70                Clutch_Flag
-                0x20012e74                xClutchHandle
-                0x20012e78                Transmission_Flag
-                0x20012e7c                xGearsHandle
-                0x20012e80                Queue_EndIndex
-                0x20012e84                StartFlags
-                0x20012e8c                adc_data
-                0x20012e9c                QueueBuffer_To_UART
-                0x20012eac                RPulseWheel
-                0x20012eb0                UARTBufferLRCIndex
-                0x20012eb4                xQueue20Handle
-                0x20012eb8                xModBusHandle
-                0x20012ebc                Queue_Index
-                0x20012ec0                Current_Velocity
-                0x20012ec4                TransmissionReg
-                0x20012f24                Clocks
-                0x20012f34                UARTBufferStartMsgPointer
- COMMON         0x20012f38       0x40 obj\debug\freertos_lib\queue.o
-                0x20012f38                xQueueRegistry
- COMMON         0x20012f78        0xc obj\debug\modbus\modbus.o
-                0x20012f78                LRCPointer
-                0x20012f7c                StartDataSendIndex
-                0x20012f80                QueueIndexTx
- COMMON         0x20012f84        0x4 obj\debug\src\carregulators.o
-                0x20012f84                Step
- COMMON         0x20012f88        0x4 obj\debug\src\main.o
-                0x20012f88                Transmission
- COMMON         0x20012f8c        0x8 obj\debug\src\robot_tasks.o
-                0x20012f8c                ZeroMesFlag
-                0x20012f8d                StartCarFlag
-                0x20012f90                ErrorTask
- COMMON         0x20012f94        0x8 obj\debug\fil lib\interrupts.o
-                0x20012f94                globalRangeTransmission
-                0x20012f98                globalRangeCar
-                0x20012f9c                . = ALIGN (0x4)
-                0x20012f9c                _ebss = .
-                0x20012f9c                __bss_end__ = _ebss
+                0x20012e38                xGasHandle
+                0x20012e3c                LPulseWheel
+                0x20012e40                UARTBufferEndMsgPointer
+                0x20012e44                xQueueManagHandle
+                0x20012e48                UARTReceiver_Flag
+                0x20012e4c                xWaitingHangle
+                0x20012e50                xBrakeHandle
+                0x20012e54                Queue_StartIndex
+                0x20012e58                xQueueBrakeHandle
+                0x20012e5c                xQueueTransmissionHandle
+                0x20012e60                UART_Buffer
+                0x20012e70                Brake_Flag
+                0x20012e74                UARTBufferIndex
+                0x20012e78                UARTTransmit_Flag
+                0x20012e7c                Clutch_Flag
+                0x20012e80                xClutchHandle
+                0x20012e84                Transmission_Flag
+                0x20012e88                xGearsHandle
+                0x20012e8c                Queue_EndIndex
+                0x20012e90                StartFlags
+                0x20012e98                adc_data
+                0x20012ea8                QueueBuffer_To_UART
+                0x20012eb8                RPulseWheel
+                0x20012ebc                UARTBufferLRCIndex
+                0x20012ec0                xQueue20Handle
+                0x20012ec4                xModBusHandle
+                0x20012ec8                Queue_Index
+                0x20012ecc                Current_Velocity
+                0x20012ed0                TransmissionReg
+                0x20012f30                Clocks
+                0x20012f40                UARTBufferStartMsgPointer
+ COMMON         0x20012f44       0x40 obj\debug\freertos_lib\queue.o
+                0x20012f44                xQueueRegistry
+ COMMON         0x20012f84        0xc obj\debug\modbus\modbus.o
+                0x20012f84                LRCPointer
+                0x20012f88                StartDataSendIndex
+                0x20012f8c                QueueIndexTx
+ COMMON         0x20012f90        0x4 obj\debug\src\carregulators.o
+                0x20012f90                Step
+ COMMON         0x20012f94        0x4 obj\debug\src\main.o
+                0x20012f94                Transmission
+ COMMON         0x20012f98        0x8 obj\debug\src\robot_tasks.o
+                0x20012f98                ZeroMesFlag
+                0x20012f9c                ErrorTask
+ COMMON         0x20012fa0        0x8 obj\debug\fil lib\interrupts.o
+                0x20012fa0                globalRangeTransmission
+                0x20012fa4                globalRangeCar
+                0x20012fa8                . = ALIGN (0x4)
+                0x20012fa8                _ebss = .
+                0x20012fa8                __bss_end__ = _ebss
 
-.heap           0x20012f9c        0x0 load address 0x08006b68
-                0x20012f9c                . = ALIGN (0x4)
+.heap           0x20012fa8        0x0 load address 0x08006e60
+                0x20012fa8                . = ALIGN (0x4)
                 [!provide]                PROVIDE (end = .)
                 [!provide]                PROVIDE (_end = .)
  *(.heap*)
-                0x20012f9c                . = (. + _Min_Heap_Size)
-                0x20012f9c                __HeapLimit = .
-                0x20012f9c                . = ALIGN (0x4)
+                0x20012fa8                . = (. + _Min_Heap_Size)
+                0x20012fa8                __HeapLimit = .
+                0x20012fa8                . = ALIGN (0x4)
 
 .ARM.attributes
                 0x00000000       0x30
  *(.ARM.attributes)
  .ARM.attributes
-                0x00000000       0x1e d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crti.o
+                0x00000000       0x1e g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crti.o
  .ARM.attributes
-                0x0000001e       0x34 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+                0x0000001e       0x34 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
  .ARM.attributes
                 0x00000052       0x21 obj\debug\src\startup_stm32f407xx.o
  .ARM.attributes
@@ -1270,17 +1280,17 @@ LOAD d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-non
  .ARM.attributes
                 0x00000317       0x34 obj\debug\src\system_stm32f4xx.o
  .ARM.attributes
-                0x0000034b       0x1e d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
+                0x0000034b       0x1e g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
  .ARM.attributes
-                0x00000369       0x1e d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
+                0x00000369       0x1e g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
  .ARM.attributes
-                0x00000387       0x1e d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
+                0x00000387       0x1e g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
  .ARM.attributes
-                0x000003a5       0x34 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memcpy-stub.o)
+                0x000003a5       0x34 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memcpy-stub.o)
  .ARM.attributes
-                0x000003d9       0x34 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memset.o)
+                0x000003d9       0x34 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memset.o)
  .ARM.attributes
-                0x0000040d       0x1e d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtn.o
+                0x0000040d       0x1e g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtn.o
                 0x2001ff00                __StackLimit = (_estack - _Min_Stack_Size)
                 0x00000001                ASSERT ((__StackLimit >= __HeapLimit), Region RAM overflowed with stack)
 LOAD obj\debug\src\startup_stm32f407xx.o
@@ -1302,26 +1312,26 @@ LOAD obj\debug\src\robot_tasks.o
 LOAD obj\debug\fil lib\interrupts.o
 LOAD obj\debug\src\system_stm32f4xx.o
 START GROUP
-LOAD d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a
-LOAD d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a
-LOAD d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a
+LOAD g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a
+LOAD g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a
+LOAD g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a
 END GROUP
 START GROUP
-LOAD d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a
-LOAD d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a
-LOAD d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libnosys.a
+LOAD g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a
+LOAD g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a
+LOAD g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libnosys.a
 END GROUP
 START GROUP
-LOAD d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a
-LOAD d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a
-LOAD d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libnosys.a
+LOAD g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a
+LOAD g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a
+LOAD g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libnosys.a
 END GROUP
-LOAD d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtend.o
-LOAD d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtn.o
+LOAD g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtend.o
+LOAD g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtn.o
 OUTPUT(bin\Debug\robocross.elf elf32-littlearm)
 LOAD linker stubs
 
-.debug_line     0x00000000     0x6098
+.debug_line     0x00000000     0x611c
  .debug_line    0x00000000       0x77 obj\debug\src\startup_stm32f407xx.o
  .debug_line    0x00000077      0x5ae obj\debug\fil lib\rcr dstu\rcr_setupcustom.o
  .debug_line    0x00000625      0x33c obj\debug\freertos_lib\heap_2.o
@@ -1331,31 +1341,31 @@ LOAD linker stubs
  .debug_line    0x0000219c     0x17f1 obj\debug\freertos_lib\tasks.o
  .debug_line    0x0000398d      0x816 obj\debug\freertos_lib\timers.o
  .debug_line    0x000041a3      0x705 obj\debug\modbus\modbus.o
- .debug_line    0x000048a8      0x6cc obj\debug\src\carmanagement.o
- .debug_line    0x00004f74      0x438 obj\debug\src\carregulators.o
- .debug_line    0x000053ac      0x211 obj\debug\src\main.o
- .debug_line    0x000055bd      0x40f obj\debug\src\robot_tasks.o
- .debug_line    0x000059cc      0x447 obj\debug\fil lib\interrupts.o
- .debug_line    0x00005e13      0x285 obj\debug\src\system_stm32f4xx.o
+ .debug_line    0x000048a8      0x5e1 obj\debug\src\carmanagement.o
+ .debug_line    0x00004e89      0x438 obj\debug\src\carregulators.o
+ .debug_line    0x000052c1      0x22d obj\debug\src\main.o
+ .debug_line    0x000054ee      0x562 obj\debug\src\robot_tasks.o
+ .debug_line    0x00005a50      0x447 obj\debug\fil lib\interrupts.o
+ .debug_line    0x00005e97      0x285 obj\debug\src\system_stm32f4xx.o
 
-.debug_info     0x00000000    0x1017e
+.debug_info     0x00000000    0x10320
  .debug_info    0x00000000       0x22 obj\debug\src\startup_stm32f407xx.o
- .debug_info    0x00000022     0x199a obj\debug\fil lib\rcr dstu\rcr_setupcustom.o
- .debug_info    0x000019bc      0xc23 obj\debug\freertos_lib\heap_2.o
- .debug_info    0x000025df      0xba8 obj\debug\freertos_lib\list.o
- .debug_info    0x00003187      0x530 obj\debug\freertos_lib\port.o
- .debug_info    0x000036b7     0x2005 obj\debug\freertos_lib\queue.o
- .debug_info    0x000056bc     0x29f2 obj\debug\freertos_lib\tasks.o
- .debug_info    0x000080ae     0x158d obj\debug\freertos_lib\timers.o
- .debug_info    0x0000963b     0x134e obj\debug\modbus\modbus.o
- .debug_info    0x0000a989     0x11d1 obj\debug\src\carmanagement.o
- .debug_info    0x0000bb5a     0x10ce obj\debug\src\carregulators.o
- .debug_info    0x0000cc28      0xd6d obj\debug\src\main.o
- .debug_info    0x0000d995      0xf72 obj\debug\src\robot_tasks.o
- .debug_info    0x0000e907     0x120f obj\debug\fil lib\interrupts.o
- .debug_info    0x0000fb16      0x668 obj\debug\src\system_stm32f4xx.o
+ .debug_info    0x00000022     0x19dd obj\debug\fil lib\rcr dstu\rcr_setupcustom.o
+ .debug_info    0x000019ff      0xc23 obj\debug\freertos_lib\heap_2.o
+ .debug_info    0x00002622      0xba8 obj\debug\freertos_lib\list.o
+ .debug_info    0x000031ca      0x530 obj\debug\freertos_lib\port.o
+ .debug_info    0x000036fa     0x2005 obj\debug\freertos_lib\queue.o
+ .debug_info    0x000056ff     0x29f2 obj\debug\freertos_lib\tasks.o
+ .debug_info    0x000080f1     0x158d obj\debug\freertos_lib\timers.o
+ .debug_info    0x0000967e     0x1391 obj\debug\modbus\modbus.o
+ .debug_info    0x0000aa0f     0x1165 obj\debug\src\carmanagement.o
+ .debug_info    0x0000bb74     0x1111 obj\debug\src\carregulators.o
+ .debug_info    0x0000cc85      0xdb0 obj\debug\src\main.o
+ .debug_info    0x0000da35     0x1031 obj\debug\src\robot_tasks.o
+ .debug_info    0x0000ea66     0x1252 obj\debug\fil lib\interrupts.o
+ .debug_info    0x0000fcb8      0x668 obj\debug\src\system_stm32f4xx.o
 
-.debug_abbrev   0x00000000     0x2677
+.debug_abbrev   0x00000000     0x26c0
  .debug_abbrev  0x00000000       0x12 obj\debug\src\startup_stm32f407xx.o
  .debug_abbrev  0x00000012      0x34b obj\debug\fil lib\rcr dstu\rcr_setupcustom.o
  .debug_abbrev  0x0000035d      0x305 obj\debug\freertos_lib\heap_2.o
@@ -1368,11 +1378,11 @@ LOAD linker stubs
  .debug_abbrev  0x000018d6      0x2c4 obj\debug\src\carmanagement.o
  .debug_abbrev  0x00001b9a      0x283 obj\debug\src\carregulators.o
  .debug_abbrev  0x00001e1d      0x20f obj\debug\src\main.o
- .debug_abbrev  0x0000202c      0x265 obj\debug\src\robot_tasks.o
- .debug_abbrev  0x00002291      0x26e obj\debug\fil lib\interrupts.o
- .debug_abbrev  0x000024ff      0x178 obj\debug\src\system_stm32f4xx.o
+ .debug_abbrev  0x0000202c      0x2ae obj\debug\src\robot_tasks.o
+ .debug_abbrev  0x000022da      0x26e obj\debug\fil lib\interrupts.o
+ .debug_abbrev  0x00002548      0x178 obj\debug\src\system_stm32f4xx.o
 
-.debug_aranges  0x00000000      0x808
+.debug_aranges  0x00000000      0x810
  .debug_aranges
                 0x00000000       0x28 obj\debug\src\startup_stm32f407xx.o
  .debug_aranges
@@ -1398,44 +1408,44 @@ LOAD linker stubs
  .debug_aranges
                 0x000006b0       0x20 obj\debug\src\main.o
  .debug_aranges
-                0x000006d0       0x70 obj\debug\src\robot_tasks.o
+                0x000006d0       0x78 obj\debug\src\robot_tasks.o
  .debug_aranges
-                0x00000740       0x98 obj\debug\fil lib\interrupts.o
+                0x00000748       0x98 obj\debug\fil lib\interrupts.o
  .debug_aranges
-                0x000007d8       0x30 obj\debug\src\system_stm32f4xx.o
+                0x000007e0       0x30 obj\debug\src\system_stm32f4xx.o
 
-.debug_str      0x00000000     0x35a1
- .debug_str     0x00000000       0x63 obj\debug\src\startup_stm32f407xx.o
- .debug_str     0x00000063     0x1051 obj\debug\fil lib\rcr dstu\rcr_setupcustom.o
-                               0x1117 (size before relaxing)
- .debug_str     0x000010b4      0x1a2 obj\debug\freertos_lib\heap_2.o
-                                0x772 (size before relaxing)
- .debug_str     0x00001256      0x13d obj\debug\freertos_lib\list.o
-                                0x6fc (size before relaxing)
- .debug_str     0x00001393      0x230 obj\debug\freertos_lib\port.o
-                                0x446 (size before relaxing)
- .debug_str     0x000015c3      0x666 obj\debug\freertos_lib\queue.o
-                                0xdad (size before relaxing)
- .debug_str     0x00001c29      0xd09 obj\debug\freertos_lib\tasks.o
-                               0x152c (size before relaxing)
- .debug_str     0x00002932      0x46c obj\debug\freertos_lib\timers.o
-                                0xbbd (size before relaxing)
- .debug_str     0x00002d9e      0x280 obj\debug\modbus\modbus.o
-                                0xb77 (size before relaxing)
- .debug_str     0x0000301e       0xeb obj\debug\src\carmanagement.o
-                                0xa7f (size before relaxing)
- .debug_str     0x00003109       0x9b obj\debug\src\carregulators.o
-                                0xa2d (size before relaxing)
- .debug_str     0x000031a4       0x15 obj\debug\src\main.o
-                                0x8c1 (size before relaxing)
- .debug_str     0x000031b9       0xfb obj\debug\src\robot_tasks.o
-                                0xa0f (size before relaxing)
- .debug_str     0x000032b4      0x168 obj\debug\fil lib\interrupts.o
-                                0xb21 (size before relaxing)
- .debug_str     0x0000341c      0x185 obj\debug\src\system_stm32f4xx.o
-                                0x40d (size before relaxing)
+.debug_str      0x00000000     0x35f8
+ .debug_str     0x00000000       0x52 obj\debug\src\startup_stm32f407xx.o
+ .debug_str     0x00000052     0x109a obj\debug\fil lib\rcr dstu\rcr_setupcustom.o
+                               0x114f (size before relaxing)
+ .debug_str     0x000010ec      0x1a2 obj\debug\freertos_lib\heap_2.o
+                                0x761 (size before relaxing)
+ .debug_str     0x0000128e      0x13d obj\debug\freertos_lib\list.o
+                                0x6eb (size before relaxing)
+ .debug_str     0x000013cb      0x230 obj\debug\freertos_lib\port.o
+                                0x435 (size before relaxing)
+ .debug_str     0x000015fb      0x666 obj\debug\freertos_lib\queue.o
+                                0xd9c (size before relaxing)
+ .debug_str     0x00001c61      0xd09 obj\debug\freertos_lib\tasks.o
+                               0x151b (size before relaxing)
+ .debug_str     0x0000296a      0x46c obj\debug\freertos_lib\timers.o
+                                0xbac (size before relaxing)
+ .debug_str     0x00002dd6      0x280 obj\debug\modbus\modbus.o
+                                0xbaf (size before relaxing)
+ .debug_str     0x00003056       0xd8 obj\debug\src\carmanagement.o
+                                0xaa4 (size before relaxing)
+ .debug_str     0x0000312e       0x9b obj\debug\src\carregulators.o
+                                0xa65 (size before relaxing)
+ .debug_str     0x000031c9       0x15 obj\debug\src\main.o
+                                0x8f9 (size before relaxing)
+ .debug_str     0x000031de      0x12d obj\debug\src\robot_tasks.o
+                                0xa79 (size before relaxing)
+ .debug_str     0x0000330b      0x168 obj\debug\fil lib\interrupts.o
+                                0xb59 (size before relaxing)
+ .debug_str     0x00003473      0x185 obj\debug\src\system_stm32f4xx.o
+                                0x3fc (size before relaxing)
 
-.debug_ranges   0x00000000      0x720
+.debug_ranges   0x00000000      0x728
  .debug_ranges  0x00000000       0x20 obj\debug\src\startup_stm32f407xx.o
  .debug_ranges  0x00000020       0x58 obj\debug\fil lib\rcr dstu\rcr_setupcustom.o
  .debug_ranges  0x00000078       0x30 obj\debug\freertos_lib\heap_2.o
@@ -1448,9 +1458,9 @@ LOAD linker stubs
  .debug_ranges  0x00000598       0x48 obj\debug\src\carmanagement.o
  .debug_ranges  0x000005e0       0x28 obj\debug\src\carregulators.o
  .debug_ranges  0x00000608       0x10 obj\debug\src\main.o
- .debug_ranges  0x00000618       0x60 obj\debug\src\robot_tasks.o
- .debug_ranges  0x00000678       0x88 obj\debug\fil lib\interrupts.o
- .debug_ranges  0x00000700       0x20 obj\debug\src\system_stm32f4xx.o
+ .debug_ranges  0x00000618       0x68 obj\debug\src\robot_tasks.o
+ .debug_ranges  0x00000680       0x88 obj\debug\fil lib\interrupts.o
+ .debug_ranges  0x00000708       0x20 obj\debug\src\system_stm32f4xx.o
 
 .comment        0x00000000       0x4c
  .comment       0x00000000       0x4c obj\debug\fil lib\rcr dstu\rcr_setupcustom.o
@@ -1469,7 +1479,7 @@ LOAD linker stubs
  .comment       0x0000004c       0x4d obj\debug\fil lib\interrupts.o
  .comment       0x0000004c       0x4d obj\debug\src\system_stm32f4xx.o
 
-.debug_frame    0x00000000     0x1fac
+.debug_frame    0x00000000     0x1fcc
  .debug_frame   0x00000000      0x164 obj\debug\fil lib\rcr dstu\rcr_setupcustom.o
  .debug_frame   0x00000164       0xc0 obj\debug\freertos_lib\heap_2.o
  .debug_frame   0x00000224       0xd8 obj\debug\freertos_lib\list.o
@@ -1481,11 +1491,11 @@ LOAD linker stubs
  .debug_frame   0x0000182c      0x130 obj\debug\src\carmanagement.o
  .debug_frame   0x0000195c       0xa8 obj\debug\src\carregulators.o
  .debug_frame   0x00001a04       0x34 obj\debug\src\main.o
- .debug_frame   0x00001a38      0x178 obj\debug\src\robot_tasks.o
- .debug_frame   0x00001bb0      0x218 obj\debug\fil lib\interrupts.o
- .debug_frame   0x00001dc8       0x7c obj\debug\src\system_stm32f4xx.o
- .debug_frame   0x00001e44       0xac d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
- .debug_frame   0x00001ef0       0x50 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
- .debug_frame   0x00001f40       0x24 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
- .debug_frame   0x00001f64       0x28 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memcpy-stub.o)
- .debug_frame   0x00001f8c       0x20 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memset.o)
+ .debug_frame   0x00001a38      0x198 obj\debug\src\robot_tasks.o
+ .debug_frame   0x00001bd0      0x218 obj\debug\fil lib\interrupts.o
+ .debug_frame   0x00001de8       0x7c obj\debug\src\system_stm32f4xx.o
+ .debug_frame   0x00001e64       0xac g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
+ .debug_frame   0x00001f10       0x50 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
+ .debug_frame   0x00001f60       0x24 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
+ .debug_frame   0x00001f84       0x28 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memcpy-stub.o)
+ .debug_frame   0x00001fac       0x20 g:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memset.o)

@@ -6,7 +6,6 @@ int main(void)
 {
     BoardStart();
     PID_Init();
-    StartCarFlag = 0;
     Transmission = 0;
 #if (Test == 0)
     // Старт системы
@@ -17,6 +16,8 @@ int main(void)
 
     // Управление Тормозом
     xTaskCreate(vBrakeManagement, (char *) "BRAKE", configMINIMAL_STACK_SIZE, NULL, 1, &xBrakeHandle);
+
+    xTaskCreate(vGasManagement, (char *) "GAS", configMINIMAL_STACK_SIZE, NULL, 1, &xGasHandle);
 
     // отправка сообщений по ModBus и ожидание события
     xTaskCreate(vWaitingEvent, (char * )"Wait", configMINIMAL_STACK_SIZE, NULL,1, &xWaitingHangle );
@@ -31,8 +32,12 @@ int main(void)
     xTaskCreate(vSecurityMemoryManagement, (char *) "Queue", configMINIMAL_STACK_SIZE, NULL, 1, &xQueueManagHandle );
 
     xQueue20Handle = xQueueCreate(3, sizeof(float)); /// Queue storing new velocity
+    xQueueBrakeHandle = xQueueCreate(3, sizeof(uint8_t)); /// Queue Brake Value
+    xQueueTransmissionHandle = xQueueCreate(3, sizeof(uint8_t)); /// Queue Transmission Value
 
-    if( xQueue20Handle != NULL ) { vTaskStartScheduler(); }
+    if( xQueue20Handle != NULL &&
+        xQueueBrakeHandle != NULL &&
+        xQueueTransmissionHandle != NULL) { vTaskStartScheduler(); }
 #elif (Test == 1)
     /* here not enter when RTOS is on and Queue create successful or test not select */
     while(1)

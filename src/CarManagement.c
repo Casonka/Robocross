@@ -16,6 +16,7 @@ void Move_Clutch(int direction)
             SetPWM(4, -0.5);
             if( direction == Back_First) { Pulses = PulseToClutch_First; }
             if( direction == Back_Second) { Pulses = PulseToClutch_Second; }
+            if( direction == Back_Full) { Pulses = PulseToClutch_BackFull;}
         }
         for(int i = 0; i < Pulses; )
         {
@@ -24,7 +25,6 @@ void Move_Clutch(int direction)
             if(!(TIM11->CR1&0x1)) {TimStart(Tim11); i++;}
         }
     SetPWM(4, 0xFFFF);
-//    Clutch_Flag = direction == 1 ? Full : Back;
 }
 
 void Get_Clutch(void)
@@ -78,81 +78,22 @@ _Bool Set_Transmission(int transmission)
     if (Transmission_Flag == NONE) return 0; else return 1;
 }
 
-#define Slow     48
-#define Zero     80
-#define Fast     96
-#define WEWE     144    // c виви осторожно, сделано дл€ фана
+
 void Set_Gas(int Pulses)
 {
     /*!
     *   @note CarManagement: < управление газом автомобил€ >
     */
-    int delay = 0;
     SetPWM(5, 0.5);
-    switch(Pulses)
+    for(int i = 0; i < Pulses; )  // пр€мой ход
     {
-
-        case Fast:
-        {
-            delay = 0xAAFF;
-            for(int i = 0; i < Pulses; )   // пр€мой ход
-            {
-                if(!(TIM10->CR1&0x1)) {TimStart(Tim10); i++;}
-            }
-            SetPWM(5, -0.5);
-            while(delay > 0) {delay--;}
-            for(int i = 0; i < Pulses; )    // обратный ход через задержку
-            {
-                if(!(TIM10->CR1&0x1)) {TimStart(Tim10); i++;}
-            }
-            break;
-        }
-
-        case Slow:
-        {
-            for(int i = 0; i < Pulses; )   // пр€мой ход
-            {
-                if(!(TIM10->CR1&0x1)) {TimStart(Tim10); i++;}
-            }
-            break;
-        }
-
-        case Zero:
-        {
-            SetPWM(5, -0.5);
-            for(int i = 0; i < Pulses; )   // пр€мой ход
-            {
-                if(!(TIM10->CR1&0x1)) {TimStart(Tim10); i++;}
-            }
-            break;
-        }
-
-        case WEWE:
-        {
-            int Wewe_counter = 3;
-            while( Wewe_counter > 0)
-            {
-            for(int i = 0; i < Pulses; )   // пр€мой ход
-            {
-                if(!(TIM10->CR1&0x1)) {TimStart(Tim10); i++;}
-            }
-            for(int i = 0; i < Pulses; )    // обратный ход через задержку
-            {
-                if(!(TIM10->CR1&0x1)) {TimStart(Tim10); i++;}
-            }
-             Wewe_counter--;
-            }
-            break;
-        }
-
-        default: break;
+        if(!(TIM10->CR1&0x1)) {TimStart(Tim10); i++;}
     }
-            SetPWM(5, 0);
+    SetPWM(5, 0);
 }
 
 void Set_Brake(int state)   // “ормоз
 {
-#if (Brake_mode == 0)
     if( state == 0) // отпустить педаль тормоза
         {
             set_pin(PIN1_12V);
@@ -163,10 +104,6 @@ void Set_Brake(int state)   // “ормоз
             reset_pin(PIN1_12V);
             Brake_Flag = 1;
         }
-#elif (Brake_mode == 1)
-
-
-#endif
 }
 
 #define RecoverySpeed   1.0

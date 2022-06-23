@@ -3,22 +3,20 @@
 #include "FilConfig.h"
 uint16_t adc_data[8];
 
-// 0 - прямой ход резкий, обратный медленный
-// 1 - прямой ход медленный, обратный резкий
-#define Brake_mode      0
-
 #define Push            1
 #define PushOut         0
 int Brake_Flag;  // тормоз
 void Set_Brake(int state);
 
-#define PulseToClutch_UP   (13000)
-#define PulseToClutch_First (5000)
+#define PulseToClutch_UP        (13000)
+#define PulseToClutch_BackFull  (13000)
+#define PulseToClutch_First     (5000)
 #define PulseToClutch_Second  ( PulseToClutch_UP - PulseToClutch_First )
 
 #define Full        1
 #define Back_First  2
 #define Back_Second 3
+#define Back_Full   4
 int Clutch_Flag;
 void Move_Clutch(int direction); // engine on and moving
 
@@ -34,6 +32,11 @@ void Get_Clutch(void);
 int Transmission_Flag;  // флаг передачи
 _Bool Set_Transmission(int transmission);    // 2 engines on end move transmission
 
+#define Low_Speed         48
+#define Zero_Speed        80
+#define High_Speed        96
+#define WEWE_Speed        144    // c виви осторожно, сделано для фана
+#define ZeWE_Speed        144
 void Set_Gas(int Pulses);
 
 void Recovery_Transmission(void);
