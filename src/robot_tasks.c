@@ -1,15 +1,28 @@
 #include "robot_tasks.h"
 
+// запуск коробки передач
 #define TestingTransmission  0
+
+// запуск сцепления
 #define TestingClutch        0
-#define TestingModBus        0
+
+// запуск ModBus
+#define TestingModBus        1
+
+// запуск педали газа
 #define TestingGas           0
+
+// запуск педали тормоза
 #define TestingBrake         0
+
+// запуск экстренных алгоритмов
 #define RecoverySector       0
 
+// запуск принудительной отправки сообщений по ModBus
+#define ZeroMesFlag_Off      1
 
 /*!
-*   @note robot_tasks: < коды ошибок в задачах >
+*   @note  !Коды ошибок в задачах
 *   0x01 - ошибка при старте, не заводится машина
 *   0x02 - ошибка положения коробки
 *   0x04 - не работает тормоз
@@ -75,7 +88,6 @@ void vRobotGo( void *pvParameters)
             StartFlags.RestartCar_Flag_Main = 1;
             vTaskResume(xQueueManagHandle);
             vTaskResume(xModBusHandle);
-            vTaskResume(xWaitingHangle);
             continue;
         }
         else if(StartFlags.RestartCar_Flag_Main == 1)
@@ -89,7 +101,6 @@ void vRobotGo( void *pvParameters)
             vTaskDelete(xClutchHandle);
             vTaskDelete(xBrakeHandle);
             vTaskDelete(xGasHandle);
-            vTaskDelete(xWaitingHangle);
             vTaskDelete(xGearsHandle);
             vTaskDelete(xModBusHandle);
             vTaskDelete(xCarManagementHandle);
@@ -111,9 +122,6 @@ void vRobotGo( void *pvParameters)
 
             xTaskCreate(vGasManagement, (char *) "GAS", configMINIMAL_STACK_SIZE, NULL, 1, &xGasHandle);
             vTaskSuspend(xGasHandle);
-
-            xTaskCreate(vWaitingEvent, (char * )"Wait", configMINIMAL_STACK_SIZE, NULL,1, &xWaitingHangle );
-            vTaskSuspend(xWaitingHangle);
 
             xTaskCreate(vManagementGearsBox, (char *) "GEAR", configMINIMAL_STACK_SIZE, NULL, 1, &xGearsHandle );
             vTaskSuspend(xGearsHandle);
@@ -139,7 +147,7 @@ vTaskDelete(NULL);
 
 
 // xStartHandle
-void vStart( void *pvParameters)        // заходит при старте и перезагрузке
+void vStart( void *pvParameters)
 {
     StartFlags.StartCarFlag_Brake = 1;
     StartFlags.StartCarFlag_Clutch = 1;
@@ -157,40 +165,90 @@ void vStart( void *pvParameters)        // заходит при старте и перезагрузке
     ErrorTask = 0x00;
     ZeroMesFlag = 0;
     TargetSpeed = 0.0;
+    UARTTransmit_Flag = 3;
 
     for(;;)
     {
         if(once == 1)  vTaskSuspend(xStartHandle);
 
         set_pin(PIN2_12V);  // сообщаем что настраиваемся
-        vTaskPrioritySet(xBrakeHandle, 3); // тормоз
-        vTaskResume(xBrakeHandle);
 
-        vTaskDelay(4100);
+#if ( TestingBrake == 1)
+        Get_Brake();
+        vTaskPrioritySet(xBrakeHandle, 3); // тормоз
+        if(Brake_Flag == 1)   { vTaskResume(xBrakeHandle); vTaskDelay(4100); }
+#endif
+#if( TestingClutch == 1)
         vTaskPrioritySet(xClutchHandle, 3);  // нажать сцепление, если не было нажато
         vTaskResume(xClutchHandle);
+#endif
+#if( TestingTransmission == 1)
 
+#endif
+#if( TestingGas == 1)
         vTaskDelay(1000);
         vTaskPrioritySet(xGasHandle, 3); // проверка газа (виви мод)
         vTaskResume(xGasHandle);
-
+#endif
+#if( TestingModBus == 1)
         vTaskDelay(1000);
-        vTaskPrioritySet(xModBusHandle, 2);
+        vTaskPrioritySet(xModBusHandle, 4);
+#endif
+        vTaskPrioritySet(xQueueManagHandle, 3);
 
-        vTaskPrioritySet(xQueueManagHandle, 1);
+        vTaskPrioritySet(xMailHandle, 3);
+        vTaskResume(xMailHandle);
 
-        vTaskPrioritySet(xWaitingHangle, 3);
-
+        vTaskPrioritySet(xWaitingHandle, 3);
+        vTaskResume(xWaitingHandle);
 
         reset_pin(PIN2_12V);    // настройка закончена
         set_pin(PIN3_12V);      // можно начинать движение
         once = 1;
         vTaskResume(xRobotGo);
         // для теста
-            vTaskResume(xQueueManagHandle);
-            vTaskResume(xModBusHandle);
-            vTaskResume(xWaitingHangle);
+
     }
+vTaskDelete(NULL);
+}
+
+// xWaitingHandle
+void vWaitingEvent( void *pvParameters)
+{
+    for(;;)
+    {
+        if( UART_Buffer[14] != '\0')
+        {
+            StartFlags.StartCarFlag_ModBus = 1;
+            vTaskSuspend(xMailHandle);
+            vTaskResume(xModBusHandle);
+        }
+    }
+vTaskDelete(NULL);
+}
+
+// xMailHandle
+void vMessageSending( void *pvParameters)
+{
+    /*!
+    *   @note robot_tasks: < периодическая отправка сообщений >
+    */
+    portTickType xTimeIncremental;
+    xTimeIncremental = xTaskGetTickCount();
+    for(;;)
+    {
+        #if ( ZeroMesFlag_Off == 1)
+        ZeroMesFlag = 0;
+        #endif
+
+        if( ZeroMesFlag == 0)
+        {
+            UARTTransmit_Flag = 3;
+            ModBus_SendResponseSpeed(Current_Velocity*100);
+        }
+        vTaskDelayUntil(&xTimeIncremental, (250 / portTICK_RATE_MS));
+    }
+
 vTaskDelete(NULL);
 }
 
@@ -392,39 +450,8 @@ void vGasManagement( void *pvParameters)
 vTaskDelete(NULL);
 }
 
-// xWaitingHangle
-void vWaitingEvent( void *pvParameters)    // ждем команду когда все сделано до этого и отправляем скорость (если изменяется)
-{
-    /*!
-    *   @note robot_tasks: < Менеджер событий >
-    */
-    portBASE_TYPE Tick_begin = xTaskGetTickCount();
-    portBASE_TYPE Tick_deadTime;
-    portBASE_TYPE xStatus;
-    for(;;)
-    {
-        if(UART_Buffer[UART_BUFFER_SIZE - 1] != 0)
-        {
-            vTaskResume(xModBusHandle);
-        }
-        Tick_deadTime = xTaskGetTickCount();
-        if( Tick_deadTime - Tick_begin >= 250 )
-        {
-            ZeroMesFlag = 0; //принудительная отправка
-                if(ZeroMesFlag == 0)
-                {
-                    Current_Velocity += 9.22;
-                    UARTTransmit_Flag = 3;
-                    ModBus_SendResponseSpeed(Current_Velocity*100);
-                }
-                Tick_begin = Tick_deadTime;
-        }
-    }
-    vTaskDelete(NULL);
-}
-
 // xGearsHandle
-void vManagementGearsBox( void *pvParameters )  //car management gears box ( enter code here man!)
+void vManagementGearsBox( void *pvParameters )
 {
     float Velocity;
     for(;;)
@@ -437,12 +464,12 @@ void vManagementGearsBox( void *pvParameters )  //car management gears box ( ent
 }
 
 // xModBusHandle
-void vModBusManagement( void *pvParameters )      // UART management: check buffer and parse correct message
+void vModBusManagement( void *pvParameters )
 {
     float Data;
     for(;;)
     {
-        if (StartFlags.StartCarFlag_ModBus == 0) vTaskSuspend(xModBusHandle);
+        if (StartFlags.StartCarFlag_ModBus == 0) { vTaskSuspend(xModBusHandle); continue;}
         ErrorTask = ModBus_CheckFrame();
         if( ErrorTask == 0x08)
         {
@@ -451,11 +478,12 @@ void vModBusManagement( void *pvParameters )      // UART management: check buff
             continue;
         }
         Data = ModBus_ParsePacket();
+        ModBus_ClearMsgs();
         if(Data >= 0.05) {xQueueSend(xQueue20Handle, &Data, 0);}
         else { StartFlags.StartCarFlag_ModBus = 0; continue;}
-        ModBus_ClearMsgs();
         ErrorTask = 0;
         vTaskResume(xQueueManagHandle);
+        vTaskSuspend(xModBusHandle); continue;
     }
 vTaskDelete(NULL);
 }
@@ -474,7 +502,7 @@ void vCarManagement( void *pvParameters)
 
 
 // xQueueManagHandle xQueue20Handle xQueueBrakeHandle xQueueTransmissionHandle xQueueGasHandle
-void vSecurityMemoryManagement ( void *pvParameters) //Queue management: receive value from buffer and send to tasks
+void vSecurityMemoryManagement ( void *pvParameters)
 {
     /*!
     *   @note robot_tasks: < Обработчик скорости из очереди xQueue20Handle >
@@ -494,6 +522,10 @@ void vSecurityMemoryManagement ( void *pvParameters) //Queue management: receive
 
         float Divider = Speed - Current_Velocity;
 
+        // вне диапазона чувствительности системы
+        if( Divider < Vel_Divider &&
+            Divider > -Vel_Divider && Speed != 0.0 ) { StartFlags.StartCarFlag_ModBus = 0; continue; }
+
         // требуется повысить скорость
         if( Divider > Vel_Divider)
         {
@@ -510,16 +542,14 @@ void vSecurityMemoryManagement ( void *pvParameters) //Queue management: receive
             StartFlags.StartCarFlag_Gas = 0;
         }
 
-        // вне диапазона чувствительности системы
-        if( Divider < Vel_Divider &&
-            Divider > -Vel_Divider && Speed != 0.0 ) { StartFlags.StartCarFlag_ModBus = 0; continue; }
-
         // пока разрешаем редактирование передачи и сцепления
         StartFlags.StartCarFlag_Transmission = 1;
         StartFlags.StartCarFlag_Clutch = 1;
 
+        // целевая скорость на уровне второй передачи
         if( Speed >= 4.16667)  { Transmission = F2; }
 
+        // целевая скорость в пределах первой передачи
         if( Speed < 4.1667 && Speed >= Vel_Divider )  { Transmission = F1; }
 
         if( Speed < -Vel_Divider) { Transmission = R; }
@@ -532,7 +562,7 @@ void vSecurityMemoryManagement ( void *pvParameters) //Queue management: receive
             if( xStatus == errQUEUE_FULL ) { StartFlags.StartCarFlag_Transmission = 0; }
         }
 
-        if (StartFlags.StartCarManagement == 1) { StartFlags.StartCarFlag_ModBus = 0; vTaskResume(xCarManagementHandle); } // передача приоритета исполнителю
+        if (StartFlags.StartCarManagement == 1) { StartFlags.StartCarFlag_ModBus = 0; vTaskResume(xCarManagementHandle); continue; } // передача приоритета исполнителю
 
     }
 vTaskDelete(NULL);

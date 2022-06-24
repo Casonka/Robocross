@@ -108,6 +108,8 @@ void Set_Brake(int state)   // Тормоз
         }
 }
 
+uint8_t Get_Brake(void) { Brake_Flag = (pin_out(PIN1_12V)) ? 1 : 0; return Brake_Flag;}
+
 #define RecoverySpeed   1.0
 #define TriggerErrorValue   3.0
 

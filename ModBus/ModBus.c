@@ -124,7 +124,7 @@ unsigned int ModBus_ASCII_TO_HEX_Converter(unsigned char *ASCII_Pointer, unsigne
 
 void ModBus_ClearMsgs(void) {
 
-for(int i = 0; i < sizeof(UART_Buffer);i++)
+for(int i = 0; i < UART_BUFFER_SIZE;i++)
 {
     UART_Buffer[i] = 0;
 
@@ -141,7 +141,7 @@ unsigned int ModBus_CheckFrame(void) {
 
     if( *UARTBufferStartMsgPointer == ':')
         {
-            const unsigned char EndFrame[2] = { 13, 10};
+            const unsigned char EndFrame[2] = { 13, 10 };
             unsigned char Tmp[2];
             int counts = 0;
             for (int i = 0; i <= 1; i++)

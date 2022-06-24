@@ -5,8 +5,10 @@ uint16_t adc_data[8];
 
 #define Push            1
 #define PushOut         0
-int Brake_Flag;  // тормоз
+uint8_t Brake_Flag;  // тормоз
 void Set_Brake(int state);
+
+uint8_t Get_Brake(void);
 
 #define PulseToClutch_UP        (13000)
 #define PulseToClutch_BackFull  (13000)

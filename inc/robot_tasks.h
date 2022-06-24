@@ -15,6 +15,7 @@ struct
 }StartFlags;
 /// FreeRTOS structures
 
+// старт и перезагрузка
 xSemaphoreHandle xStartEvent;
 
 /*!
@@ -52,6 +53,18 @@ void vRobotGo( void *pvParameters);
 xTaskHandle xStartHandle;
 void vStart( void *pvParameters);
 
+xTaskHandle xWaitingHandle;
+void vWaitingEvent( void *pvParameters);
+
+xTaskHandle xMailHandle;
+void vMessageSending( void * pvParameters);
+
+xTaskHandle xCarManagementHandle;
+void vCarManagement( void *pvParameters);
+
+xTaskHandle xCarRegulatorHandle;
+void vCarRegulator( void *pvParameters);
+
 xTaskHandle xClutchHandle;
 void vClutchManagement( void *pvParameters);
 
@@ -60,15 +73,6 @@ void vBrakeManagement( void *pvParameters);
 
 xTaskHandle xGasHandle;
 void vGasManagement( void *pvParameters);
-
-xTaskHandle xWaitingHangle;
-void vWaitingEvent( void *pvParameters);
-
-xTaskHandle xCarManagementHandle;
-void vCarManagement( void *pvParameters);
-
-xTaskHandle xCarRegulatorHandle;
-void vCarRegulator( void *pvParameters);
 
 xTaskHandle xQueueManagHandle;
 void vSecurityMemoryManagement( void *pvParameters);
