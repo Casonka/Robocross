@@ -69,7 +69,7 @@ void TIM7_IRQHandler(void) // Speed Regulator Car 10Hz
     Get_Transmission();
     globalRangeTransmission += TransmissionReg[0].CurrentSpeed * 0.1;
     Current_Velocity = Speed_Calc_Car(LPulseWheel, RPulseWheel);
-    globalRangeCar += Current_Velocity * 0.1;
+    //globalRangeCar += Current_Velocity * 0.1;
 TIM7->SR = 0;
 }
 

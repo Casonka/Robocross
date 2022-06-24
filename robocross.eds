@@ -2,7 +2,7 @@
 <EmBitz_debug_session>
 	<debuggerLastSession>
 		<breakpoints>
-			<break type="0" enabled="1" file="src/robot_tasks.c" line="519" />
+			<break type="0" enabled="1" file="src/robot_tasks.c" line="520" />
 		</breakpoints>
 		<watches>
 			<watch key="Brake_Flag" format="0" array="0" start="0" count="0" expanded="0" live="1" />

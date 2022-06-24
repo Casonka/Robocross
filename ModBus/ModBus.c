@@ -199,7 +199,7 @@ float ModBus_ParsePacket(void) {
 
                     unsigned int Data_hex = ModBus_ASCII_TO_HEX_Converter(UARTBufferDataMsgPointer,
                                                                      ((unsigned short)((UARTBufferDataMsgPointer + 2) - UARTBufferDataMsgPointer)));
-                    if( Data_hex > 0x555) { Data_hex = 0x555; }
+                    if( Data_hex > 0x500) { Data_hex = 0x500; }
                     Data_hex = ((unsigned int)(((unsigned int)(Data_hex * 3331)) >> 13));
                     float Data_Dec = ((float)Data_hex) / 100;
                     if (UARTBufferDirMsg == '-') {Data_Dec = -Data_Dec;}

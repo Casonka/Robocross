@@ -30,6 +30,7 @@
 *   0x10 - ошибка в одометрии, не работает один из датчиков
 *       0x11 - ошибка в одометрии, не работают оба датчика
 *   0x20 - ошибка при отжатии сцепления
+*   0x40 - проблемы с инициализацией скорости
 */
 unsigned int ErrorTask;
 
@@ -526,10 +527,130 @@ void vSecurityMemoryManagement ( void *pvParameters)
         if( Divider < Vel_Divider &&
             Divider > -Vel_Divider && Speed != 0.0 ) { StartFlags.StartCarFlag_ModBus = 0; continue; }
 
+        Get_Transmission();
+
+        if( Divider < -Vel_Divider) // уменьшение скорости
+        {
+
+            if( Current_Velocity <= -1.0 && Current_Velocity > -3.333) // едем в диапазоне реверсивной передачи
+            {
+                StartFlags.StartCarManagement = 1;
+                StartFlags.StartCarFlag_Brake = 1;
+                StartFlags.StartCarFlag_Transmission = 1;
+
+                switch(Transmission_Flag)
+                {
+                    case R:
+                    {
+                        Transmission = (Speed < -1.0) ? R : N;
+
+                        Brake = (Speed >= Speed_R && Speed <= (Speed_R + Brake_Trigger_Low) )       ?         LowBrake :
+                                (Speed >= Speed_R && Speed <= (Speed_R + Brake_Trigger_Medium) )    ?      MiddleBrake :
+                                (Speed >= Speed_R && Speed <= (Speed_R + Brake_Trigger_High) )      ?        HighBrake :
+                                (Speed >= Speed_R && Speed <= (Speed_R + Brake_Trigger_Emergency) ) ?   EmergencyBrake ;
+                        break;
+                    }
+
+                    case N:
+                    {
+                        Transmission = (Speed >= -1.0 && Speed <= 1.0) ? N :
+                                       (Speed < -1.0)                  ? R : N;
+
+                        Brake = (Speed >= Speed_R && Speed <= (Speed_R + Brake_Trigger_Low) ) ? LowBrake :
+                                (Speed >= Speed_R && Speed <= (Speed_R + Brake_Trigger_Medium) ) ? MiddleBrake :
+                                (Speed >= Speed_R && Speed <= (Speed_R + Brake_Trigger_High) ) ? HighBrake :
+                                (Speed >= Speed_R && Speed <= (Speed_R + Brake_Trigger_Emergency) ) ? EmergencyBrake;
+                        break;
+                    }
+
+                    default:
+                    {
+                        StartFlags.StartCarManagement = 0;
+                        StartFlags.StartCarManagement = 0;
+                        StartFlags.StartCarFlag_Brake = 0;
+                        StartFlags.StartCarFlag_Transmission = 0;
+
+                        ErrorTask = 0x40;   // ошибка сценария оценки скорости
+                        break;
+                    }
+                }
+            }
+
+            if( Current_Velocity <= 1.5 ) // стоим на месте или едем очень медленно
+            {
+                StartFlags.StartCarManagement = 1;
+                StartFlags.StartCarFlag_Brake = 1;
+                StartFlags.StartCarFlag_Transmission = 1;
+
+                switch(Transmission_Flag)
+                {
+                    case R:
+                    {
+                        Transmission = (Speed < -1.0) ? R :
+                                       (Speed >= -1.0 && Speed <= 1.0) ? N :
+                                       (Speed );
+
+                        Brake = (Speed >= Speed_R && Speed <= (Speed_R + Brake_Trigger_Low) )       ?         LowBrake :
+                                (Speed >= Speed_R && Speed <= (Speed_R + Brake_Trigger_Medium) )    ?      MiddleBrake :
+                                (Speed >= Speed_R && Speed <= (Speed_R + Brake_Trigger_High) )      ?        HighBrake :
+                                (Speed >= Speed_R && Speed <= (Speed_R + Brake_Trigger_Emergency) ) ?   EmergencyBrake ;
+                        break;
+                    }
+
+                    case N:
+                    {
+                        Transmission = (Speed >= -1.0 && Speed <= 1.0) ? N :
+                                       (Speed < -1.0)                  ? R : N;
+
+                        Brake = (Speed >= Speed_R && Speed <= (Speed_R + Brake_Trigger_Low) ) ? LowBrake :
+                                (Speed >= Speed_R && Speed <= (Speed_R + Brake_Trigger_Medium) ) ? MiddleBrake :
+                                (Speed >= Speed_R && Speed <= (Speed_R + Brake_Trigger_High) ) ? HighBrake :
+                                (Speed >= Speed_R && Speed <= (Speed_R + Brake_Trigger_Emergency) ) ? EmergencyBrake;
+                        break;
+                    }
+
+                    default:
+                    {
+                        StartFlags.StartCarManagement = 0;
+                        StartFlags.StartCarManagement = 0;
+                        StartFlags.StartCarFlag_Brake = 0;
+                        StartFlags.StartCarFlag_Transmission = 0;
+
+                        ErrorTask = 0x40;   // ошибка сценария оценки скорости
+                        break;
+                    }
+                }
+
+
+            }
+
+            if( Current_Velocity > 1.5 && Current_Velocity <= 3.333 ) // скорость в диапазоне первой передачи
+
+            if( Current_Velocity > 3.333 && Current_Velocity <= 5.0) // скорость в диапазоне второй передачи
+
+
+        }
+
+        if( Divider > Vel_Divider) // увеличение скорости
+        {
+
+            if( Current_Velocity <= -1.0 && Current_Velocity > -3.333) // едем в диапазоне реверсивной передачи
+
+            if( Current_Velocity <= 1.5 ) // стоим на месте или едем очень медленно
+
+            if( Current_Velocity > 1.5 && Current_Velocity <= 3.333 ) // скорость в диапазоне первой передачи
+
+            if( Current_Velocity > 3.333 && Current_Velocity <= 5.0) // скорость в диапазоне второй передачи
+
+        }
+
+
         // требуется повысить скорость
         if( Divider > Vel_Divider)
         {
             StartFlags.StartCarManagement = 1;
+
+            if( Speed >= 4.16667 && Transmission_Flag) {}
             StartFlags.StartCarFlag_Brake = 0;
             StartFlags.StartCarFlag_Gas = 1;
         }

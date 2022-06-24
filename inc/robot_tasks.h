@@ -31,11 +31,12 @@ xQueueHandle xQueue20Handle;
 /*!
 *   @note xQueueBrakeHandle - очередь для тормоза
 */
-#define FullStop    1
-#define FullOut     2
-#define LowBrake    3
-#define MiddleBrake 4
-#define HighBrake   5
+#define FullStop        1
+#define FullOut         2
+#define LowBrake        3
+#define MiddleBrake     4
+#define HighBrake       5
+#define EmergencyBrake  6
 xQueueHandle xQueueBrakeHandle;
 
 /*!
@@ -43,6 +44,16 @@ xQueueHandle xQueueBrakeHandle;
 */
 /* те же макросы что и в CarManagement.h*/
 xQueueHandle xQueueTransmissionHandle;
+
+
+#define Speed_F1    2.778
+#define Speed_F2    4.16667
+#define Speed_R     -2.5
+
+#define Brake_Trigger_Low           0.833
+#define Brake_Trigger_Medium        1.388
+#define Brake_Trigger_High          1.944
+#define Brake_Trigger_Emergency     2.5
 
 //--------------------------------------------
 /// Tasks

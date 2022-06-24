@@ -20,6 +20,7 @@ float Speed_Calc_Car(uint16_t leftWheel, uint16_t rightWheel)
 
     if(rightWheel != 0 && leftWheel != 0) { sum = (leftWheel + rightWheel) / 2;}    // все хорошо, берем среднее арифметическое
     Speed = ( sum * StepWheel ) / Freq_Timer;   // скорость
+    if( Transmission_Flag == R) ? Speed = -Speed;
     RPulseWheel = 0; LPulseWheel = 0;   // обнуление показаний
 
     if( Speed == Current_Velocity ) { ZeroMesFlag = 1;}
