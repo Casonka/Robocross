@@ -82,7 +82,7 @@ void ModBus_DEC_TO_ASCII_Converter(unsigned int *DEC_Pointer, unsigned short bsi
     for(int i = 0; i <= bsize; i++)
     {
         ASCII = *DEC_Pointer++;
-        ASCII |= 0x30;
+        ASCII += 0x30;
         *StartDataSendIndex++ = ASCII;
     }
     StartDataSendIndex = StartFrameSend + 8;
@@ -95,8 +95,8 @@ void ModBus_HEX_TO_ASCII_Converter(unsigned int *HEX_Pointer, unsigned short bsi
     for(int i = 0; i <= bsize; i++)
     {
         ASCII = *HEX_Pointer++;
-        if( ASCII > 0x9) { ASCII -= 0xA; ASCII |= 0x41;}
-        if( ASCII >= 0x00 && ASCII <= 0x9) { ASCII |= 0x30;}
+        if( ASCII > 0x9) { ASCII -= 0xA; ASCII += 0x41;}
+        if( ASCII >= 0x00 && ASCII <= 0x9) { ASCII += 0x30;}
         *LRCPointer = ASCII;
         LRCPointer++;
     }
@@ -267,13 +267,14 @@ void ModBus_SendResponseSpeed(float Speed)
 {
     unsigned int DataBuf[3] = {0, 0, 0};
 
+    if(Transmission_Flag == R) {*(StartDataSendIndex - 1) = '-'; Speed = -Speed;}
+    else {*(StartDataSendIndex - 1) = '+';}
+
     DataBuf[0] = Speed/100;
     DataBuf[1] = Speed/10 - ((unsigned int)(Speed/100))*10;
     DataBuf[2] = Speed - ((unsigned int)(Speed/10))*10;
 
     ModBus_DEC_TO_ASCII_Converter(DataBuf, (unsigned short)((*DataBuf + 2) - (*DataBuf)));
-    if(Transmission_Flag == R) {*(StartDataSendIndex - 1) = '-';}
-    else {*(StartDataSendIndex - 1) = '+';}
 
     unsigned char Tmp  = LRC_Counting(StartFrameSend,
             ((unsigned short)(( StartDataSendIndex + 3) - StartFrameSend)));

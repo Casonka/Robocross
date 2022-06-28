@@ -34,6 +34,15 @@ void Get_Clutch(void);
 int Transmission_Flag;  // флаг передачи
 _Bool Set_Transmission(int transmission);    // 2 engines on end move transmission
 
+// направления движения ручки коробки передач
+#define UP 3
+#define DOWN 2
+#define LEFT 4
+#define RIGHT 1
+#define STOP 0
+void move_transmission_to_certain_state(void);
+
+
 #define Low_Speed         48
 #define Zero_Speed        80
 #define High_Speed        96

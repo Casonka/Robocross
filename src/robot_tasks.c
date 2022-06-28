@@ -1,10 +1,10 @@
 #include "robot_tasks.h"
 
 // запуск коробки передач
-#define TestingTransmission  0
+#define TestingTransmission  1
 
 // запуск сцепления
-#define TestingClutch        0
+#define TestingClutch        1
 
 // запуск ModBus
 #define TestingModBus        1
@@ -13,7 +13,7 @@
 #define TestingGas           0
 
 // запуск педали тормоза
-#define TestingBrake         0
+#define TestingBrake         1
 
 // запуск экстренных алгоритмов
 #define RecoverySector       0
@@ -32,6 +32,7 @@
 *   0x20 - ошибка при отжатии сцепления
 *   0x40 - проблемы с инициализацией скорости
 */
+
 unsigned int ErrorTask;
 
 _Bool ZeroMesFlag;
@@ -41,23 +42,18 @@ float TargetSpeed;
 //--------------------------------------------------------------------------------------------------------------------
 void vApplicationTickHook(void)
 {
-
-/*!
-*   @brief vApplicationTickHook(void) - функция бездействия, выполняется когда процессорное время ничем не занято
-*   @arg nothing - функция ничего не получает и ничего не возвращает
-*
-*/
+    /*!
+    *   @brief vApplicationIdleHook(void) - функция выполняется после каждого завершения любой задачи
+    *   @arg nothing - функция ничего не получает и ничего не возвращает
+    */
 }
 
 void vApplicationIdleHook(void)
 {
-
-/*!
-*   @brief vApplicationIdleHook(void) - функция выполняется после каждого завершения любой задачи
-*   @arg nothing - функция ничего не получает и ничего не возвращает
-*
-*/
-
+    /*!
+    *   @brief vApplicationTickHook(void) - функция бездействия, выполняется когда процессорное время ничем не занято
+    *   @arg nothing - функция ничего не получает и ничего не возвращает
+    */
 }
 
 void vApplicationStackOverflowHook( TaskHandle_t xTask, char *pcTaskName )
@@ -83,64 +79,7 @@ void vRobotGo( void *pvParameters)
     for(;;)
     {
         xSemaphoreTake(xStartEvent, portMAX_DELAY);
-        if(StartFlags.StartCar_Flag_Main == 0)    // захват события старта
-        {
-            StartFlags.StartCar_Flag_Main = 1;
-            StartFlags.RestartCar_Flag_Main = 1;
-            vTaskResume(xQueueManagHandle);
-            vTaskResume(xModBusHandle);
-            continue;
-        }
-        else if(StartFlags.RestartCar_Flag_Main == 1)
-        {
 
-            StartFlags.StartCar_Flag_Main = 0;
-            StartFlags.RestartCar_Flag_Main = 0;
-
-            // удалить все задачи
-            vTaskDelete(xStartHandle);
-            vTaskDelete(xClutchHandle);
-            vTaskDelete(xBrakeHandle);
-            vTaskDelete(xGasHandle);
-            vTaskDelete(xGearsHandle);
-            vTaskDelete(xModBusHandle);
-            vTaskDelete(xCarManagementHandle);
-            vTaskDelete(xQueueManagHandle);
-            vTaskDelete(xCarRegulatorHandle);
-
-            vQueueDelete(xQueue20Handle);
-            vQueueDelete(xQueueBrakeHandle);
-            vQueueDelete(xQueueTransmissionHandle);
-
-            // создать снова
-            xTaskCreate(vStart, (char *) "START", configMINIMAL_STACK_SIZE, NULL, 2, &xStartHandle);
-
-            xTaskCreate(vClutchManagement, (char *) "CLUTCH", configMINIMAL_STACK_SIZE, NULL, 1, &xClutchHandle);
-            vTaskSuspend(xClutchHandle);
-
-            xTaskCreate(vBrakeManagement, (char *) "BRAKE", configMINIMAL_STACK_SIZE, NULL, 1, &xBrakeHandle);
-            vTaskSuspend(xBrakeHandle);
-
-            xTaskCreate(vGasManagement, (char *) "GAS", configMINIMAL_STACK_SIZE, NULL, 1, &xGasHandle);
-            vTaskSuspend(xGasHandle);
-
-            xTaskCreate(vManagementGearsBox, (char *) "GEAR", configMINIMAL_STACK_SIZE, NULL, 1, &xGearsHandle );
-            vTaskSuspend(xGearsHandle);
-
-            xTaskCreate(vModBusManagement, (char *) "ModBus", configMINIMAL_STACK_SIZE, NULL, 1, &xModBusHandle );
-            vTaskSuspend(xModBusHandle);
-
-            xTaskCreate(vSecurityMemoryManagement, (char *) "Queue", configMINIMAL_STACK_SIZE, NULL, 1, &xQueueManagHandle );
-            vTaskSuspend(xQueueManagHandle);
-
-            xQueue20Handle = xQueueCreate(3, sizeof(float));
-            xQueueBrakeHandle = xQueueCreate(3, sizeof(uint8_t));
-            xQueueTransmissionHandle = xQueueCreate(3, sizeof(uint8_t));
-
-            if( xQueue20Handle != NULL &&
-                xQueueBrakeHandle != NULL &&
-                xQueueTransmissionHandle != NULL) { continue; }
-        }
     }
 
 vTaskDelete(NULL);
@@ -152,10 +91,12 @@ void vStart( void *pvParameters)
 {
     StartFlags.StartCarFlag_Brake = 1;
     StartFlags.StartCarFlag_Clutch = 1;
-    StartFlags.StartCarFlag_Gas = 1;
+    StartFlags.StartCarFlag_Transmission = 0;
+    StartFlags.StartCarFlag_Gas = 0;
+
     StartFlags.StartCarFlag_ModBus = 0;
     StartFlags.StartCarManagement = 0;
-    StartFlags.StartCarFlag_Transmission = 0;
+
     StartFlags.StartCar_Flag_Main = 0;
     StartFlags.RestartCar_Flag_Main = 0;
 
@@ -177,14 +118,23 @@ void vStart( void *pvParameters)
 #if ( TestingBrake == 1)
         Get_Brake();
         vTaskPrioritySet(xBrakeHandle, 3); // тормоз
-        if(Brake_Flag == 1)   { vTaskResume(xBrakeHandle); vTaskDelay(4100); }
+        if(Brake_Flag == 1)
+        {
+            Brake_Flag = FullStop;
+            xQueueSend(xQueueBrakeHandle, &Brake_Flag, 0);
+            vTaskResume(xBrakeHandle);
+            vTaskDelay(4100);
+        }
+
 #endif
 #if( TestingClutch == 1)
+        StartFlags.StartCarFlag_Clutch = 1;
         vTaskPrioritySet(xClutchHandle, 3);  // нажать сцепление, если не было нажато
         vTaskResume(xClutchHandle);
 #endif
 #if( TestingTransmission == 1)
-
+        vTaskPrioritySet(xGearsHandle, 3);
+        vTaskResume(xGearsHandle);
 #endif
 #if( TestingGas == 1)
         vTaskDelay(1000);
@@ -194,8 +144,14 @@ void vStart( void *pvParameters)
 #if( TestingModBus == 1)
         vTaskDelay(1000);
         vTaskPrioritySet(xModBusHandle, 4);
+        StartFlags.StartCarFlag_ModBus = 1;
+        vTaskResume(xModBusHandle);
 #endif
-        vTaskPrioritySet(xQueueManagHandle, 3);
+#if( DEBUG_SUPPORT == 1)
+//        vTaskPrioritySet(xDebugHandle, 3);
+    //    vTaskResume(xDebugHandle);
+#endif
+        vTaskPrioritySet(xQueueManagHandle, 4);
 
         vTaskPrioritySet(xMailHandle, 3);
         vTaskResume(xMailHandle);
@@ -206,12 +162,23 @@ void vStart( void *pvParameters)
         reset_pin(PIN2_12V);    // настройка закончена
         set_pin(PIN3_12V);      // можно начинать движение
         once = 1;
-        vTaskResume(xRobotGo);
+        //vTaskResume(xRobotGo);
         // для теста
 
     }
 vTaskDelete(NULL);
 }
+    /* [Reset]     +   [Priority] = 4 */
+    /* [Start]     +   [Priority] = 2 */
+    /* [Waiting]   +   [Priority] = 3 */
+    /* [Mail]      +   [Priority] = 3 */
+    /* [Clutch]    +   [Priority] = 3 */
+    /* [Brake]     +   [Priority] = 3 */
+    /* [Gas]       +   [Priority] = 3 */
+    /* [Gear]      +   [Priority] = 3 */
+    /* [ModBus]    +   [Priority] = 4 */
+    /* [Queue]     +   [Priority] = 4 */
+    /* [CarManag]  +   [Priority] = 3 */
 
 // xWaitingHandle
 void vWaitingEvent( void *pvParameters)
@@ -221,8 +188,7 @@ void vWaitingEvent( void *pvParameters)
         if( UART_Buffer[14] != '\0')
         {
             StartFlags.StartCarFlag_ModBus = 1;
-            vTaskSuspend(xMailHandle);
-            vTaskResume(xModBusHandle);
+            xSemaphoreGive(xUARTEvent);
         }
     }
 vTaskDelete(NULL);
@@ -241,19 +207,19 @@ void vMessageSending( void *pvParameters)
         #if ( ZeroMesFlag_Off == 1)
         ZeroMesFlag = 0;
         #endif
-
         if( ZeroMesFlag == 0)
         {
             UARTTransmit_Flag = 3;
             ModBus_SendResponseSpeed(Current_Velocity*100);
+            Current_Velocity = 0.0;
         }
-        vTaskDelayUntil(&xTimeIncremental, (250 / portTICK_RATE_MS));
+        vTaskDelayUntil(&xTimeIncremental, ( 1000 / portTICK_RATE_MS));  // Гарри хочет каждый 100 мс
     }
 
 vTaskDelete(NULL);
 }
 
-// xClutchHandle
+// xClutchHandle    // xQueueClutchHandle
 void vClutchManagement( void *pvParameters)
 {
     /*!
@@ -263,7 +229,8 @@ void vClutchManagement( void *pvParameters)
 
     for(;;)
     {
-        if( StartFlags.StartCarFlag_Clutch == 0 ) continue; // флаг готовности, без него не пойдет дальше
+        if( StartFlags.StartCarFlag_Clutch == 0 ) { vTaskSuspend(xClutchHandle); continue; }
+        xQueueReceive(xQueueClutchHandle, &status, portMAX_DELAY);
 
              switch( status )
             {
@@ -335,59 +302,61 @@ void vClutchManagement( void *pvParameters)
 vTaskDelete(NULL);
 }
 
-// xBrakeHandle
+// xBrakeHandle // xQueueBrakeHandle
 void vBrakeManagement ( void *pvParameters)
 {
     /*!
     *   @note robot_tasks: < Управление тормозом >
     */
-    uint8_t status = 1;
+    uint8_t status;
+
     for(;;)
     {
-        if( StartFlags.StartCarFlag_Brake == 0) vTaskSuspend(xBrakeHandle);
-
+        xQueueReceive(xQueueBrakeHandle, &status, portMAX_DELAY);
         switch(status)
         {
-            case FullStop: // нажать тормоз, только при старте и остановке
+
+            case errQUEUE_EMPTY:    break;
+
+            case FullStop: // 1
             {
                 Set_Brake(Push);
-                status = 2;
-                StartFlags.StartCar_Flag_Main = 1;
-                StartFlags.StartCarFlag_Brake = 0; continue;
                 break;
             }
 
-            case FullOut:
+            case FullOut: // 2
             {
                 Set_Brake(PushOut);
-                StartFlags.StartCarFlag_Brake = 0; continue;
                 break;
             }
 
-            case LowBrake: // легкое торможение
+            case LowBrake: // 3
             {
                 Set_Brake(Push);
                 vTaskDelay(900);
                 Set_Brake(PushOut);
-                StartFlags.StartCarFlag_Brake = 0; continue;
                 break;
             }
 
-            case MiddleBrake: // среднее торможение
+            case MiddleBrake: // 4
             {
                 Set_Brake(Push);
                 vTaskDelay(1300);
                 Set_Brake(PushOut);
-                StartFlags.StartCarFlag_Brake = 0; continue;
                 break;
             }
 
-            case HighBrake: // высокое торможение
+            case HighBrake: // 5
             {
                 Set_Brake(Push);
                 vTaskDelay(2500);
                 Set_Brake(PushOut);
-                StartFlags.StartCarFlag_Brake = 0; continue;
+                break;
+            }
+
+            case EmergencyBrake: // 6
+            {
+                Set_Brake(Push);
                 break;
             }
         }
@@ -401,6 +370,7 @@ void vGasManagement( void *pvParameters)
 {
     /*!
     *   @note robot_tasks: < управление газом >
+    *       @last не используется, т.к на вторую не переключаемся
     */
 
     uint8_t status = _WEWE;
@@ -451,14 +421,56 @@ void vGasManagement( void *pvParameters)
 vTaskDelete(NULL);
 }
 
-// xGearsHandle
+// xGearsHandle // xQueueTransmissionHandle
 void vManagementGearsBox( void *pvParameters )
 {
-    float Velocity;
+    uint8_t status;
+    portBASE_TYPE xStatus;
+
     for(;;)
     {
-        xQueueReceive(xQueue20Handle, &Velocity, 0);
-        if( Velocity > 0) { Get_Transmission(); Set_Transmission(F1); }
+        xStatus = xQueueReceive(xQueueTransmissionHandle, &status, portMAX_DELAY);
+
+        switch(status)
+        {
+            case N:
+            {
+                if(Clutch_Flag != Full) Move_Clutch(Full);
+                Set_Transmission(N);
+                StartFlags.StartCarFlag_Transmission = 0; continue;
+                break;
+            }
+
+            case R:
+            {
+                if(Clutch_Flag != Full) Move_Clutch(Full);
+                Set_Transmission(R);
+                StartFlags.StartCarFlag_Transmission = 0; continue;
+                break;
+            }
+
+            case F1:
+            {
+                if(Clutch_Flag != Full) Move_Clutch(Full);
+                Set_Transmission(F1);
+                StartFlags.StartCarFlag_Transmission = 0; continue;
+                break;
+            }
+
+            case F2:
+            {
+                if(Clutch_Flag != Full) Move_Clutch(Full);
+                Set_Transmission(F2);
+                StartFlags.StartCarFlag_Transmission = 0; continue;
+                break;
+            }
+
+            default:
+            {
+                StartFlags.StartCarFlag_Transmission = 0; continue;
+                break;
+            }
+        }
 
     }
     vTaskDelete(NULL);
@@ -470,6 +482,7 @@ void vModBusManagement( void *pvParameters )
     float Data;
     for(;;)
     {
+        xSemaphoreTake(xUARTEvent, portMAX_DELAY);
         if (StartFlags.StartCarFlag_ModBus == 0) { vTaskSuspend(xModBusHandle); continue;}
         ErrorTask = ModBus_CheckFrame();
         if( ErrorTask == 0x08)
@@ -480,29 +493,19 @@ void vModBusManagement( void *pvParameters )
         }
         Data = ModBus_ParsePacket();
         ModBus_ClearMsgs();
-        if(Data >= 0.05) {xQueueSend(xQueue20Handle, &Data, 0);}
+        if(Data >= 0.05 || Data <= -0.05) {xQueueSend(xQueue20Handle, &Data, 0);}
         else { StartFlags.StartCarFlag_ModBus = 0; continue;}
         ErrorTask = 0;
+
         vTaskResume(xQueueManagHandle);
         vTaskSuspend(xModBusHandle); continue;
     }
 vTaskDelete(NULL);
 }
 
-// xCarManagementHandle
-void vCarManagement( void *pvParameters)
-{
-
-    for(;;)
-    {
-
-    }
-
-    vTaskDelete(NULL);
-}
 
 
-// xQueueManagHandle xQueue20Handle xQueueBrakeHandle xQueueTransmissionHandle xQueueGasHandle
+// xQueueManagHandle
 void vSecurityMemoryManagement ( void *pvParameters)
 {
     /*!
@@ -513,14 +516,15 @@ void vSecurityMemoryManagement ( void *pvParameters)
     uint8_t Brake;
     const float Vel_Divider = 1.0;
     portBASE_TYPE xStatus;
+    xStatus = pdFALSE;
+
     for(;;)
     {
-        if(StartFlags.StartCarFlag_ModBus == 0) vTaskSuspend(xQueueManagHandle);
+        if(StartFlags.StartCarFlag_ModBus == 0) { vTaskSuspend(xQueueManagHandle); continue; }
 
         // скорость ещё есть, нет необходимости создавать дополнительную очередь
-        xStatus = xQueuePeek(xQueue20Handle, &Speed, 0);
+        xStatus = xQueueReceive(xQueue20Handle, &Speed, 0);
         if( xStatus == errQUEUE_EMPTY) {StartFlags.StartCarFlag_ModBus = 0; continue;}
-
         float Divider = Speed - Current_Velocity;
 
         // вне диапазона чувствительности системы
@@ -528,167 +532,162 @@ void vSecurityMemoryManagement ( void *pvParameters)
             Divider > -Vel_Divider && Speed != 0.0 ) { StartFlags.StartCarFlag_ModBus = 0; continue; }
 
         Get_Transmission();
+        Transmission_Flag = N;
+        Transmission = NONE;
+        Brake = NONE;
 
         if( Divider < -Vel_Divider) // уменьшение скорости
         {
-
             if( Current_Velocity <= -1.0 && Current_Velocity > -3.333) // едем в диапазоне реверсивной передачи
             {
+                /*!
+                *   @note Здесь мы едем назад и нам пришло сообщение об уменьшении скорости, то есть ускорении назад
+                */
+                if( Transmission_Flag != R) Transmission = R;
+
+                Brake = (Speed >= Speed_R && (Speed <= Speed + Brake_Trigger_Low)) ? FullOut :
+                        (Speed >= Speed_R && (Speed <= Speed + Brake_Trigger_Medium)) ? LowBrake :
+                        (Speed >= Speed_R && (Speed <= Speed + Brake_Trigger_High)) ? MiddleBrake :
+                        (Speed >= Speed_R && (Speed <= Speed + Brake_Trigger_Emergency)) ? HighBrake : EmergencyBrake;
+
                 StartFlags.StartCarManagement = 1;
-                StartFlags.StartCarFlag_Brake = 1;
-                StartFlags.StartCarFlag_Transmission = 1;
-
-                switch(Transmission_Flag)
-                {
-                    case R:
-                    {
-                        Transmission = (Speed < -1.0) ? R : N;
-
-                        Brake = (Speed >= Speed_R && Speed <= (Speed_R + Brake_Trigger_Low) )       ?         LowBrake :
-                                (Speed >= Speed_R && Speed <= (Speed_R + Brake_Trigger_Medium) )    ?      MiddleBrake :
-                                (Speed >= Speed_R && Speed <= (Speed_R + Brake_Trigger_High) )      ?        HighBrake :
-                                (Speed >= Speed_R && Speed <= (Speed_R + Brake_Trigger_Emergency) ) ?   EmergencyBrake ;
-                        break;
-                    }
-
-                    case N:
-                    {
-                        Transmission = (Speed >= -1.0 && Speed <= 1.0) ? N :
-                                       (Speed < -1.0)                  ? R : N;
-
-                        Brake = (Speed >= Speed_R && Speed <= (Speed_R + Brake_Trigger_Low) ) ? LowBrake :
-                                (Speed >= Speed_R && Speed <= (Speed_R + Brake_Trigger_Medium) ) ? MiddleBrake :
-                                (Speed >= Speed_R && Speed <= (Speed_R + Brake_Trigger_High) ) ? HighBrake :
-                                (Speed >= Speed_R && Speed <= (Speed_R + Brake_Trigger_Emergency) ) ? EmergencyBrake;
-                        break;
-                    }
-
-                    default:
-                    {
-                        StartFlags.StartCarManagement = 0;
-                        StartFlags.StartCarManagement = 0;
-                        StartFlags.StartCarFlag_Brake = 0;
-                        StartFlags.StartCarFlag_Transmission = 0;
-
-                        ErrorTask = 0x40;   // ошибка сценария оценки скорости
-                        break;
-                    }
-                }
             }
 
-            if( Current_Velocity <= 1.5 ) // стоим на месте или едем очень медленно
+            if( Current_Velocity > -1.0 && Current_Velocity <= 1.5 ) // стоим на месте или едем очень медленно
             {
-                StartFlags.StartCarManagement = 1;
-                StartFlags.StartCarFlag_Brake = 1;
-                StartFlags.StartCarFlag_Transmission = 1;
+                /*!
+                *   @note Здесь мы едем медленно или стоим и пришлои сообщение об уменьшении скорости
+                */
+                Transmission = (Speed >= -1.0 && Speed <= 1.0) ? N :
+                               (Speed < -1.0) ? R : N;
 
-                switch(Transmission_Flag)
-                {
-                    case R:
-                    {
-                        Transmission = (Speed < -1.0) ? R :
-                                       (Speed >= -1.0 && Speed <= 1.0) ? N :
-                                       (Speed );
-
-                        Brake = (Speed >= Speed_R && Speed <= (Speed_R + Brake_Trigger_Low) )       ?         LowBrake :
-                                (Speed >= Speed_R && Speed <= (Speed_R + Brake_Trigger_Medium) )    ?      MiddleBrake :
-                                (Speed >= Speed_R && Speed <= (Speed_R + Brake_Trigger_High) )      ?        HighBrake :
-                                (Speed >= Speed_R && Speed <= (Speed_R + Brake_Trigger_Emergency) ) ?   EmergencyBrake ;
-                        break;
-                    }
-
-                    case N:
-                    {
-                        Transmission = (Speed >= -1.0 && Speed <= 1.0) ? N :
-                                       (Speed < -1.0)                  ? R : N;
-
-                        Brake = (Speed >= Speed_R && Speed <= (Speed_R + Brake_Trigger_Low) ) ? LowBrake :
-                                (Speed >= Speed_R && Speed <= (Speed_R + Brake_Trigger_Medium) ) ? MiddleBrake :
-                                (Speed >= Speed_R && Speed <= (Speed_R + Brake_Trigger_High) ) ? HighBrake :
-                                (Speed >= Speed_R && Speed <= (Speed_R + Brake_Trigger_Emergency) ) ? EmergencyBrake;
-                        break;
-                    }
-
-                    default:
-                    {
-                        StartFlags.StartCarManagement = 0;
-                        StartFlags.StartCarManagement = 0;
-                        StartFlags.StartCarFlag_Brake = 0;
-                        StartFlags.StartCarFlag_Transmission = 0;
-
-                        ErrorTask = 0x40;   // ошибка сценария оценки скорости
-                        break;
-                    }
-                }
-
-
+                Brake = (Speed < -1.0) ? FullOut :
+                        (Speed >= -1.0 && Speed <= 1.0) ? HighBrake : EmergencyBrake;
             }
 
-            if( Current_Velocity > 1.5 && Current_Velocity <= 3.333 ) // скорость в диапазоне первой передачи
+            if( Current_Velocity > 1.0 && Current_Velocity <= 3.333 ) // скорость в диапазоне первой передачи
+            {
+                /*!
+                *   @note Уменьшение скорости когда машина едет прямо на первой передаче
+                */
+                if( Transmission_Flag != F1) Transmission = F1;
+
+                if( Speed <= 1.5) Transmission = N;
+
+                Brake = ((Speed <= 3.333) && (Speed >= Speed - Brake_Trigger_Low) ) ? FullOut :
+                        ((Speed <= 3.333) && (Speed >= Speed - Brake_Trigger_Medium) ) ? LowBrake :
+                        ((Speed <= 3.333) && (Speed >= Speed - Brake_Trigger_High) ) ? MiddleBrake :
+                        ((Speed <= 3.333) && (Speed >= Speed - Brake_Trigger_Emergency) ) ? HighBrake : EmergencyBrake;
+            }
 
             if( Current_Velocity > 3.333 && Current_Velocity <= 5.0) // скорость в диапазоне второй передачи
+            {
+                /*!
+                *   @note Уменьшение скорости когда машина едет прямо на второй передаче
+                */
 
+                if( Transmission != F2) Transmission = F2;
 
+                if( Speed <= 2.778 ) Transmission = F1;
+
+                Brake = ((Speed <= 5.0) && (Speed >= Speed - Brake_Trigger_Low) ) ? FullOut :
+                        ((Speed <= 5.0) && (Speed >= Speed - Brake_Trigger_Medium) ) ? LowBrake :
+                        ((Speed <= 5.0) && (Speed >= Speed - Brake_Trigger_High) ) ? MiddleBrake :
+                        ((Speed <= 5.0) && (Speed >= Speed - Brake_Trigger_Emergency) ) ? HighBrake : EmergencyBrake;
+            }
         }
 
         if( Divider > Vel_Divider) // увеличение скорости
         {
 
-            if( Current_Velocity <= -1.0 && Current_Velocity > -3.333) // едем в диапазоне реверсивной передачи
+            if( Current_Velocity < -1.0 && Current_Velocity > -3.333) // едем в диапазоне реверсивной передачи
+            {
+                /*!
+                *   @note Пришло сообщение о увеличении скорости, то есть уменьшенить скорость в движении назад
+                */
+                Transmission = (Speed >= -3.333 && Speed < -1.0) ? R :
+                               (Speed >= -1.0 && Speed <= 1.0) ? N : N;
 
-            if( Current_Velocity <= 1.5 ) // стоим на месте или едем очень медленно
+                Brake = (Speed >= Speed_R && (Speed <= Speed + Brake_Trigger_Low)) ? FullOut :
+                        (Speed >= Speed_R && (Speed <= Speed + Brake_Trigger_Medium)) ? LowBrake :
+                        (Speed >= Speed_R && (Speed <= Speed + Brake_Trigger_High)) ? MiddleBrake :
+                        (Speed >= Speed_R && (Speed <= Speed + Brake_Trigger_Emergency)) ? HighBrake : EmergencyBrake;
+            }
 
-            if( Current_Velocity > 1.5 && Current_Velocity <= 3.333 ) // скорость в диапазоне первой передачи
+            if( Current_Velocity >= -1.0 && Current_Velocity <= 1.0 ) // стоим на месте или едем очень медленно
+            {
+                /*!
+                *   @note Пришло сообщение о ускорении, мы стоим
+                */
+                Transmission = (Speed >= -1.0 && Speed <= 1.0) ? N :
+                               (Speed > 1.0) ? F1 : N;
+
+                Brake = FullOut;
+            }
+
+            if( Current_Velocity > 1.0 && Current_Velocity <= 3.333 ) // скорость в диапазоне первой передачи
+            {
+                /*!
+                *   @note Пришло сообщение о увеличении скорости когда мы едем на первой передаче
+                */
+                Transmission = ( Speed > 1.0 && Speed <= 4.16667) ? F1 :
+                               ( Speed > 4.16667 && Speed <= 5.55) ? F2 : F1;
+
+                Brake = FullOut;
+            }
 
             if( Current_Velocity > 3.333 && Current_Velocity <= 5.0) // скорость в диапазоне второй передачи
+            {
+                /*!
+                *   @note Опасный участок. Едем на второй и просят ускориться
+                */
+                Transmission = F2;
+
+                Brake = FullOut;
+
+            }
 
         }
 
-
-        // требуется повысить скорость
-        if( Divider > Vel_Divider)
+        if( Transmission != Transmission_Flag)
         {
-            StartFlags.StartCarManagement = 1;
-
-            if( Speed >= 4.16667 && Transmission_Flag) {}
-            StartFlags.StartCarFlag_Brake = 0;
-            StartFlags.StartCarFlag_Gas = 1;
-        }
-
-        // требуется понизить скорость
-        if( Divider < -Vel_Divider)
-        {
-            StartFlags.StartCarManagement = 1;
-            StartFlags.StartCarFlag_Brake = 1;
-            StartFlags.StartCarFlag_Gas = 0;
-        }
-
-        // пока разрешаем редактирование передачи и сцепления
-        StartFlags.StartCarFlag_Transmission = 1;
-        StartFlags.StartCarFlag_Clutch = 1;
-
-        // целевая скорость на уровне второй передачи
-        if( Speed >= 4.16667)  { Transmission = F2; }
-
-        // целевая скорость в пределах первой передачи
-        if( Speed < 4.1667 && Speed >= Vel_Divider )  { Transmission = F1; }
-
-        if( Speed < -Vel_Divider) { Transmission = R; }
-
-        if( Transmission_Flag == Transmission ) { StartFlags.StartCarFlag_Transmission = 0; } // передача уже стоит
-        else
-        {
+            StartFlags.StartCarFlag_Transmission = 1;
             xStatus = xQueueSend(xQueueTransmissionHandle, &Transmission, 0);
-
-            if( xStatus == errQUEUE_FULL ) { StartFlags.StartCarFlag_Transmission = 0; }
         }
 
-        if (StartFlags.StartCarManagement == 1) { StartFlags.StartCarFlag_ModBus = 0; vTaskResume(xCarManagementHandle); continue; } // передача приоритета исполнителю
+        if( Brake_Flag != Brake)
+        {
+            StartFlags.StartCarFlag_Brake = 1;
+            xStatus = xQueueSend(xQueueBrakeHandle, &Brake, 0);
+        }
 
+        StartFlags.StartCarManagement = 1;
+
+        StartFlags.StartCarFlag_ModBus = 0;
     }
 vTaskDelete(NULL);
 }
 
-
+// xTrInit
+void vTransmissionInit( void *pvParameters)
+{
+    /*!
+    *   @note Ручное управление коробкой передач
+    */
+//    portTickType time;
+//    time = xTaskGetTickCount();
+    for(;;)
+    {
+        if( Transmission_Flag == N)
+        {
+            MoveTo(0,0.0);
+            vTaskDelay(1000 / portTICK_RATE_MS);
+            if( ((adc_data[0] / 250) == LEFT) || ((adc_data[0] / 250) == RIGHT) )
+                move_transmission_to_certain_state();
+        }
+        else move_transmission_to_certain_state();
+    }
+vTaskDelete(NULL);
+}
 
 //-------------------------------------------------------------------------------------------------------------------------

@@ -1,11 +1,10 @@
 #include "main.h"
-#define Test        0   // если нужно запустить тестирование отдельных блоков то ставьте 1
-
+#define Test      1     // если нужно запустить тестирование отдельных блоков то ставьте
 
 int main(void)
 {
     BoardStart();
-
+    PID_Init();
 #if (Test == 0)
 
     // разрешение движения и рестарт
@@ -16,6 +15,8 @@ int main(void)
     // Старт системы
     xTaskCreate(vStart, (char *) "START", configMINIMAL_STACK_SIZE, NULL, 2, &xStartHandle);
 
+    // Ожидание сообщения с UART
+    vSemaphoreCreateBinary(xUARTEvent);
     xTaskCreate(vWaitingEvent, (char *) "Events", configMINIMAL_STACK_SIZE, NULL, 1, &xWaitingHandle);
     vTaskSuspend(xWaitingHandle);
 
@@ -40,7 +41,6 @@ int main(void)
     vTaskSuspend(xGearsHandle);
 
     // Формирование и передача пакетов по ModBus
-    vSemaphoreCreateBinary(xUARTEvent);
     xTaskCreate(vModBusManagement, (char *) "ModBus", configMINIMAL_STACK_SIZE, NULL, 1, &xModBusHandle );
     vTaskSuspend(xModBusHandle);
 
@@ -48,21 +48,27 @@ int main(void)
     xTaskCreate(vSecurityMemoryManagement, (char *) "Queue", configMINIMAL_STACK_SIZE, NULL, 1, &xQueueManagHandle );
     vTaskSuspend(xQueueManagHandle);
 
+    // Ручное регулирование коробкой передач
+    xTaskCreate(vTransmissionInit,(char *) "INIT", configMINIMAL_STACK_SIZE, NULL, 1, &xTrInit);
+    vTaskSuspend(xTrInit);
+
     xQueue20Handle = xQueueCreate(3, sizeof(float)); /// Queue storing new velocity
     xQueueBrakeHandle = xQueueCreate(3, sizeof(uint8_t)); /// Queue Brake Value
-    xQueueTransmissionHandle = xQueueCreate(3, sizeof(uint8_t)); /// Queue Transmission Value
+    xQueueTransmissionHandle = xQueueCreate(1, sizeof(uint8_t)); /// Queue Transmission Value
+    xQueueClutchHandle = xQueueCreate(3, sizeof(uint8_t)); /// Queue Clutch Value
 
     if( xQueue20Handle != NULL &&
         xQueueBrakeHandle != NULL &&
-        xQueueTransmissionHandle != NULL) { vTaskStartScheduler(); }
+        xQueueTransmissionHandle != NULL &&
+        xQueueClutchHandle != NULL) { vTaskStartScheduler(); }
 #elif (Test == 1)
-    /* here not enter when RTOS is on and Queue create successful or test not select */
+    /* here not enter when RTOS is on or test not select */
     while(1)
     {
+        move_transmission_to_certain_state();
         /*!
         *   @note Main: < для теста функции вручную >
         */
-        MoveTo(direction, TransmissionPWM);
     }
 #endif
 }

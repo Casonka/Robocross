@@ -57,15 +57,16 @@
     *   @brief TimPWMInputCaptureConfigure(TIM) - configuration timer for check length of PWM
     *       @arg TIM - number of timer
     */
-    #define TimPWMInputCaptureConfigure(TIM)                          {\
-        ResetTimPSC(TIM);                                             \
-        ConfTimARR(TIM,0xFFFFFFFF);                                   \
+    #define TimPWMInputCaptureConfigure(TIM,PSC,ARR)                 {\
+        ConfTimPSC(TIM,PSC);                                         \
+        ConfTimARR(TIM,ARR);                                       \
         ConfCaptureSelection1(TIM,0x1,0x2,1);                         \
-        ConfCapturePolarity(TIM,0x0,0x1,0x0,0x1,1,0);                 \
-        ConfCaptureComplementaryPolarity(TIM,0x0,0x1,0x0,0x1,1,0);    \
+        ConfCaptureSelection2(TIM,0x1,0x2,1);                         \
+        ConfCapturePolarity(TIM,0x0,0x0,0x0,0x0,1,1);                 \
+        ConfCaptureComplementaryPolarity(TIM,0x0,0x0,0x0,0x0,1,1);    \
         ConfTriggerSelection(TIM,0x5);                                \
-        ConfSms(TIM,0x4);                                             \
-        ConfTimCapture(TIM,0x1,0x1,0,0,1,1,0,0);                      \
+        ConfSMS(TIM,0x4);                                             \
+        ConfTimCapture(TIM,0x1,0x1,0x1,0x1,1,1,1,1);                  \
         TimStart(TIM);                                                }
 
     /*!

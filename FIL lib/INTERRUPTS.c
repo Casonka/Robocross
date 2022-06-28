@@ -3,6 +3,7 @@
 
 extern unsigned char UART_Buffer[UART_BUFFER_SIZE];
 extern volatile uint16_t LPulseWheel, RPulseWheel;
+volatile uint32_t Period_left, Period_Right;
 float TransmissionPWM = 0.0;
 int direction = 0;
 //---------------------------------------------------------//
@@ -41,8 +42,10 @@ void TIM4_IRQHandler(void)
 TIM4->SR = 0;
 }
 
-void TIM5_IRQHandler(void)
+// calculate impulse delay
+void TIM5_IRQHandler(void)  // 1kHz
 {
+
 TIM5->SR = 0;
 }
 
@@ -57,19 +60,30 @@ void TIM6_DAC_IRQHandler(void) // Speed Regulator transmission box 100Hz
     globalRangeTransmission += TransmissionReg[1].CurrentSpeed * Freq_Timer;
     SetPWM(8,TransmissionReg[0].Out);
     SetPWM(9,TransmissionReg[1].Out);
-
+    //SetPWM(direction,TransmissionPWM);
 TIM6->SR = 0;
 }
 
-float globalRangeCar;
-
+float globalRangeCar = 0.0;
+#define Speed_Mode     1
 void TIM7_IRQHandler(void) // Speed Regulator Car 10Hz
 {
-//    Transmission_Flag = F1;
+    reset_pin(PIN1_12V);
+     reset_pin(PIN2_12V);
+         reset_pin(PIN3_12V);
+             reset_pin(PIN4_12V);
+                 reset_pin(PIN5_12V);
+                     reset_pin(PIN6_12V);
     Get_Transmission();
+   //MoveTo(direction, TransmissionPWM);
     globalRangeTransmission += TransmissionReg[0].CurrentSpeed * 0.1;
+#if( Speed_Mode == 0)
     Current_Velocity = Speed_Calc_Car(LPulseWheel, RPulseWheel);
+#elif( Speed_Mode == 1)
+    Current_Velocity = Speed_Calc_Car_HighFreq();
+#endif
     //globalRangeCar += Current_Velocity * 0.1;
+
 TIM7->SR = 0;
 }
 
@@ -81,7 +95,6 @@ TIM13->SR = 0;
 //---------------------------------------------------------//
 //----------------------External Interrupts----------------//
 //---------------------------------------------------------//
-
 void EXTI0_IRQHandler(void) // left Wheel
 {
     LPulseWheel++;
@@ -111,6 +124,7 @@ void EXTI4_IRQHandler(void)
 
 void EXTI9_5_IRQHandler(void)
 {
+    //if(pin_val(GENERAL_PIN_9))
   if (EXTI->PR&(1<<6))
   {
     EXTI->PR=(1<<6);

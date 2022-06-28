@@ -39,12 +39,12 @@ void Get_Transmission(void)
     *   @note CarManagement: < флаги трансмиссии >
     */
     Transmission_Flag = NONE;
-    if( !pin_val(EXTI5_PIN) )   {Transmission_Flag = N;}
-    if( !pin_val(EXTI6_PIN) )   {Transmission_Flag = R;}
-    if( !pin_val(EXTI7_PIN) )   {Transmission_Flag = F1;}
-    if( !pin_val(EXTI8_PIN) )   {Transmission_Flag = F2;}
-    if( !pin_val(EXTI9_PIN) )   {Transmission_Flag = S1;}
-    if( !pin_val(EXTI10_PIN) )  {Transmission_Flag = S2;}
+    if( !pin_val(EXTI5_PIN) )   {set_pin(PIN1_12V); Transmission_Flag = N;}
+    if( !pin_val(EXTI6_PIN) )   {set_pin(PIN2_12V); Transmission_Flag = R;}
+    if( !pin_val(EXTI7_PIN) )   {set_pin(PIN3_12V); Transmission_Flag = F1;}
+    if( !pin_val(EXTI8_PIN) )   {set_pin(PIN4_12V); Transmission_Flag = F2;}
+    if( !pin_val(EXTI9_PIN) )   {set_pin(PIN5_12V); Transmission_Flag = S1;}
+    if( !pin_val(EXTI10_PIN) )  {set_pin(PIN6_12V); Transmission_Flag = S2;}
 }
 
 
@@ -78,6 +78,64 @@ _Bool Set_Transmission(int transmission)
     if (Transmission_Flag == NONE) return 0; else return 1;
 }
 
+void move_transmission_to_certain_state(void)
+{
+    uint16_t data = adc_data[0];
+    //1550 - DOWN
+    // 1069 - LEFT
+    // 2030 - RIGHT
+    // 570 - UP
+    if( data > 400 && data < 600)
+        {
+            MoveTo(UP, 0.5);
+    }
+    if( data > 1450 && data < 1650)
+        {
+            MoveTo(DOWN, 0.5);
+    }
+    if( data > 950 && data < 1150)
+        {
+            MoveTo(LEFT, 0.5);
+    }
+    if( data > 1850 && data < 2150)
+        {
+            MoveTo(RIGHT, 0.5);
+        }
+    if( data < 350) MoveTo(STOP,0.0);
+//    switch(adc_data[0] / 250)
+//    {
+//        case 2: /// UP (F1 or S1 or S2)
+//        //if(pin_val(EXTI7_PIN) && pin_val(EXTI9_PIN) && pin_val(EXTI10_PIN))
+//        MoveTo(UP, 0.5);
+//       // else
+//       // MoveTo(STOP, 0.0);
+//        break;
+//
+//        case 8: /// RIGHT (N or S2)
+//        //if(pin_val(EXTI5_PIN) && pin_val(EXTI10_PIN))
+//        MoveTo(RIGHT, 0.5);
+//        //else
+//        //MoveTo(STOP, 0.0);
+//        break;
+//
+//        case 6: /// DOWN (S1 or F2 or R)
+//       // if(pin_val(EXTI9_PIN) && pin_val(EXTI8_PIN) && pin_val(EXTI6_PIN))
+//        MoveTo(DOWN, 0.5);
+//       // else
+//       // MoveTo(STOP, 0.0);
+//        break;
+//
+//        case 4: /// LEFT (S1 or N)
+//       // if(pin_val(EXTI9_PIN) && pin_val(EXTI5_PIN))
+//        MoveTo(LEFT, 0.5);
+//        //else
+//       // MoveTo(STOP, 0.0);
+//        break;
+//
+//        default:
+//        MoveTo(STOP, 0.0);
+//    }
+}
 
 void Set_Gas(int Pulses)
 {
@@ -173,16 +231,16 @@ void MoveTo(int direction, float Speed)
     case 0: TransmissionReg[0].TargetSpeed = 0.0; TransmissionReg[1].TargetSpeed = 0.0;
     break;
 
-    case 1: TransmissionReg[0].TargetSpeed = -Speed; TransmissionReg[1].TargetSpeed = -Speed;
+    case 1: TransmissionReg[0].TargetSpeed = Speed; TransmissionReg[1].TargetSpeed = Speed;
     break;
 
-    case 2: TransmissionReg[0].TargetSpeed = -Speed; TransmissionReg[1].TargetSpeed = Speed;
+    case 2: TransmissionReg[0].TargetSpeed = Speed; TransmissionReg[1].TargetSpeed = -Speed;
     break;
 
-    case 3: TransmissionReg[0].TargetSpeed = Speed; TransmissionReg[1].TargetSpeed = -Speed;
+    case 3: TransmissionReg[0].TargetSpeed = -Speed; TransmissionReg[1].TargetSpeed = Speed;
     break;
 
-    case 4: TransmissionReg[0].TargetSpeed = Speed; TransmissionReg[1].TargetSpeed = Speed;
+    case 4: TransmissionReg[0].TargetSpeed = -Speed; TransmissionReg[1].TargetSpeed = -Speed;
     break;
     }
 }

@@ -6,14 +6,6 @@
 #define EXTI_BOTH_EDGES     3
 extern uint16_t adc_data[8];
 
-struct
-{
-    uint32_t Systick;
-    uint32_t AHB;
-    uint32_t APB1;
-    uint32_t APB2;
-}Clocks;
-
 /*!
 *   @param DIR_List[10] - List for edit moving direction
 */
@@ -39,25 +31,56 @@ void BoardStart(void)
     __disable_irq();
     PWR->CR|=PWR_CR_DBP;
     SysTick_Config(168000000);
-    Clocks.Systick = current_Systick;
-    Clocks.AHB = current_AHB;
-    Clocks.APB1 = current_APB1;
-    Clocks.APB2 = current_APB2;
+
+    // Служебная информация о частотах шин
+//    Clocks.Systick = current_Systick;
+//    Clocks.AHB = current_AHB;
+//    Clocks.APB1 = current_APB1;
+//    Clocks.APB2 = current_APB2;
+
+    // режимы работы пинов
     InitPeriph;
-    //ADC_Init();
-    TimPWMConfigure(Tim4,83,200,1,1,1,1);   // 5kHz
+
+    // АЦП для клавиш управления коробкой
+    ADC_Init();
+
+    // управление сцеплением
     TimEngineClutchConfigure(); // one pulse mode
+
+    // управление газом
     TimGasConfigure();      // one pulse mode
+
+    // Расчет скорости колес
     TimPIDConfigure(Tim7,8399,1000);    // 10 Hz
+
+    // Расчет ПИД двигателей коробки передач
     TimPIDConfigure(Tim6,8399,100);    // 100 Hz
+
+    // Reserved
+    //TimPIDConfigure(Tim5,83, 1000);  // 1kHz
+
+    // расчет скорости колес
+    TimPWMInputCaptureConfigure(Tim4,1679, 0xC350);
+    TimPWMInputCaptureConfigure(Tim3,1679, 0xC350);
+
+    // управление двигателями коробки передач
     TimPWMConfigure(Tim12,83,200,1,1,0,0);
+
+    // энкодеры двигателей коробки передач
     TimEncoderConfigure(Tim8);
-    TimEncoderConfigure(Tim1);
-    TimEncoderConfigure(Tim3);
     TimEncoderConfigure(Tim2);
+
+    // Reserved
+    //TimEncoderConfigure(Tim1);
+
+    // 115200 бод
     USARTBothConfigure(usart3, 0x16C , 0, 1);   //0x16C
+
     add_ext_interrupt(EXTI1_PIN, EXTI_RISING_EDGE);    // Hall Sensor 1 - left wheel
     add_ext_interrupt(EXTI2_PIN, EXTI_FALLING_EDGE);    // Hall Sensor 2 - right wheel
+   // add_ext_interrupt(GENERAL_PIN_9, EXTI_RISING_EDGE); // Check supply voltage
+
+    // Danger control Clutch
     //add_ext_interrupt(EXTI3_PIN, EXTI_RISING_EDGE);     // Clutch Sensor +
     //add_ext_interrupt(EXTI4_PIN, EXTI_RISING_EDGE);     // Clutch Sensor -
     InterruptsEnable();
@@ -81,7 +104,7 @@ void ADC_Init(void)
   DMA2_Stream0->PAR |= (uint32_t) &ADC1->DR;//Задаем адрес периферии - регистр результата преобразования АЦП для регулярных каналов.
   DMA2_Stream0->M0AR |= (uint32_t) &adc_data; //Задаем адрес памяти - базовый адрес массива в RAM.
   DMA2_Stream0->CR &= ~DMA_SxCR_DIR; //Направление передачи данных - чтение из периферии, запись в память.
-  DMA2_Stream0->NDTR = 8+1; //Количество пересылаемых значений
+  DMA2_Stream0->NDTR = 9; //Количество пересылаемых значений
   DMA2_Stream0->CR &= ~DMA_SxCR_PINC; //Адрес периферии не инкрементируется после каждой пересылки.
   DMA2_Stream0->CR |= DMA_SxCR_MINC|DMA_SxCR_CIRC; //Адрес памяти инкрементируется после каждой пересылки.
   DMA2_Stream0->CR |= DMA_SxCR_PSIZE_0; //Размерность данных периферии - 16 бит.
@@ -103,6 +126,7 @@ void InterruptsEnable(void)
     NVIC_EnableIRQ(EXTI0_IRQn);
     NVIC_EnableIRQ(EXTI1_IRQn);
     NVIC_EnableIRQ(EXTI2_IRQn);
+    NVIC_EnableIRQ(TIM5_IRQn);
 }
 
 void TimEngineClutchConfigure(void)

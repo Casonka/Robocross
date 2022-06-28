@@ -18,6 +18,8 @@ struct
 // старт и перезагрузка
 xSemaphoreHandle xStartEvent;
 
+xSemaphoreHandle xUARTEvent;
+
 /*!
 *   @note xQueue20Handle - очередь скоростей
 */
@@ -46,6 +48,8 @@ xQueueHandle xQueueBrakeHandle;
 xQueueHandle xQueueTransmissionHandle;
 
 
+xQueueHandle xQueueClutchHandle;
+
 #define Speed_F1    2.778
 #define Speed_F2    4.16667
 #define Speed_R     -2.5
@@ -70,12 +74,6 @@ void vWaitingEvent( void *pvParameters);
 xTaskHandle xMailHandle;
 void vMessageSending( void * pvParameters);
 
-xTaskHandle xCarManagementHandle;
-void vCarManagement( void *pvParameters);
-
-xTaskHandle xCarRegulatorHandle;
-void vCarRegulator( void *pvParameters);
-
 xTaskHandle xClutchHandle;
 void vClutchManagement( void *pvParameters);
 
@@ -93,4 +91,8 @@ void vManagementGearsBox( void *pvParameters);
 
 xTaskHandle xModBusHandle;
 void vModBusManagement( void *pvParameters);
+
+xTaskHandle xTrInit;
+void vTransmissionInit( void *pvParameters);
+
 //--------------------------------------------

@@ -24,9 +24,12 @@ Regulator TransmissionReg[2];
 float Current_Velocity; // текущая скорость
 
 #define Freq_Timer    0.01      // 100 Hz  1/100 = 0.01 сек
+#define Freq_Wheel      0.1
 #define StepWheel   0.03665    // метров за один шаг колеса (48 магнитов)
+#define StepHighFreq  0.1309
 volatile uint16_t LPulseWheel,RPulseWheel;
 float Speed_Calc_Car(uint16_t leftWheel, uint16_t rightWheel);
+float Speed_Calc_Car_HighFreq(void);
 
 #define PI2  6.28314
 #define Reduction   92

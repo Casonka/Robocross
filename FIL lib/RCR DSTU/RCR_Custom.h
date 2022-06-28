@@ -36,16 +36,16 @@
 //________________________________BTN PWM_______________________________//
 /////////////////////////////////////////////////////////////////////////////
 
-#define BTN1_PWM_PIN            pin_id(PORTD,12)       /// TIM4 ch 1  AF2  //
+#define BTN1_PWM_PIN            pin_id(PORTD,12)       /// TIM4 ch 1  AF2  //   // LefWheel
 #define BTN2_PWM_PIN            pin_id(PORTD,13)       /// TIM4 ch 2  AF2  //
-#define BTN3_PWM_PIN            pin_id(PORTD,14)       /// TIM4 ch 3  AF2  //
+#define BTN3_PWM_PIN            pin_id(PORTD,14)       /// TIM4 ch 3  AF2  //   // RightWheel
 #define BTN4_PWM_PIN            pin_id(PORTD,15)       /// TIM4 ch 4  AF2  //
 #define BTN5_PWM_PIN            pin_id(PORTB,9)        /// TIM11 ch 1 AF3  //
-#define BTN6_PWM_PIN            pin_id(PORTB,8)        /// TIM10 ch 1  AF3 //
-#define BTN7_PWM_PIN            pin_id(PORTE,6)        /// TIM9  ch 2 AF3  //
+#define BTN6_PWM_PIN            pin_id(PORTB,8)        /// TIM10 ch 1  AF3 //    // Clutch Engine
+#define BTN7_PWM_PIN            pin_id(PORTE,6)        /// TIM9  ch 2 AF3  //    // Gas Engine
 #define BTN8_PWM_PIN            pin_id(PORTE,5)        /// TIM9  ch 1 AF3  //
-#define BTN9_PWM_PIN            pin_id(PORTB,14)       /// TIM12 ch 1 AF9  //
-#define BTN10_PWM_PIN           pin_id(PORTB,15)       /// TIM12 ch 2 AF9  //
+#define BTN9_PWM_PIN            pin_id(PORTB,14)       /// TIM12 ch 1 AF9  //    // Engine Gear Box 1
+#define BTN10_PWM_PIN           pin_id(PORTB,15)       /// TIM12 ch 2 AF9  //    // Engine Gear Box 2
 
 
 #define BTN1_CCR                ((uint32_t *)&(TIM4->CCR1))
