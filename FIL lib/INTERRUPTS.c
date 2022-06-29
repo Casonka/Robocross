@@ -42,10 +42,9 @@ void TIM4_IRQHandler(void)
 TIM4->SR = 0;
 }
 
-// calculate impulse delay
 void TIM5_IRQHandler(void)  // 1kHz
 {
-
+    //move_transmission_to_certain_state();
 TIM5->SR = 0;
 }
 
@@ -61,6 +60,7 @@ void TIM6_DAC_IRQHandler(void) // Speed Regulator transmission box 100Hz
     SetPWM(8,TransmissionReg[0].Out);
     SetPWM(9,TransmissionReg[1].Out);
     //SetPWM(direction,TransmissionPWM);
+
 TIM6->SR = 0;
 }
 
@@ -68,14 +68,14 @@ float globalRangeCar = 0.0;
 #define Speed_Mode     1
 void TIM7_IRQHandler(void) // Speed Regulator Car 10Hz
 {
-    reset_pin(PIN1_12V);
-     reset_pin(PIN2_12V);
-         reset_pin(PIN3_12V);
-             reset_pin(PIN4_12V);
-                 reset_pin(PIN5_12V);
-                     reset_pin(PIN6_12V);
+//    reset_pin(PIN1_12V);
+//     reset_pin(PIN2_12V);
+//         reset_pin(PIN3_12V);
+//             reset_pin(PIN4_12V);
+//                 reset_pin(PIN5_12V);
+//                     reset_pin(PIN6_12V);
     Get_Transmission();
-   //MoveTo(direction, TransmissionPWM);
+   MoveTo(direction, TransmissionPWM);
     globalRangeTransmission += TransmissionReg[0].CurrentSpeed * 0.1;
 #if( Speed_Mode == 0)
     Current_Velocity = Speed_Calc_Car(LPulseWheel, RPulseWheel);

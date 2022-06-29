@@ -11,4 +11,5 @@ obj\debug\src\carregulators.o: src\CarRegulators.c src\CarRegulators.h \
  freertos_lib/FreeRTOSConfig.h freertos_lib/task.h freertos_lib/list.h \
  freertos_lib/queue.h freertos_lib/task.h freertos_lib/semphr.h \
  freertos_lib/queue.h freertos_lib/croutine.h freertos_lib/timers.h \
- inc/robot_tasks.h inc/main.h ModBus/ModBus.h src/CarManagement.h
+ freertos_lib/event_groups.h freertos_lib/timers.h inc/robot_tasks.h \
+ inc/main.h ModBus/ModBus.h src/CarManagement.h

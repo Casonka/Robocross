@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <EmBitz_debug_session>
 	<debuggerLastSession>
-		<breakpoints>
-			<break type="0" enabled="1" file="src/CarManagement.c" line="97" />
-			<break type="0" enabled="1" file="src/CarManagement.c" line="101" />
-			<break type="0" enabled="1" file="src/CarManagement.c" line="89" />
-		</breakpoints>
 		<watches>
-			<watch key="adc_data" format="0" array="0" start="0" count="0" expanded="1" live="1" />
-			<watch key="TransmissionReg" format="0" array="0" start="0" count="0" expanded="1" live="1" />
+			<watch key="adc_data" format="0" array="0" start="0" count="0" expanded="0" live="1" />
 			<watch key="Data" format="0" array="0" start="0" count="0" expanded="1" live="1" />
+			<watch key="Transmission_Flag" format="0" array="0" start="0" count="0" expanded="0" live="1" />
+			<watch key="once" format="0" array="0" start="0" count="0" expanded="0" live="1" />
+			<watch key="direction" format="0" array="0" start="0" count="0" expanded="0" live="1" />
+			<watch key="TransmissionPWM" format="0" array="0" start="0" count="0" expanded="0" live="1" />
 		</watches>
 		<memory_view address="0x2000023C" locked="0" live="0" options="292" />
 	</debuggerLastSession>

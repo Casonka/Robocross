@@ -1,6 +1,7 @@
 #include "main.h"
 #define Test      1     // если нужно запустить тестирование отдельных блоков то ставьте
-
+_Bool once = 0;
+int transmission = 0;
 int main(void)
 {
     BoardStart();
@@ -53,19 +54,27 @@ int main(void)
     vTaskSuspend(xTrInit);
 
     xQueue20Handle = xQueueCreate(3, sizeof(float)); /// Queue storing new velocity
-    xQueueBrakeHandle = xQueueCreate(3, sizeof(uint8_t)); /// Queue Brake Value
-    xQueueTransmissionHandle = xQueueCreate(1, sizeof(uint8_t)); /// Queue Transmission Value
-    xQueueClutchHandle = xQueueCreate(3, sizeof(uint8_t)); /// Queue Clutch Value
+    xQueueBrakeHandle = xQueueCreate(3, sizeof(uint8_t)); /// Queue Brake Command
+    xQueueTransmissionHandle = xQueueCreate(1, sizeof(uint8_t)); /// Queue Transmission Command
+    xQueueClutchHandle = xQueueCreate(3, sizeof(uint8_t)); /// Queue Clutch Command
+    xQueueGasHandle = xQueueCreate(3, sizeof(uint8_t)); /// Queue Gas Command
 
+    set_pin(PIN1_12V);
     if( xQueue20Handle != NULL &&
         xQueueBrakeHandle != NULL &&
         xQueueTransmissionHandle != NULL &&
-        xQueueClutchHandle != NULL) { vTaskStartScheduler(); }
+        xQueueClutchHandle != NULL &&
+        xQueueGasHandle != NULL) { vTaskStartScheduler(); }
 #elif (Test == 1)
     /* here not enter when RTOS is on or test not select */
+    Clutch_Flag = 1;
     while(1)
     {
-        move_transmission_to_certain_state();
+        if( once == 1)
+        {
+          //  Set_Transmission(transmission);
+            once = 0;
+        }
         /*!
         *   @note Main: < для теста функции вручную >
         */

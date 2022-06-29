@@ -50,6 +50,8 @@ xQueueHandle xQueueTransmissionHandle;
 
 xQueueHandle xQueueClutchHandle;
 
+xQueueHandle xQueueGasHandle;
+
 #define Speed_F1    2.778
 #define Speed_F2    4.16667
 #define Speed_R     -2.5

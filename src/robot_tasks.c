@@ -7,13 +7,15 @@
 #define TestingClutch        1
 
 // запуск ModBus
-#define TestingModBus        1
+#define TestingModBus        0
 
 // запуск педали газа
 #define TestingGas           0
 
 // запуск педали тормоза
 #define TestingBrake         1
+
+#define MainStart            0
 
 // запуск экстренных алгоритмов
 #define RecoverySector       0
@@ -42,6 +44,8 @@ float TargetSpeed;
 //--------------------------------------------------------------------------------------------------------------------
 void vApplicationTickHook(void)
 {
+    if( ErrorTask != 0x00) set_pin(PIN2_12V); // сообщает что есть проблемы в системе
+    else reset_pin(PIN2_12V);
     /*!
     *   @brief vApplicationIdleHook(void) - функция выполняется после каждого завершения любой задачи
     *   @arg nothing - функция ничего не получает и ничего не возвращает
@@ -73,6 +77,17 @@ void vApplicationMallocFailedHook( void )
 // Tasks functions
 //----------------------------------------------------------------------------------------------------------------------
 
+    /* [Reset]     +   [Priority] = [4] */
+    /* [Start]     +   [Priority] = [2] */
+    /* [Waiting]   +   [Priority] = [3] */
+    /* [Mail]      +   [Priority] = [3] */
+    /* [Clutch]    +   [Priority] = [3] */
+    /* [Brake]     +   [Priority] = [3] */
+    /* [Gas]       +   [Priority] = [3] */
+    /* [Gear]      +   [Priority] = [3] */
+    /* [ModBus]    +   [Priority] = [4] */
+    /* [Queue]     +   [Priority] = [3] */
+
 // xRobotGo
 void vRobotGo( void *pvParameters)
 {
@@ -80,78 +95,93 @@ void vRobotGo( void *pvParameters)
     {
         xSemaphoreTake(xStartEvent, portMAX_DELAY);
 
+        ModBus_Init();
+        PID_Init();
+        ErrorTask = 0x00;
+        ZeroMesFlag = 0;
+
+        // close active tasks
+        vTaskSuspend(xWaitingHandle);
+        vTaskSuspend(xMailHandle);
+        vTaskSuspend(xGasHandle);
+        vTaskSuspend(xBrakeHandle);
+        vTaskSuspend(xClutchHandle);
+        vTaskSuspend(xGearsHandle);
+        vTaskSuspend(xModBusHandle);
+        vTaskSuspend(xQueueManagHandle);
+
+        vTaskResume(xStartHandle);
     }
 
 vTaskDelete(NULL);
 }
 
-
 // xStartHandle
 void vStart( void *pvParameters)
 {
-    StartFlags.StartCarFlag_Brake = 1;
-    StartFlags.StartCarFlag_Clutch = 1;
-    StartFlags.StartCarFlag_Transmission = 0;
-    StartFlags.StartCarFlag_Gas = 0;
-
-    StartFlags.StartCarFlag_ModBus = 0;
-    StartFlags.StartCarManagement = 0;
-
-    StartFlags.StartCar_Flag_Main = 0;
-    StartFlags.RestartCar_Flag_Main = 0;
-
     int once = 0;
 
     PID_Init();
     ModBus_Init();
     ErrorTask = 0x00;
     ZeroMesFlag = 0;
-    TargetSpeed = 0.0;
     UARTTransmit_Flag = 3;
+
+    uint8_t Transmission, Clutch, Brake, Gas;
 
     for(;;)
     {
-        if(once == 1)  vTaskSuspend(xStartHandle);
 
-        set_pin(PIN2_12V);  // сообщаем что настраиваемся
+        set_pin(PIN3_12V);  // сообщаем что настраиваемся
 
 #if ( TestingBrake == 1)
         Get_Brake();
         vTaskPrioritySet(xBrakeHandle, 3); // тормоз
         if(Brake_Flag == 1)
         {
-            Brake_Flag = FullStop;
-            xQueueSend(xQueueBrakeHandle, &Brake_Flag, 0);
+            Brake = FullStop;
+            xQueueSend(xQueueBrakeHandle, &Brake, 0);
             vTaskResume(xBrakeHandle);
             vTaskDelay(4100);
         }
-
 #endif
 #if( TestingClutch == 1)
-        StartFlags.StartCarFlag_Clutch = 1;
-        vTaskPrioritySet(xClutchHandle, 3);  // нажать сцепление, если не было нажато
-        vTaskResume(xClutchHandle);
+        Get_Clutch();
+        if( Clutch_Flag != Full)
+        {
+            Clutch = Full;
+            xQueueSend(xQueueClutchHandle, &Clutch, 0);
+            vTaskPrioritySet(xClutchHandle, 3); // нажать сцепление, если не было нажато
+            vTaskResume(xClutchHandle);
+            vTaskDelay(3500);
+        }
 #endif
 #if( TestingTransmission == 1)
-        vTaskPrioritySet(xGearsHandle, 3);
-        vTaskResume(xGearsHandle);
+        Get_Transmission();
+        if( Transmission_Flag != N)
+        {
+            Transmission = N;
+            xQueueSend(xQueueTransmissionHandle, &Transmission, 0);
+            vTaskPrioritySet(xGearsHandle, 3);  // вернуть коробку в нейтраль
+            vTaskResume(xGearsHandle);
+            vTaskDelay(6000);
+        }
 #endif
 #if( TestingGas == 1)
-        vTaskDelay(1000);
+        while(!pin_val(GENERAL_PIN_9)) {}
+        Gas = _WEWE;
+        xQueueSend(xQueueGasHandle, &Gas, 0);
         vTaskPrioritySet(xGasHandle, 3); // проверка газа (виви мод)
         vTaskResume(xGasHandle);
+        vTaskDelay(2000);
 #endif
 #if( TestingModBus == 1)
-        vTaskDelay(1000);
-        vTaskPrioritySet(xModBusHandle, 4);
-        StartFlags.StartCarFlag_ModBus = 1;
+        vTaskPrioritySet(xModBusHandle, 4); // включение протокола ModBus
         vTaskResume(xModBusHandle);
 #endif
-#if( DEBUG_SUPPORT == 1)
-//        vTaskPrioritySet(xDebugHandle, 3);
-    //    vTaskResume(xDebugHandle);
-#endif
-        vTaskPrioritySet(xQueueManagHandle, 4);
+
+#if( MainStart == 1)
+        vTaskPrioritySet(xQueueManagHandle, 3);
 
         vTaskPrioritySet(xMailHandle, 3);
         vTaskResume(xMailHandle);
@@ -159,26 +189,15 @@ void vStart( void *pvParameters)
         vTaskPrioritySet(xWaitingHandle, 3);
         vTaskResume(xWaitingHandle);
 
-        reset_pin(PIN2_12V);    // настройка закончена
-        set_pin(PIN3_12V);      // можно начинать движение
-        once = 1;
-        //vTaskResume(xRobotGo);
-        // для теста
+        vTaskResume(xRobotGo); // сброс и перезагрузка при отключении питания
+#endif
+        reset_pin(PIN3_12V);    // настройка закончена
+        set_pin(PIN2_12V);      // можно начинать движение
 
+        vTaskSuspend(xStartHandle);
     }
 vTaskDelete(NULL);
 }
-    /* [Reset]     +   [Priority] = 4 */
-    /* [Start]     +   [Priority] = 2 */
-    /* [Waiting]   +   [Priority] = 3 */
-    /* [Mail]      +   [Priority] = 3 */
-    /* [Clutch]    +   [Priority] = 3 */
-    /* [Brake]     +   [Priority] = 3 */
-    /* [Gas]       +   [Priority] = 3 */
-    /* [Gear]      +   [Priority] = 3 */
-    /* [ModBus]    +   [Priority] = 4 */
-    /* [Queue]     +   [Priority] = 4 */
-    /* [CarManag]  +   [Priority] = 3 */
 
 // xWaitingHandle
 void vWaitingEvent( void *pvParameters)
@@ -213,7 +232,7 @@ void vMessageSending( void *pvParameters)
             ModBus_SendResponseSpeed(Current_Velocity*100);
             Current_Velocity = 0.0;
         }
-        vTaskDelayUntil(&xTimeIncremental, ( 1000 / portTICK_RATE_MS));  // Гарри хочет каждый 100 мс
+        vTaskDelayUntil(&xTimeIncremental, ( 100 / portTICK_RATE_MS));  // Гарри хочет каждый 100 мс
     }
 
 vTaskDelete(NULL);
@@ -433,45 +452,38 @@ void vManagementGearsBox( void *pvParameters )
 
         switch(status)
         {
+            case errQUEUE_EMPTY: break;
+
             case N:
             {
-                if(Clutch_Flag != Full) Move_Clutch(Full);
+                while(Clutch_Flag != Full) {}
                 Set_Transmission(N);
-                StartFlags.StartCarFlag_Transmission = 0; continue;
                 break;
             }
 
             case R:
             {
-                if(Clutch_Flag != Full) Move_Clutch(Full);
+                while(Clutch_Flag != Full) {}
                 Set_Transmission(R);
-                StartFlags.StartCarFlag_Transmission = 0; continue;
                 break;
             }
 
             case F1:
             {
-                if(Clutch_Flag != Full) Move_Clutch(Full);
+                while(Clutch_Flag != Full) {}
                 Set_Transmission(F1);
-                StartFlags.StartCarFlag_Transmission = 0; continue;
                 break;
             }
 
             case F2:
             {
-                if(Clutch_Flag != Full) Move_Clutch(Full);
+                while(Clutch_Flag != Full) {}
                 Set_Transmission(F2);
-                StartFlags.StartCarFlag_Transmission = 0; continue;
                 break;
             }
 
-            default:
-            {
-                StartFlags.StartCarFlag_Transmission = 0; continue;
-                break;
-            }
+            default:    break;
         }
-
     }
     vTaskDelete(NULL);
 }
@@ -483,27 +495,22 @@ void vModBusManagement( void *pvParameters )
     for(;;)
     {
         xSemaphoreTake(xUARTEvent, portMAX_DELAY);
-        if (StartFlags.StartCarFlag_ModBus == 0) { vTaskSuspend(xModBusHandle); continue;}
         ErrorTask = ModBus_CheckFrame();
         if( ErrorTask == 0x08)
         {
             ModBus_ClearMsgs();
-            StartFlags.StartCarFlag_ModBus = 0;
             continue;
         }
         Data = ModBus_ParsePacket();
         ModBus_ClearMsgs();
-        if(Data >= 0.05 || Data <= -0.05) {xQueueSend(xQueue20Handle, &Data, 0);}
-        else { StartFlags.StartCarFlag_ModBus = 0; continue;}
-        ErrorTask = 0;
+        if ((Data >= 0.05 || Data <= -0.05) && (Data <= 4.0 || Data >= -4.0 )) {xQueueSend(xQueue20Handle, &Data, 0);}
+        else { ErrorTask |= 0x40; continue; }
+        ErrorTask &= ~(0x08);
 
         vTaskResume(xQueueManagHandle);
-        vTaskSuspend(xModBusHandle); continue;
     }
 vTaskDelete(NULL);
 }
-
-
 
 // xQueueManagHandle
 void vSecurityMemoryManagement ( void *pvParameters)
@@ -520,11 +527,8 @@ void vSecurityMemoryManagement ( void *pvParameters)
 
     for(;;)
     {
-        if(StartFlags.StartCarFlag_ModBus == 0) { vTaskSuspend(xQueueManagHandle); continue; }
+        xStatus = xQueueReceive(xQueue20Handle, &Speed, portMAX_DELAY);
 
-        // скорость ещё есть, нет необходимости создавать дополнительную очередь
-        xStatus = xQueueReceive(xQueue20Handle, &Speed, 0);
-        if( xStatus == errQUEUE_EMPTY) {StartFlags.StartCarFlag_ModBus = 0; continue;}
         float Divider = Speed - Current_Velocity;
 
         // вне диапазона чувствительности системы
@@ -532,7 +536,11 @@ void vSecurityMemoryManagement ( void *pvParameters)
             Divider > -Vel_Divider && Speed != 0.0 ) { StartFlags.StartCarFlag_ModBus = 0; continue; }
 
         Get_Transmission();
+        /*!
+        *   @fixme потом нужно убрать
+        */
         Transmission_Flag = N;
+
         Transmission = NONE;
         Brake = NONE;
 
@@ -646,24 +654,11 @@ void vSecurityMemoryManagement ( void *pvParameters)
                 Brake = FullOut;
 
             }
-
         }
-
-        if( Transmission != Transmission_Flag)
-        {
-            StartFlags.StartCarFlag_Transmission = 1;
-            xStatus = xQueueSend(xQueueTransmissionHandle, &Transmission, 0);
-        }
-
-        if( Brake_Flag != Brake)
-        {
-            StartFlags.StartCarFlag_Brake = 1;
-            xStatus = xQueueSend(xQueueBrakeHandle, &Brake, 0);
-        }
-
-        StartFlags.StartCarManagement = 1;
-
-        StartFlags.StartCarFlag_ModBus = 0;
+    xStatus = pdFALSE;
+//        if( Transmission == F1) xStatus = xQueueSend(xQueueClutchHandle, &Clutch, 0);
+        if( Brake_Flag != Brake)    xStatus = xQueueSend(xQueueBrakeHandle, &Brake, 0);
+        if( Transmission != Transmission_Flag)  xStatus = xQueueSend(xQueueTransmissionHandle, &Transmission, 0);
     }
 vTaskDelete(NULL);
 }

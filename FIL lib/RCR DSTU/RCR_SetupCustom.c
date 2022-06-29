@@ -4,7 +4,7 @@
 #define EXTI_RISING_EDGE    1
 #define EXTI_FALLING_EDGE   2
 #define EXTI_BOTH_EDGES     3
-extern uint16_t adc_data[8];
+extern uint16_t adc_data[9];
 
 /*!
 *   @param DIR_List[10] - List for edit moving direction
@@ -57,7 +57,7 @@ void BoardStart(void)
     TimPIDConfigure(Tim6,8399,100);    // 100 Hz
 
     // Reserved
-    //TimPIDConfigure(Tim5,83, 1000);  // 1kHz
+    TimPIDConfigure(Tim5,83, 1000);  // 1kHz
 
     // расчет скорости колес
     TimPWMInputCaptureConfigure(Tim4,1679, 0xC350);

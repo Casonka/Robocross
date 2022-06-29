@@ -1,7 +1,7 @@
 
 #pragma once
 #include "FilConfig.h"
-uint16_t adc_data[8];
+uint16_t adc_data[9];
 
 #define Push            1
 #define PushOut         0
@@ -24,12 +24,12 @@ void Move_Clutch(int direction); // engine on and moving
 
 void Get_Clutch(void);
 
-#define N   0
-#define R   1
-#define F1  2
-#define F2  3
-#define S1  4
-#define S2  5
+#define N   1
+#define R   2
+#define F1  3
+#define F2  4
+#define S1  5
+#define S2  6
 #define NONE 15
 int Transmission_Flag;  // флаг передачи
 _Bool Set_Transmission(int transmission);    // 2 engines on end move transmission
