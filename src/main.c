@@ -1,11 +1,12 @@
 #include "main.h"
-#define Test      1     // если нужно запустить тестирование отдельных блоков то ставьте
+#define Test      0     // если нужно запустить тестирование отдельных блоков то ставьте
 _Bool once = 0;
 int transmission = 0;
 int main(void)
 {
     BoardStart();
     PID_Init();
+    //Get_Clutch();
 #if (Test == 0)
 
     // разрешение движения и рестарт
@@ -53,13 +54,14 @@ int main(void)
     xTaskCreate(vTransmissionInit,(char *) "INIT", configMINIMAL_STACK_SIZE, NULL, 1, &xTrInit);
     vTaskSuspend(xTrInit);
 
-    xQueue20Handle = xQueueCreate(3, sizeof(float)); /// Queue storing new velocity
-    xQueueBrakeHandle = xQueueCreate(3, sizeof(uint8_t)); /// Queue Brake Command
+    xQueue20Handle = xQueueCreate(1, sizeof(float)); /// Queue storing new velocity
+    xQueueBrakeHandle = xQueueCreate(1, sizeof(uint8_t)); /// Queue Brake Command
     xQueueTransmissionHandle = xQueueCreate(1, sizeof(uint8_t)); /// Queue Transmission Command
-    xQueueClutchHandle = xQueueCreate(3, sizeof(uint8_t)); /// Queue Clutch Command
-    xQueueGasHandle = xQueueCreate(3, sizeof(uint8_t)); /// Queue Gas Command
+    xQueueClutchHandle = xQueueCreate(1, sizeof(uint8_t)); /// Queue Clutch Command
+    xQueueGasHandle = xQueueCreate(1, sizeof(uint8_t)); /// Queue Gas Command
 
-    set_pin(PIN1_12V);
+   // xEventStatus = xEventGroupCreate();
+
     if( xQueue20Handle != NULL &&
         xQueueBrakeHandle != NULL &&
         xQueueTransmissionHandle != NULL &&
@@ -67,12 +69,14 @@ int main(void)
         xQueueGasHandle != NULL) { vTaskStartScheduler(); }
 #elif (Test == 1)
     /* here not enter when RTOS is on or test not select */
-    Clutch_Flag = 1;
+    //Clutch_Flag = 1;
     while(1)
     {
         if( once == 1)
         {
-          //  Set_Transmission(transmission);
+
+            //Move_Clutch(Full);
+           //Set_Transmission(transmission);
             once = 0;
         }
         /*!

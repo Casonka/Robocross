@@ -48,7 +48,7 @@ void Get_Transmission(void)
 }
 
 
-#define SpeedTransmission   0.5     // можно увеличивать до 6.0
+#define SpeedTransmission  3.0     // можно увеличивать до 6.0
 _Bool Set_Transmission(int transmission)
 {
     if( Clutch_Flag == 0 || transmission > 4 || Transmission_Flag > 4) return 0;

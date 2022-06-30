@@ -1,4 +1,4 @@
-cscope 15 $HOME\Desktop\projects\RCR\3. Robocross\robocross"               0002188622
+cscope 15 $HOME\Desktop\projects\RCR\3. Robocross\robocross"               0002192791
 	@C:\Users\Caska\Desktop\projects\RCR\3A9FF~1.ROB\ROBOCR~1\FILLIB~1\ADC.h
 
 2 #´agm¨
@@ -5183,15 +5183,19 @@ _Dev–İ”RTOS
 	~"tim”s.h
 "
 
-90 
+87 
+	~"ev’t_groups.h
+"
+
+91 
 	~"robÙ_sks.h
 "
 
-95 #if(
+96 #if(
 _Dev–İ”ModBus
  == 1)
 
-97 
+98 
 	~"ModBus.h
 "
 
@@ -5955,37 +5959,33 @@ LPul£Wh“l
 RPul£Wh“l
 ;
 
-6 
+6 vŞ©
+ušt32_t
+ 
+	gP”iod_Ëá
+, 
+	gP”iod_Right
+;
+
+7 
 	gT¿nsmissiÚPWM
  = 0.0;
 
-7 
+8 
 	gdœeùiÚ
  = 0;
 
-8 
-_BoŞ
- 
-	gIsP”iod
- = 0;
-
-9 vŞ©
-ušt32_t
- 
-Impul£_Du¿tiÚ
- = 0xFFFFFFFF;
-
-13 
+12 
 	$USART3_IRQHªdËr
 ()
 
-15 (
+14 (
 USART3
 ->
 SR
  & 0x20) >> 5)
 
-17 *
+16 *
 UARTBufãrIndex
 ++ = 
 USART3
@@ -5993,7 +5993,7 @@ USART3
 DR
 ;
 
-18 ifĞ
+17 ifĞ
 UARTBufãrIndex
  > 
 UARTBufãrEndMsgPoš‹r
@@ -6001,109 +6001,97 @@ UARTBufãrEndMsgPoš‹r
 UARTBufãrS¹MsgPoš‹r
 ; }
 
-20 
+19 
 	}
 }
 
-25 
+24 
 	$TIM1_IRQHªdËr
 ()
 
-27 
+26 
 TIM1
 ->
 SR
  = 0;
 
-28 
+27 
 	}
 }
 
-30 
+29 
 	$TIM2_IRQHªdËr
 ()
 
-32 
+31 
 TIM2
 ->
 SR
  = 0;
 
-33 
+32 
 	}
 }
 
-35 
+34 
 	$TIM3_IRQHªdËr
 ()
 
-37 
+36 
 TIM3
 ->
 SR
  = 0;
 
-38 
+37 
 	}
 }
 
-40 
+39 
 	$TIM4_IRQHªdËr
 ()
 
-43 
+42 
 TIM4
 ->
 SR
  = 0;
 
-44 
+43 
 	}
 }
 
-47 
+45 
 	$TIM5_IRQHªdËr
 ()
 
-49 ifĞ!
-	`pš_v®
-(
-EXTI1_PIN
-)è
-Impul£_Du¿tiÚ
-++;
-
-50 { 
-Impul£_Du¿tiÚ
- = 0xFFFFFFFF;}
-
-52 
+48 
 TIM5
 ->
 SR
  = 0;
 
-53 
+49 
 	}
 }
 
-55 
+51 
 	gglob®RªgeT¿nsmissiÚ
 ;
 
-56 
+52 
 	$TIM6_DAC_IRQHªdËr
 ()
 
-58 
+54 
 	`S³ed_C®c_T¿nsmissiÚ
 ();
 
-59 
+55 
 i
  = 0; i <=1 ; i++)
 
-61 
+57 
 	`PID_C®c
 (&
 T¿nsmissiÚReg
@@ -6111,7 +6099,7 @@ T¿nsmissiÚReg
 i
 ]);
 
-63 
+59 
 glob®RªgeT¿nsmissiÚ
  +ğ
 T¿nsmissiÚReg
@@ -6121,7 +6109,7 @@ Cu¼’tS³ed
 F»q_Tim”
 ;
 
-64 
+60 
 	`S‘PWM
 (8,
 T¿nsmissiÚReg
@@ -6129,7 +6117,7 @@ T¿nsmissiÚReg
 Out
 );
 
-65 
+61 
 	`S‘PWM
 (9,
 T¿nsmissiÚReg
@@ -6137,35 +6125,35 @@ T¿nsmissiÚReg
 Out
 );
 
-67 
+64 
 TIM6
 ->
 SR
  = 0;
 
-68 
+65 
 	}
 }
 
-70 
+67 
 	gglob®RªgeC¬
-;
+ = 0.0;
 
-71 
+68 
 	#S³ed_Mode
- 2
+ 1
 
 	)
 
-72 
+69 
 	$TIM7_IRQHªdËr
 ()
 
-75 
+77 
 	`G‘_T¿nsmissiÚ
 ();
 
-76 
+79 
 glob®RªgeT¿nsmissiÚ
  +ğ
 T¿nsmissiÚReg
@@ -6173,11 +6161,11 @@ T¿nsmissiÚReg
 Cu¼’tS³ed
  * 0.1;
 
-77 #ifĞ
+80 #ifĞ
 S³ed_Mode
  == 0)
 
-78 
+81 
 Cu¼’t_V–oc™y
  = 
 	`S³ed_C®c_C¬
@@ -6187,231 +6175,197 @@ LPul£Wh“l
 RPul£Wh“l
 );
 
-79 #–ifĞ
+82 #–ifĞ
 S³ed_Mode
  == 1)
 
-80 
+83 
 Cu¼’t_V–oc™y
  = 
 	`S³ed_C®c_C¬_HighF»q
-(
-LPul£Wh“l
-,
-RPul£Wh“l
-);
-
-82 
-UARTT¿nsm™_FÏg
- = 3;
-
-83 
-	`ModBus_S’dRe¥Ú£S³ed
-(
-Cu¼’t_V–oc™y
-*100);
+();
 
 85 
+glob®RªgeC¬
+ +ğ
+Cu¼’t_V–oc™y
+ * 0.1;
+
+87 
 TIM7
 ->
 SR
  = 0;
 
-86 
+88 
 	}
 }
 
-88 
+90 
 	$TIM8_UP_TIM13_IRQHªdËr
 ()
 
-90 
+92 
 TIM13
 ->
 SR
  = 0;
 
-91 
+93 
 	}
 }
 
-96 
-	gIs
- = 0;
-
-97 
+98 
 	$EXTI0_IRQHªdËr
 ()
 
-99 
-LPul£Wh“l
-++;
-
 100 
-	`TimS¹
-(
-Tim5
-);
-
-101 ifĞ
-Is
- =ğ1è{ 
-Cu¼’t_V–oc™y
- = 
-	`S³ed_C®c_C¬_HighF»q
-(
 LPul£Wh“l
-, 
-RPul£Wh“l
-); Is = 0; }
-
-102 
-Is
 ++;
 
-103 
+101 
 EXTI
 ->
 PR
 =0x1;
 
-104 
+102 
 	}
 }
 
-106 
+104 
 	$EXTI1_IRQHªdËr
 ()
 
-108 
+106 
 RPul£Wh“l
 ++;
 
-109 
+107 
 EXTI
 ->
 PR
 =0x2;
 
-110 
+108 
 	}
 }
 
-112 
+110 
 	$EXTI2_IRQHªdËr
 ()
 
-114 
+112 
 EXTI
 ->
 PR
 =0x4;
 
-115 
+113 
 	}
 }
 
-117 
+115 
 	$EXTI3_IRQHªdËr
 ()
 
-119 
+117 
 EXTI
 ->
 PR
 =0x8;
 
-120 
+118 
 	}
 }
 
-122 
+120 
 	$EXTI4_IRQHªdËr
 ()
 
-124 
+122 
 EXTI
 ->
 PR
 =0x10;
 
-125 
+123 
 	}
 }
 
-127 
+125 
 	$EXTI9_5_IRQHªdËr
 ()
 
-129 ià(
+128 ià(
 EXTI
 ->
 PR
 &(1<<6))
 
-131 
+130 
 EXTI
 ->
 PR
 =(1<<6);
 
-134 ià(
+133 ià(
 EXTI
 ->
 PR
 &(1<<7))
 
-136 
+135 
 EXTI
 ->
 PR
 =(1<<7);
 
-139 ià(
+138 ià(
 EXTI
 ->
 PR
 &(1<<8))
 
-141 
+140 
 EXTI
 ->
 PR
 =(1<<8);
 
-144 ià(
+143 ià(
 EXTI
 ->
 PR
 &(1<<9))
 
-146 
+145 
 EXTI
 ->
 PR
 =(1<<9);
 
-148 
+147 
 	}
 }
 
-150 
+149 
 	$EXTI15_10_IRQHªdËr
 ()
 
-153 ià(
+152 ià(
 EXTI
 ->
 PR
 &(1<<10))
 
-155 
+154 
 EXTI
 ->
 PR
 =(1<<10);
 
-158 
+157 
 	}
 }
 
@@ -8209,37 +8163,9 @@ PORTC
 ušt16_t
  
 adc_d©a
-[8];
+[9];
 
-11 
-ušt32_t
- 
-	mSy¡ick
-;
-
-12 
-ušt32_t
- 
-	mAHB
-;
-
-13 
-ušt32_t
- 
-	mAPB1
-;
-
-14 
-ušt32_t
- 
-	mAPB2
-;
-
-15 }
-	gClocks
-;
-
-20 
+12 
 ušt32_t
  
 	gDIR_Li¡
@@ -8249,31 +8175,31 @@ BTN1_DIR_PIN
 BTN2_DIR_PIN
 ,
 
-21 
+13 
 BTN3_DIR_PIN
 , 
 BTN4_DIR_PIN
 ,
 
-22 
+14 
 BTN5_DIR_PIN
 , 
 BTN6_DIR_PIN
 ,
 
-23 
+15 
 BTN7_DIR_PIN
 , 
 BTN8_DIR_PIN
 ,
 
-24 
+16 
 BTN9_DIR_PIN
 , 
 BTN10_DIR_PIN
  };
 
-29 
+21 
 ušt32_t
  *
 	gPWM_Li¡
@@ -8283,43 +8209,43 @@ BTN1_CCR
 BTN2_CCR
 ,
 
-30 
+22 
 BTN3_CCR
 , 
 BTN4_CCR
 ,
 
-31 
+23 
 BTN5_CCR
 , 
 BTN6_CCR
 ,
 
-32 
+24 
 BTN7_CCR
 , 
 BTN8_CCR
 ,
 
-33 
+25 
 BTN9_CCR
 , 
 BTN10_CCR
  };
 
-36 
+28 
 	$BßrdS¹
 ()
 
-38 
+30 
 ClocksIn™
 ;
 
-39 
+31 
 	`__di§bË_œq
 ();
 
-40 
+32 
 PWR
 ->
 CR
@@ -8327,121 +8253,81 @@ CR
 PWR_CR_DBP
 ;
 
-41 
+33 
 	`SysTick_CÚfig
 (168000000);
 
 42 
-Clocks
-.
-Sy¡ick
- = 
-cu¼’t_Sy¡ick
-;
-
-43 
-Clocks
-.
-AHB
- = 
-cu¼’t_AHB
-;
-
-44 
-Clocks
-.
-APB1
- = 
-cu¼’t_APB1
-;
-
-45 
-Clocks
-.
-APB2
- = 
-cu¼’t_APB2
-;
-
-46 
 In™P”h
 ;
 
-48 
-	`TimPWMCÚfigu»
-(
-Tim4
-,83,200,1,1,1,1);
+45 
+	`ADC_In™
+();
 
-49 
+48 
 	`TimEngšeClutchCÚfigu»
 ();
 
-50 
+51 
 	`TimGasCÚfigu»
 ();
 
-51 
+54 
 	`TimPIDCÚfigu»
 (
 Tim7
 ,8399,1000);
 
-52 
+57 
 	`TimPIDCÚfigu»
 (
 Tim6
 ,8399,100);
 
-53 
+60 
 	`TimPIDCÚfigu»
 (
 Tim5
-,83, 100);
+,83, 1000);
 
-54 
-TIM5
-->
-CR1
- &= 0xFFFE;
+63 
+	`TimPWMIÅutC­tu»CÚfigu»
+(
+Tim4
+,1679, 0xC350);
 
-55 
+64 
+	`TimPWMIÅutC­tu»CÚfigu»
+(
+Tim3
+,1679, 0xC350);
+
+67 
 	`TimPWMCÚfigu»
 (
 Tim12
 ,83,200,1,1,0,0);
 
-56 
+70 
 	`TimEncod”CÚfigu»
 (
 Tim8
 );
 
-57 
-	`TimEncod”CÚfigu»
-(
-Tim1
-);
-
-58 
-	`TimEncod”CÚfigu»
-(
-Tim3
-);
-
-59 
+71 
 	`TimEncod”CÚfigu»
 (
 Tim2
 );
 
-60 
+77 
 	`USARTBÙhCÚfigu»
 (
 u§¹3
 , 0x16C , 0, 1);
 
-61 
+79 
 	`add_ext_š‹¼u±
 (
 EXTI1_PIN
@@ -8449,7 +8335,7 @@ EXTI1_PIN
 EXTI_RISING_EDGE
 );
 
-62 
+80 
 	`add_ext_š‹¼u±
 (
 EXTI2_PIN
@@ -8457,71 +8343,71 @@ EXTI2_PIN
 EXTI_FALLING_EDGE
 );
 
-65 
+86 
 	`IÁ”ru±sEÇbË
 ();
 
-66 
+87 
 	`__’abË_œq
 ();
 
-67 
+88 
 	}
 }
 
-69 
+90 
 	$ADC_In™
 ()
 
-71 
+92 
 ADC1
 ->
 SQR1
  |= 8 << 20;
 
-72 
+93 
 ADC1
 ->
 SQR3
  |= 0 | (1 << 5) | (2 << 10) | (3 << 15) | (8 << 20) | (9 << 25);
 
-73 
+94 
 ADC1
 ->
 SQR2
  |= 11| (12 << 5) | (14 << 10) | (15 << 15);
 
-75 
+96 
 ADC1
 ->
 SMPR2
  |= (7 << 3) | (7 << 6) | (7 << 12) | (7 << 15);
 
-76 
+97 
 ADC1
 ->
 SMPR1
  |= (7) | (7 << 3) | (7 << 6) | (7 << 9) | (7 << 24) | (7 << 27);
 
-78 
+99 
 ADC1
 ->
 CR1
  |= 0x100 ;
 
-79 
+100 
 ADC1
 ->
 CR2
  |= 0x302;
 
-82 
+103 
 DMA2_SŒ—m0
 ->
 CR
  |= 0 << 25;
 
-83 
+104 
 DMA2_SŒ—m0
 ->
 PAR
@@ -8533,7 +8419,7 @@ ADC1
 DR
 ;
 
-84 
+105 
 DMA2_SŒ—m0
 ->
 M0AR
@@ -8543,7 +8429,7 @@ ušt32_t
 adc_d©a
 ;
 
-85 
+106 
 DMA2_SŒ—m0
 ->
 CR
@@ -8551,13 +8437,13 @@ CR
 DMA_SxCR_DIR
 ;
 
-86 
+107 
 DMA2_SŒ—m0
 ->
 NDTR
- = 8+1;
+ = 9;
 
-87 
+108 
 DMA2_SŒ—m0
 ->
 CR
@@ -8565,7 +8451,7 @@ CR
 DMA_SxCR_PINC
 ;
 
-88 
+109 
 DMA2_SŒ—m0
 ->
 CR
@@ -8575,7 +8461,7 @@ DMA_SxCR_MINC
 DMA_SxCR_CIRC
 ;
 
-89 
+110 
 DMA2_SŒ—m0
 ->
 CR
@@ -8583,7 +8469,7 @@ CR
 DMA_SxCR_PSIZE_0
 ;
 
-90 
+111 
 DMA2_SŒ—m0
 ->
 CR
@@ -8591,7 +8477,7 @@ CR
 DMA_SxCR_MSIZE_0
 ;
 
-91 
+112 
 DMA2_SŒ—m0
 ->
 CR
@@ -8599,7 +8485,7 @@ CR
 DMA_SxCR_PL
 ;
 
-92 
+113 
 DMA2_SŒ—m0
 ->
 CR
@@ -8607,7 +8493,7 @@ CR
 DMA_SxCR_TCIE
 ;
 
-95 
+116 
 DMA2_SŒ—m0
 ->
 CR
@@ -8617,7 +8503,7 @@ DMA_SxCR_EN
 DMA_SxCR_TCIE
 ;
 
-96 
+117 
 ADC1
 ->
 CR2
@@ -8625,7 +8511,7 @@ CR2
 ADC_CR2_ADON
 ;
 
-97 
+118 
 ADC1
 ->
 CR2
@@ -8633,151 +8519,151 @@ CR2
 ADC_CR2_SWSTART
 ;
 
-98 
+119 
 	}
 }
 
-100 
+121 
 	$IÁ”ru±sEÇbË
 ()
 
-102 
+123 
 	`NVIC_EÇbËIRQ
 (
 TIM7_IRQn
 );
 
-103 
+124 
 	`NVIC_EÇbËIRQ
 (
 TIM6_DAC_IRQn
 );
 
-104 
+125 
 	`NVIC_EÇbËIRQ
 (
 USART3_IRQn
 );
 
-105 
+126 
 	`NVIC_EÇbËIRQ
 (
 EXTI0_IRQn
 );
 
-106 
+127 
 	`NVIC_EÇbËIRQ
 (
 EXTI1_IRQn
 );
 
-107 
+128 
 	`NVIC_EÇbËIRQ
 (
 EXTI2_IRQn
 );
 
-108 
+129 
 	`NVIC_EÇbËIRQ
 (
 TIM5_IRQn
-);
-
-109 
-	}
-}
-
-111 
-	$TimEngšeClutchCÚfigu»
-()
-
-113 
-	`CÚfChªÃlsTim
-(
-Tim11
-,7,0,0,0,1,0,0,0);
-
-114 
-	`CÚfF»q
-(
-Tim11
-,167,200);
-
-115 
-	`S‘TimOÃPul£Mode
-(
-Tim11
-,1);
-
-116 
-	`CÚfTimMašOuut
-(
-Tim11
-,1);
-
-117 
-	`Re£tTimCCR1
-(
-Tim11
-);
-
-118 
-	`S‘PWM
-(4,0.5);
-
-119 
-	`TimS¹
-(
-Tim11
-);
-
-120 
-	}
-}
-
-122 
-	$TimGasCÚfigu»
-()
-
-124 
-	`CÚfChªÃlsTim
-(
-Tim9
-,7,0,0,0,1,0,0,0);
-
-125 
-	`CÚfF»q
-(
-Tim9
-,167,200);
-
-126 
-	`S‘TimOÃPul£Mode
-(
-Tim9
-,1);
-
-127 
-	`CÚfTimMašOuut
-(
-Tim9
-, 1);
-
-128 
-	`S‘PWM
-(7,0.5);
-
-129 
-	`TimS¹
-(
-Tim9
 );
 
 130 
 	}
 }
 
-131 
+132 
+	$TimEngšeClutchCÚfigu»
+()
+
+134 
+	`CÚfChªÃlsTim
+(
+Tim11
+,7,0,0,0,1,0,0,0);
+
+135 
+	`CÚfF»q
+(
+Tim11
+,167,200);
+
+136 
+	`S‘TimOÃPul£Mode
+(
+Tim11
+,1);
+
+137 
+	`CÚfTimMašOuut
+(
+Tim11
+,1);
+
+138 
+	`Re£tTimCCR1
+(
+Tim11
+);
+
+139 
+	`S‘PWM
+(4,0.5);
+
+140 
+	`TimS¹
+(
+Tim11
+);
+
+141 
+	}
+}
+
+143 
+	$TimGasCÚfigu»
+()
+
+145 
+	`CÚfChªÃlsTim
+(
+Tim9
+,7,0,0,0,1,0,0,0);
+
+146 
+	`CÚfF»q
+(
+Tim9
+,167,200);
+
+147 
+	`S‘TimOÃPul£Mode
+(
+Tim9
+,1);
+
+148 
+	`CÚfTimMašOuut
+(
+Tim9
+, 1);
+
+149 
+	`S‘PWM
+(7,0.5);
+
+150 
+	`TimS¹
+(
+Tim9
+);
+
+151 
+	}
+}
+
+152 
 	$add_ext_š‹¼u±
 (
 pš
@@ -8785,7 +8671,7 @@ pš
 edge
 )
 
-133 
+154 
 SYSCFG
 ->
 EXTICR
@@ -8793,7 +8679,7 @@ EXTICR
 pš
 )&0xF) >> 0x02] |= (pin>>4) << ((((pin)&0xF) % 4) << 0x02);
 
-134 
+155 
 EXTI
 ->
 IMR
@@ -8801,15 +8687,15 @@ IMR
 pš
 )&0xF));
 
-136 
+157 
 edge
 )
 
-138 
+159 
 EXTI_FALLING_EDGE
 :
 
-140 
+161 
 EXTI
 ->
 FTSR
@@ -8817,7 +8703,7 @@ FTSR
 pš
 )&0xF));
 
-141 
+162 
 EXTI
 ->
 RTSR
@@ -8825,11 +8711,11 @@ RTSR
 pš
 )&0xF));
 
-145 
+166 
 EXTI_RISING_EDGE
 :
 
-147 
+168 
 EXTI
 ->
 FTSR
@@ -8837,7 +8723,7 @@ FTSR
 pš
 )&0xF));
 
-148 
+169 
 EXTI
 ->
 RTSR
@@ -8845,11 +8731,11 @@ RTSR
 pš
 )&0xF));
 
-152 
+173 
 EXTI_BOTH_EDGES
 :
 
-154 
+175 
 EXTI
 ->
 RTSR
@@ -8857,7 +8743,7 @@ RTSR
 pš
 )&0xF));
 
-155 
+176 
 EXTI
 ->
 FTSR
@@ -8865,11 +8751,11 @@ FTSR
 pš
 )&0xF));
 
-159 
+180 
 	}
 }
 
-160 
+181 
 	$S‘PWM
 (
 CHANNEL
@@ -8877,19 +8763,19 @@ CHANNEL
 duty
 ) {
 
-161 ià(
+182 ià(
 duty
  > 1) duty = 1.0;
 
-162 ià(
+183 ià(
 duty
  < -1) duty = -1.0;
 
-163 ià(
+184 ià(
 duty
  < 0 )
 
-165 *
+186 *
 PWM_Li¡
 [
 CHANNEL
@@ -8901,7 +8787,7 @@ MAX_PWM
 duty
  * MAX_PWM)));
 
-166 
+187 
 	`£t_pš
 (
 DIR_Li¡
@@ -8909,11 +8795,11 @@ DIR_Li¡
 CHANNEL
 ]);
 
-168 ià(
+189 ià(
 duty
  >= 0)
 
-170 *
+191 *
 PWM_Li¡
 [
 CHANNEL
@@ -8925,7 +8811,7 @@ duty
 MAX_PWM
 ));
 
-171 
+192 
 	`»£t_pš
 (
 DIR_Li¡
@@ -8933,7 +8819,7 @@ DIR_Li¡
 CHANNEL
 ]);
 
-173 
+194 
 	}
 }
 
@@ -10595,19 +10481,27 @@ TIM
 	#TimPWMIÅutC­tu»CÚfigu»
 (
 TIM
+,
+PSC
+,
+ARR
 ) {\
 
 61 
-	`Re£tTimPSC
+	`CÚfTimPSC
 (
 TIM
+,
+PSC
 ); \
 
 62 
 	`CÚfTimARR
 (
 TIM
-,0xFFFFFFFF); \
+,
+ARR
+); \
 
 63 
 	`CÚfC­tu»S–eùiÚ1
@@ -10616,36 +10510,42 @@ TIM
 ,0x1,0x2,1); \
 
 64 
+	`CÚfC­tu»S–eùiÚ2
+(
+TIM
+,0x1,0x2,1); \
+
+65 
 	`CÚfC­tu»PŞ¬™y
 (
 TIM
-,0x0,0x1,0x0,0x1,1,0); \
+,0x0,0x0,0x0,0x0,1,1); \
 
-65 
+66 
 	`CÚfC­tu»Com¶em’ryPŞ¬™y
 (
 TIM
-,0x0,0x1,0x0,0x1,1,0); \
+,0x0,0x0,0x0,0x0,1,1); \
 
-66 
+67 
 	`CÚfTrigg”S–eùiÚ
 (
 TIM
 ,0x5); \
 
-67 
-	`CÚfSms
+68 
+	`CÚfSMS
 (
 TIM
 ,0x4); \
 
-68 
+69 
 	`CÚfTimC­tu»
 (
 TIM
-,0x1,0x1,0,0,1,1,0,0); \
+,0x1,0x1,0x1,0x1,1,1,1,1); \
 
-69 
+70 
 	`TimS¹
 (
 TIM
@@ -10653,7 +10553,7 @@ TIM
 
 	)
 
-79 
+80 
 	#TimPWMC’Œ®AligÃdModeCÚfigu»
 (
 TIM
@@ -10675,7 +10575,7 @@ ch4
 pŞ¬™y2
 ) {\
 
-80 
+81 
 	`CÚfChªÃlsTim
 (
 TIM
@@ -10693,7 +10593,7 @@ ch3
 ch4
 ); \
 
-81 
+82 
 	`CÚfF»q
 (
 TIM
@@ -10703,19 +10603,19 @@ TIM
 autÜe£t
 ); \
 
-82 
+83 
 	`TimS¹
 (
 TIM
 ); \
 
-83 
+84 
 	`Re£tTimCCR1
 (
 TIM
 ); \
 
-84 
+85 
 	`Re£tTimCCR2
 (
 TIM
@@ -10723,7 +10623,7 @@ TIM
 
 	)
 
-88 
+89 
 	#CÚfChªÃlsTim
 (
 TIM
@@ -10745,7 +10645,7 @@ ch3
 ch4
 ) {\
 
-89 
+90 
 	`CÚfTimOuutCom·»1
 (
 TIM
@@ -10759,7 +10659,7 @@ ch1
 ch2
 ); \
 
-90 
+91 
 	`CÚfTimOuutCom·»2
 (
 TIM
@@ -10773,7 +10673,7 @@ ch3
 ch4
 ); \
 
-91 
+92 
 	`CÚfTimCom·»Fa¡1
 (
 TIM
@@ -10783,7 +10683,7 @@ ch1
 ch2
 ); \
 
-92 
+93 
 	`CÚfTimCom·»Fa¡2
 (
 TIM
@@ -10793,7 +10693,7 @@ ch3
 ch4
 ); \
 
-93 
+94 
 	`CÚfTimC­tu»
 (
 TIM
@@ -10809,7 +10709,7 @@ ch4
 
 	)
 
-95 
+96 
 	#CÚfPIDF»q
 (
 TIM
@@ -10819,7 +10719,7 @@ PSC
 ARR
 ) {\
 
-96 
+97 
 	`CÚfTimPSC
 (
 TIM
@@ -10827,7 +10727,7 @@ TIM
 PSC
 ); \
 
-97 
+98 
 	`CÚfTimARR
 (
 TIM
@@ -10837,7 +10737,7 @@ ARR
 
 	)
 
-99 
+100 
 	#CÚfF»q
 (
 TIM
@@ -10847,7 +10747,7 @@ TIM
 autÜe£t
 ) {\
 
-100 
+101 
 	`CÚfTimPSC
 (
 TIM
@@ -10855,7 +10755,7 @@ TIM
 ´esÿËr
 ); \
 
-101 
+102 
 	`CÚfTimARR
 (
 TIM
@@ -10865,19 +10765,19 @@ autÜe£t
 
 	)
 
-103 
+104 
 	#CÚfTimS¹
 (
 TIM
 ) {\
 
-104 
+105 
 	`CÚfTimCouÁ”
 (
 TIM
 ,0x1); \
 
-105 
+106 
 	`CÚfTimP»lßdARR
 (
 TIM
@@ -10885,7 +10785,7 @@ TIM
 
 	)
 
-107 
+108 
 	#CÚfTimCCR
 (
 TIM
@@ -10901,7 +10801,7 @@ duty4
 
 	)
 
-109 
+110 
 	#CÚfTimPSC
 (
 TIM
@@ -10915,7 +10815,7 @@ ušt32_t
 	`TimID
 (TIM) + 0x28)) = \
 
-110 ((* ((
+111 ((* ((
 ušt32_t
  *)(
 	`TimBa£
@@ -10931,7 +10831,7 @@ PSC
 
 	)
 
-112 
+113 
 	#CÚfTimARR
 (
 TIM
@@ -10945,7 +10845,7 @@ ušt32_t
 	`TimID
 (TIM) + 0x2C)) = \
 
-113 ((* ((
+114 ((* ((
 ušt32_t
  *)(
 	`TimBa£
@@ -10961,7 +10861,7 @@ ARR
 
 	)
 
-115 
+116 
 	#CÚfTimCouÁ”
 (
 TIM
@@ -10975,7 +10875,7 @@ ušt32_t
 	`TimID
 (TIM) + 0x00)) = \
 
-116 ((* ((
+117 ((* ((
 ušt32_t
  *)(
 	`TimBa£
@@ -10991,7 +10891,7 @@ TIM
 
 	)
 
-118 
+119 
 	#CÚfTimP»lßdARR
 (
 TIM
@@ -11005,7 +10905,7 @@ ušt32_t
 	`TimID
 (TIM) + 0x00)) = \
 
-119 ((* ((
+120 ((* ((
 ušt32_t
  *)(
 	`TimBa£
@@ -11021,7 +10921,7 @@ TIM
 
 	)
 
-121 
+122 
 	#CÚfTimUpd©eReque¡
 (
 TIM
@@ -11035,7 +10935,7 @@ ušt32_t
 	`TimID
 (TIM) + 0x00)) = \
 
-122 ((* ((
+123 ((* ((
 ušt32_t
  *)(
 	`TimBa£
@@ -11051,7 +10951,7 @@ urs
 
 	)
 
-124 
+125 
 	#CÚfTimOuutCom·»1
 (
 TIM
@@ -11071,7 +10971,7 @@ ušt32_t
 	`TimID
 (TIM) + 0x18)) = \
 
-125 ((* ((
+126 ((* ((
 ušt32_t
  *)(
 	`TimBa£
@@ -11093,7 +10993,7 @@ ch2
 
 	)
 
-127 
+128 
 	#CÚfTimOuutCom·»2
 (
 TIM
@@ -11113,7 +11013,7 @@ ušt32_t
 	`TimID
 (TIM) + 0x1C)) = \
 
-128 ((* ((
+129 ((* ((
 ušt32_t
  *)(
 	`TimBa£
@@ -11135,7 +11035,7 @@ ch4
 
 	)
 
-130 
+131 
 	#CÚfTimCom·»Fa¡1
 (
 TIM
@@ -11155,7 +11055,7 @@ ušt32_t
 	`TimID
 (TIM) + 0x18)) = \
 
-131 ((* ((
+132 ((* ((
 ušt32_t
  *)(
 	`TimBa£
@@ -11177,7 +11077,7 @@ ch2
 
 	)
 
-133 
+134 
 	#CÚfTimCom·»Fa¡2
 (
 TIM
@@ -11197,7 +11097,7 @@ ušt32_t
 	`TimID
 (TIM) + 0x1C)) = \
 
-134 ((* ((
+135 ((* ((
 ušt32_t
  *)(
 	`TimBa£
@@ -11219,7 +11119,7 @@ ch4
 
 	)
 
-136 
+137 
 	#CÚfTimC­tu»
 (
 TIM
@@ -11247,7 +11147,7 @@ ušt32_t
 	`TimID
 (TIM) + 0x20)) = \
 
-137 ((* ((
+138 ((* ((
 ušt32_t
  *)(
 	`TimBa£
@@ -11277,7 +11177,7 @@ ch4
 
 	)
 
-139 
+140 
 	#CÚfTimUpd©eIÁ”ru±
 (
 TIM
@@ -11291,7 +11191,7 @@ ušt32_t
 	`TimID
 (TIM) + 0x0C)) = \
 
-140 ((* ((
+141 ((* ((
 ušt32_t
  *)(
 	`TimBa£
@@ -11307,7 +11207,7 @@ u›
 
 	)
 
-142 
+143 
 	#CÚfTimMašOuut
 (
 TIM
@@ -11321,7 +11221,7 @@ ušt32_t
 	`TimID
 (TIM) + 0x44)) = \
 
-143 ((* ((
+144 ((* ((
 ušt32_t
  *)(
 	`TimBa£
@@ -11337,7 +11237,7 @@ mÛ
 
 	)
 
-145 
+146 
 	#CÚfTimAutom©icOuut
 (
 TIM
@@ -11351,7 +11251,7 @@ ušt32_t
 	`TimID
 (TIM) + 0x44)) = \
 
-146 ((* ((
+147 ((* ((
 ušt32_t
  *)(
 	`TimBa£
@@ -11367,7 +11267,7 @@ aÛ
 
 	)
 
-148 
+149 
 	#CÚfTimUpd©eG’”©iÚ
 (
 TIM
@@ -11381,7 +11281,7 @@ ušt32_t
 	`TimID
 (TIM) + 0x14)) = \
 
-149 ((* ((
+150 ((* ((
 ušt32_t
  *)(
 	`TimBa£
@@ -11397,7 +11297,7 @@ ug
 
 	)
 
-151 
+152 
 	#CÚfCCR1
 (
 TIM
@@ -11411,7 +11311,7 @@ ušt32_t
 	`TimID
 (TIM) + 0x34)) = \
 
-152 ((* ((
+153 ((* ((
 ušt32_t
  *)(
 	`TimBa£
@@ -11427,7 +11327,7 @@ v®ue
 
 	)
 
-154 
+155 
 	#CÚfCCR2
 (
 TIM
@@ -11441,7 +11341,7 @@ ušt32_t
 	`TimID
 (TIM) + 0x38)) = \
 
-155 ((* ((
+156 ((* ((
 ušt32_t
  *)(
 	`TimBa£
@@ -11457,7 +11357,7 @@ v®ue
 
 	)
 
-157 
+158 
 	#CÚfCCR3
 (
 TIM
@@ -11471,7 +11371,7 @@ ušt32_t
 	`TimID
 (TIM) + 0x3C)) = \
 
-158 ((* ((
+159 ((* ((
 ušt32_t
  *)(
 	`TimBa£
@@ -11487,7 +11387,7 @@ v®ue
 
 	)
 
-160 
+161 
 	#CÚfCCR4
 (
 TIM
@@ -11501,7 +11401,7 @@ ušt32_t
 	`TimID
 (TIM) + 0x40)) = \
 
-161 ((* ((
+162 ((* ((
 ušt32_t
  *)(
 	`TimBa£
@@ -11517,7 +11417,7 @@ v®ue
 
 	)
 
-163 
+164 
 	#CÚfSMS
 (
 TIM
@@ -11531,7 +11431,7 @@ ušt32_t
 	`TimID
 (TIM) + 0x08)) = \
 
-164 ((* ((
+165 ((* ((
 ušt32_t
  *)(
 	`TimBa£
@@ -11547,7 +11447,7 @@ sms
 
 	)
 
-166 
+167 
 	#CÚfEtf
 (
 TIM
@@ -11561,7 +11461,7 @@ ušt32_t
 	`TimID
 (TIM) + 0x08)) = \
 
-167 ((* ((
+168 ((* ((
 ušt32_t
  *)(
 	`TimBa£
@@ -11577,7 +11477,7 @@ TIM
 
 	)
 
-169 
+170 
 	#CÚfC­tu»S–eùiÚ1
 (
 TIM
@@ -11595,7 +11495,7 @@ ušt32_t
 	`TimID
 (TIM) + 0x18)) = \
 
-170 ((* ((
+171 ((* ((
 ušt32_t
  *)(
 	`TimBa£
@@ -11615,7 +11515,7 @@ ch1
 
 	)
 
-172 
+173 
 	#CÚfC­tu»S–eùiÚ2
 (
 TIM
@@ -11633,7 +11533,7 @@ ušt32_t
 	`TimID
 (TIM) + 0x1C)) = \
 
-173 ((* ((
+174 ((* ((
 ušt32_t
  *)(
 	`TimBa£
@@ -11653,7 +11553,7 @@ ch2
 
 	)
 
-175 
+176 
 	#CÚfC­tu»PŞ¬™y
 (
 TIM
@@ -11677,7 +11577,7 @@ ušt32_t
 	`TimID
 (TIM) + 0x20)) = \
 
-176 ((* ((
+177 ((* ((
 ušt32_t
  *)(
 	`TimBa£
@@ -11703,7 +11603,7 @@ ch2
 
 	)
 
-178 
+179 
 	#CÚfC­tu»Com¶em’ryPŞ¬™y
 (
 TIM
@@ -11727,7 +11627,7 @@ ušt32_t
 	`TimID
 (TIM) + 0x20)) = \
 
-179 ((* ((
+180 ((* ((
 ušt32_t
  *)(
 	`TimBa£
@@ -11753,7 +11653,7 @@ ch2
 
 	)
 
-181 
+182 
 	#CÚfTrigg”S–eùiÚ
 (
 TIM
@@ -11767,7 +11667,7 @@ ušt32_t
 	`TimID
 (TIM) + 0x08)) = \
 
-182 ((* ((
+183 ((* ((
 ušt32_t
  *)(
 	`TimBa£
@@ -11783,7 +11683,7 @@ ts
 
 	)
 
-184 
+185 
 	#CÚfOÃPul£Mode
 (
 TIM
@@ -11797,7 +11697,7 @@ ušt32_t
 	`TimID
 (TIM))) = \
 
-185 ((* ((
+186 ((* ((
 ušt32_t
  *)(
 	`TimBa£
@@ -11813,7 +11713,7 @@ TIM
 
 	)
 
-188 
+189 
 	#C®cPSC
 (
 FREQ
@@ -11827,7 +11727,7 @@ MAX_PWM
 
 	)
 
-189 
+190 
 	#C®cARR
 (
 FREQ
@@ -11841,97 +11741,97 @@ cu¼’t_APB1
 
 	)
 
-192 
+193 
 	#Tim1
  16
 
 	)
 
-193 
+194 
 	#Tim2
  0
 
 	)
 
-194 
+195 
 	#Tim3
  1
 
 	)
 
-195 
+196 
 	#Tim4
  2
 
 	)
 
-196 
+197 
 	#Tim5
  3
 
 	)
 
-197 
+198 
 	#Tim6
  4
 
 	)
 
-198 
+199 
 	#Tim7
  5
 
 	)
 
-199 
+200 
 	#Tim8
  17
 
 	)
 
-200 
+201 
 	#Tim9
  32
 
 	)
 
-201 
+202 
 	#Tim10
  33
 
 	)
 
-202 
+203 
 	#Tim11
  34
 
 	)
 
-203 
+204 
 	#Tim12
  6
 
 	)
 
-204 
+205 
 	#Tim13
  7
 
 	)
 
-205 
+206 
 	#Tim14
  8
 
 	)
 
-206 
+207 
 	#¹c
  10
 
 	)
 
-208 
+209 
 	#TimOff£t
  ((
 ušt32_t
@@ -11939,7 +11839,7 @@ ušt32_t
 
 	)
 
-209 
+210 
 	#TimBa£
 (
 TIM
@@ -11949,7 +11849,7 @@ PERIPH_BASE
 
 	)
 
-210 
+211 
 	#TimID
 (
 TIM
@@ -11961,7 +11861,7 @@ TimOff£t
 
 	)
 
-212 
+213 
 	#TimCNT
 (
 CNT
@@ -11971,7 +11871,7 @@ ušt16_t
 
 	)
 
-213 
+214 
 	#TimCEN
 (
 CEN
@@ -11981,7 +11881,7 @@ ušt16_t
 
 	)
 
-214 
+215 
 	#TimP»lßdARR
 (
 ARPE
@@ -11991,7 +11891,7 @@ ušt16_t
 
 	)
 
-215 
+216 
 	#TimUpd©eReque¡
 (
 URS
@@ -12001,7 +11901,7 @@ ušt16_t
 
 	)
 
-216 
+217 
 	#TimPSC
 (
 PSC
@@ -12011,7 +11911,7 @@ ušt16_t
 
 	)
 
-217 
+218 
 	#TimARR
 (
 ARR
@@ -12021,7 +11921,7 @@ ušt32_t
 
 	)
 
-218 
+219 
 	#TimOuutCom·»1
 (
 OC1M
@@ -12037,7 +11937,7 @@ ušt16_t
 
 	)
 
-219 
+220 
 	#TimOuutCom·»2
 (
 OC3M
@@ -12053,7 +11953,7 @@ ušt16_t
 
 	)
 
-220 
+221 
 	#TimOuutCom·»Fa¡1
 (
 OC1FE
@@ -12069,7 +11969,7 @@ ušt16_t
 
 	)
 
-221 
+222 
 	#TimOuutCom·»Fa¡2
 (
 OC3FE
@@ -12085,7 +11985,7 @@ ušt16_t
 
 	)
 
-222 
+223 
 	#TimC­tu»
 (
 CC1E
@@ -12109,7 +12009,7 @@ ušt16_t
 
 	)
 
-223 
+224 
 	#TimC­tu»S–eùiÚ1
 (
 CC1S
@@ -12123,7 +12023,7 @@ ušt16_t
 
 	)
 
-224 
+225 
 	#TimC­tu»S–eùiÚ2
 (
 CC3S
@@ -12137,7 +12037,7 @@ ušt16_t
 
 	)
 
-225 
+226 
 	#TimUpd©eIÁ”ru±
 (
 UIE
@@ -12147,7 +12047,7 @@ ušt16_t
 
 	)
 
-226 
+227 
 	#TimMašOuut
 (
 MOE
@@ -12157,7 +12057,7 @@ ušt16_t
 
 	)
 
-227 
+228 
 	#TimAutom©icOuut
 (
 AOE
@@ -12167,7 +12067,7 @@ ušt16_t
 
 	)
 
-228 
+229 
 	#TimUpd©eG’”©iÚ
 (
 UG
@@ -12177,7 +12077,7 @@ ušt16_t
 
 	)
 
-229 
+230 
 	#TimCCR1
 (
 CCR
@@ -12187,7 +12087,7 @@ ušt16_t
 
 	)
 
-230 
+231 
 	#TimCCR2
 (
 CCR
@@ -12197,7 +12097,7 @@ ušt16_t
 
 	)
 
-231 
+232 
 	#TimCCR3
 (
 CCR
@@ -12207,7 +12107,7 @@ ušt16_t
 
 	)
 
-232 
+233 
 	#TimCCR4
 (
 CCR
@@ -12217,7 +12117,7 @@ ušt16_t
 
 	)
 
-233 
+234 
 	#TimSMS
 (
 SMS
@@ -12227,7 +12127,7 @@ ušt16_t
 
 	)
 
-234 
+235 
 	#TimETF
 (
 ETF
@@ -12237,7 +12137,7 @@ ušt16_t
 
 	)
 
-235 
+236 
 	#TimC­tu»PŞ¬™y
 (
 CC1P
@@ -12257,7 +12157,7 @@ ušt16_t
 
 	)
 
-236 
+237 
 	#TimC­tu»Com¶em’ryPŞ¬™y
 (
 CC1NP
@@ -12277,7 +12177,7 @@ ušt16_t
 
 	)
 
-237 
+238 
 	#TimTrigg”S–eùiÚ
 (
 TS
@@ -12287,7 +12187,7 @@ ušt16_t
 
 	)
 
-238 
+239 
 	#TimSR
 (
 SR
@@ -12297,7 +12197,7 @@ ušt16_t
 
 	)
 
-239 
+240 
 	#TimOPM
 (
 OPM
@@ -12307,7 +12207,7 @@ ušt16_t
 
 	)
 
-242 
+243 
 	#Re£tTimCNT
 (
 TIM
@@ -12323,7 +12223,7 @@ ušt32_t
 
 	)
 
-243 
+244 
 	#Re£tTimPSC
 (
 TIM
@@ -12339,7 +12239,7 @@ ušt32_t
 
 	)
 
-244 
+245 
 	#Re£tTimARR
 (
 TIM
@@ -12355,7 +12255,7 @@ ušt32_t
 
 	)
 
-245 
+246 
 	#Re£tTimCCR1
 (
 TIM
@@ -12371,7 +12271,7 @@ ušt32_t
 
 	)
 
-246 
+247 
 	#Re£tTimCCR2
 (
 TIM
@@ -12387,7 +12287,7 @@ ušt32_t
 
 	)
 
-247 
+248 
 	#Re£tTimCCR3
 (
 TIM
@@ -12403,7 +12303,7 @@ ušt32_t
 
 	)
 
-248 
+249 
 	#Re£tTimCCR4
 (
 TIM
@@ -12419,7 +12319,7 @@ ušt32_t
 
 	)
 
-249 
+250 
 	#Re£tTimSR
 (
 TIM
@@ -12435,7 +12335,7 @@ ušt32_t
 
 	)
 
-252 
+253 
 	#G‘TimCNT
 (
 TIM
@@ -12449,7 +12349,7 @@ ušt32_t
 
 	)
 
-253 
+254 
 	#G‘TimARR
 (
 TIM
@@ -12463,7 +12363,7 @@ ušt32_t
 
 	)
 
-254 
+255 
 	#G‘TimSR
 (
 TIM
@@ -12477,7 +12377,7 @@ ušt32_t
 
 	)
 
-257 
+258 
 	#TimS¹
 (
 TIM
@@ -12491,7 +12391,7 @@ ušt32_t
 
 	)
 
-258 
+259 
 	#S‘TimP»lßdARR
 (
 TIM
@@ -12509,7 +12409,7 @@ ušt32_t
 
 	)
 
-259 
+260 
 	#S‘TimUpd©eReque¡
 (
 TIM
@@ -12527,7 +12427,7 @@ ušt32_t
 
 	)
 
-260 
+261 
 	#S‘TimOÃPul£Mode
 (
 TIM
@@ -12545,7 +12445,7 @@ ušt32_t
 
 	)
 
-261 
+262 
 	#S‘TimPSC
 (
 TIM
@@ -12563,7 +12463,7 @@ ušt32_t
 
 	)
 
-262 
+263 
 	#S‘TimARR
 (
 TIM
@@ -12581,7 +12481,7 @@ ušt32_t
 
 	)
 
-263 
+264 
 	#S‘TimOuu‹Com·»1
 (
 TIM
@@ -12605,7 +12505,7 @@ ušt32_t
 
 	)
 
-264 
+265 
 	#S‘TimOuu‹Com·»2
 (
 TIM
@@ -12629,7 +12529,7 @@ ušt32_t
 
 	)
 
-265 
+266 
 	#£t_com·»_ç¡1
 (
 TIM
@@ -12653,7 +12553,7 @@ ušt32_t
 
 	)
 
-266 
+267 
 	#£t_com·»_ç¡2
 (
 TIM
@@ -12677,7 +12577,7 @@ ušt32_t
 
 	)
 
-267 
+268 
 	#£t_ÿ±u»
 (
 TIM
@@ -12709,7 +12609,7 @@ ušt32_t
 
 	)
 
-268 
+269 
 	#£t_upd©e_š‹¼u±
 (
 TIM
@@ -12727,7 +12627,7 @@ ušt32_t
 
 	)
 
-269 
+270 
 	#£t_maš_ouut
 (
 TIM
@@ -12745,7 +12645,7 @@ ušt32_t
 
 	)
 
-270 
+271 
 	#£t_autom©ic_ouut
 (
 TIM
@@ -12763,7 +12663,7 @@ ušt32_t
 
 	)
 
-271 
+272 
 	#£t_upd©e_g’”©iÚ
 (
 TIM
@@ -12781,7 +12681,7 @@ ušt32_t
 
 	)
 
-272 
+273 
 	#£t_cü1
 (
 TIM
@@ -12799,7 +12699,7 @@ ušt32_t
 
 	)
 
-273 
+274 
 	#£t_cü2
 (
 TIM
@@ -12817,7 +12717,7 @@ ušt32_t
 
 	)
 
-274 
+275 
 	#£t_cü3
 (
 TIM
@@ -12835,7 +12735,7 @@ ušt32_t
 
 	)
 
-275 
+276 
 	#£t_cü4
 (
 TIM
@@ -12853,7 +12753,7 @@ ušt32_t
 
 	)
 
-276 
+277 
 	#£t_sms
 (
 TIM
@@ -12871,7 +12771,7 @@ ušt32_t
 
 	)
 
-277 
+278 
 	#£t_‘f
 (
 TIM
@@ -12889,7 +12789,7 @@ ušt32_t
 
 	)
 
-278 
+279 
 	#£t_ÿ±u»_£ËùiÚ1
 (
 TIM
@@ -12911,7 +12811,7 @@ ušt32_t
 
 	)
 
-279 
+280 
 	#£t_ÿ±u»_£ËùiÚ2
 (
 TIM
@@ -12933,7 +12833,7 @@ ušt32_t
 
 	)
 
-280 
+281 
 	#£t_ÿ±u»_pŞ¬™y
 (
 TIM
@@ -12961,7 +12861,7 @@ ušt32_t
 
 	)
 
-281 
+282 
 	#£t_ÿ±u»_com¶em’ry_pŞ¬™y
 (
 TIM
@@ -12989,7 +12889,7 @@ ušt32_t
 
 	)
 
-282 
+283 
 	#£t_Œigg”_£ËùiÚ
 (
 TIM
@@ -16939,7 +16839,7 @@ size_t
 
 60 
 	#cÚfigUSE_16_BIT_TICKS
- 0
+ 1
 
 	)
 
@@ -60099,7 +59999,7 @@ DEC_Poš‹r
 
 85 
 ASCII
- |= 0x30;
+ += 0x30;
 
 86 *
 S¹D©aS’dIndex
@@ -60615,43 +60515,45 @@ S³ed
 D©aBuf
 [3] = {0, 0, 0};
 
-270 
-D©aBuf
-[0] = 
-S³ed
-/100;
-
-271 
-D©aBuf
-[1] = 
-S³ed
-/10 - (()(Speed/100))*10;
-
-272 
-D©aBuf
-[2] = 
-S³ed
- - (()(Speed/10))*10;
-
-274 
-	`ModBus_DEC_TO_ASCII_CÚv”‹r
-(
-D©aBuf
-, ()((*DataBuf + 2) - (*DataBuf)));
-
-275 if(
+270 if(
 T¿nsmissiÚ_FÏg
  =ğ
 R
 è{*(
 S¹D©aS’dIndex
- - 1) = '-';}
+ - 1èğ'-'; 
+S³ed
+ = -Speed;}
 
-276 {*(
+271 {*(
 S¹D©aS’dIndex
  - 1) = '+';}
 
-278 
+273 
+D©aBuf
+[0] = 
+S³ed
+/100;
+
+274 
+D©aBuf
+[1] = 
+S³ed
+/10 - (()(Speed/100))*10;
+
+275 
+D©aBuf
+[2] = 
+S³ed
+ - (()(Speed/10))*10;
+
+277 
+	`ModBus_DEC_TO_ASCII_CÚv”‹r
+(
+D©aBuf
+, ()((*DataBuf + 2) - (*DataBuf)));
+
+279 
 Tmp
  = 
 	`LRC_CouÁšg
@@ -60659,29 +60561,29 @@ Tmp
 S¹F¿meS’d
 ,
 
-279 (()(Ğ
+280 (()(Ğ
 S¹D©aS’dIndex
  + 3è- 
 S¹F¿meS’d
 )));
 
-280 
+281 
 Buf
 [2];
 
-281 
+282 
 Buf
 [0] = 
 Tmp
  >> 4;
 
-282 
+283 
 Buf
 [1] = 
 Tmp
 &0xF;
 
-283 
+284 
 	`ModBus_HEX_TO_ASCII_CÚv”‹r
 (
 Buf
@@ -60689,21 +60591,21 @@ Buf
 LRCPoš‹r
  + 1) - LRCPointer)));
 
-284 
+285 
 	`ModBus_S’dRe¥Ú£
 (
 S¹F¿meS’d
 );
 
-285 
+286 
 	}
 }
 
-287 *
+288 *
 	gQueueIndexTx
 ;
 
-289 
+290 
 	$G‘_Queue
 (è{  *
 QueueIndexTx
@@ -60711,13 +60613,13 @@ QueueIndexTx
 	}
 }
 
-291 
+292 
 	$ModBus_S’dBy‹
 (cÚ¡ 
 D©a
 )
 
-293 !
+294 !
 	`USARTG‘Stus
 (
 u§¹3
@@ -60725,33 +60627,33 @@ u§¹3
 T¿nsm™RegEm±y
 )) {}
 
-294 
+295 
 	`ModBus_PutQueue
 (
 D©a
 );
 
-295 iàĞ
+296 iàĞ
 	`ModBus_IsFuÎ_Queue
 () == 1)
 
-297 
+298 
 QueueIndexTx
  = 
 Queue_S¹Index
 ;
 
-298 *
+299 *
 QueueIndexTx
  != '\0')
 
-300 if((
+301 if((
 USART3
 ->
 SR
  & 0x80) >> 7)
 
-302 vŞ©
+303 vŞ©
 ušt8_t
  
 Da
@@ -60759,7 +60661,7 @@ Da
 	`G‘_Queue
 ());
 
-303 
+304 
 USART3
 ->
 DR
@@ -60767,15 +60669,15 @@ DR
 Da
 ;
 
-306 
+307 
 UARTT¿nsm™_FÏg
  = 0;
 
-307 
+308 
 	`ModBus_QueueCË¬
 ();
 
-309 
+310 
 	}
 }
 
@@ -90485,194 +90387,194 @@ _BoŞ
 	gS¹FÏgs
 ;
 
-19 
+18 
+	#ALL_BITS
+ (0xFF)
+
+	)
+
+19 
+	#B¿ke_BIT
+ (1 << 0)
+
+	)
+
+20 
+	#Clutch_BIT
+ (1 << 1)
+
+	)
+
+21 
+	#T¿nsmissiÚ_BIT
+ (1 << 2)
+
+	)
+
+22 
+Ev’tGroupHªdË_t
+ 
+	gxEv’tStus
+;
+
+25 
 xSem­hÜeHªdË
  
 	gxS¹Ev’t
 ;
 
-24 
+27 
+xSem­hÜeHªdË
+ 
+	gxUARTEv’t
+;
+
+32 
 	#LowGas
  1
 
 	)
 
-25 
+33 
 	#FuÎS³ed
  2
 
 	)
 
-26 
+34 
 	#_WEWE
  3
 
 	)
 
-27 
+35 
 	#Z”o
  4
 
 	)
 
-28 
+36 
 	#H–pT¿nsmissiÚ
  5
 
 	)
 
-29 
+37 
 xQueueHªdË
  
 	gxQueue20HªdË
 ;
 
-34 
+42 
 	#FuÎStİ
  1
 
 	)
 
-35 
+43 
 	#FuÎOut
  2
 
 	)
 
-36 
+44 
 	#LowB¿ke
  3
 
 	)
 
-37 
+45 
 	#MiddËB¿ke
  4
 
 	)
 
-38 
+46 
 	#HighB¿ke
  5
 
 	)
 
-39 
+47 
 	#Em”g’cyB¿ke
  6
 
 	)
 
-40 
+48 
 xQueueHªdË
  
 	gxQueueB¿keHªdË
 ;
 
-46 
+54 
 xQueueHªdË
  
 	gxQueueT¿nsmissiÚHªdË
 ;
 
-49 
+57 
+xQueueHªdË
+ 
+	gxQueueClutchHªdË
+;
+
+59 
+xQueueHªdË
+ 
+	gxQueueGasHªdË
+;
+
+61 
 	#S³ed_F1
  2.778
 
 	)
 
-50 
+62 
 	#S³ed_F2
  4.16667
 
 	)
 
-51 
+63 
 	#S³ed_R
  -2.5
 
 	)
 
-53 
+65 
 	#B¿ke_Trigg”_Low
  0.833
 
 	)
 
-54 
+66 
 	#B¿ke_Trigg”_Medium
  1.388
 
 	)
 
-55 
+67 
 	#B¿ke_Trigg”_High
  1.944
 
 	)
 
-56 
+68 
 	#B¿ke_Trigg”_Em”g’cy
  2.5
 
 	)
 
-61 
+73 
 xTaskHªdË
  
 	gxRobÙGo
 ;
 
-62 
-vRobÙGo
-Ğ*
-pvP¬am‘”s
-);
-
-64 
-xTaskHªdË
- 
-	gxS¹HªdË
-;
-
-65 
-vS¹
-Ğ*
-pvP¬am‘”s
-);
-
-67 
-xTaskHªdË
- 
-	gxWa™šgHªdË
-;
-
-68 
-vWa™šgEv’t
-Ğ*
-pvP¬am‘”s
-);
-
-70 
-xTaskHªdË
- 
-	gxMaHªdË
-;
-
-71 
-vMes§geS’dšg
-Ğ* 
-pvP¬am‘”s
-);
-
-73 
-xTaskHªdË
- 
-	gxC¬Mªagem’tHªdË
-;
-
 74 
-vC¬Mªagem’t
+vRobÙGo
 Ğ*
 pvP¬am‘”s
 );
@@ -90680,11 +90582,11 @@ pvP¬am‘”s
 76 
 xTaskHªdË
  
-	gxC¬ReguÏtÜHªdË
+	gxS¹HªdË
 ;
 
 77 
-vC¬ReguÏtÜ
+vS¹
 Ğ*
 pvP¬am‘”s
 );
@@ -90692,11 +90594,11 @@ pvP¬am‘”s
 79 
 xTaskHªdË
  
-	gxClutchHªdË
+	gxWa™šgHªdË
 ;
 
 80 
-vClutchMªagem’t
+vWa™šgEv’t
 Ğ*
 pvP¬am‘”s
 );
@@ -90704,23 +90606,23 @@ pvP¬am‘”s
 82 
 xTaskHªdË
  
-	gxB¿keHªdË
+	gxMaHªdË
 ;
 
 83 
-vB¿keMªagem’t
-Ğ*
+vMes§geS’dšg
+Ğ* 
 pvP¬am‘”s
 );
 
 85 
 xTaskHªdË
  
-	gxGasHªdË
+	gxClutchHªdË
 ;
 
 86 
-vGasMªagem’t
+vClutchMªagem’t
 Ğ*
 pvP¬am‘”s
 );
@@ -90728,11 +90630,11 @@ pvP¬am‘”s
 88 
 xTaskHªdË
  
-	gxQueueMªagHªdË
+	gxB¿keHªdË
 ;
 
 89 
-vSecur™yMemÜyMªagem’t
+vB¿keMªagem’t
 Ğ*
 pvP¬am‘”s
 );
@@ -90740,11 +90642,11 @@ pvP¬am‘”s
 91 
 xTaskHªdË
  
-	gxG—rsHªdË
+	gxGasHªdË
 ;
 
 92 
-vMªagem’tG—rsBox
+vGasMªagem’t
 Ğ*
 pvP¬am‘”s
 );
@@ -90752,11 +90654,47 @@ pvP¬am‘”s
 94 
 xTaskHªdË
  
-	gxModBusHªdË
+	gxQueueMªagHªdË
 ;
 
 95 
+vSecur™yMemÜyMªagem’t
+Ğ*
+pvP¬am‘”s
+);
+
+97 
+xTaskHªdË
+ 
+	gxG—rsHªdË
+;
+
+98 
+vMªagem’tG—rsBox
+Ğ*
+pvP¬am‘”s
+);
+
+100 
+xTaskHªdË
+ 
+	gxModBusHªdË
+;
+
+101 
 vModBusMªagem’t
+Ğ*
+pvP¬am‘”s
+);
+
+103 
+xTaskHªdË
+ 
+	gxTrIn™
+;
+
+104 
+vT¿nsmissiÚIn™
 Ğ*
 pvP¬am‘”s
 );
@@ -161831,19 +161769,15 @@ __ılu¥lus
 	~<FCÚfig.h
 >
 
-14 
-PWM
-;
-
-15 
+14 
 	~"C¬Mªagem’t.h
 "
 
-16 
+15 
 	~"C¬ReguÏtÜs.h
 "
 
-17 #ifdeà
+16 #ifdeà
 __ılu¥lus
 
 
@@ -161857,7 +161791,7 @@ __ılu¥lus
 ušt16_t
  
 	gT¿nsmissiÚMªagem’tM©rix
-[4][4] = { 0x00, 0x43, 0x12, 0x13,
+[4][4] = { 0x00, 0x12, 0x43, 0x42,
 
 9 
 	$Move_Clutch
@@ -162005,7 +161939,7 @@ NONE
 	`pš_v®
 (
 EXTI5_PIN
-èè{
+èè{ 
 T¿nsmissiÚ_FÏg
  = 
 N
@@ -162015,7 +161949,7 @@ N
 	`pš_v®
 (
 EXTI6_PIN
-èè{
+èè{ 
 T¿nsmissiÚ_FÏg
  = 
 R
@@ -162025,7 +161959,7 @@ R
 	`pš_v®
 (
 EXTI7_PIN
-èè{
+èè{ 
 T¿nsmissiÚ_FÏg
  = 
 F1
@@ -162035,7 +161969,7 @@ F1
 	`pš_v®
 (
 EXTI8_PIN
-èè{
+èè{ 
 T¿nsmissiÚ_FÏg
  = 
 F2
@@ -162045,7 +161979,7 @@ F2
 	`pš_v®
 (
 EXTI9_PIN
-èè{
+èè{ 
 T¿nsmissiÚ_FÏg
  = 
 S1
@@ -162055,7 +161989,7 @@ S1
 	`pš_v®
 (
 EXTI10_PIN
-èè{
+èè{ 
 T¿nsmissiÚ_FÏg
  = 
 S2
@@ -162083,9 +162017,9 @@ _BoŞ
 	gClutch_FÏg
  =ğ0 || 
 ŒªsmissiÚ
- > 3 || 
+ > 4 || 
 T¿nsmissiÚ_FÏg
- > 3)  0;
+ > 4)  0;
 
 55 
 ušt16_t
@@ -162111,9 +162045,9 @@ i
 T¿nsmissiÚMªagem’tM©rix
 [
 T¿nsmissiÚ_FÏg
-][
+ - 1][
 ŒªsmissiÚ
-] >> (8 - (4*i)))&0xF;}
+ - 1] >> (8 - (4*i)))&0xF;}
 
 59 
 	gT¿nsmissiÚ_FÏg_begš
@@ -162185,13 +162119,195 @@ MoveTo
 NONE
 )  0;  1;
 
-82 
+81 
+ušt16_t
+ 
+	$MedŸn_F‹r
+(
+ušt16_t
+ *
+d©a
+, 
+ušt8_t
+ 
+Ëngth
+)
+
+84 
+i
+ = 0; i < (
+Ëngth
+ - 1); i++)
+
+86 
+j
+ = 
+i
+; j < (
+Ëngth
+ - 1); j++)
+
+88 if(
+d©a
+[
+i
+] > d©a[
+j
++1])
+
+90 
+d©a
+[
+i
+] ^ğd©a[
+j
++1];
+
+91 
+d©a
+[
+j
++1] ^ğd©a[
+i
+];
+
+92 
+d©a
+[
+i
+] ^ğd©a[
+j
++1];
+
+101  (
+Ëngth
+ & 0x1è? 
+d©a
+[length/2] : ((data[(length/2) - 1] + data[length/2]) / 2);
+
+102 
+	}
+}
+
+104 
+ušt16_t
+ 
+	gADC_Bufãr
+[10] = {};
+
+105 
+ušt16_t
+ *
+	gBufãr_Index
+ = 
+ADC_Bufãr
+;
+
+106 
+ušt16_t
+ 
+	gd©a
+;
+
+107 
+	#S³ed_HªdT¿nsm™
+ 0.5
+
+	)
+
+108 
+	$move_ŒªsmissiÚ_to_û¹aš_¡©e
+()
+
+115 if(
+ADC_Bufãr
+[9] != 0)
+
+117 
+d©a
+ = 
+	`MedŸn_F‹r
+(
+ADC_Bufãr
+, 10);
+
+118 
+i
+ = 0; i < 10; i++è
+ADC_Bufãr
+[i] = 0;
+
+119 
+Bufãr_Index
+ = *
+ADC_Bufãr
+;
+
+120 
+d©a
+ / 250)
+
+124 
+	`MoveTo
+(
+UP
+, 
+S³ed_HªdT¿nsm™
+);
+
+131 
+	`MoveTo
+(
+RIGHT
+, 
+S³ed_HªdT¿nsm™
+);
+
+138 
+	`MoveTo
+(
+DOWN
+, 
+S³ed_HªdT¿nsm™
+);
+
+145 
+	`MoveTo
+(
+LEFT
+, 
+S³ed_HªdT¿nsm™
+);
+
+151 
+	`MoveTo
+(
+STOP
+, 0.0);
+
+156 ifĞ*
+Bufãr_Index
+ >ğ(*
+ADC_Bufãr
+ + 9)) Buffer_Index = ADC_Buffer;
+
+157 *
+Bufãr_Index
+++ = 
+adc_d©a
+[0];
+
+159 
+	}
+}
+
+161 
 	$S‘_Gas
 (
 Pul£s
 )
 
-87 ià(
+166 ià(
 Pul£s
  =ğ
 WEWE_S³ed
@@ -162199,7 +162315,7 @@ WEWE_S³ed
 	`S‘PWM
 (7, -0.5);
 
-88 ià(
+167 ià(
 Pul£s
  =ğ
 ZeWE_S³ed
@@ -162207,13 +162323,13 @@ ZeWE_S³ed
 	`S‘PWM
 (7, 0.5);
 
-90 
+169 
 i
  = 0; i < 
 Pul£s
 ; )
 
-92 if(!(
+171 if(!(
 TIM9
 ->
 CR1
@@ -162225,49 +162341,49 @@ Tim9
 i
 ++;}
 
-94 
+173 
 	`S‘PWM
 (7, 0);
 
-95 
+174 
 	}
 }
 
-97 
+176 
 	$S‘_B¿ke
 (
 ¡©e
 )
 
-99 ifĞ
+178 ifĞ
 ¡©e
  == 0)
 
-101 
+180 
 	`£t_pš
 (
 PIN1_12V
 );
 
-102 
+181 
 B¿ke_FÏg
  = 0;
 
-106 
+185 
 	`»£t_pš
 (
 PIN1_12V
 );
 
-107 
+186 
 B¿ke_FÏg
  = 1;
 
-109 
+188 
 	}
 }
 
-111 
+190 
 ušt8_t
  
 	$G‘_B¿ke
@@ -162281,43 +162397,43 @@ PIN1_12V
 	}
 }
 
-113 
+192 
 	#Recov”yS³ed
  1.0
 
 	)
 
-114 
+193 
 	#Trigg”E¼ÜV®ue
  3.0
 
 	)
 
-116 
+195 
 	$Recov”y_T¿nsmissiÚ
 ()
 
-121 
+200 
 Move_Dœ
  = 1;
 
-122  
+201  
 T¿nsmissiÚ_FÏg
  =ğ
 NONE
 )
 
-124 
+203 
 	`G‘_T¿nsmissiÚ
 ();
 
-125 ifĞ
+204 ifĞ
 T¿nsmissiÚ_FÏg
  !ğ
 NONE
  ) ;
 
-127 
+206 
 	`MoveTo
 (
 Move_Dœ
@@ -162325,7 +162441,7 @@ Move_Dœ
 Recov”yS³ed
 );
 
-129 ifĞ
+208 ifĞ
 T¿nsmissiÚReg
 [0].
 Sum_E¼Ü
@@ -162333,7 +162449,7 @@ Sum_E¼Ü
 Trigg”E¼ÜV®ue
  &&
 
-130 
+209 
 T¿nsmissiÚReg
 [1].
 Sum_E¼Ü
@@ -162341,7 +162457,7 @@ Sum_E¼Ü
 Trigg”E¼ÜV®ue
 )
 
-133 ifĞ
+212 ifĞ
 Move_Dœ
  =ğ1è{ 
 T¿nsmissiÚReg
@@ -162349,17 +162465,17 @@ T¿nsmissiÚReg
 Sum_E¼Ü
  = 0;
 
-134 
+213 
 T¿nsmissiÚReg
 [1].
 Sum_E¼Ü
  = 0;
 
-135 
+214 
 Move_Dœ
  = 3; ;}
 
-138 ifĞ
+217 ifĞ
 Move_Dœ
  =ğ3è{ 
 T¿nsmissiÚReg
@@ -162367,39 +162483,39 @@ T¿nsmissiÚReg
 Sum_E¼Ü
  = 0;
 
-139 
+218 
 T¿nsmissiÚReg
 [1].
 Sum_E¼Ü
  = 0;
 
-140 
+219 
 Move_Dœ
  = 0; ;}
 
-143 ifĞ
+222 ifĞ
 T¿nsmissiÚ_FÏg
  =ğ
 NONE
  ) {;}
 
-144 ifĞ
+223 ifĞ
 T¿nsmissiÚ_FÏg
  =ğ
 S1
 )
 
-146 
+225 
 T¿nsmissiÚ_FÏg
  !ğ
 N
 )
 
-148 
+227 
 	`G‘_T¿nsmissiÚ
 ();
 
-149 ifĞ
+228 ifĞ
 T¿nsmissiÚReg
 [0].
 Sum_E¼Ü
@@ -162407,7 +162523,7 @@ Sum_E¼Ü
 Trigg”E¼ÜV®ue
  &&
 
-150 
+229 
 T¿nsmissiÚReg
 [1].
 Sum_E¼Ü
@@ -162415,29 +162531,29 @@ Sum_E¼Ü
 Trigg”E¼ÜV®ue
 ) ;
 
-151 
+230 
 	`MoveTo
 (4,
 Recov”yS³ed
 );
 
-155 ifĞ
+234 ifĞ
 T¿nsmissiÚ_FÏg
  =ğ
 S2
 )
 
-157 
+236 
 T¿nsmissiÚ_FÏg
  !ğ
 N
 )
 
-159 
+238 
 	`G‘_T¿nsmissiÚ
 ();
 
-160 ifĞ
+239 ifĞ
 T¿nsmissiÚReg
 [0].
 Sum_E¼Ü
@@ -162445,7 +162561,7 @@ Sum_E¼Ü
 Trigg”E¼ÜV®ue
  &&
 
-161 
+240 
 T¿nsmissiÚReg
 [1].
 Sum_E¼Ü
@@ -162453,13 +162569,13 @@ Sum_E¼Ü
 Trigg”E¼ÜV®ue
 ) ;
 
-162 
+241 
 	`MoveTo
 (1,
 Recov”yS³ed
 );
 
-165 ifĞ
+244 ifĞ
 T¿nsmissiÚ_FÏg
  < 4è{
 	`S‘_T¿nsmissiÚ
@@ -162467,15 +162583,15 @@ T¿nsmissiÚ_FÏg
 N
 );}
 
-166 
+245 
 	`MoveTo
 (0,0.0);
 
-167 
+246 
 	}
 }
 
-169 
+248 
 	$MoveTo
 (
 dœeùiÚ
@@ -162483,41 +162599,17 @@ dœeùiÚ
 S³ed
 )
 
-171 
+250 
 dœeùiÚ
 )
 
-173 0: 
+252 0: 
 T¿nsmissiÚReg
 [0].
 T¬g‘S³ed
  = 0.0; TransmissionReg[1].TargetSpeed = 0.0;
 
-176 1: 
-T¿nsmissiÚReg
-[0].
-T¬g‘S³ed
- = -
-S³ed
-; TransmissionReg[1].TargetSpeed = -Speed;
-
-179 2: 
-T¿nsmissiÚReg
-[0].
-T¬g‘S³ed
- = -
-S³ed
-; TransmissionReg[1].TargetSpeed = Speed;
-
-182 3: 
-T¿nsmissiÚReg
-[0].
-T¬g‘S³ed
- = 
-S³ed
-; TransmissionReg[1].TargetSpeed = -Speed;
-
-185 4: 
+256 1: 
 T¿nsmissiÚReg
 [0].
 T¬g‘S³ed
@@ -162525,7 +162617,31 @@ T¬g‘S³ed
 S³ed
 ; TransmissionReg[1].TargetSpeed = Speed;
 
-188 
+260 2: 
+T¿nsmissiÚReg
+[0].
+T¬g‘S³ed
+ = 
+S³ed
+; TransmissionReg[1].TargetSpeed = -Speed;
+
+264 3: 
+T¿nsmissiÚReg
+[0].
+T¬g‘S³ed
+ = -
+S³ed
+; TransmissionReg[1].TargetSpeed = Speed;
+
+268 4: 
+T¿nsmissiÚReg
+[0].
+T¬g‘S³ed
+ = -
+S³ed
+; TransmissionReg[1].TargetSpeed = -Speed;
+
+271 
 	}
 }
 
@@ -162543,7 +162659,7 @@ S³ed
 ušt16_t
  
 	gadc_d©a
-[8];
+[9];
 
 6 
 	#Push
@@ -162643,37 +162759,37 @@ G‘_Clutch
 
 27 
 	#N
- 0
+ 1
 
 	)
 
 28 
 	#R
- 1
+ 2
 
 	)
 
 29 
 	#F1
- 2
+ 3
 
 	)
 
 30 
 	#F2
- 3
+ 4
 
 	)
 
 31 
 	#S1
- 4
+ 5
 
 	)
 
 32 
 	#S2
- 5
+ 6
 
 	)
 
@@ -162695,45 +162811,79 @@ S‘_T¿nsmissiÚ
 ŒªsmissiÚ
 );
 
-37 
+38 
+	#UP
+ 3
+
+	)
+
+39 
+	#DOWN
+ 2
+
+	)
+
+40 
+	#LEFT
+ 4
+
+	)
+
+41 
+	#RIGHT
+ 1
+
+	)
+
+42 
+	#STOP
+ 0
+
+	)
+
+43 
+move_ŒªsmissiÚ_to_û¹aš_¡©e
+();
+
+46 
 	#Low_S³ed
  48
 
 	)
 
-38 
+47 
 	#Z”o_S³ed
  80
 
 	)
 
-39 
+48 
 	#High_S³ed
  96
 
 	)
 
-40 
+49 
 	#WEWE_S³ed
  32
 
-41 
+50 
 	#ZeWE_S³ed
  33
 
 	)
 
-42 
+51 
 S‘_Gas
 (
 Pul£s
 );
 
-44 
+53 
 Recov”y_T¿nsmissiÚ
 ();
 
-46 
+55 
 MoveTo
 (
 dœeùiÚ
@@ -162741,7 +162891,7 @@ dœeùiÚ
 S³ed
 );
 
-48 
+57 
 G‘_T¿nsmissiÚ
 ();
 
@@ -162777,7 +162927,7 @@ ENCODER3_CNT
 ENCODER4_CNT
 };
 
-8 
+7 
 	$S³ed_C®c_C¬
 (
 ušt16_t
@@ -162787,33 +162937,33 @@ ušt16_t
 rightWh“l
 )
 
-10 
+9 
 S³ed
 ;
 
-11 
+10 
 ušt16_t
  
 sum
  = 0;
 
-13 
+12 
 Cu¼’t_V–oc™y
  = 0;
 
-15 if(
+14 if(
 rightWh“l
  - 
 ËáWh“l
  >= (rightWheel/2)) {leftWheel = 0;}
 
-16 if(
+15 if(
 ËáWh“l
  - 
 rightWh“l
  >= (leftWheel/2)) {rightWheel = 0;}
 
-18 if(
+17 if(
 ËáWh“l
  =ğ0 && 
 rightWh“l
@@ -162821,7 +162971,7 @@ rightWh“l
 sum
  =„ightWheel;}
 
-19 if(
+18 if(
 rightWh“l
  =ğ0 && 
 ËáWh“l
@@ -162829,7 +162979,7 @@ rightWh“l
 sum
  =†eftWheel;}
 
-21 if(
+20 if(
 rightWh“l
  !ğ0 && 
 ËáWh“l
@@ -162837,7 +162987,7 @@ rightWh“l
 sum
  = (leftWheel +„ightWheel) / 2;}
 
-22 
+21 
 S³ed
  = ( 
 sum
@@ -162847,13 +162997,21 @@ S‹pWh“l
 F»q_Wh“l
 ;
 
-24 
+22 
+S³ed
+ = ( 
+T¿nsmissiÚ_FÏg
+ =ğ
+R
+) ? -Speed : Speed;
+
+23 
 RPul£Wh“l
  = 0; 
 LPul£Wh“l
  = 0;
 
-26 ifĞ
+25 ifĞ
 S³ed
  =ğ
 Cu¼’t_V–oc™y
@@ -162861,65 +163019,193 @@ Cu¼’t_V–oc™y
 Z”oMesFÏg
  = 1;}
 
-27 {
+26 {
 Z”oMesFÏg
  = 0;}
 
-28  
+27  
 S³ed
 ;
 
-29 
+28 
 	}
 }
 
-31 
-	$S³ed_C®c_C¬_HighF»q
-(
-ušt16_t
+30 
+ušt32_t
  
-ËáWh“l
-, ušt16_ˆ
-rightWh“l
-)
+	gËáP”iod
+, 
+	grightP”iod
+;
 
-33 
-S³ed
+31 
+	gZ”oCouÁs
+ = 0;
+
+32 
+	$S³ed_C®c_C¬_HighF»q
+()
+
+34 vŞ©
+ušt32_t
+ 
+P_Ëá
+, 
+P_right
+ = 0;
+
+35 
+S³ed_Leá
+, 
+S³ed_Right
+, 
+ResuÉ
  = 0.0;
 
-34 
-S³ed
+36 ifĞ
+LPul£Wh“l
+ =ğ0è
+S³ed_Leá
+ = 0.0;
+
+39 
+P_Ëá
+ = 
+TIM4
+->
+CCR1
+;
+
+40 
+ËáP”iod
+ = 
+P_Ëá
+;
+
+41 
+S³ed_Leá
  = 
 S‹pHighF»q
- / 
-Impul£_Du¿tiÚ
+ / (
+P_Ëá
+ * 0.00002) * 0.27;
+
+45 ifĞ
+RPul£Wh“l
+ =ğ0è
+S³ed_Right
+ = 0.0;
+
+48 
+P_right
+ = 
+TIM3
+->
+CCR1
 ;
 
-35 
-S³ed
- *= 10000;
-
-36  
-S³ed
+49 
+rightP”iod
+ = 
+P_right
 ;
 
-37 
+50 
+S³ed_Right
+ = 
+S‹pHighF»q
+ / (
+P_right
+ * 0.00002) * 0.27;
+
+54 
+LPul£Wh“l
+ = 0; 
+RPul£Wh“l
+ = 0;
+
+56 ifĞ
+S³ed_Leá
+ =ğ0 && 
+S³ed_Right
+ =ğ0è
+ResuÉ
+ = 0.0;
+
+57 ifĞ
+S³ed_Leá
+ =ğ0 ) 
+ResuÉ
+ = 
+S³ed_Right
+;
+
+58 ifĞ
+S³ed_Right
+ =ğ0 ) 
+ResuÉ
+ = 
+S³ed_Leá
+;
+
+59 ifĞ
+S³ed_Right
+ !ğ0 && 
+S³ed_Leá
+ !ğ0è
+ResuÉ
+ = ((Speed_Left + Speed_Right) / 2);
+
+61 
+ResuÉ
+ = (
+T¿nsmissiÚ_FÏg
+ =ğ
+R
+) ? -Result : Result;
+
+63 ifĞ
+ResuÉ
+ =ğ
+Cu¼’t_V–oc™y
+ ) {
+Z”oCouÁs
+++;}
+
+64 {
+Z”oCouÁs
+ = 0; 
+Z”oMesFÏg
+ = 0;}
+
+66 if(
+Z”oCouÁs
+ >ğ10è{
+Z”oMesFÏg
+ = 1;}
+
+67  
+ResuÉ
+;
+
+68 
 	}
 }
 
-40 
+71 
 	gS‹p
 ;
 
-41 
+72 
 	$S³ed_C®c_T¿nsmissiÚ
 ()
 
-43 
+74 
 i
  = 0; i <= 1; i++)
 
-45 
+76 
 D©a
 [
 i
@@ -162929,13 +163215,13 @@ i
 ’cod”D©a
 [i]);
 
-46 
+77 
 S‹p
  = 
 S‹pT¿nsmissiÚ
 ;
 
-47 
+78 
 T¿nsmissiÚReg
 [
 i
@@ -162949,61 +163235,61 @@ S‹pT¿nsmissiÚ
 F»q_Tim”
 ;
 
-48 *
+79 *
 ’cod”D©a
 [
 i
 ] = 0;
 
-50 
+81 
 	}
 }
 
-53 
+84 
 	$PID_In™
 ()
 
-55 
+86 
 T¿nsmissiÚReg
 [0].
 P_k
- = 0.150;
+ = 0.130;
 
-56 
+87 
 T¿nsmissiÚReg
 [0].
 I_k
  = 0.270;
 
-57 
+88 
 T¿nsmissiÚReg
 [0].
 D_k
  = 0.15;
 
-58 
+89 
 T¿nsmissiÚReg
 [1].
 P_k
  = 0.120;
 
-59 
+90 
 T¿nsmissiÚReg
 [1].
 I_k
  = 0.290;
 
-60 
+91 
 T¿nsmissiÚReg
 [1].
 D_k
  = 0.15;
 
-61 
+92 
 i
  = 0; i <= 1; i++)
 
-63 
+94 
 T¿nsmissiÚReg
 [
 i
@@ -163011,7 +163297,7 @@ i
 E¼Ü
  = 0.0;
 
-64 
+95 
 T¿nsmissiÚReg
 [
 i
@@ -163019,7 +163305,7 @@ i
 Sum_E¼Ü
  = 0.0;
 
-65 
+96 
 T¿nsmissiÚReg
 [
 i
@@ -163027,7 +163313,7 @@ i
 Dif_E¼Ü
  = 0.0;
 
-66 
+97 
 T¿nsmissiÚReg
 [
 i
@@ -163035,7 +163321,7 @@ i
 P»d_E¼Ü
  = 0.0;
 
-67 
+98 
 T¿nsmissiÚReg
 [
 i
@@ -163043,7 +163329,7 @@ i
 Cu¼’tS³ed
  = 0.0;
 
-68 
+99 
 T¿nsmissiÚReg
 [
 i
@@ -163051,7 +163337,7 @@ i
 T¬g‘S³ed
  = 0.0;
 
-69 
+100 
 T¿nsmissiÚReg
 [
 i
@@ -163059,7 +163345,7 @@ i
 Out
  = 0.0;
 
-70 
+101 
 T¿nsmissiÚReg
 [
 i
@@ -163067,7 +163353,7 @@ i
 MAX_OUT
  = 1.0;
 
-71 
+102 
 T¿nsmissiÚReg
 [
 i
@@ -163075,11 +163361,11 @@ i
 MAX_SUM_ERROR
  = 6.0;
 
-73 
+104 
 	}
 }
 
-75 
+106 
 	$PID_C®c
 (
 ReguÏtÜ
@@ -163087,7 +163373,7 @@ ReguÏtÜ
 PID_C®c
 )
 
-77 
+108 
 Out_P
 , 
 Out_I
@@ -163095,7 +163381,7 @@ Out_I
 Out_D
 ;
 
-78 
+109 
 PID_C®c
 ->
 E¼Ü
@@ -163105,7 +163391,7 @@ T¬g‘S³ed
 Cu¼’tS³ed
 ;
 
-79 
+110 
 PID_C®c
 ->
 Dif_E¼Ü
@@ -163115,7 +163401,7 @@ E¼Ü
 P»d_E¼Ü
 ;
 
-80 
+111 
 Out_P
  = 
 PID_C®c
@@ -163125,7 +163411,7 @@ E¼Ü
 P_k
 ;
 
-81 
+112 
 PID_C®c
 ->
 P»d_E¼Ü
@@ -163133,7 +163419,7 @@ P»d_E¼Ü
 E¼Ü
 ;
 
-82 
+113 
 PID_C®c
 ->
 Sum_E¼Ü
@@ -163141,7 +163427,7 @@ Sum_E¼Ü
 E¼Ü
 ;
 
-83 ifĞ
+114 ifĞ
 PID_C®c
 ->
 Sum_E¼Ü
@@ -163149,7 +163435,7 @@ Sum_E¼Ü
 MAX_SUM_ERROR
  )
 
-85 
+116 
 PID_C®c
 ->
 Sum_E¼Ü
@@ -163157,7 +163443,7 @@ Sum_E¼Ü
 MAX_SUM_ERROR
 ;
 
-87 ifĞ
+118 ifĞ
 PID_C®c
 ->
 Sum_E¼Ü
@@ -163165,7 +163451,7 @@ Sum_E¼Ü
 MAX_SUM_ERROR
 )
 
-89 
+120 
 PID_C®c
 ->
 Sum_E¼Ü
@@ -163173,7 +163459,7 @@ Sum_E¼Ü
 MAX_SUM_ERROR
 ;
 
-91 
+122 
 Out_I
  = 
 PID_C®c
@@ -163183,7 +163469,7 @@ I_k
 Sum_E¼Ü
 ;
 
-92 
+123 
 Out_D
  = 
 PID_C®c
@@ -163193,7 +163479,7 @@ D_k
 Dif_E¼Ü
 ;
 
-93 
+124 
 PID_C®c
 ->
 Out
@@ -163205,7 +163491,7 @@ Out_I
 Out_D
 ;
 
-94 ifĞ
+125 ifĞ
 PID_C®c
 ->
 Out
@@ -163213,7 +163499,7 @@ Out
 MAX_OUT
 ) { PID_Calc->Out = PID_Calc->MAX_OUT;}
 
-95 ifĞ
+126 ifĞ
 PID_C®c
 ->
 Out
@@ -163221,7 +163507,7 @@ Out
 MAX_OUT
 ) { PID_Calc->Out = -PID_Calc->MAX_OUT;}
 
-96 
+127 
 	}
 }
 
@@ -163313,7 +163599,7 @@ ReguÏtÜ
 
 29 
 	#S‹pHighF»q
- 0.0057
+ 0.1309
 
 	)
 
@@ -163325,13 +163611,7 @@ ušt16_t
 	gRPul£Wh“l
 ;
 
-31 vŞ©
-ušt32_t
- 
-	gImpul£_Du¿tiÚ
-;
-
-32 
+31 
 S³ed_C®c_C¬
 (
 ušt16_t
@@ -163341,35 +163621,29 @@ ušt16_t
 rightWh“l
 );
 
-34 
+32 
 S³ed_C®c_C¬_HighF»q
-(
-ušt16_t
- 
-ËáWh“l
-, ušt16_ˆ
-rightWh“l
-);
+();
 
-36 
+34 
 	#PI2
  6.28314
 
 	)
 
-37 
+35 
 	#ReduùiÚ
  92
 
 	)
 
-38 
+36 
 	#CouÁ”OnOÃRÙ©e
  85000
 
 	)
 
-39 
+37 
 	#S‹pT¿nsmissiÚ
  ( 
 PI2
@@ -163379,15 +163653,15 @@ CouÁ”OnOÃRÙ©e
 
 	)
 
-40 
+38 
 S³ed_C®c_T¿nsmissiÚ
 ();
 
-42 
+40 
 PID_In™
 ();
 
-44 
+42 
 PID_C®c
 (
 ReguÏtÜ
@@ -163401,19 +163675,19 @@ ReguÏtÜ
 
 4 
 	#Te¡šgT¿nsmissiÚ
- 0
+ 1
 
 	)
 
 7 
 	#Te¡šgClutch
- 0
+ 1
 
 	)
 
 10 
 	#Te¡šgModBus
- 1
+ 0
 
 	)
 
@@ -163424,54 +163698,110 @@ ReguÏtÜ
 	)
 
 16 
+	#SynchroClutchD–ay
+ 600
+
+	)
+
+17 
 	#Te¡šgB¿ke
+ 1
+
+	)
+
+20 
+	#MašS¹
  0
 
 	)
 
-19 
+23 
 	#Recov”ySeùÜ
  0
 
 	)
 
-22 
+25 
+	#DEBUG_SUPPORT
+ 1
+
+	)
+
+28 
 	#Z”oMesFÏg_Off
  1
 
 	)
 
-35 
+30 
 	gE¼ÜTask
 ;
 
-37 
+32 
 _BoŞ
  
 	gZ”oMesFÏg
 ;
 
-38 
+33 
 	gT¬g‘S³ed
 ;
 
-42 
+35 #if(
+DEBUG_SUPPORT
+ == 1)
+
+38 
+	mT¿nsmissiÚ
+;
+
+39 
+	mB¿ke
+;
+
+40 
+	mClutch
+;
+
+41 
+	mModBus
+;
+
+43 }
+	gDebug_MÚ™Ü
+;
+
+48 
 	$vAµliÿtiÚTickHook
 ()
 
-50 
+50 ifĞ
+E¼ÜTask
+ !ğ0x00è
+	`£t_pš
+(
+PIN2_12V
+);
+
+51 
+	`»£t_pš
+(
+PIN2_12V
+);
+
+56 
 	}
 }
 
-52 
+58 
 	$vAµliÿtiÚIdËHook
 ()
 
-61 
+64 
 	}
 }
 
-63 
+66 
 	$vAµliÿtiÚSckOv”æowHook
 Ğ
 TaskHªdË_t
@@ -163481,25 +163811,25 @@ xTask
 pcTaskName
  )
 
-70 
+73 
 	}
 }
 
-72 
+75 
 	$vAµliÿtiÚM®locFaedHook
 ( )
 
-75 
+78 
 	}
 }
 
-81 
+121 
 	$vRobÙGo
 Ğ*
 pvP¬am‘”s
 )
 
-85 
+125 
 	`xSem­hÜeTake
 (
 xS¹Ev’t
@@ -163507,645 +163837,567 @@ xS¹Ev’t
 pÜtMAX_DELAY
 );
 
-86 if(
-S¹FÏgs
-.
-S¹C¬_FÏg_Maš
- == 0)
-
-88 
-S¹FÏgs
-.
-S¹C¬_FÏg_Maš
- = 1;
-
-89 
-S¹FÏgs
-.
-Re¡¬tC¬_FÏg_Maš
- = 1;
-
-90 
-	`vTaskResume
-(
-xQueueMªagHªdË
-);
-
-91 
-	`vTaskResume
-(
-xModBusHªdË
-);
-
-94 if(
-S¹FÏgs
-.
-Re¡¬tC¬_FÏg_Maš
- == 1)
-
-97 
-S¹FÏgs
-.
-S¹C¬_FÏg_Maš
- = 0;
-
-98 
-S¹FÏgs
-.
-Re¡¬tC¬_FÏg_Maš
- = 0;
-
-101 
-	`vTaskD–‘e
-(
-xS¹HªdË
-);
-
-102 
-	`vTaskD–‘e
-(
-xClutchHªdË
-);
-
-103 
-	`vTaskD–‘e
-(
-xB¿keHªdË
-);
-
-104 
-	`vTaskD–‘e
-(
-xGasHªdË
-);
-
-105 
-	`vTaskD–‘e
-(
-xG—rsHªdË
-);
-
-106 
-	`vTaskD–‘e
-(
-xModBusHªdË
-);
-
-107 
-	`vTaskD–‘e
-(
-xC¬Mªagem’tHªdË
-);
-
-108 
-	`vTaskD–‘e
-(
-xQueueMªagHªdË
-);
-
-109 
-	`vTaskD–‘e
-(
-xC¬ReguÏtÜHªdË
-);
-
-111 
-	`vQueueD–‘e
-(
-xQueue20HªdË
-);
-
-112 
-	`vQueueD–‘e
-(
-xQueueB¿keHªdË
-);
-
-113 
-	`vQueueD–‘e
-(
-xQueueT¿nsmissiÚHªdË
-);
-
-116 
-	`xTaskC»©e
-(
-vS¹
-, (*è"START", 
-cÚfigMINIMAL_STACK_SIZE
-, 
-NULL
-, 2, &
-xS¹HªdË
-);
-
-118 
-	`xTaskC»©e
-(
-vClutchMªagem’t
-, (*è"CLUTCH", 
-cÚfigMINIMAL_STACK_SIZE
-, 
-NULL
-, 1, &
-xClutchHªdË
-);
-
-119 
-	`vTaskSu¥’d
-(
-xClutchHªdË
-);
-
-121 
-	`xTaskC»©e
-(
-vB¿keMªagem’t
-, (*è"BRAKE", 
-cÚfigMINIMAL_STACK_SIZE
-, 
-NULL
-, 1, &
-xB¿keHªdË
-);
-
-122 
-	`vTaskSu¥’d
-(
-xB¿keHªdË
-);
-
-124 
-	`xTaskC»©e
-(
-vGasMªagem’t
-, (*è"GAS", 
-cÚfigMINIMAL_STACK_SIZE
-, 
-NULL
-, 1, &
-xGasHªdË
-);
-
-125 
-	`vTaskSu¥’d
-(
-xGasHªdË
-);
-
 127 
-	`xTaskC»©e
-(
-vMªagem’tG—rsBox
-, (*è"GEAR", 
-cÚfigMINIMAL_STACK_SIZE
-, 
-NULL
-, 1, &
-xG—rsHªdË
- );
+	`ModBus_In™
+();
 
 128 
-	`vTaskSu¥’d
-(
-xG—rsHªdË
-);
+	`PID_In™
+();
+
+129 
+E¼ÜTask
+ = 0x00;
 
 130 
-	`xTaskC»©e
-(
-vModBusMªagem’t
-, (*è"ModBus", 
-cÚfigMINIMAL_STACK_SIZE
-, 
-NULL
-, 1, &
-xModBusHªdË
- );
-
-131 
-	`vTaskSu¥’d
-(
-xModBusHªdË
-);
+Z”oMesFÏg
+ = 0;
 
 133 
-	`xTaskC»©e
+	`vTaskSu¥’d
 (
-vSecur™yMemÜyMªagem’t
-, (*è"Queue", 
-cÚfigMINIMAL_STACK_SIZE
-, 
-NULL
-, 1, &
-xQueueMªagHªdË
- );
+xWa™šgHªdË
+);
 
 134 
 	`vTaskSu¥’d
 (
-xQueueMªagHªdË
+xMaHªdË
+);
+
+135 
+	`vTaskSu¥’d
+(
+xGasHªdË
 );
 
 136 
-xQueue20HªdË
- = 
-	`xQueueC»©e
-(3, ());
+	`vTaskSu¥’d
+(
+xB¿keHªdË
+);
 
 137 
-xQueueB¿keHªdË
- = 
-	`xQueueC»©e
-(3, (
-ušt8_t
-));
+	`vTaskSu¥’d
+(
+xClutchHªdË
+);
 
 138 
-xQueueT¿nsmissiÚHªdË
- = 
-	`xQueueC»©e
-(3, (
-ušt8_t
-));
+	`vTaskSu¥’d
+(
+xG—rsHªdË
+);
 
-140 ifĞ
-xQueue20HªdË
- !ğ
-NULL
- &&
+139 
+	`vTaskSu¥’d
+(
+xModBusHªdË
+);
 
-141 
-xQueueB¿keHªdË
- !ğ
-NULL
- &&
+140 
+	`vTaskSu¥’d
+(
+xQueueMªagHªdË
+);
 
 142 
-xQueueT¿nsmissiÚHªdË
- !ğ
-NULL
-) { ; }
+	`vTaskResume
+(
+xS¹HªdË
+);
 
-146 
+145 
 	`vTaskD–‘e
 (
 NULL
 );
 
-147 
+146 
 	}
 }
 
-151 
+149 
 	$vS¹
 Ğ*
 pvP¬am‘”s
 )
 
-153 
-S¹FÏgs
-.
-S¹C¬FÏg_B¿ke
- = 1;
-
-154 
-S¹FÏgs
-.
-S¹C¬FÏg_Clutch
- = 1;
-
-155 
-S¹FÏgs
-.
-S¹C¬FÏg_Gas
- = 1;
-
-156 
-S¹FÏgs
-.
-S¹C¬FÏg_ModBus
- = 0;
-
-157 
-S¹FÏgs
-.
-S¹C¬Mªagem’t
- = 0;
-
-158 
-S¹FÏgs
-.
-S¹C¬FÏg_T¿nsmissiÚ
- = 0;
-
-159 
-S¹FÏgs
-.
-S¹C¬_FÏg_Maš
- = 0;
-
-160 
-S¹FÏgs
-.
-Re¡¬tC¬_FÏg_Maš
- = 0;
-
-162 
+152 
 Úû
  = 0;
 
-164 
+154 
 	`PID_In™
 ();
 
-165 
+155 
 	`ModBus_In™
 ();
 
-166 
+156 
 E¼ÜTask
  = 0x00;
 
-167 
+157 
 Z”oMesFÏg
  = 0;
 
-168 
-T¬g‘S³ed
- = 0.0;
-
-169 
+158 
 UARTT¿nsm™_FÏg
  = 3;
 
-173 if(
-Úû
- =ğ1è
-	`vTaskSu¥’d
-(
-xS¹HªdË
-);
+160 
+Ev’tB™s_t
+ 
+xEv’tB™s
+;
 
-175 
-	`£t_pš
-(
-PIN2_12V
-);
+162 
+ušt8_t
+ 
+T¿nsmissiÚ
+, 
+Clutch
+, 
+B¿ke
+, 
+Gas
+;
 
-177 #iàĞ
-Te¡šgB¿ke
+163 #if(
+DEBUG_SUPPORT
  == 1)
 
-178 
-	`G‘_B¿ke
-();
+164 
+Debug_MÚ™Ü
+.
+Clutch
+ = '0';
 
-179 
-	`vTaskPriÜ™yS‘
-(
-xB¿keHªdË
-, 3);
+165 
+Debug_MÚ™Ü
+.
+B¿ke
+ = '0';
 
-180 if(
-B¿ke_FÏg
- =ğ1è{ 
-	`vTaskResume
-(
-xB¿keHªdË
-); 
-	`vTaskD–ay
-(4100); }
+166 
+Debug_MÚ™Ü
+.
+ModBus
+ = '0';
 
-182 #ifĞ
-Te¡šgClutch
- == 1)
+167 
+Debug_MÚ™Ü
+.
+T¿nsmissiÚ
+ = '0';
 
-183 
-	`vTaskPriÜ™yS‘
-(
-xClutchHªdË
-, 3);
-
-184 
-	`vTaskResume
-(
-xClutchHªdË
-);
-
-186 #ifĞ
-Te¡šgT¿nsmissiÚ
- == 1)
-
-189 #ifĞ
-Te¡šgGas
- == 1)
-
-190 
-	`vTaskD–ay
-(1000);
-
-191 
-	`vTaskPriÜ™yS‘
-(
-xGasHªdË
-, 3);
-
-192 
-	`vTaskResume
-(
-xGasHªdË
-);
-
-194 #ifĞ
-Te¡šgModBus
- == 1)
-
-195 
-	`vTaskD–ay
-(1000);
-
-196 
-	`vTaskPriÜ™yS‘
-(
-xModBusHªdË
-, 4);
-
-198 
-	`vTaskPriÜ™yS‘
-(
-xQueueMªagHªdË
-, 3);
-
-200 
-	`vTaskPriÜ™yS‘
-(
-xMaHªdË
-, 3);
-
-201 
-	`vTaskResume
-(
-xMaHªdË
-);
-
-203 
-	`vTaskPriÜ™yS‘
-(
-xWa™šgHªdË
-, 3);
-
-204 
-	`vTaskResume
-(
-xWa™šgHªdË
-);
-
-206 
-	`»£t_pš
-(
-PIN2_12V
-);
-
-207 
+172 
 	`£t_pš
 (
 PIN3_12V
 );
 
-208 
-Úû
- = 1;
-
-209 
-	`vTaskResume
+173 
+xEv’tB™s
+ = 
+	`xEv’tGroupCË¬B™s
 (
-xRobÙGo
+xEv’tStus
+, 
+ALL_BITS
 );
 
-213 
-	`vTaskD–‘e
+175 #iàĞ
+Te¡šgB¿ke
+ == 1)
+
+176 
+	`G‘_B¿ke
+();
+
+177 
+	`vTaskPriÜ™yS‘
 (
-NULL
+xB¿keHªdË
+, 3);
+
+178 if(
+B¿ke_FÏg
+ == 1)
+
+180 
+B¿ke
+ = 
+FuÎStİ
+;
+
+181 
+	`xQueueS’d
+(
+xQueueB¿keHªdË
+, &
+B¿ke
+, 0);
+
+182 
+	`vTaskResume
+(
+xB¿keHªdË
+);
+
+183 
+	`vTaskD–ay
+(4100);
+
+186 #ifĞ
+Te¡šgClutch
+ == 1)
+
+187 
+	`G‘_Clutch
+();
+
+188 ifĞ
+Clutch_FÏg
+ !ğ
+FuÎ
+)
+
+190 
+Clutch
+ = 
+FuÎ
+;
+
+191 
+	`xQueueS’d
+(
+xQueueClutchHªdË
+, &
+Clutch
+, 0);
+
+192 
+	`vTaskPriÜ™yS‘
+(
+xClutchHªdË
+, 3);
+
+193 
+	`vTaskResume
+(
+xClutchHªdË
+);
+
+194 
+	`vTaskD–ay
+(3500);
+
+197 #ifĞ
+Te¡šgT¿nsmissiÚ
+ == 1)
+
+198 
+	`G‘_T¿nsmissiÚ
+();
+
+199 ifĞ
+T¿nsmissiÚ_FÏg
+ !ğ
+N
+)
+
+201 
+T¿nsmissiÚ
+ = 
+N
+;
+
+202 
+	`xQueueS’d
+(
+xQueueT¿nsmissiÚHªdË
+, &
+T¿nsmissiÚ
+, 0);
+
+203 
+	`vTaskPriÜ™yS‘
+(
+xG—rsHªdË
+, 3);
+
+204 
+	`vTaskResume
+(
+xG—rsHªdË
+);
+
+205 
+	`vTaskD–ay
+(6000);
+
+208 #ifĞ
+Te¡šgGas
+ == 1)
+
+209 !
+	`pš_v®
+(
+GENERAL_PIN_9
+)) {}
+
+210 
+Gas
+ = 
+_WEWE
+;
+
+211 
+	`xQueueS’d
+(
+xQueueGasHªdË
+, &
+Gas
+, 0);
+
+212 
+	`vTaskPriÜ™yS‘
+(
+xGasHªdË
+, 3);
+
+213 
+	`vTaskResume
+(
+xGasHªdË
 );
 
 214 
-	}
-}
+	`vTaskD–ay
+(2000);
 
-217 
-	$vWa™šgEv’t
-Ğ*
-pvP¬am‘”s
-)
+216 #ifĞ
+Te¡šgModBus
+ == 1)
 
-221 ifĞ
-UART_Bufãr
-[14] != '\0')
-
-223 
-S¹FÏgs
-.
-S¹C¬FÏg_ModBus
- = 1;
-
-224 
-	`vTaskSu¥’d
+217 
+	`vTaskPriÜ™yS‘
 (
-xMaHªdË
-);
+xModBusHªdË
+, 4);
 
-225 
+218 
 	`vTaskResume
 (
 xModBusHªdË
 );
 
+221 #ifĞ
+MašS¹
+ == 1)
+
+223 
+	`vTaskPriÜ™yS‘
+(
+xQueueMªagHªdË
+, 3);
+
+225 
+	`vTaskPriÜ™yS‘
+(
+xMaHªdË
+, 3);
+
+226 
+	`vTaskResume
+(
+xMaHªdË
+);
+
 228 
+	`vTaskPriÜ™yS‘
+(
+xWa™šgHªdË
+, 3);
+
+229 
+	`vTaskResume
+(
+xWa™šgHªdË
+);
+
+231 
+	`vTaskResume
+(
+xRobÙGo
+);
+
+233 
+	`»£t_pš
+(
+PIN3_12V
+);
+
+234 
+	`£t_pš
+(
+PIN2_12V
+);
+
+236 
+	`vTaskSu¥’d
+(
+xS¹HªdË
+);
+
+238 
 	`vTaskD–‘e
 (
 NULL
 );
 
-229 
+239 
 	}
 }
 
-232 
+242 
+	$vWa™šgEv’t
+Ğ*
+pvP¬am‘”s
+)
+
+246 ifĞ
+UART_Bufãr
+[14] != '\0')
+
+248 
+S¹FÏgs
+.
+S¹C¬FÏg_ModBus
+ = 1;
+
+249 
+	`xSem­hÜeGive
+(
+xUARTEv’t
+);
+
+252 
+	`vTaskD–‘e
+(
+NULL
+);
+
+253 
+	}
+}
+
+256 
 	$vMes§geS’dšg
 Ğ*
 pvP¬am‘”s
 )
 
-237 
+261 
 pÜtTickTy³
  
 xTimeInüem’l
 ;
 
-238 
+262 
 xTimeInüem’l
  = 
 	`xTaskG‘TickCouÁ
 ();
 
-241 #iàĞ
+265 #iàĞ
 Z”oMesFÏg_Off
  == 1)
 
-242 
+266 
 Z”oMesFÏg
  = 0;
 
-245 ifĞ
+268 ifĞ
 Z”oMesFÏg
  == 0)
 
-250 
+270 
+UARTT¿nsm™_FÏg
+ = 3;
+
+271 
+	`ModBus_S’dRe¥Ú£S³ed
+(
+Cu¼’t_V–oc™y
+*100);
+
+272 
+Cu¼’t_V–oc™y
+ = 0.0;
+
+274 
 	`vTaskD–ayUÁ
 (&
 xTimeInüem’l
-, ( 50/ 
+, ( 100 / 
 pÜtTICK_RATE_MS
 ));
 
-253 
+277 
 	`vTaskD–‘e
 (
 NULL
 );
 
-254 
+278 
 	}
 }
 
-257 
+281 
 	$vClutchMªagem’t
 Ğ*
 pvP¬am‘”s
 )
 
-262 
+286 
 ušt8_t
  
 ¡©us
  = 0;
 
-266 ifĞ
+290 ifĞ
 S¹FÏgs
 .
 S¹C¬FÏg_Clutch
- == 0 ) ;
+ =ğ0 ) { 
+	`vTaskSu¥’d
+(
+xClutchHªdË
+); ; }
 
-268  
+291 
+	`xQueueReûive
+(
+xQueueClutchHªdË
+, &
+¡©us
+, 
+pÜtMAX_DELAY
+);
+
+293  
 ¡©us
  )
 
-275 
+300 
 	`G‘_Clutch
 ();
 
-276 ifĞ
+301 ifĞ
 Clutch_FÏg
  !ğ
 FuÎ
@@ -164153,23 +164405,23 @@ FuÎ
 	`Move_Clutch
 (Full);
 
-277 
+302 
 ¡©us
  = 1;
 
-278 
+303 
 S¹FÏgs
 .
 S¹C¬_FÏg_Maš
  = 1;
 
-279 
+304 
 	`vTaskSu¥’d
 (
 xClutchHªdË
 );
 
-285 
+310 
 ¡©us
  = (
 T¿nsmissiÚ_FÏg
@@ -164179,7 +164431,7 @@ F1
 R
 ) ? 2 :
 
-286 (
+311 (
 T¿nsmissiÚ_FÏg
  =ğ
 F2
@@ -164187,11 +164439,11 @@ F2
 N
 ) ? 4 : 15;
 
-292 
+317 
 	`G‘_Clutch
 ();
 
-293 ifĞ
+318 ifĞ
 Clutch_FÏg
  !ğ
 Back_SecÚd
@@ -164201,19 +164453,19 @@ Back_SecÚd
 Back_Fœ¡
 );
 
-294 
+319 
 ¡©us
  = 3;
 
-295 
+320 
 	`vTaskD–ay
 (1000);
 
-301 
+326 
 	`G‘_Clutch
 ();
 
-302 ifĞ
+327 ifĞ
 Clutch_FÏg
  !ğ
 Back_SecÚd
@@ -164221,15 +164473,15 @@ Back_SecÚd
 	`Move_Clutch
 (Back_Second);
 
-303 
+328 
 ¡©us
  = 5;
 
-309 
+334 
 	`G‘_Clutch
 ();
 
-310 ifĞ
+335 ifĞ
 Clutch_FÏg
  !ğ
 Back_SecÚd
@@ -164239,37 +164491,37 @@ Back_SecÚd
 Back_FuÎ
 );
 
-311 
+336 
 ¡©us
  = 5;
 
-317 
+342 
 ¡©us
  = 0;
 
-318 
+343 
 S¹FÏgs
 .
 S¹C¬FÏg_Clutch
  = 0;
 
-319 
+344 
 	`vTaskSu¥’d
 (
 xClutchHªdË
 );
 
-325 
+350 
 S¹FÏgs
 .
 S¹C¬FÏg_Clutch
  = 0;
 
-326 
+351 
 	`G‘_T¿nsmissiÚ
 ();
 
-327 
+352 
 E¼ÜTask
  = (
 Clutch_FÏg
@@ -164279,185 +164531,229 @@ Back_SecÚd
 FuÎ
 ) ? 0x20 : 0x00;
 
-328 
+353 
 	`vTaskSu¥’d
 (
 xClutchHªdË
 );
 
-335 
+360 
 	`vTaskD–‘e
 (
 NULL
 );
 
-336 
+361 
 	}
 }
 
-339 
+364 
 	$vB¿keMªagem’t
  ( *
 pvP¬am‘”s
 )
 
-344 
+369 
 ušt8_t
  
 ¡©us
- = 1;
+;
 
-347 ifĞ
-S¹FÏgs
-.
-S¹C¬FÏg_B¿ke
- =ğ0è
-	`vTaskSu¥’d
+370 
+Ev’tB™s_t
+ 
+xB¿ke_’d
+;
+
+374 
+	`xQueueReûive
 (
-xB¿keHªdË
+xQueueB¿keHªdË
+, &
+¡©us
+, 
+pÜtMAX_DELAY
 );
 
-349 
+375 #if(
+DEBUG_SUPPORT
+ == 1)
+
+376 
+Debug_MÚ™Ü
+.
+B¿ke
+ = 'Y';
+
+378 
 ¡©us
 )
 
-351 
+381 
+”rQUEUE_EMPTY
+: ;
+
+383 
 FuÎStİ
 :
 
-353 
+385 
 	`S‘_B¿ke
 (
 Push
 );
 
-354 
-¡©us
- = 2;
-
-355 
-S¹FÏgs
-.
-S¹C¬_FÏg_Maš
- = 1;
-
-356 
-S¹FÏgs
-.
-S¹C¬FÏg_B¿ke
- = 0; ;
-
-360 
+389 
 FuÎOut
 :
 
-362 
+391 
 	`S‘_B¿ke
 (
 PushOut
 );
 
-363 
-S¹FÏgs
-.
-S¹C¬FÏg_B¿ke
- = 0; ;
-
-367 
+395 
 LowB¿ke
 :
 
-369 
+397 
 	`S‘_B¿ke
 (
 Push
 );
 
-370 
+398 
 	`vTaskD–ay
 (900);
 
-371 
+399 
 	`S‘_B¿ke
 (
 PushOut
 );
 
-372 
-S¹FÏgs
-.
-S¹C¬FÏg_B¿ke
- = 0; ;
-
-376 
+403 
 MiddËB¿ke
 :
 
-378 
+405 
+xB¿ke_’d
+ = 
+	`xEv’tGroupWa™B™s
+(
+xEv’tStus
+,
+Clutch_BIT
+, 
+pdFALSE
+, 
+pdTRUE
+, 
+pÜtMAX_DELAY
+);
+
+406 
+	`vTaskD–ay
+(
+SynchroClutchD–ay
+);
+
+407 
 	`S‘_B¿ke
 (
 Push
 );
 
-379 
+408 
 	`vTaskD–ay
 (1300);
 
-380 
+409 
 	`S‘_B¿ke
 (
 PushOut
 );
 
-381 
-S¹FÏgs
-.
-S¹C¬FÏg_B¿ke
- = 0; ;
-
-385 
+413 
 HighB¿ke
 :
 
-387 
+415 
+xB¿ke_’d
+ = 
+	`xEv’tGroupWa™B™s
+(
+xEv’tStus
+,
+Clutch_BIT
+, 
+pdFALSE
+, 
+pdTRUE
+, 
+pÜtMAX_DELAY
+);
+
+416 
+	`vTaskD–ay
+(
+SynchroClutchD–ay
+);
+
+417 
 	`S‘_B¿ke
 (
 Push
 );
 
-388 
+418 
 	`vTaskD–ay
 (2500);
 
-389 
+419 
 	`S‘_B¿ke
 (
 PushOut
 );
 
-390 
-S¹FÏgs
-.
-S¹C¬FÏg_B¿ke
- = 0; ;
+423 
+Em”g’cyB¿ke
+:
 
-396 
+425 
+	`S‘_B¿ke
+(
+Push
+);
+
+429 
+xB¿ke_’d
+ = 
+	`xEv’tGroupS‘B™s
+(
+xEv’tStus
+, 
+B¿ke_BIT
+);
+
+432 
 	`vTaskD–‘e
 (
 NULL
 );
 
-397 
+433 
 	}
 }
 
-400 
+436 
 	$vGasMªagem’t
 Ğ*
 pvP¬am‘”s
 )
 
-406 
+443 
 ušt8_t
  
 ¡©us
@@ -164465,7 +164761,7 @@ ušt8_t
 _WEWE
 ;
 
-410 ià(
+447 ià(
 S¹FÏgs
 .
 S¹C¬FÏg_Gas
@@ -164475,315 +164771,337 @@ S¹C¬FÏg_Gas
 xGasHªdË
 );
 
-412 
+449 
 ¡©us
 )
 
-414 
+451 
 _WEWE
 :
 
-416 
+453 
 i
  = 0; i < 3; i++)
 
-418 
+455 
 	`S‘_Gas
 (
 WEWE_S³ed
 );
 
-419 
+456 
 	`vTaskD–ay
 (150);
 
-420 
+457 
 	`S‘_Gas
 (
 ZeWE_S³ed
 );
 
-421 
+458 
 	`vTaskD–ay
 (500);
 
-423 
+460 
 S¹FÏgs
 .
 S¹C¬_FÏg_Maš
  = 1;
 
-424 
+461 
 S¹FÏgs
 .
 S¹C¬FÏg_Gas
  = 0; ;
 
-428 
+465 
 LowGas
 :
 
-430 
+467 
 	`S‘_Gas
 (
 Low_S³ed
 );
 
-434 
+471 
 Z”o
 :
 
-436 
+473 
 	`S‘_Gas
 (
 Z”o_S³ed
 );
 
-440 
+477 
 H–pT¿nsmissiÚ
 :
 
-442 
+479 
 	`S‘_Gas
 (
 Low_S³ed
 );
 
-443 
+480 
 	`vTaskD–ay
 (500);
 
-444 
+481 
 	`S‘_Gas
 (
 Z”o_S³ed
 );
 
-451 
+488 
 	`vTaskD–‘e
 (
 NULL
 );
 
-452 
+489 
 	}
 }
 
-455 
+492 
 	$vMªagem’tG—rsBox
 Ğ*
 pvP¬am‘”s
  )
 
-457 
-V–oc™y
-;
-
-460 
-	`xQueueReûive
-(
-xQueue20HªdË
-, &
-V–oc™y
-, 0);
-
-461 ifĞ
-V–oc™y
- > 0è{ 
-	`G‘_T¿nsmissiÚ
-(); 
-	`S‘_T¿nsmissiÚ
-(
-F1
-); }
-
-464 
-	`vTaskD–‘e
-(
-NULL
-);
-
-465 
-	}
-}
-
-468 
-	$vModBusMªagem’t
-Ğ*
-pvP¬am‘”s
- )
-
-470 
-D©a
-;
-
-473 ià(
-S¹FÏgs
-.
-S¹C¬FÏg_ModBus
- =ğ0è{ 
-	`vTaskSu¥’d
-(
-xModBusHªdË
-); ;}
-
-474 
-E¼ÜTask
- = 
-	`ModBus_CheckF¿me
-();
-
-475 ifĞ
-E¼ÜTask
- == 0x08)
-
-477 
-	`ModBus_CË¬Msgs
-();
-
-478 
-S¹FÏgs
-.
-S¹C¬FÏg_ModBus
- = 0;
-
-481 
-D©a
- = 
-	`ModBus_P¬£Pack‘
-();
-
-482 
-	`ModBus_CË¬Msgs
-();
-
-483 if(
-D©a
- >ğ0.05è{
-	`xQueueS’d
-(
-xQueue20HªdË
-, &Data, 0);}
-
-484 { 
-S¹FÏgs
-.
-S¹C¬FÏg_ModBus
- = 0; ;}
-
-485 
-E¼ÜTask
- = 0;
-
-486 
-	`vTaskResume
-(
-xQueueMªagHªdË
-);
-
-487 
-	`vTaskSu¥’d
-(
-xModBusHªdË
-); ;
-
-489 
-	`vTaskD–‘e
-(
-NULL
-);
-
-490 
-	}
-}
-
-493 
-	$vC¬Mªagem’t
-Ğ*
-pvP¬am‘”s
-)
-
-501 
-	`vTaskD–‘e
-(
-NULL
-);
-
-502 
-	}
-}
-
-506 
-	$vSecur™yMemÜyMªagem’t
- ( *
-pvP¬am‘”s
-)
-
-511 
-S³ed
-;
-
-512 
+494 
 ušt8_t
  
-T¿nsmissiÚ
+¡©us
 ;
 
-513 
-ušt8_t
- 
-B¿ke
-;
-
-514 cÚ¡ 
-V–_Divid”
- = 1.0;
-
-515 
+495 
 pÜtBASE_TYPE
  
 xStus
 ;
 
-518 if(
-S¹FÏgs
-.
-S¹C¬FÏg_ModBus
- =ğ0è
-	`vTaskSu¥’d
+499 
+xStus
+ = 
+	`xQueueReûive
+(
+xQueueT¿nsmissiÚHªdË
+, &
+¡©us
+, 
+pÜtMAX_DELAY
+);
+
+501 
+¡©us
+)
+
+503 
+”rQUEUE_EMPTY
+: ;
+
+505 
+N
+:
+
+507 
+Clutch_FÏg
+ !ğ
+FuÎ
+) {}
+
+508 
+	`S‘_T¿nsmissiÚ
+(
+N
+);
+
+512 
+R
+:
+
+514 
+Clutch_FÏg
+ !ğ
+FuÎ
+) {}
+
+515 
+	`S‘_T¿nsmissiÚ
+(
+R
+);
+
+519 
+F1
+:
+
+521 
+Clutch_FÏg
+ !ğ
+FuÎ
+) {}
+
+522 
+	`S‘_T¿nsmissiÚ
+(
+F1
+);
+
+526 
+F2
+:
+
+528 
+Clutch_FÏg
+ !ğ
+FuÎ
+) {}
+
+529 
+	`S‘_T¿nsmissiÚ
+(
+F2
+);
+
+536 
+	`vTaskD–‘e
+(
+NULL
+);
+
+537 
+	}
+}
+
+540 
+	$vModBusMªagem’t
+Ğ*
+pvP¬am‘”s
+ )
+
+542 
+D©a
+;
+
+545 
+	`xSem­hÜeTake
+(
+xUARTEv’t
+, 
+pÜtMAX_DELAY
+);
+
+546 
+E¼ÜTask
+ = 
+	`ModBus_CheckF¿me
+();
+
+547 ifĞ
+E¼ÜTask
+ == 0x08)
+
+549 
+	`ModBus_CË¬Msgs
+();
+
+552 
+D©a
+ = 
+	`ModBus_P¬£Pack‘
+();
+
+553 
+	`ModBus_CË¬Msgs
+();
+
+554 ià((
+D©a
+ >ğ0.05 || D©¨<ğ-0.05è&& (D©¨<ğ4.0 || D©¨>ğ-4.0 )è{
+	`xQueueS’d
+(
+xQueue20HªdË
+, &Data, 0);}
+
+555 { 
+E¼ÜTask
+ |= 0x40; ; }
+
+556 
+E¼ÜTask
+ &= ~(0x08);
+
+558 
+	`vTaskResume
 (
 xQueueMªagHªdË
 );
 
-521 
+560 
+	`vTaskD–‘e
+(
+NULL
+);
+
+561 
+	}
+}
+
+564 
+	$vSecur™yMemÜyMªagem’t
+ ( *
+pvP¬am‘”s
+)
+
+569 
+S³ed
+;
+
+570 
+ušt8_t
+ 
+T¿nsmissiÚ
+;
+
+571 
+ušt8_t
+ 
+B¿ke
+;
+
+572 cÚ¡ 
+V–_Divid”
+ = 1.0;
+
+573 
+pÜtBASE_TYPE
+ 
+xStus
+;
+
+574 
 xStus
  = 
-	`xQueueP“k
+pdFALSE
+;
+
+578 
+xStus
+ = 
+	`xQueueReûive
 (
 xQueue20HªdË
 , &
 S³ed
-, 0);
+, 
+pÜtMAX_DELAY
+);
 
-522 ifĞ
-xStus
- =ğ
-”rQUEUE_EMPTY
-è{
-S¹FÏgs
-.
-S¹C¬FÏg_ModBus
- = 0; ;}
-
-523 
-S³ed
- = -1.3;
-
-524 
-Cu¼’t_V–oc™y
- = -3.0;
-
-525 
+580 
 Divid”
  = 
 S³ed
@@ -164791,13 +165109,13 @@ S³ed
 Cu¼’t_V–oc™y
 ;
 
-528 ifĞ
+583 ifĞ
 Divid”
  < 
 V–_Divid”
  &&
 
-529 
+584 
 Divid”
  > -
 V–_Divid”
@@ -164809,39 +165127,39 @@ S¹FÏgs
 S¹C¬FÏg_ModBus
  = 0; ; }
 
-531 
+586 
 	`G‘_T¿nsmissiÚ
 ();
 
-533 ifĞ
+590 
+T¿nsmissiÚ_FÏg
+ = 
+N
+;
+
+592 
+T¿nsmissiÚ
+ = 
+NONE
+;
+
+593 
+B¿ke
+ = 
+NONE
+;
+
+595 ifĞ
 Divid”
  < -
 V–_Divid”
 )
 
-535 
-S¹FÏgs
-.
-S¹C¬Mªagem’t
- = 1;
-
-536 
-S¹FÏgs
-.
-S¹C¬FÏg_B¿ke
- = 1;
-
-537 
-S¹FÏgs
-.
-S¹C¬FÏg_T¿nsmissiÚ
- = 1;
-
-539 ifĞ
+597 ifĞ
 Cu¼’t_V–oc™y
  <= -1.0 && Current_Velocity > -3.333)
 
-544 ifĞ
+602 ifĞ
 T¿nsmissiÚ_FÏg
  !ğ
 R
@@ -164849,7 +165167,7 @@ R
 T¿nsmissiÚ
  = R;
 
-546 
+604 
 B¿ke
  = (
 S³ed
@@ -164861,7 +165179,7 @@ B¿ke_Trigg”_Low
 FuÎOut
  :
 
-547 (
+605 (
 S³ed
  >ğ
 S³ed_R
@@ -164871,7 +165189,7 @@ B¿ke_Trigg”_Medium
 LowB¿ke
  :
 
-548 (
+606 (
 S³ed
  >ğ
 S³ed_R
@@ -164881,7 +165199,7 @@ B¿ke_Trigg”_High
 MiddËB¿ke
  :
 
-549 (
+607 (
 S³ed
  >ğ
 S³ed_R
@@ -164893,25 +165211,309 @@ HighB¿ke
 Em”g’cyB¿ke
 ;
 
-551 
+609 
 S¹FÏgs
 .
 S¹C¬Mªagem’t
  = 1;
 
-563 ifĞ
+612 ifĞ
+Cu¼’t_V–oc™y
+ > -1.0 && Current_Velocity <= 1.5 )
+
+617 
+T¿nsmissiÚ
+ = (
+S³ed
+ >ğ-1.0 && S³ed <ğ1.0è? 
+N
+ :
+
+618 (
+S³ed
+ < -1.0è? 
+R
+ : 
+N
+;
+
+620 
+B¿ke
+ = (
+S³ed
+ < -1.0è? 
+FuÎOut
+ :
+
+621 (
+S³ed
+ >ğ-1.0 && S³ed <ğ1.0è? 
+HighB¿ke
+ : 
+Em”g’cyB¿ke
+;
+
+624 ifĞ
+Cu¼’t_V–oc™y
+ > 1.0 && Current_Velocity <= 3.333 )
+
+629 ifĞ
+T¿nsmissiÚ_FÏg
+ !ğ
+F1
+è
+T¿nsmissiÚ
+ = F1;
+
+631 ifĞ
+S³ed
+ <ğ1.5è
+T¿nsmissiÚ
+ = 
+N
+;
+
+633 
+B¿ke
+ = ((
+S³ed
+ <ğ3.333è&& (S³ed >ğS³ed - 
+B¿ke_Trigg”_Low
+èè? 
+FuÎOut
+ :
+
+634 ((
+S³ed
+ <ğ3.333è&& (S³ed >ğS³ed - 
+B¿ke_Trigg”_Medium
+èè? 
+LowB¿ke
+ :
+
+635 ((
+S³ed
+ <ğ3.333è&& (S³ed >ğS³ed - 
+B¿ke_Trigg”_High
+èè? 
+MiddËB¿ke
+ :
+
+636 ((
+S³ed
+ <ğ3.333è&& (S³ed >ğS³ed - 
+B¿ke_Trigg”_Em”g’cy
+èè? 
+HighB¿ke
+ : 
+Em”g’cyB¿ke
+;
+
+656 ifĞ
 Divid”
  > 
 V–_Divid”
 )
 
-579 
+659 ifĞ
+Cu¼’t_V–oc™y
+ < -1.0 && Current_Velocity > -3.333)
+
+664 
+T¿nsmissiÚ
+ = (
+S³ed
+ >ğ-3.333 && S³ed < -1.0è? 
+R
+ :
+
+665 (
+S³ed
+ >ğ-1.0 && S³ed <ğ1.0è? 
+N
+ : N;
+
+667 
+B¿ke
+ = (
+S³ed
+ >ğ
+S³ed_R
+ && (S³ed <ğS³ed + 
+B¿ke_Trigg”_Low
+)è? 
+FuÎOut
+ :
+
+668 (
+S³ed
+ >ğ
+S³ed_R
+ && (S³ed <ğS³ed + 
+B¿ke_Trigg”_Medium
+)è? 
+LowB¿ke
+ :
+
+669 (
+S³ed
+ >ğ
+S³ed_R
+ && (S³ed <ğS³ed + 
+B¿ke_Trigg”_High
+)è? 
+MiddËB¿ke
+ :
+
+670 (
+S³ed
+ >ğ
+S³ed_R
+ && (S³ed <ğS³ed + 
+B¿ke_Trigg”_Em”g’cy
+)è? 
+HighB¿ke
+ : 
+Em”g’cyB¿ke
+;
+
+673 ifĞ
+Cu¼’t_V–oc™y
+ >= -1.0 && Current_Velocity <= 1.0 )
+
+678 
+T¿nsmissiÚ
+ = (
+S³ed
+ >ğ-1.0 && S³ed <ğ1.0è? 
+N
+ :
+
+679 (
+S³ed
+ > 1.0è? 
+F1
+ : 
+N
+;
+
+681 
+B¿ke
+ = 
+FuÎOut
+;
+
+684 ifĞ
+Cu¼’t_V–oc™y
+ > 1.0 && Current_Velocity <= 3.333 )
+
+689 
+T¿nsmissiÚ
+ = ( 
+S³ed
+ > 1.0 && S³ed <ğ4.16667è? 
+F1
+ :
+
+690 Ğ
+S³ed
+ > 4.16667 && S³ed <ğ5.55è? 
+F2
+ : 
+F1
+;
+
+692 
+B¿ke
+ = 
+FuÎOut
+;
+
+706 
+xStus
+ = 
+pdFALSE
+;
+
+708 ifĞ
+B¿ke_FÏg
+ !ğ
+B¿ke
+è
+xStus
+ = 
+	`xQueueS’d
+(
+xQueueB¿keHªdË
+, &Brake, 0);
+
+709 ifĞ
+T¿nsmissiÚ
+ !ğ
+T¿nsmissiÚ_FÏg
+è
+xStus
+ = 
+	`xQueueS’d
+(
+xQueueT¿nsmissiÚHªdË
+, &Transmission, 0);
+
+711 
 	`vTaskD–‘e
 (
 NULL
 );
 
-580 
+712 
+	}
+}
+
+715 
+	$vT¿nsmissiÚIn™
+Ğ*
+pvP¬am‘”s
+)
+
+724 ifĞ
+T¿nsmissiÚ_FÏg
+ =ğ
+N
+)
+
+726 
+	`MoveTo
+(0,0.0);
+
+727 
+	`vTaskD–ay
+(1000 / 
+pÜtTICK_RATE_MS
+);
+
+728 ifĞ((
+adc_d©a
+[0] / 250è=ğ
+LEFT
+è|| (×dc_d©a[0] / 250è=ğ
+RIGHT
+) )
+
+729 
+	`move_ŒªsmissiÚ_to_û¹aš_¡©e
+();
+
+731 
+	`move_ŒªsmissiÚ_to_û¹aš_¡©e
+();
+
+733 
+	`vTaskD–‘e
+(
+NULL
+);
+
+734 
 	}
 }
 
@@ -169743,11 +170345,19 @@ tm´eg
 
 2 
 	#Te¡
- 0
+ 1
 
 3 
+_BoŞ
+ 
+Úû
+ = 0;
 
 	)
+
+4 
+	gŒªsmissiÚ
+ = 0;
 
 5 
 	$maš
@@ -169755,6 +170365,10 @@ tm´eg
 
 7 
 	`BßrdS¹
+();
+
+8 
+	`PID_In™
 ();
 
 9 #ià(
@@ -169797,7 +170411,13 @@ NULL
 xS¹HªdË
 );
 
-19 
+20 
+	`vSem­hÜeC»©eBš¬y
+(
+xUARTEv’t
+);
+
+21 
 	`xTaskC»©e
 (
 vWa™šgEv’t
@@ -169809,13 +170429,13 @@ NULL
 xWa™šgHªdË
 );
 
-20 
+22 
 	`vTaskSu¥’d
 (
 xWa™šgHªdË
 );
 
-23 
+25 
 	`xTaskC»©e
 (
 vMes§geS’dšg
@@ -169827,13 +170447,13 @@ NULL
 xMaHªdË
 );
 
-24 
+26 
 	`vTaskSu¥’d
 (
 xMaHªdË
 );
 
-27 
+29 
 	`xTaskC»©e
 (
 vClutchMªagem’t
@@ -169845,13 +170465,13 @@ NULL
 xClutchHªdË
 );
 
-28 
+30 
 	`vTaskSu¥’d
 (
 xClutchHªdË
 );
 
-31 
+33 
 	`xTaskC»©e
 (
 vB¿keMªagem’t
@@ -169863,13 +170483,13 @@ NULL
 xB¿keHªdË
 );
 
-32 
+34 
 	`vTaskSu¥’d
 (
 xB¿keHªdË
 );
 
-35 
+37 
 	`xTaskC»©e
 (
 vGasMªagem’t
@@ -169881,13 +170501,13 @@ NULL
 xGasHªdË
 );
 
-36 
+38 
 	`vTaskSu¥’d
 (
 xGasHªdË
 );
 
-39 
+41 
 	`xTaskC»©e
 (
 vMªagem’tG—rsBox
@@ -169899,13 +170519,13 @@ NULL
 xG—rsHªdË
  );
 
-40 
+42 
 	`vTaskSu¥’d
 (
 xG—rsHªdË
 );
 
-43 
+45 
 	`xTaskC»©e
 (
 vModBusMªagem’t
@@ -169917,13 +170537,13 @@ NULL
 xModBusHªdË
  );
 
-44 
+46 
 	`vTaskSu¥’d
 (
 xModBusHªdË
 );
 
-47 
+49 
 	`xTaskC»©e
 (
 vSecur™yMemÜyMªagem’t
@@ -169935,67 +170555,135 @@ NULL
 xQueueMªagHªdË
  );
 
-48 
+50 
 	`vTaskSu¥’d
 (
 xQueueMªagHªdË
 );
 
-50 
-xQueue20HªdË
- = 
-	`xQueueC»©e
-(3, ());
-
-51 
-xQueueB¿keHªdË
- = 
-	`xQueueC»©e
-(3, (
-ušt8_t
-));
-
-52 
-xQueueT¿nsmissiÚHªdË
- = 
-	`xQueueC»©e
-(3, (
-ušt8_t
-));
-
-54 ifĞ
-xQueue20HªdË
- !ğ
+53 
+	`xTaskC»©e
+(
+vT¿nsmissiÚIn™
+,(*è"INIT", 
+cÚfigMINIMAL_STACK_SIZE
+, 
 NULL
- &&
+, 1, &
+xTrIn™
+);
 
-55 
-xQueueB¿keHªdË
- !ğ
-NULL
- &&
+54 
+	`vTaskSu¥’d
+(
+xTrIn™
+);
 
 56 
+xQueue20HªdË
+ = 
+	`xQueueC»©e
+(1, ());
+
+57 
+xQueueB¿keHªdË
+ = 
+	`xQueueC»©e
+(1, (
+ušt8_t
+));
+
+58 
 xQueueT¿nsmissiÚHªdË
+ = 
+	`xQueueC»©e
+(1, (
+ušt8_t
+));
+
+59 
+xQueueClutchHªdË
+ = 
+	`xQueueC»©e
+(1, (
+ušt8_t
+));
+
+60 
+xQueueGasHªdË
+ = 
+	`xQueueC»©e
+(1, (
+ušt8_t
+));
+
+62 
+xEv’tStus
+ = 
+	`xEv’tGroupC»©e
+();
+
+64 
+	`£t_pš
+(
+PIN1_12V
+);
+
+65 ifĞ
+xQueue20HªdË
+ !ğ
+NULL
+ &&
+
+66 
+xQueueB¿keHªdË
+ !ğ
+NULL
+ &&
+
+67 
+xQueueT¿nsmissiÚHªdË
+ !ğ
+NULL
+ &&
+
+68 
+xQueueClutchHªdË
+ !ğ
+NULL
+ &&
+
+69 
+xQueueGasHªdË
  !ğ
 NULL
 è{ 
 	`vTaskS¹ScheduËr
 (); }
 
-57 #–ià(
+70 #–ià(
 Te¡
  == 1)
 
-64 
-	`MoveTo
+72 
+Clutch_FÏg
+ = 1;
+
+75 ifĞ
+Úû
+ == 1)
+
+77 
+	`Move_Clutch
 (
-dœeùiÚ
-, 
-T¿nsmissiÚPWM
+FuÎ
 );
 
-67 
+79 
+Úû
+ = 0;
+
+86 
 	}
 }
 

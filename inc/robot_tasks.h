@@ -15,6 +15,12 @@ struct
 }StartFlags;
 /// FreeRTOS structures
 
+#define ALL_BITS            (0xFF)
+#define Brake_BIT           (1 << 0)
+#define Clutch_BIT          (1 << 1)
+#define Transmission_BIT    (1 << 2)
+EventGroupHandle_t xEventStatus;
+
 // старт и перезагрузка
 xSemaphoreHandle xStartEvent;
 
