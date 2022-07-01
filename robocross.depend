@@ -844,7 +844,7 @@
 1655441001 c:\users\caska\desktop\projects\rcr\3. robocross\robocross\freertos_lib\timers.h
 	"task.h"
 
-1656576292 c:\users\caska\desktop\projects\rcr\3. robocross\robocross\inc\robot_tasks.h
+1656679413 c:\users\caska\desktop\projects\rcr\3. robocross\robocross\inc\robot_tasks.h
 	"main.h"
 
 1655470116 c:\users\caska\desktop\projects\rcr\3. robocross\robocross\modbus\modbus.h
@@ -922,16 +922,16 @@
 1656608340 source:c:\users\caska\desktop\projects\rcr\3. robocross\robocross\src\carmanagement.c
 	"CarManagement.h"
 
-1656438358 source:c:\users\caska\desktop\projects\rcr\3. robocross\robocross\src\carregulators.c
+1656701051 source:c:\users\caska\desktop\projects\rcr\3. robocross\robocross\src\carregulators.c
 	"CarRegulators.h"
 
-1656615315 source:c:\users\caska\desktop\projects\rcr\3. robocross\robocross\src\main.c
+1656702719 source:c:\users\caska\desktop\projects\rcr\3. robocross\robocross\src\main.c
 	"main.h"
 
-1656615861 source:c:\users\caska\desktop\projects\rcr\3. robocross\robocross\src\robot_tasks.c
+1656702140 source:c:\users\caska\desktop\projects\rcr\3. robocross\robocross\src\robot_tasks.c
 	"robot_tasks.h"
 
-1656609919 source:c:\users\caska\desktop\projects\rcr\3. robocross\robocross\fil lib\interrupts.c
+1656702712 source:c:\users\caska\desktop\projects\rcr\3. robocross\robocross\fil lib\interrupts.c
 	"CarManagement.h"
 
 1655441001 source:c:\users\caska\desktop\projects\rcr\3. robocross\robocross\src\system_stm32f4xx.c

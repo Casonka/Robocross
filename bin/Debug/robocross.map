@@ -3,7 +3,7 @@ Archive member included to satisfy reference by file (symbol)
 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldf3.o)
                               obj\debug\src\carregulators.o (__aeabi_dmul)
 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
-                              obj\debug\src\robot_tasks.o (__aeabi_dsub)
+                              obj\debug\src\robot_tasks.o (__aeabi_dadd)
 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
                               obj\debug\src\carregulators.o (__aeabi_ddiv)
 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_cmpdf2.o)
@@ -121,41 +121,20 @@ Discarded input sections
  .text          0x00000000        0x0 obj\debug\freertos_lib\event_groups.o
  .data          0x00000000        0x0 obj\debug\freertos_lib\event_groups.o
  .bss           0x00000000        0x0 obj\debug\freertos_lib\event_groups.o
- .text.xEventGroupCreate
-                0x00000000       0x2e obj\debug\freertos_lib\event_groups.o
  .text.xEventGroupSync
                 0x00000000      0x188 obj\debug\freertos_lib\event_groups.o
- .text.xEventGroupWaitBits
-                0x00000000      0x1c4 obj\debug\freertos_lib\event_groups.o
- .text.xEventGroupClearBits
-                0x00000000       0x7c obj\debug\freertos_lib\event_groups.o
  .text.xEventGroupGetBitsFromISR
                 0x00000000       0x48 obj\debug\freertos_lib\event_groups.o
- .text.xEventGroupSetBits
-                0x00000000      0x128 obj\debug\freertos_lib\event_groups.o
  .text.vEventGroupDelete
                 0x00000000       0x62 obj\debug\freertos_lib\event_groups.o
  .text.vEventGroupSetBitsCallback
                 0x00000000       0x1e obj\debug\freertos_lib\event_groups.o
  .text.vEventGroupClearBitsCallback
                 0x00000000       0x1e obj\debug\freertos_lib\event_groups.o
- .text.prvTestWaitCondition
-                0x00000000       0x4c obj\debug\freertos_lib\event_groups.o
  .text.uxEventGroupGetNumber
                 0x00000000       0x2c obj\debug\freertos_lib\event_groups.o
  .text.vEventGroupSetNumber
                 0x00000000       0x1c obj\debug\freertos_lib\event_groups.o
- .debug_info    0x00000000     0x11f6 obj\debug\freertos_lib\event_groups.o
- .debug_abbrev  0x00000000      0x36a obj\debug\freertos_lib\event_groups.o
- .debug_aranges
-                0x00000000       0x78 obj\debug\freertos_lib\event_groups.o
- .debug_ranges  0x00000000       0x68 obj\debug\freertos_lib\event_groups.o
- .debug_line    0x00000000      0x5d6 obj\debug\freertos_lib\event_groups.o
- .debug_str     0x00000000      0x9d4 obj\debug\freertos_lib\event_groups.o
- .comment       0x00000000       0x4d obj\debug\freertos_lib\event_groups.o
- .debug_frame   0x00000000      0x1d0 obj\debug\freertos_lib\event_groups.o
- .ARM.attributes
-                0x00000000       0x34 obj\debug\freertos_lib\event_groups.o
  .text          0x00000000        0x0 obj\debug\freertos_lib\heap_2.o
  .data          0x00000000        0x0 obj\debug\freertos_lib\heap_2.o
  .bss           0x00000000        0x0 obj\debug\freertos_lib\heap_2.o
@@ -305,10 +284,6 @@ Discarded input sections
                 0x00000000      0x11c obj\debug\freertos_lib\tasks.o
  .text.xTaskCatchUpTicks
                 0x00000000       0x54 obj\debug\freertos_lib\tasks.o
- .text.vTaskPlaceOnUnorderedEventList
-                0x00000000       0x84 obj\debug\freertos_lib\tasks.o
- .text.vTaskRemoveFromUnorderedEventList
-                0x00000000       0xcc obj\debug\freertos_lib\tasks.o
  .text.vTaskSetTimeOutState
                 0x00000000       0x50 obj\debug\freertos_lib\tasks.o
  .text.uxTaskGetTaskNumber
@@ -323,8 +298,6 @@ Discarded input sections
                 0x00000000       0x38 obj\debug\freertos_lib\tasks.o
  .text.xTaskGetCurrentTaskHandle
                 0x00000000       0x20 obj\debug\freertos_lib\tasks.o
- .text.uxTaskResetEventItemValue
-                0x00000000       0x34 obj\debug\freertos_lib\tasks.o
  .text.ulTaskGenericNotifyTake
                 0x00000000       0xd4 obj\debug\freertos_lib\tasks.o
  .text.xTaskGenericNotifyWait
@@ -510,7 +483,7 @@ LOAD d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-non
                 0x08000000                g_pfnVectors
                 0x08000188                . = ALIGN (0x4)
 
-.text           0x08000190     0x80b0
+.text           0x08000190     0x8700
                 0x08000190                . = ALIGN (0x4)
  *(.text)
  .text          0x08000190       0x40 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
@@ -661,474 +634,499 @@ LOAD d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-non
                 0x08002488                add_ext_interrupt
  .text.SetPWM   0x080025a8      0x110 obj\debug\fil lib\rcr dstu\rcr_setupcustom.o
                 0x080025a8                SetPWM
+ .text.xEventGroupCreate
+                0x080026b8       0x2e obj\debug\freertos_lib\event_groups.o
+                0x080026b8                xEventGroupCreate
+ *fill*         0x080026e6        0x2 
+ .text.xEventGroupWaitBits
+                0x080026e8      0x1c4 obj\debug\freertos_lib\event_groups.o
+                0x080026e8                xEventGroupWaitBits
+ .text.xEventGroupClearBits
+                0x080028ac       0x7c obj\debug\freertos_lib\event_groups.o
+                0x080028ac                xEventGroupClearBits
+ .text.xEventGroupSetBits
+                0x08002928      0x128 obj\debug\freertos_lib\event_groups.o
+                0x08002928                xEventGroupSetBits
+ .text.prvTestWaitCondition
+                0x08002a50       0x4c obj\debug\freertos_lib\event_groups.o
  .text.pvPortMalloc
-                0x080026b8      0x164 obj\debug\freertos_lib\heap_2.o
-                0x080026b8                pvPortMalloc
+                0x08002a9c      0x164 obj\debug\freertos_lib\heap_2.o
+                0x08002a9c                pvPortMalloc
  .text.vPortFree
-                0x0800281c       0x74 obj\debug\freertos_lib\heap_2.o
-                0x0800281c                vPortFree
+                0x08002c00       0x74 obj\debug\freertos_lib\heap_2.o
+                0x08002c00                vPortFree
  .text.prvHeapInit
-                0x08002890       0x54 obj\debug\freertos_lib\heap_2.o
+                0x08002c74       0x54 obj\debug\freertos_lib\heap_2.o
  .text.vListInitialise
-                0x080028e4       0x40 obj\debug\freertos_lib\list.o
-                0x080028e4                vListInitialise
+                0x08002cc8       0x40 obj\debug\freertos_lib\list.o
+                0x08002cc8                vListInitialise
  .text.vListInitialiseItem
-                0x08002924       0x1a obj\debug\freertos_lib\list.o
-                0x08002924                vListInitialiseItem
+                0x08002d08       0x1a obj\debug\freertos_lib\list.o
+                0x08002d08                vListInitialiseItem
  .text.vListInsertEnd
-                0x0800293e       0x48 obj\debug\freertos_lib\list.o
-                0x0800293e                vListInsertEnd
+                0x08002d22       0x48 obj\debug\freertos_lib\list.o
+                0x08002d22                vListInsertEnd
  .text.vListInsert
-                0x08002986       0x74 obj\debug\freertos_lib\list.o
-                0x08002986                vListInsert
+                0x08002d6a       0x74 obj\debug\freertos_lib\list.o
+                0x08002d6a                vListInsert
  .text.uxListRemove
-                0x080029fa       0x54 obj\debug\freertos_lib\list.o
-                0x080029fa                uxListRemove
- *fill*         0x08002a4e        0x2 
+                0x08002dde       0x54 obj\debug\freertos_lib\list.o
+                0x08002dde                uxListRemove
+ *fill*         0x08002e32        0x2 
  .text.pxPortInitialiseStack
-                0x08002a50       0x68 obj\debug\freertos_lib\port.o
-                0x08002a50                pxPortInitialiseStack
+                0x08002e34       0x68 obj\debug\freertos_lib\port.o
+                0x08002e34                pxPortInitialiseStack
  .text.prvTaskExitError
-                0x08002ab8       0x58 obj\debug\freertos_lib\port.o
+                0x08002e9c       0x58 obj\debug\freertos_lib\port.o
+ *fill*         0x08002ef4        0xc 
  .text.SVC_Handler
-                0x08002b10       0x28 obj\debug\freertos_lib\port.o
-                0x08002b10                SVC_Handler
+                0x08002f00       0x28 obj\debug\freertos_lib\port.o
+                0x08002f00                SVC_Handler
  .text.prvPortStartFirstTask
-                0x08002b38       0x2c obj\debug\freertos_lib\port.o
+                0x08002f28       0x2c obj\debug\freertos_lib\port.o
  .text.xPortStartScheduler
-                0x08002b64      0x164 obj\debug\freertos_lib\port.o
-                0x08002b64                xPortStartScheduler
+                0x08002f54      0x164 obj\debug\freertos_lib\port.o
+                0x08002f54                xPortStartScheduler
  .text.vPortEnterCritical
-                0x08002cc8       0x60 obj\debug\freertos_lib\port.o
-                0x08002cc8                vPortEnterCritical
+                0x080030b8       0x60 obj\debug\freertos_lib\port.o
+                0x080030b8                vPortEnterCritical
  .text.vPortExitCritical
-                0x08002d28       0x54 obj\debug\freertos_lib\port.o
-                0x08002d28                vPortExitCritical
- *fill*         0x08002d7c        0x4 
+                0x08003118       0x54 obj\debug\freertos_lib\port.o
+                0x08003118                vPortExitCritical
+ *fill*         0x0800316c        0x4 
  .text.PendSV_Handler
-                0x08002d80       0x68 obj\debug\freertos_lib\port.o
-                0x08002d80                PendSV_Handler
+                0x08003170       0x68 obj\debug\freertos_lib\port.o
+                0x08003170                PendSV_Handler
  .text.SysTick_Handler
-                0x08002de8       0x44 obj\debug\freertos_lib\port.o
-                0x08002de8                SysTick_Handler
+                0x080031d8       0x44 obj\debug\freertos_lib\port.o
+                0x080031d8                SysTick_Handler
  .text.vPortSetupTimerInterrupt
-                0x08002e2c       0x48 obj\debug\freertos_lib\port.o
-                0x08002e2c                vPortSetupTimerInterrupt
+                0x0800321c       0x48 obj\debug\freertos_lib\port.o
+                0x0800321c                vPortSetupTimerInterrupt
  .text.vPortEnableVFP
-                0x08002e74       0x18 obj\debug\freertos_lib\port.o
+                0x08003264       0x18 obj\debug\freertos_lib\port.o
  .text.vPortValidateInterruptPriority
-                0x08002e8c       0x80 obj\debug\freertos_lib\port.o
-                0x08002e8c                vPortValidateInterruptPriority
+                0x0800327c       0x80 obj\debug\freertos_lib\port.o
+                0x0800327c                vPortValidateInterruptPriority
  .text.xQueueGenericReset
-                0x08002f0c       0xd0 obj\debug\freertos_lib\queue.o
-                0x08002f0c                xQueueGenericReset
+                0x080032fc       0xd0 obj\debug\freertos_lib\queue.o
+                0x080032fc                xQueueGenericReset
  .text.xQueueGenericCreate
-                0x08002fdc       0xbe obj\debug\freertos_lib\queue.o
-                0x08002fdc                xQueueGenericCreate
+                0x080033cc       0xbe obj\debug\freertos_lib\queue.o
+                0x080033cc                xQueueGenericCreate
  .text.prvInitialiseNewQueue
-                0x0800309a       0x46 obj\debug\freertos_lib\queue.o
+                0x0800348a       0x46 obj\debug\freertos_lib\queue.o
  .text.xQueueGenericSend
-                0x080030e0      0x200 obj\debug\freertos_lib\queue.o
-                0x080030e0                xQueueGenericSend
+                0x080034d0      0x200 obj\debug\freertos_lib\queue.o
+                0x080034d0                xQueueGenericSend
  .text.xQueueGenericSendFromISR
-                0x080032e0      0x154 obj\debug\freertos_lib\queue.o
-                0x080032e0                xQueueGenericSendFromISR
+                0x080036d0      0x154 obj\debug\freertos_lib\queue.o
+                0x080036d0                xQueueGenericSendFromISR
  .text.xQueueReceive
-                0x08003434      0x1c0 obj\debug\freertos_lib\queue.o
-                0x08003434                xQueueReceive
+                0x08003824      0x1c0 obj\debug\freertos_lib\queue.o
+                0x08003824                xQueueReceive
  .text.xQueueSemaphoreTake
-                0x080035f4      0x218 obj\debug\freertos_lib\queue.o
-                0x080035f4                xQueueSemaphoreTake
+                0x080039e4      0x218 obj\debug\freertos_lib\queue.o
+                0x080039e4                xQueueSemaphoreTake
  .text.prvGetDisinheritPriorityAfterTimeout
-                0x0800380c       0x30 obj\debug\freertos_lib\queue.o
+                0x08003bfc       0x30 obj\debug\freertos_lib\queue.o
  .text.prvCopyDataToQueue
-                0x0800383c       0xd4 obj\debug\freertos_lib\queue.o
+                0x08003c2c       0xd4 obj\debug\freertos_lib\queue.o
  .text.prvCopyDataFromQueue
-                0x08003910       0x4c obj\debug\freertos_lib\queue.o
+                0x08003d00       0x4c obj\debug\freertos_lib\queue.o
  .text.prvUnlockQueue
-                0x0800395c       0xa4 obj\debug\freertos_lib\queue.o
+                0x08003d4c       0xa4 obj\debug\freertos_lib\queue.o
  .text.prvIsQueueEmpty
-                0x08003a00       0x2c obj\debug\freertos_lib\queue.o
+                0x08003df0       0x2c obj\debug\freertos_lib\queue.o
  .text.prvIsQueueFull
-                0x08003a2c       0x30 obj\debug\freertos_lib\queue.o
+                0x08003e1c       0x30 obj\debug\freertos_lib\queue.o
  .text.vQueueAddToRegistry
-                0x08003a5c       0x54 obj\debug\freertos_lib\queue.o
-                0x08003a5c                vQueueAddToRegistry
+                0x08003e4c       0x54 obj\debug\freertos_lib\queue.o
+                0x08003e4c                vQueueAddToRegistry
  .text.vQueueWaitForMessageRestricted
-                0x08003ab0       0x6a obj\debug\freertos_lib\queue.o
-                0x08003ab0                vQueueWaitForMessageRestricted
+                0x08003ea0       0x6a obj\debug\freertos_lib\queue.o
+                0x08003ea0                vQueueWaitForMessageRestricted
  .text.xTaskCreate
-                0x08003b1a       0x82 obj\debug\freertos_lib\tasks.o
-                0x08003b1a                xTaskCreate
+                0x08003f0a       0x82 obj\debug\freertos_lib\tasks.o
+                0x08003f0a                xTaskCreate
  .text.prvInitialiseNewTask
-                0x08003b9c      0x130 obj\debug\freertos_lib\tasks.o
+                0x08003f8c      0x130 obj\debug\freertos_lib\tasks.o
  .text.prvAddNewTaskToReadyList
-                0x08003ccc       0xdc obj\debug\freertos_lib\tasks.o
+                0x080040bc       0xdc obj\debug\freertos_lib\tasks.o
  .text.xTaskDelayUntil
-                0x08003da8      0x100 obj\debug\freertos_lib\tasks.o
-                0x08003da8                xTaskDelayUntil
+                0x08004198      0x100 obj\debug\freertos_lib\tasks.o
+                0x08004198                xTaskDelayUntil
  .text.vTaskDelay
-                0x08003ea8       0x6c obj\debug\freertos_lib\tasks.o
-                0x08003ea8                vTaskDelay
+                0x08004298       0x6c obj\debug\freertos_lib\tasks.o
+                0x08004298                vTaskDelay
  .text.vTaskPrioritySet
-                0x08003f14      0x158 obj\debug\freertos_lib\tasks.o
-                0x08003f14                vTaskPrioritySet
+                0x08004304      0x158 obj\debug\freertos_lib\tasks.o
+                0x08004304                vTaskPrioritySet
  .text.vTaskSuspend
-                0x0800406c      0x140 obj\debug\freertos_lib\tasks.o
-                0x0800406c                vTaskSuspend
+                0x0800445c      0x140 obj\debug\freertos_lib\tasks.o
+                0x0800445c                vTaskSuspend
  .text.prvTaskIsTaskSuspended
-                0x080041ac       0x64 obj\debug\freertos_lib\tasks.o
+                0x0800459c       0x64 obj\debug\freertos_lib\tasks.o
  .text.vTaskResume
-                0x08004210       0xbc obj\debug\freertos_lib\tasks.o
-                0x08004210                vTaskResume
+                0x08004600       0xbc obj\debug\freertos_lib\tasks.o
+                0x08004600                vTaskResume
  .text.vTaskStartScheduler
-                0x080042cc       0xa4 obj\debug\freertos_lib\tasks.o
-                0x080042cc                vTaskStartScheduler
+                0x080046bc       0xa4 obj\debug\freertos_lib\tasks.o
+                0x080046bc                vTaskStartScheduler
  .text.vTaskSuspendAll
-                0x08004370       0x1c obj\debug\freertos_lib\tasks.o
-                0x08004370                vTaskSuspendAll
+                0x08004760       0x1c obj\debug\freertos_lib\tasks.o
+                0x08004760                vTaskSuspendAll
  .text.xTaskResumeAll
-                0x0800438c      0x138 obj\debug\freertos_lib\tasks.o
-                0x0800438c                xTaskResumeAll
+                0x0800477c      0x138 obj\debug\freertos_lib\tasks.o
+                0x0800477c                xTaskResumeAll
  .text.xTaskGetTickCount
-                0x080044c4       0x24 obj\debug\freertos_lib\tasks.o
-                0x080044c4                xTaskGetTickCount
+                0x080048b4       0x24 obj\debug\freertos_lib\tasks.o
+                0x080048b4                xTaskGetTickCount
  .text.xTaskIncrementTick
-                0x080044e8      0x18c obj\debug\freertos_lib\tasks.o
-                0x080044e8                xTaskIncrementTick
+                0x080048d8      0x18c obj\debug\freertos_lib\tasks.o
+                0x080048d8                xTaskIncrementTick
  .text.vTaskSwitchContext
-                0x08004674      0x100 obj\debug\freertos_lib\tasks.o
-                0x08004674                vTaskSwitchContext
+                0x08004a64      0x100 obj\debug\freertos_lib\tasks.o
+                0x08004a64                vTaskSwitchContext
  .text.vTaskPlaceOnEventList
-                0x08004774       0x4c obj\debug\freertos_lib\tasks.o
-                0x08004774                vTaskPlaceOnEventList
+                0x08004b64       0x4c obj\debug\freertos_lib\tasks.o
+                0x08004b64                vTaskPlaceOnEventList
+ .text.vTaskPlaceOnUnorderedEventList
+                0x08004bb0       0x84 obj\debug\freertos_lib\tasks.o
+                0x08004bb0                vTaskPlaceOnUnorderedEventList
  .text.vTaskPlaceOnEventListRestricted
-                0x080047c0       0x5c obj\debug\freertos_lib\tasks.o
-                0x080047c0                vTaskPlaceOnEventListRestricted
+                0x08004c34       0x5c obj\debug\freertos_lib\tasks.o
+                0x08004c34                vTaskPlaceOnEventListRestricted
  .text.xTaskRemoveFromEventList
-                0x0800481c       0xc4 obj\debug\freertos_lib\tasks.o
-                0x0800481c                xTaskRemoveFromEventList
+                0x08004c90       0xc4 obj\debug\freertos_lib\tasks.o
+                0x08004c90                xTaskRemoveFromEventList
+ .text.vTaskRemoveFromUnorderedEventList
+                0x08004d54       0xcc obj\debug\freertos_lib\tasks.o
+                0x08004d54                vTaskRemoveFromUnorderedEventList
  .text.vTaskInternalSetTimeOutState
-                0x080048e0       0x30 obj\debug\freertos_lib\tasks.o
-                0x080048e0                vTaskInternalSetTimeOutState
+                0x08004e20       0x30 obj\debug\freertos_lib\tasks.o
+                0x08004e20                vTaskInternalSetTimeOutState
  .text.xTaskCheckForTimeOut
-                0x08004910       0xd0 obj\debug\freertos_lib\tasks.o
-                0x08004910                xTaskCheckForTimeOut
+                0x08004e50       0xd0 obj\debug\freertos_lib\tasks.o
+                0x08004e50                xTaskCheckForTimeOut
  .text.vTaskMissedYield
-                0x080049e0       0x18 obj\debug\freertos_lib\tasks.o
-                0x080049e0                vTaskMissedYield
+                0x08004f20       0x18 obj\debug\freertos_lib\tasks.o
+                0x08004f20                vTaskMissedYield
  .text.prvIdleTask
-                0x080049f8       0x34 obj\debug\freertos_lib\tasks.o
+                0x08004f38       0x34 obj\debug\freertos_lib\tasks.o
  .text.prvInitialiseTaskLists
-                0x08004a2c       0x80 obj\debug\freertos_lib\tasks.o
+                0x08004f6c       0x80 obj\debug\freertos_lib\tasks.o
  .text.prvCheckTasksWaitingTermination
-                0x08004aac       0x5c obj\debug\freertos_lib\tasks.o
+                0x08004fec       0x5c obj\debug\freertos_lib\tasks.o
  .text.prvDeleteTCB
-                0x08004b08       0x20 obj\debug\freertos_lib\tasks.o
+                0x08005048       0x20 obj\debug\freertos_lib\tasks.o
  .text.prvResetNextTaskUnblockTime
-                0x08004b28       0x38 obj\debug\freertos_lib\tasks.o
+                0x08005068       0x38 obj\debug\freertos_lib\tasks.o
  .text.xTaskGetSchedulerState
-                0x08004b60       0x3c obj\debug\freertos_lib\tasks.o
-                0x08004b60                xTaskGetSchedulerState
+                0x080050a0       0x3c obj\debug\freertos_lib\tasks.o
+                0x080050a0                xTaskGetSchedulerState
  .text.xTaskPriorityInherit
-                0x08004b9c       0xf0 obj\debug\freertos_lib\tasks.o
-                0x08004b9c                xTaskPriorityInherit
+                0x080050dc       0xf0 obj\debug\freertos_lib\tasks.o
+                0x080050dc                xTaskPriorityInherit
  .text.xTaskPriorityDisinherit
-                0x08004c8c       0xf8 obj\debug\freertos_lib\tasks.o
-                0x08004c8c                xTaskPriorityDisinherit
+                0x080051cc       0xf8 obj\debug\freertos_lib\tasks.o
+                0x080051cc                xTaskPriorityDisinherit
  .text.vTaskPriorityDisinheritAfterTimeout
-                0x08004d84      0x124 obj\debug\freertos_lib\tasks.o
-                0x08004d84                vTaskPriorityDisinheritAfterTimeout
+                0x080052c4      0x124 obj\debug\freertos_lib\tasks.o
+                0x080052c4                vTaskPriorityDisinheritAfterTimeout
+ .text.uxTaskResetEventItemValue
+                0x080053e8       0x34 obj\debug\freertos_lib\tasks.o
+                0x080053e8                uxTaskResetEventItemValue
  .text.pvTaskIncrementMutexHeldCount
-                0x08004ea8       0x28 obj\debug\freertos_lib\tasks.o
-                0x08004ea8                pvTaskIncrementMutexHeldCount
+                0x0800541c       0x28 obj\debug\freertos_lib\tasks.o
+                0x0800541c                pvTaskIncrementMutexHeldCount
  .text.prvAddCurrentTaskToDelayedList
-                0x08004ed0       0xd0 obj\debug\freertos_lib\tasks.o
+                0x08005444       0xd0 obj\debug\freertos_lib\tasks.o
  .text.xTimerCreateTimerTask
-                0x08004fa0       0x64 obj\debug\freertos_lib\timers.o
-                0x08004fa0                xTimerCreateTimerTask
+                0x08005514       0x64 obj\debug\freertos_lib\timers.o
+                0x08005514                xTimerCreateTimerTask
  .text.xTimerGenericCommand
-                0x08005004       0x9c obj\debug\freertos_lib\timers.o
-                0x08005004                xTimerGenericCommand
+                0x08005578       0x9c obj\debug\freertos_lib\timers.o
+                0x08005578                xTimerGenericCommand
  .text.prvProcessExpiredTimer
-                0x080050a0       0xa0 obj\debug\freertos_lib\timers.o
+                0x08005614       0xa0 obj\debug\freertos_lib\timers.o
  .text.prvTimerTask
-                0x08005140       0x28 obj\debug\freertos_lib\timers.o
+                0x080056b4       0x28 obj\debug\freertos_lib\timers.o
  .text.prvProcessTimerOrBlockTask
-                0x08005168       0xa4 obj\debug\freertos_lib\timers.o
+                0x080056dc       0xa4 obj\debug\freertos_lib\timers.o
  .text.prvGetNextExpireTime
-                0x0800520c       0x48 obj\debug\freertos_lib\timers.o
+                0x08005780       0x48 obj\debug\freertos_lib\timers.o
  .text.prvSampleTimeNow
-                0x08005254       0x40 obj\debug\freertos_lib\timers.o
+                0x080057c8       0x40 obj\debug\freertos_lib\timers.o
  .text.prvInsertTimerInActiveList
-                0x08005294       0x94 obj\debug\freertos_lib\timers.o
+                0x08005808       0x94 obj\debug\freertos_lib\timers.o
  .text.prvProcessReceivedCommands
-                0x08005328      0x194 obj\debug\freertos_lib\timers.o
+                0x0800589c      0x194 obj\debug\freertos_lib\timers.o
  .text.prvSwitchTimerLists
-                0x080054bc       0xc8 obj\debug\freertos_lib\timers.o
+                0x08005a30       0xc8 obj\debug\freertos_lib\timers.o
  .text.prvCheckForValidListAndQueue
-                0x08005584       0x6c obj\debug\freertos_lib\timers.o
+                0x08005af8       0x6c obj\debug\freertos_lib\timers.o
  .text.ModBus_Init
-                0x080055f0       0x90 obj\debug\modbus\modbus.o
-                0x080055f0                ModBus_Init
+                0x08005b64       0x90 obj\debug\modbus\modbus.o
+                0x08005b64                ModBus_Init
  .text.ModBus_QueueClear
-                0x08005680       0x58 obj\debug\modbus\modbus.o
-                0x08005680                ModBus_QueueClear
+                0x08005bf4       0x58 obj\debug\modbus\modbus.o
+                0x08005bf4                ModBus_QueueClear
  .text.LRC_Counting
-                0x080056d8       0x40 obj\debug\modbus\modbus.o
-                0x080056d8                LRC_Counting
+                0x08005c4c       0x40 obj\debug\modbus\modbus.o
+                0x08005c4c                LRC_Counting
  .text.ModBus_DEC_TO_ASCII_Converter
-                0x08005718       0x5c obj\debug\modbus\modbus.o
-                0x08005718                ModBus_DEC_TO_ASCII_Converter
+                0x08005c8c       0x5c obj\debug\modbus\modbus.o
+                0x08005c8c                ModBus_DEC_TO_ASCII_Converter
  .text.ModBus_HEX_TO_ASCII_Converter
-                0x08005774       0x78 obj\debug\modbus\modbus.o
-                0x08005774                ModBus_HEX_TO_ASCII_Converter
+                0x08005ce8       0x78 obj\debug\modbus\modbus.o
+                0x08005ce8                ModBus_HEX_TO_ASCII_Converter
  .text.ModBus_ASCII_TO_HEX_Converter
-                0x080057ec       0x72 obj\debug\modbus\modbus.o
-                0x080057ec                ModBus_ASCII_TO_HEX_Converter
- *fill*         0x0800585e        0x2 
+                0x08005d60       0x72 obj\debug\modbus\modbus.o
+                0x08005d60                ModBus_ASCII_TO_HEX_Converter
+ *fill*         0x08005dd2        0x2 
  .text.ModBus_ClearMsgs
-                0x08005860       0x3c obj\debug\modbus\modbus.o
-                0x08005860                ModBus_ClearMsgs
+                0x08005dd4       0x3c obj\debug\modbus\modbus.o
+                0x08005dd4                ModBus_ClearMsgs
  .text.ModBus_CheckFrame
-                0x0800589c       0x84 obj\debug\modbus\modbus.o
-                0x0800589c                ModBus_CheckFrame
+                0x08005e10       0x84 obj\debug\modbus\modbus.o
+                0x08005e10                ModBus_CheckFrame
  .text.ModBus_ParsePacket
-                0x08005920      0x180 obj\debug\modbus\modbus.o
-                0x08005920                ModBus_ParsePacket
+                0x08005e94      0x180 obj\debug\modbus\modbus.o
+                0x08005e94                ModBus_ParsePacket
  .text.ModBus_IsFull_Queue
-                0x08005aa0       0x78 obj\debug\modbus\modbus.o
-                0x08005aa0                ModBus_IsFull_Queue
+                0x08006014       0x78 obj\debug\modbus\modbus.o
+                0x08006014                ModBus_IsFull_Queue
  .text.ModBus_SendResponse
-                0x08005b18       0x2c obj\debug\modbus\modbus.o
-                0x08005b18                ModBus_SendResponse
+                0x0800608c       0x2c obj\debug\modbus\modbus.o
+                0x0800608c                ModBus_SendResponse
  .text.ModBus_PutQueue
-                0x08005b44       0x5c obj\debug\modbus\modbus.o
-                0x08005b44                ModBus_PutQueue
+                0x080060b8       0x5c obj\debug\modbus\modbus.o
+                0x080060b8                ModBus_PutQueue
  .text.ModBus_SendResponseSpeed
-                0x08005ba0      0x128 obj\debug\modbus\modbus.o
-                0x08005ba0                ModBus_SendResponseSpeed
+                0x08006114      0x128 obj\debug\modbus\modbus.o
+                0x08006114                ModBus_SendResponseSpeed
  .text.Get_Queue
-                0x08005cc8       0x20 obj\debug\modbus\modbus.o
-                0x08005cc8                Get_Queue
+                0x0800623c       0x20 obj\debug\modbus\modbus.o
+                0x0800623c                Get_Queue
  .text.ModBus_SendByte
-                0x08005ce8       0x84 obj\debug\modbus\modbus.o
-                0x08005ce8                ModBus_SendByte
+                0x0800625c       0x84 obj\debug\modbus\modbus.o
+                0x0800625c                ModBus_SendByte
  .text.Move_Clutch
-                0x08005d6c       0xe8 obj\debug\src\carmanagement.o
-                0x08005d6c                Move_Clutch
+                0x080062e0       0xe8 obj\debug\src\carmanagement.o
+                0x080062e0                Move_Clutch
  .text.Get_Clutch
-                0x08005e54       0x40 obj\debug\src\carmanagement.o
-                0x08005e54                Get_Clutch
+                0x080063c8       0x40 obj\debug\src\carmanagement.o
+                0x080063c8                Get_Clutch
  .text.Get_Transmission
-                0x08005e94       0x8c obj\debug\src\carmanagement.o
-                0x08005e94                Get_Transmission
+                0x08006408       0x8c obj\debug\src\carmanagement.o
+                0x08006408                Get_Transmission
  .text.Set_Transmission
-                0x08005f20      0x128 obj\debug\src\carmanagement.o
-                0x08005f20                Set_Transmission
+                0x08006494      0x128 obj\debug\src\carmanagement.o
+                0x08006494                Set_Transmission
  .text.Median_Filter
-                0x08006048      0x114 obj\debug\src\carmanagement.o
-                0x08006048                Median_Filter
+                0x080065bc      0x114 obj\debug\src\carmanagement.o
+                0x080065bc                Median_Filter
  .text.move_transmission_to_certain_state
-                0x0800615c      0x100 obj\debug\src\carmanagement.o
-                0x0800615c                move_transmission_to_certain_state
- .text.Set_Gas  0x0800625c       0x70 obj\debug\src\carmanagement.o
-                0x0800625c                Set_Gas
+                0x080066d0      0x100 obj\debug\src\carmanagement.o
+                0x080066d0                move_transmission_to_certain_state
+ .text.Set_Gas  0x080067d0       0x70 obj\debug\src\carmanagement.o
+                0x080067d0                Set_Gas
  .text.Set_Brake
-                0x080062cc       0x40 obj\debug\src\carmanagement.o
-                0x080062cc                Set_Brake
+                0x08006840       0x40 obj\debug\src\carmanagement.o
+                0x08006840                Set_Brake
  .text.Get_Brake
-                0x0800630c       0x2c obj\debug\src\carmanagement.o
-                0x0800630c                Get_Brake
- .text.MoveTo   0x08006338       0xa8 obj\debug\src\carmanagement.o
-                0x08006338                MoveTo
+                0x08006880       0x2c obj\debug\src\carmanagement.o
+                0x08006880                Get_Brake
+ .text.MoveTo   0x080068ac       0xa8 obj\debug\src\carmanagement.o
+                0x080068ac                MoveTo
+ *fill*         0x08006954        0x4 
  .text.Speed_Calc_Car_HighFreq
-                0x080063e0      0x200 obj\debug\src\carregulators.o
-                0x080063e0                Speed_Calc_Car_HighFreq
+                0x08006958      0x200 obj\debug\src\carregulators.o
+                0x08006958                Speed_Calc_Car_HighFreq
  .text.Speed_Calc_Transmission
-                0x080065e0       0xc4 obj\debug\src\carregulators.o
-                0x080065e0                Speed_Calc_Transmission
+                0x08006b58       0xc4 obj\debug\src\carregulators.o
+                0x08006b58                Speed_Calc_Transmission
  .text.PID_Init
-                0x080066a4      0x12c obj\debug\src\carregulators.o
-                0x080066a4                PID_Init
+                0x08006c1c      0x12c obj\debug\src\carregulators.o
+                0x08006c1c                PID_Init
  .text.PID_Calc
-                0x080067d0      0x146 obj\debug\src\carregulators.o
-                0x080067d0                PID_Calc
- *fill*         0x08006916        0x2 
- .text.main     0x08006918      0x2c0 obj\debug\src\main.o
-                0x08006918                main
+                0x08006d48      0x146 obj\debug\src\carregulators.o
+                0x08006d48                PID_Calc
+ *fill*         0x08006e8e        0x2 
+ .text.main     0x08006e90      0x2cc obj\debug\src\main.o
+                0x08006e90                main
  .text.vApplicationTickHook
-                0x08006bd8       0x30 obj\debug\src\robot_tasks.o
-                0x08006bd8                vApplicationTickHook
+                0x0800715c        0xe obj\debug\src\robot_tasks.o
+                0x0800715c                vApplicationTickHook
  .text.vApplicationIdleHook
-                0x08006c08        0xe obj\debug\src\robot_tasks.o
-                0x08006c08                vApplicationIdleHook
+                0x0800716a        0xe obj\debug\src\robot_tasks.o
+                0x0800716a                vApplicationIdleHook
  .text.vApplicationStackOverflowHook
-                0x08006c16       0x16 obj\debug\src\robot_tasks.o
-                0x08006c16                vApplicationStackOverflowHook
+                0x08007178       0x16 obj\debug\src\robot_tasks.o
+                0x08007178                vApplicationStackOverflowHook
  .text.vApplicationMallocFailedHook
-                0x08006c2c        0xe obj\debug\src\robot_tasks.o
-                0x08006c2c                vApplicationMallocFailedHook
- *fill*         0x08006c3a        0x2 
+                0x0800718e        0xe obj\debug\src\robot_tasks.o
+                0x0800718e                vApplicationMallocFailedHook
  .text.vRobotGo
-                0x08006c3c       0xb8 obj\debug\src\robot_tasks.o
-                0x08006c3c                vRobotGo
- .text.vStart   0x08006cf4      0x1f4 obj\debug\src\robot_tasks.o
-                0x08006cf4                vStart
+                0x0800719c       0xb8 obj\debug\src\robot_tasks.o
+                0x0800719c                vRobotGo
+ .text.vStart   0x08007254      0x20c obj\debug\src\robot_tasks.o
+                0x08007254                vStart
  .text.vWaitingEvent
-                0x08006ee8       0x34 obj\debug\src\robot_tasks.o
-                0x08006ee8                vWaitingEvent
+                0x08007460       0x4c obj\debug\src\robot_tasks.o
+                0x08007460                vWaitingEvent
  .text.vMessageSending
-                0x08006f1c       0x68 obj\debug\src\robot_tasks.o
-                0x08006f1c                vMessageSending
+                0x080074ac       0x68 obj\debug\src\robot_tasks.o
+                0x080074ac                vMessageSending
  .text.vClutchManagement
-                0x08006f84      0x110 obj\debug\src\robot_tasks.o
-                0x08006f84                vClutchManagement
+                0x08007514      0x110 obj\debug\src\robot_tasks.o
+                0x08007514                vClutchManagement
  .text.vBrakeManagement
-                0x08007094       0xb4 obj\debug\src\robot_tasks.o
-                0x08007094                vBrakeManagement
+                0x08007624      0x150 obj\debug\src\robot_tasks.o
+                0x08007624                vBrakeManagement
  .text.vGasManagement
-                0x08007148       0xb0 obj\debug\src\robot_tasks.o
-                0x08007148                vGasManagement
+                0x08007774       0xb0 obj\debug\src\robot_tasks.o
+                0x08007774                vGasManagement
  .text.vManagementGearsBox
-                0x080071f8       0x94 obj\debug\src\robot_tasks.o
-                0x080071f8                vManagementGearsBox
- *fill*         0x0800728c        0x4 
+                0x08007824      0x108 obj\debug\src\robot_tasks.o
+                0x08007824                vManagementGearsBox
  .text.vModBusManagement
-                0x08007290       0xf0 obj\debug\src\robot_tasks.o
-                0x08007290                vModBusManagement
+                0x0800792c       0xa0 obj\debug\src\robot_tasks.o
+                0x0800792c                vModBusManagement
+ *fill*         0x080079cc        0x4 
  .text.vSecurityMemoryManagement
-                0x08007380      0x99c obj\debug\src\robot_tasks.o
-                0x08007380                vSecurityMemoryManagement
+                0x080079d0      0x994 obj\debug\src\robot_tasks.o
+                0x080079d0                vSecurityMemoryManagement
  .text.vTransmissionInit
-                0x08007d1c       0x54 obj\debug\src\robot_tasks.o
-                0x08007d1c                vTransmissionInit
+                0x08008364       0x54 obj\debug\src\robot_tasks.o
+                0x08008364                vTransmissionInit
  .text.USART3_IRQHandler
-                0x08007d70       0x58 obj\debug\fil lib\interrupts.o
-                0x08007d70                USART3_IRQHandler
+                0x080083b8       0x58 obj\debug\fil lib\interrupts.o
+                0x080083b8                USART3_IRQHandler
  .text.TIM2_IRQHandler
-                0x08007dc8       0x16 obj\debug\fil lib\interrupts.o
-                0x08007dc8                TIM2_IRQHandler
- *fill*         0x08007dde        0x2 
+                0x08008410       0x16 obj\debug\fil lib\interrupts.o
+                0x08008410                TIM2_IRQHandler
+ *fill*         0x08008426        0x2 
  .text.TIM3_IRQHandler
-                0x08007de0       0x18 obj\debug\fil lib\interrupts.o
-                0x08007de0                TIM3_IRQHandler
+                0x08008428       0x18 obj\debug\fil lib\interrupts.o
+                0x08008428                TIM3_IRQHandler
  .text.TIM4_IRQHandler
-                0x08007df8       0x18 obj\debug\fil lib\interrupts.o
-                0x08007df8                TIM4_IRQHandler
+                0x08008440       0x18 obj\debug\fil lib\interrupts.o
+                0x08008440                TIM4_IRQHandler
  .text.TIM5_IRQHandler
-                0x08007e10       0x18 obj\debug\fil lib\interrupts.o
-                0x08007e10                TIM5_IRQHandler
+                0x08008458       0x18 obj\debug\fil lib\interrupts.o
+                0x08008458                TIM5_IRQHandler
  .text.TIM6_DAC_IRQHandler
-                0x08007e28       0xb4 obj\debug\fil lib\interrupts.o
-                0x08007e28                TIM6_DAC_IRQHandler
- *fill*         0x08007edc        0x4 
+                0x08008470       0xb4 obj\debug\fil lib\interrupts.o
+                0x08008470                TIM6_DAC_IRQHandler
+ *fill*         0x08008524        0x4 
  .text.TIM7_IRQHandler
-                0x08007ee0       0x78 obj\debug\fil lib\interrupts.o
-                0x08007ee0                TIM7_IRQHandler
+                0x08008528       0x80 obj\debug\fil lib\interrupts.o
+                0x08008528                TIM7_IRQHandler
  .text.TIM8_UP_TIM13_IRQHandler
-                0x08007f58       0x18 obj\debug\fil lib\interrupts.o
-                0x08007f58                TIM8_UP_TIM13_IRQHandler
+                0x080085a8       0x18 obj\debug\fil lib\interrupts.o
+                0x080085a8                TIM8_UP_TIM13_IRQHandler
  .text.EXTI0_IRQHandler
-                0x08007f70       0x2c obj\debug\fil lib\interrupts.o
-                0x08007f70                EXTI0_IRQHandler
+                0x080085c0       0x2c obj\debug\fil lib\interrupts.o
+                0x080085c0                EXTI0_IRQHandler
  .text.EXTI1_IRQHandler
-                0x08007f9c       0x2c obj\debug\fil lib\interrupts.o
-                0x08007f9c                EXTI1_IRQHandler
+                0x080085ec       0x2c obj\debug\fil lib\interrupts.o
+                0x080085ec                EXTI1_IRQHandler
  .text.EXTI2_IRQHandler
-                0x08007fc8       0x18 obj\debug\fil lib\interrupts.o
-                0x08007fc8                EXTI2_IRQHandler
+                0x08008618       0x18 obj\debug\fil lib\interrupts.o
+                0x08008618                EXTI2_IRQHandler
  .text.EXTI3_IRQHandler
-                0x08007fe0       0x18 obj\debug\fil lib\interrupts.o
-                0x08007fe0                EXTI3_IRQHandler
+                0x08008630       0x18 obj\debug\fil lib\interrupts.o
+                0x08008630                EXTI3_IRQHandler
  .text.EXTI4_IRQHandler
-                0x08007ff8       0x18 obj\debug\fil lib\interrupts.o
-                0x08007ff8                EXTI4_IRQHandler
+                0x08008648       0x18 obj\debug\fil lib\interrupts.o
+                0x08008648                EXTI4_IRQHandler
  .text.EXTI9_5_IRQHandler
-                0x08008010       0x60 obj\debug\fil lib\interrupts.o
-                0x08008010                EXTI9_5_IRQHandler
+                0x08008660       0x60 obj\debug\fil lib\interrupts.o
+                0x08008660                EXTI9_5_IRQHandler
  .text.EXTI15_10_IRQHandler
-                0x08008070       0x28 obj\debug\fil lib\interrupts.o
-                0x08008070                EXTI15_10_IRQHandler
+                0x080086c0       0x28 obj\debug\fil lib\interrupts.o
+                0x080086c0                EXTI15_10_IRQHandler
  .text.SystemInit
-                0x08008098       0x6c obj\debug\src\system_stm32f4xx.o
-                0x08008098                SystemInit
+                0x080086e8       0x6c obj\debug\src\system_stm32f4xx.o
+                0x080086e8                SystemInit
  .text.SetSysClock
-                0x08008104       0xf8 obj\debug\src\system_stm32f4xx.o
- .text.memcpy   0x080081fc       0x1c d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memcpy-stub.o)
-                0x080081fc                memcpy
- .text.memset   0x08008218       0x10 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memset.o)
-                0x08008218                memset
+                0x08008754       0xf8 obj\debug\src\system_stm32f4xx.o
+ .text.memcpy   0x0800884c       0x1c d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memcpy-stub.o)
+                0x0800884c                memcpy
+ .text.memset   0x08008868       0x10 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memset.o)
+                0x08008868                memset
  *(.glue_7)
- .glue_7        0x08008228        0x0 linker stubs
+ .glue_7        0x08008878        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x08008228        0x0 linker stubs
+ .glue_7t       0x08008878        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x08008228        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+ .eh_frame      0x08008878        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
  *(.init)
- .init          0x08008228        0x4 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crti.o
-                0x08008228                _init
- .init          0x0800822c        0x8 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtn.o
+ .init          0x08008878        0x4 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crti.o
+                0x08008878                _init
+ .init          0x0800887c        0x8 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtn.o
  *(.fini)
- .fini          0x08008234        0x4 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crti.o
-                0x08008234                _fini
- .fini          0x08008238        0x8 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtn.o
-                0x08008240                . = ALIGN (0x4)
-                0x08008240                _etext = .
+ .fini          0x08008884        0x4 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crti.o
+                0x08008884                _fini
+ .fini          0x08008888        0x8 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtn.o
+                0x08008890                . = ALIGN (0x4)
+                0x08008890                _etext = .
 
-.vfp11_veneer   0x08008240        0x0
- .vfp11_veneer  0x08008240        0x0 linker stubs
+.vfp11_veneer   0x08008890        0x0
+ .vfp11_veneer  0x08008890        0x0 linker stubs
 
-.v4_bx          0x08008240        0x0
- .v4_bx         0x08008240        0x0 linker stubs
+.v4_bx          0x08008890        0x0
+ .v4_bx         0x08008890        0x0 linker stubs
 
-.iplt           0x08008240        0x0
- .iplt          0x08008240        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+.iplt           0x08008890        0x0
+ .iplt          0x08008890        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
 
-.rodata         0x08008240       0x70
-                0x08008240                . = ALIGN (0x4)
+.rodata         0x08008890       0x70
+                0x08008890                . = ALIGN (0x4)
  *(.rodata)
- .rodata        0x08008240        0x5 obj\debug\freertos_lib\tasks.o
- *fill*         0x08008245        0x3 
- .rodata        0x08008248        0xd obj\debug\freertos_lib\timers.o
- *fill*         0x08008255        0x3 
- .rodata        0x08008258       0x55 obj\debug\src\main.o
+ .rodata        0x08008890        0x5 obj\debug\freertos_lib\tasks.o
+ *fill*         0x08008895        0x3 
+ .rodata        0x08008898        0xd obj\debug\freertos_lib\timers.o
+ *fill*         0x080088a5        0x3 
+ .rodata        0x080088a8       0x55 obj\debug\src\main.o
  *(.rodata*)
-                0x080082b0                . = ALIGN (0x4)
- *fill*         0x080082ad        0x3 
+                0x08008900                . = ALIGN (0x4)
+ *fill*         0x080088fd        0x3 
 
-.rel.dyn        0x080082b0        0x0
- .rel.iplt      0x080082b0        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+.rel.dyn        0x08008900        0x0
+ .rel.iplt      0x08008900        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
 
-.ARM            0x080082b0        0x0
-                0x080082b0                __exidx_start = .
+.ARM            0x08008900        0x0
+                0x08008900                __exidx_start = .
  *(.ARM.exidx*)
-                0x080082b0                __exidx_end = .
+                0x08008900                __exidx_end = .
 
-.preinit_array  0x080082b0        0x0
-                0x080082b0                PROVIDE (__preinit_array_start = .)
+.preinit_array  0x08008900        0x0
+                0x08008900                PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
-                0x080082b0                PROVIDE (__preinit_array_end = .)
+                0x08008900                PROVIDE (__preinit_array_end = .)
 
-.init_array     0x080082b0        0x4
-                0x080082b0                PROVIDE (__init_array_start = .)
+.init_array     0x08008900        0x4
+                0x08008900                PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array*)
- .init_array    0x080082b0        0x4 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
-                0x080082b4                PROVIDE (__init_array_end = .)
+ .init_array    0x08008900        0x4 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+                0x08008904                PROVIDE (__init_array_end = .)
 
-.fini_array     0x080082b4        0x4
+.fini_array     0x08008904        0x4
                 [!provide]                PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x080082b4        0x4 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+ .fini_array    0x08008904        0x4 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
                 [!provide]                PROVIDE (__fini_array_end = .)
-                0x080082b8                _sidata = LOADADDR (.data)
+                0x08008908                _sidata = LOADADDR (.data)
 
-.data           0x20000000       0xa4 load address 0x080082b8
+.data           0x20000000       0xa4 load address 0x08008908
                 0x20000000                . = ALIGN (0x4)
                 0x20000000                _sdata = .
  *(.data)
@@ -1162,11 +1160,11 @@ LOAD d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-non
                 0x200000a4                . = ALIGN (0x4)
                 0x200000a4                _edata = .
 
-.igot.plt       0x200000a4        0x0 load address 0x0800835c
+.igot.plt       0x200000a4        0x0 load address 0x080089ac
  .igot.plt      0x200000a4        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
                 0x200000a4                . = ALIGN (0x4)
 
-.bss            0x200000a4    0x12f34 load address 0x0800835c
+.bss            0x200000a4    0x12f34 load address 0x080089ac
                 0x200000a4                _sbss = .
                 0x200000a4                __bss_start__ = _sbss
  *(.bss)
@@ -1320,7 +1318,7 @@ LOAD d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-non
                 0x20012fd8                _ebss = .
                 0x20012fd8                __bss_end__ = _ebss
 
-.heap           0x20012fd8        0x0 load address 0x0800835c
+.heap           0x20012fd8        0x0 load address 0x080089ac
                 0x20012fd8                . = ALIGN (0x4)
                 [!provide]                PROVIDE (end = .)
                 [!provide]                PROVIDE (_end = .)
@@ -1341,45 +1339,47 @@ LOAD d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-non
  .ARM.attributes
                 0x00000073       0x34 obj\debug\fil lib\rcr dstu\rcr_setupcustom.o
  .ARM.attributes
-                0x000000a7       0x34 obj\debug\freertos_lib\heap_2.o
+                0x000000a7       0x34 obj\debug\freertos_lib\event_groups.o
  .ARM.attributes
-                0x000000db       0x34 obj\debug\freertos_lib\list.o
+                0x000000db       0x34 obj\debug\freertos_lib\heap_2.o
  .ARM.attributes
-                0x0000010f       0x34 obj\debug\freertos_lib\port.o
+                0x0000010f       0x34 obj\debug\freertos_lib\list.o
  .ARM.attributes
-                0x00000143       0x34 obj\debug\freertos_lib\queue.o
+                0x00000143       0x34 obj\debug\freertos_lib\port.o
  .ARM.attributes
-                0x00000177       0x34 obj\debug\freertos_lib\tasks.o
+                0x00000177       0x34 obj\debug\freertos_lib\queue.o
  .ARM.attributes
-                0x000001ab       0x34 obj\debug\freertos_lib\timers.o
+                0x000001ab       0x34 obj\debug\freertos_lib\tasks.o
  .ARM.attributes
-                0x000001df       0x34 obj\debug\modbus\modbus.o
+                0x000001df       0x34 obj\debug\freertos_lib\timers.o
  .ARM.attributes
-                0x00000213       0x34 obj\debug\src\carmanagement.o
+                0x00000213       0x34 obj\debug\modbus\modbus.o
  .ARM.attributes
-                0x00000247       0x34 obj\debug\src\carregulators.o
+                0x00000247       0x34 obj\debug\src\carmanagement.o
  .ARM.attributes
-                0x0000027b       0x34 obj\debug\src\main.o
+                0x0000027b       0x34 obj\debug\src\carregulators.o
  .ARM.attributes
-                0x000002af       0x34 obj\debug\src\robot_tasks.o
+                0x000002af       0x34 obj\debug\src\main.o
  .ARM.attributes
-                0x000002e3       0x34 obj\debug\fil lib\interrupts.o
+                0x000002e3       0x34 obj\debug\src\robot_tasks.o
  .ARM.attributes
-                0x00000317       0x34 obj\debug\src\system_stm32f4xx.o
+                0x00000317       0x34 obj\debug\fil lib\interrupts.o
  .ARM.attributes
-                0x0000034b       0x1e d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
+                0x0000034b       0x34 obj\debug\src\system_stm32f4xx.o
  .ARM.attributes
-                0x00000369       0x1e d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
+                0x0000037f       0x1e d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
  .ARM.attributes
-                0x00000387       0x1e d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_cmpdf2.o)
+                0x0000039d       0x1e d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
  .ARM.attributes
-                0x000003a5       0x1e d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
+                0x000003bb       0x1e d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_cmpdf2.o)
  .ARM.attributes
-                0x000003c3       0x34 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memcpy-stub.o)
+                0x000003d9       0x1e d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
  .ARM.attributes
-                0x000003f7       0x34 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memset.o)
+                0x000003f7       0x34 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memcpy-stub.o)
  .ARM.attributes
-                0x0000042b       0x1e d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtn.o
+                0x0000042b       0x34 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memset.o)
+ .ARM.attributes
+                0x0000045f       0x1e d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtn.o
                 0x2001ff00                __StackLimit = (_estack - _Min_Stack_Size)
                 0x00000001                ASSERT ((__StackLimit >= __HeapLimit), Region RAM overflowed with stack)
 LOAD obj\debug\src\startup_stm32f407xx.o
@@ -1420,140 +1420,149 @@ LOAD d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard
 OUTPUT(bin\Debug\robocross.elf elf32-littlearm)
 LOAD linker stubs
 
-.debug_line     0x00000000     0x6877
+.debug_line     0x00000000     0x6e39
  .debug_line    0x00000000       0x77 obj\debug\src\startup_stm32f407xx.o
  .debug_line    0x00000077      0x4be obj\debug\fil lib\rcr dstu\rcr_setupcustom.o
- .debug_line    0x00000535      0x33c obj\debug\freertos_lib\heap_2.o
- .debug_line    0x00000871      0x2ba obj\debug\freertos_lib\list.o
- .debug_line    0x00000b2b      0x450 obj\debug\freertos_lib\port.o
- .debug_line    0x00000f7b     0x1131 obj\debug\freertos_lib\queue.o
- .debug_line    0x000020ac     0x1822 obj\debug\freertos_lib\tasks.o
- .debug_line    0x000038ce      0x816 obj\debug\freertos_lib\timers.o
- .debug_line    0x000040e4      0x719 obj\debug\modbus\modbus.o
- .debug_line    0x000047fd      0x760 obj\debug\src\carmanagement.o
- .debug_line    0x00004f5d      0x55c obj\debug\src\carregulators.o
- .debug_line    0x000054b9      0x27e obj\debug\src\main.o
- .debug_line    0x00005737      0xa6c obj\debug\src\robot_tasks.o
- .debug_line    0x000061a3      0x44f obj\debug\fil lib\interrupts.o
- .debug_line    0x000065f2      0x285 obj\debug\src\system_stm32f4xx.o
+ .debug_line    0x00000535      0x5d6 obj\debug\freertos_lib\event_groups.o
+ .debug_line    0x00000b0b      0x33c obj\debug\freertos_lib\heap_2.o
+ .debug_line    0x00000e47      0x2ba obj\debug\freertos_lib\list.o
+ .debug_line    0x00001101      0x450 obj\debug\freertos_lib\port.o
+ .debug_line    0x00001551     0x1131 obj\debug\freertos_lib\queue.o
+ .debug_line    0x00002682     0x1822 obj\debug\freertos_lib\tasks.o
+ .debug_line    0x00003ea4      0x816 obj\debug\freertos_lib\timers.o
+ .debug_line    0x000046ba      0x719 obj\debug\modbus\modbus.o
+ .debug_line    0x00004dd3      0x760 obj\debug\src\carmanagement.o
+ .debug_line    0x00005533      0x55c obj\debug\src\carregulators.o
+ .debug_line    0x00005a8f      0x284 obj\debug\src\main.o
+ .debug_line    0x00005d13      0xa51 obj\debug\src\robot_tasks.o
+ .debug_line    0x00006764      0x450 obj\debug\fil lib\interrupts.o
+ .debug_line    0x00006bb4      0x285 obj\debug\src\system_stm32f4xx.o
 
-.debug_info     0x00000000    0x10b74
+.debug_info     0x00000000    0x11dc2
  .debug_info    0x00000000       0x22 obj\debug\src\startup_stm32f407xx.o
  .debug_info    0x00000022     0x1a42 obj\debug\fil lib\rcr dstu\rcr_setupcustom.o
- .debug_info    0x00001a64      0xc23 obj\debug\freertos_lib\heap_2.o
- .debug_info    0x00002687      0xbc0 obj\debug\freertos_lib\list.o
- .debug_info    0x00003247      0x548 obj\debug\freertos_lib\port.o
- .debug_info    0x0000378f     0x201d obj\debug\freertos_lib\queue.o
- .debug_info    0x000057ac     0x2a32 obj\debug\freertos_lib\tasks.o
- .debug_info    0x000081de     0x15a5 obj\debug\freertos_lib\timers.o
- .debug_info    0x00009783     0x1446 obj\debug\modbus\modbus.o
- .debug_info    0x0000abc9     0x1311 obj\debug\src\carmanagement.o
- .debug_info    0x0000beda     0x1262 obj\debug\src\carregulators.o
- .debug_info    0x0000d13c      0xe89 obj\debug\src\main.o
- .debug_info    0x0000dfc5     0x121c obj\debug\src\robot_tasks.o
- .debug_info    0x0000f1e1     0x132b obj\debug\fil lib\interrupts.o
- .debug_info    0x0001050c      0x668 obj\debug\src\system_stm32f4xx.o
+ .debug_info    0x00001a64     0x11f6 obj\debug\freertos_lib\event_groups.o
+ .debug_info    0x00002c5a      0xc23 obj\debug\freertos_lib\heap_2.o
+ .debug_info    0x0000387d      0xbc0 obj\debug\freertos_lib\list.o
+ .debug_info    0x0000443d      0x548 obj\debug\freertos_lib\port.o
+ .debug_info    0x00004985     0x201d obj\debug\freertos_lib\queue.o
+ .debug_info    0x000069a2     0x2a32 obj\debug\freertos_lib\tasks.o
+ .debug_info    0x000093d4     0x15a5 obj\debug\freertos_lib\timers.o
+ .debug_info    0x0000a979     0x1446 obj\debug\modbus\modbus.o
+ .debug_info    0x0000bdbf     0x1311 obj\debug\src\carmanagement.o
+ .debug_info    0x0000d0d0     0x1262 obj\debug\src\carregulators.o
+ .debug_info    0x0000e332      0xe89 obj\debug\src\main.o
+ .debug_info    0x0000f1bb     0x1274 obj\debug\src\robot_tasks.o
+ .debug_info    0x0001042f     0x132b obj\debug\fil lib\interrupts.o
+ .debug_info    0x0001175a      0x668 obj\debug\src\system_stm32f4xx.o
 
-.debug_abbrev   0x00000000     0x26c0
+.debug_abbrev   0x00000000     0x2a0c
  .debug_abbrev  0x00000000       0x12 obj\debug\src\startup_stm32f407xx.o
  .debug_abbrev  0x00000012      0x338 obj\debug\fil lib\rcr dstu\rcr_setupcustom.o
- .debug_abbrev  0x0000034a      0x305 obj\debug\freertos_lib\heap_2.o
- .debug_abbrev  0x0000064f      0x232 obj\debug\freertos_lib\list.o
- .debug_abbrev  0x00000881      0x241 obj\debug\freertos_lib\port.o
- .debug_abbrev  0x00000ac2      0x36e obj\debug\freertos_lib\queue.o
- .debug_abbrev  0x00000e30      0x3e8 obj\debug\freertos_lib\tasks.o
- .debug_abbrev  0x00001218      0x338 obj\debug\freertos_lib\timers.o
- .debug_abbrev  0x00001550      0x360 obj\debug\modbus\modbus.o
- .debug_abbrev  0x000018b0      0x2eb obj\debug\src\carmanagement.o
- .debug_abbrev  0x00001b9b      0x28e obj\debug\src\carregulators.o
- .debug_abbrev  0x00001e29      0x1fc obj\debug\src\main.o
- .debug_abbrev  0x00002025      0x2c8 obj\debug\src\robot_tasks.o
- .debug_abbrev  0x000022ed      0x25b obj\debug\fil lib\interrupts.o
- .debug_abbrev  0x00002548      0x178 obj\debug\src\system_stm32f4xx.o
+ .debug_abbrev  0x0000034a      0x36a obj\debug\freertos_lib\event_groups.o
+ .debug_abbrev  0x000006b4      0x305 obj\debug\freertos_lib\heap_2.o
+ .debug_abbrev  0x000009b9      0x232 obj\debug\freertos_lib\list.o
+ .debug_abbrev  0x00000beb      0x241 obj\debug\freertos_lib\port.o
+ .debug_abbrev  0x00000e2c      0x36e obj\debug\freertos_lib\queue.o
+ .debug_abbrev  0x0000119a      0x3e8 obj\debug\freertos_lib\tasks.o
+ .debug_abbrev  0x00001582      0x338 obj\debug\freertos_lib\timers.o
+ .debug_abbrev  0x000018ba      0x360 obj\debug\modbus\modbus.o
+ .debug_abbrev  0x00001c1a      0x2eb obj\debug\src\carmanagement.o
+ .debug_abbrev  0x00001f05      0x28e obj\debug\src\carregulators.o
+ .debug_abbrev  0x00002193      0x1fc obj\debug\src\main.o
+ .debug_abbrev  0x0000238f      0x2aa obj\debug\src\robot_tasks.o
+ .debug_abbrev  0x00002639      0x25b obj\debug\fil lib\interrupts.o
+ .debug_abbrev  0x00002894      0x178 obj\debug\src\system_stm32f4xx.o
 
-.debug_aranges  0x00000000      0x848
+.debug_aranges  0x00000000      0x8c0
  .debug_aranges
                 0x00000000       0x28 obj\debug\src\startup_stm32f407xx.o
  .debug_aranges
                 0x00000028       0x68 obj\debug\fil lib\rcr dstu\rcr_setupcustom.o
  .debug_aranges
-                0x00000090       0x40 obj\debug\freertos_lib\heap_2.o
+                0x00000090       0x78 obj\debug\freertos_lib\event_groups.o
  .debug_aranges
-                0x000000d0       0x40 obj\debug\freertos_lib\list.o
+                0x00000108       0x40 obj\debug\freertos_lib\heap_2.o
  .debug_aranges
-                0x00000110       0x80 obj\debug\freertos_lib\port.o
+                0x00000148       0x40 obj\debug\freertos_lib\list.o
  .debug_aranges
-                0x00000190      0x130 obj\debug\freertos_lib\queue.o
+                0x00000188       0x80 obj\debug\freertos_lib\port.o
  .debug_aranges
-                0x000002c0      0x1f8 obj\debug\freertos_lib\tasks.o
+                0x00000208      0x130 obj\debug\freertos_lib\queue.o
  .debug_aranges
-                0x000004b8       0xd8 obj\debug\freertos_lib\timers.o
+                0x00000338      0x1f8 obj\debug\freertos_lib\tasks.o
  .debug_aranges
-                0x00000590       0x90 obj\debug\modbus\modbus.o
+                0x00000530       0xd8 obj\debug\freertos_lib\timers.o
  .debug_aranges
-                0x00000620       0x70 obj\debug\src\carmanagement.o
+                0x00000608       0x90 obj\debug\modbus\modbus.o
  .debug_aranges
-                0x00000690       0x40 obj\debug\src\carregulators.o
+                0x00000698       0x70 obj\debug\src\carmanagement.o
  .debug_aranges
-                0x000006d0       0x20 obj\debug\src\main.o
+                0x00000708       0x40 obj\debug\src\carregulators.o
  .debug_aranges
-                0x000006f0       0x90 obj\debug\src\robot_tasks.o
+                0x00000748       0x20 obj\debug\src\main.o
  .debug_aranges
-                0x00000780       0x98 obj\debug\fil lib\interrupts.o
+                0x00000768       0x90 obj\debug\src\robot_tasks.o
  .debug_aranges
-                0x00000818       0x30 obj\debug\src\system_stm32f4xx.o
+                0x000007f8       0x98 obj\debug\fil lib\interrupts.o
+ .debug_aranges
+                0x00000890       0x30 obj\debug\src\system_stm32f4xx.o
 
-.debug_str      0x00000000     0x3799
+.debug_str      0x00000000     0x39f2
  .debug_str     0x00000000       0x63 obj\debug\src\startup_stm32f407xx.o
  .debug_str     0x00000063     0x1135 obj\debug\fil lib\rcr dstu\rcr_setupcustom.o
                                0x11fb (size before relaxing)
- .debug_str     0x00001198      0x1a2 obj\debug\freertos_lib\heap_2.o
+ .debug_str     0x00001198      0x3b5 obj\debug\freertos_lib\event_groups.o
+                                0x9d4 (size before relaxing)
+ .debug_str     0x0000154d      0x179 obj\debug\freertos_lib\heap_2.o
                                 0x772 (size before relaxing)
- .debug_str     0x0000133a      0x13d obj\debug\freertos_lib\list.o
+ .debug_str     0x000016c6       0x96 obj\debug\freertos_lib\list.o
                                 0x710 (size before relaxing)
- .debug_str     0x00001477      0x230 obj\debug\freertos_lib\port.o
+ .debug_str     0x0000175c      0x211 obj\debug\freertos_lib\port.o
                                 0x45a (size before relaxing)
- .debug_str     0x000016a7      0x666 obj\debug\freertos_lib\queue.o
+ .debug_str     0x0000196d      0x621 obj\debug\freertos_lib\queue.o
                                 0xdc1 (size before relaxing)
- .debug_str     0x00001d0d      0xd09 obj\debug\freertos_lib\tasks.o
+ .debug_str     0x00001f8e      0xceb obj\debug\freertos_lib\tasks.o
                                0x152c (size before relaxing)
- .debug_str     0x00002a16      0x46c obj\debug\freertos_lib\timers.o
+ .debug_str     0x00002c79      0x46c obj\debug\freertos_lib\timers.o
                                 0xbd1 (size before relaxing)
- .debug_str     0x00002e82      0x280 obj\debug\modbus\modbus.o
+ .debug_str     0x000030e5      0x280 obj\debug\modbus\modbus.o
                                 0xc74 (size before relaxing)
- .debug_str     0x00003102      0x132 obj\debug\src\carmanagement.o
+ .debug_str     0x00003365      0x132 obj\debug\src\carmanagement.o
                                 0xbc8 (size before relaxing)
- .debug_str     0x00003234       0xfb obj\debug\src\carregulators.o
+ .debug_str     0x00003497       0xfb obj\debug\src\carregulators.o
                                 0xb91 (size before relaxing)
- .debug_str     0x0000332f       0x15 obj\debug\src\main.o
+ .debug_str     0x00003592       0x15 obj\debug\src\main.o
                                 0x9e0 (size before relaxing)
- .debug_str     0x00003344      0x14f obj\debug\src\robot_tasks.o
-                                0xb95 (size before relaxing)
- .debug_str     0x00003493      0x181 obj\debug\fil lib\interrupts.o
+ .debug_str     0x000035a7      0x145 obj\debug\src\robot_tasks.o
+                                0xba2 (size before relaxing)
+ .debug_str     0x000036ec      0x181 obj\debug\fil lib\interrupts.o
                                 0xc37 (size before relaxing)
- .debug_str     0x00003614      0x185 obj\debug\src\system_stm32f4xx.o
+ .debug_str     0x0000386d      0x185 obj\debug\src\system_stm32f4xx.o
                                 0x40d (size before relaxing)
 
-.debug_ranges   0x00000000      0x760
+.debug_ranges   0x00000000      0x7c8
  .debug_ranges  0x00000000       0x20 obj\debug\src\startup_stm32f407xx.o
  .debug_ranges  0x00000020       0x58 obj\debug\fil lib\rcr dstu\rcr_setupcustom.o
- .debug_ranges  0x00000078       0x30 obj\debug\freertos_lib\heap_2.o
- .debug_ranges  0x000000a8       0x30 obj\debug\freertos_lib\list.o
- .debug_ranges  0x000000d8       0x70 obj\debug\freertos_lib\port.o
- .debug_ranges  0x00000148      0x120 obj\debug\freertos_lib\queue.o
- .debug_ranges  0x00000268      0x1e8 obj\debug\freertos_lib\tasks.o
- .debug_ranges  0x00000450       0xc8 obj\debug\freertos_lib\timers.o
- .debug_ranges  0x00000518       0x80 obj\debug\modbus\modbus.o
- .debug_ranges  0x00000598       0x60 obj\debug\src\carmanagement.o
- .debug_ranges  0x000005f8       0x30 obj\debug\src\carregulators.o
- .debug_ranges  0x00000628       0x10 obj\debug\src\main.o
- .debug_ranges  0x00000638       0x80 obj\debug\src\robot_tasks.o
- .debug_ranges  0x000006b8       0x88 obj\debug\fil lib\interrupts.o
- .debug_ranges  0x00000740       0x20 obj\debug\src\system_stm32f4xx.o
+ .debug_ranges  0x00000078       0x68 obj\debug\freertos_lib\event_groups.o
+ .debug_ranges  0x000000e0       0x30 obj\debug\freertos_lib\heap_2.o
+ .debug_ranges  0x00000110       0x30 obj\debug\freertos_lib\list.o
+ .debug_ranges  0x00000140       0x70 obj\debug\freertos_lib\port.o
+ .debug_ranges  0x000001b0      0x120 obj\debug\freertos_lib\queue.o
+ .debug_ranges  0x000002d0      0x1e8 obj\debug\freertos_lib\tasks.o
+ .debug_ranges  0x000004b8       0xc8 obj\debug\freertos_lib\timers.o
+ .debug_ranges  0x00000580       0x80 obj\debug\modbus\modbus.o
+ .debug_ranges  0x00000600       0x60 obj\debug\src\carmanagement.o
+ .debug_ranges  0x00000660       0x30 obj\debug\src\carregulators.o
+ .debug_ranges  0x00000690       0x10 obj\debug\src\main.o
+ .debug_ranges  0x000006a0       0x80 obj\debug\src\robot_tasks.o
+ .debug_ranges  0x00000720       0x88 obj\debug\fil lib\interrupts.o
+ .debug_ranges  0x000007a8       0x20 obj\debug\src\system_stm32f4xx.o
 
 .comment        0x00000000       0x4c
  .comment       0x00000000       0x4c obj\debug\fil lib\rcr dstu\rcr_setupcustom.o
                                  0x4d (size before relaxing)
+ .comment       0x0000004c       0x4d obj\debug\freertos_lib\event_groups.o
  .comment       0x0000004c       0x4d obj\debug\freertos_lib\heap_2.o
  .comment       0x0000004c       0x4d obj\debug\freertos_lib\list.o
  .comment       0x0000004c       0x4d obj\debug\freertos_lib\port.o
@@ -1568,24 +1577,25 @@ LOAD linker stubs
  .comment       0x0000004c       0x4d obj\debug\fil lib\interrupts.o
  .comment       0x0000004c       0x4d obj\debug\src\system_stm32f4xx.o
 
-.debug_frame    0x00000000     0x2180
+.debug_frame    0x00000000     0x2350
  .debug_frame   0x00000000      0x164 obj\debug\fil lib\rcr dstu\rcr_setupcustom.o
- .debug_frame   0x00000164       0xc0 obj\debug\freertos_lib\heap_2.o
- .debug_frame   0x00000224       0xd8 obj\debug\freertos_lib\list.o
- .debug_frame   0x000002fc      0x1a8 obj\debug\freertos_lib\port.o
- .debug_frame   0x000004a4      0x534 obj\debug\freertos_lib\queue.o
- .debug_frame   0x000009d8      0x88c obj\debug\freertos_lib\tasks.o
- .debug_frame   0x00001264      0x38c obj\debug\freertos_lib\timers.o
- .debug_frame   0x000015f0      0x238 obj\debug\modbus\modbus.o
- .debug_frame   0x00001828      0x19c obj\debug\src\carmanagement.o
- .debug_frame   0x000019c4       0xcc obj\debug\src\carregulators.o
- .debug_frame   0x00001a90       0x34 obj\debug\src\main.o
- .debug_frame   0x00001ac4      0x1fc obj\debug\src\robot_tasks.o
- .debug_frame   0x00001cc0      0x218 obj\debug\fil lib\interrupts.o
- .debug_frame   0x00001ed8       0x7c obj\debug\src\system_stm32f4xx.o
- .debug_frame   0x00001f54       0xac d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
- .debug_frame   0x00002000       0x50 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
- .debug_frame   0x00002050       0xc4 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_cmpdf2.o)
- .debug_frame   0x00002114       0x24 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
- .debug_frame   0x00002138       0x28 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memcpy-stub.o)
- .debug_frame   0x00002160       0x20 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memset.o)
+ .debug_frame   0x00000164      0x1d0 obj\debug\freertos_lib\event_groups.o
+ .debug_frame   0x00000334       0xc0 obj\debug\freertos_lib\heap_2.o
+ .debug_frame   0x000003f4       0xd8 obj\debug\freertos_lib\list.o
+ .debug_frame   0x000004cc      0x1a8 obj\debug\freertos_lib\port.o
+ .debug_frame   0x00000674      0x534 obj\debug\freertos_lib\queue.o
+ .debug_frame   0x00000ba8      0x88c obj\debug\freertos_lib\tasks.o
+ .debug_frame   0x00001434      0x38c obj\debug\freertos_lib\timers.o
+ .debug_frame   0x000017c0      0x238 obj\debug\modbus\modbus.o
+ .debug_frame   0x000019f8      0x19c obj\debug\src\carmanagement.o
+ .debug_frame   0x00001b94       0xcc obj\debug\src\carregulators.o
+ .debug_frame   0x00001c60       0x34 obj\debug\src\main.o
+ .debug_frame   0x00001c94      0x1fc obj\debug\src\robot_tasks.o
+ .debug_frame   0x00001e90      0x218 obj\debug\fil lib\interrupts.o
+ .debug_frame   0x000020a8       0x7c obj\debug\src\system_stm32f4xx.o
+ .debug_frame   0x00002124       0xac d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
+ .debug_frame   0x000021d0       0x50 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
+ .debug_frame   0x00002220       0xc4 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_cmpdf2.o)
+ .debug_frame   0x000022e4       0x24 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
+ .debug_frame   0x00002308       0x28 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memcpy-stub.o)
+ .debug_frame   0x00002330       0x20 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memset.o)

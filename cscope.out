@@ -1,4 +1,4 @@
-cscope 15 $HOME\Desktop\projects\RCR\3. Robocross\robocross"               0002192791
+cscope 15 $HOME\Desktop\projects\RCR\3. Robocross\robocross"               0002194621
 	@C:\Users\Caska\Desktop\projects\RCR\3A9FF~1.ROB\ROBOCR~1\FILLIB~1\ADC.h
 
 2 #´agm¨
@@ -6065,6 +6065,10 @@ SR
 	$TIM5_IRQHªdËr
 ()
 
+47 
+	`move_ŒªsmissiÚ_to_û¹aš_¡©e
+();
+
 48 
 TIM5
 ->
@@ -6153,7 +6157,11 @@ SR
 	`G‘_T¿nsmissiÚ
 ();
 
-79 
+78 
+	`G‘_Clutch
+();
+
+80 
 glob®RªgeT¿nsmissiÚ
  +ğ
 T¿nsmissiÚReg
@@ -6161,11 +6169,11 @@ T¿nsmissiÚReg
 Cu¼’tS³ed
  * 0.1;
 
-80 #ifĞ
+81 #ifĞ
 S³ed_Mode
  == 0)
 
-81 
+82 
 Cu¼’t_V–oc™y
  = 
 	`S³ed_C®c_C¬
@@ -6175,197 +6183,191 @@ LPul£Wh“l
 RPul£Wh“l
 );
 
-82 #–ifĞ
+83 #–ifĞ
 S³ed_Mode
  == 1)
 
-83 
+84 
 Cu¼’t_V–oc™y
  = 
 	`S³ed_C®c_C¬_HighF»q
 ();
 
-85 
-glob®RªgeC¬
- +ğ
-Cu¼’t_V–oc™y
- * 0.1;
-
-87 
+88 
 TIM7
 ->
 SR
  = 0;
 
-88 
+89 
 	}
 }
 
-90 
+91 
 	$TIM8_UP_TIM13_IRQHªdËr
 ()
 
-92 
+93 
 TIM13
 ->
 SR
  = 0;
 
-93 
+94 
 	}
 }
 
-98 
+99 
 	$EXTI0_IRQHªdËr
 ()
 
-100 
+101 
 LPul£Wh“l
 ++;
 
-101 
+102 
 EXTI
 ->
 PR
 =0x1;
 
-102 
+103 
 	}
 }
 
-104 
+105 
 	$EXTI1_IRQHªdËr
 ()
 
-106 
+107 
 RPul£Wh“l
 ++;
 
-107 
+108 
 EXTI
 ->
 PR
 =0x2;
 
-108 
+109 
 	}
 }
 
-110 
+111 
 	$EXTI2_IRQHªdËr
 ()
 
-112 
+113 
 EXTI
 ->
 PR
 =0x4;
 
-113 
+114 
 	}
 }
 
-115 
+116 
 	$EXTI3_IRQHªdËr
 ()
 
-117 
+118 
 EXTI
 ->
 PR
 =0x8;
 
-118 
+119 
 	}
 }
 
-120 
+121 
 	$EXTI4_IRQHªdËr
 ()
 
-122 
+123 
 EXTI
 ->
 PR
 =0x10;
 
-123 
+124 
 	}
 }
 
-125 
+126 
 	$EXTI9_5_IRQHªdËr
 ()
 
-128 ià(
+129 ià(
 EXTI
 ->
 PR
 &(1<<6))
 
-130 
+131 
 EXTI
 ->
 PR
 =(1<<6);
 
-133 ià(
+134 ià(
 EXTI
 ->
 PR
 &(1<<7))
 
-135 
+136 
 EXTI
 ->
 PR
 =(1<<7);
 
-138 ià(
+139 ià(
 EXTI
 ->
 PR
 &(1<<8))
 
-140 
+141 
 EXTI
 ->
 PR
 =(1<<8);
 
-143 ià(
+144 ià(
 EXTI
 ->
 PR
 &(1<<9))
 
-145 
+146 
 EXTI
 ->
 PR
 =(1<<9);
 
-147 
+148 
 	}
 }
 
-149 
+150 
 	$EXTI15_10_IRQHªdËr
 ()
 
-152 ià(
+153 ià(
 EXTI
 ->
 PR
 &(1<<10))
 
-154 
+155 
 EXTI
 ->
 PR
 =(1<<10);
 
-157 
+158 
 	}
 }
 
@@ -9784,13 +9786,13 @@ NO_PULL_UP
 (
 GENERAL_PIN_8
 , 
-ANALOG
+INPUT
 , 
 PUSH_PULL
 , 
 FAST_S
 , 
-NO_PULL_UP
+PULL_UP
 );\
 
 143 
@@ -90387,313 +90389,313 @@ _BoŞ
 	gS¹FÏgs
 ;
 
-18 
+20 
 	#ALL_BITS
  (0xFF)
 
 	)
 
-19 
+21 
 	#B¿ke_BIT
  (1 << 0)
 
 	)
 
-20 
+22 
 	#Clutch_BIT
  (1 << 1)
 
 	)
 
-21 
+23 
 	#T¿nsmissiÚ_BIT
  (1 << 2)
 
 	)
 
-22 
+24 
 Ev’tGroupHªdË_t
  
 	gxEv’tStus
 ;
 
-25 
+27 
 xSem­hÜeHªdË
  
 	gxS¹Ev’t
 ;
 
-27 
+29 
 xSem­hÜeHªdË
  
 	gxUARTEv’t
 ;
 
-32 
+34 
 	#LowGas
  1
 
 	)
 
-33 
+35 
 	#FuÎS³ed
  2
 
 	)
 
-34 
+36 
 	#_WEWE
  3
 
 	)
 
-35 
+37 
 	#Z”o
  4
 
 	)
 
-36 
+38 
 	#H–pT¿nsmissiÚ
  5
 
 	)
 
-37 
+39 
 xQueueHªdË
  
 	gxQueue20HªdË
 ;
 
-42 
+44 
 	#FuÎStİ
  1
 
 	)
 
-43 
+45 
 	#FuÎOut
  2
 
 	)
 
-44 
+46 
 	#LowB¿ke
  3
 
 	)
 
-45 
+47 
 	#MiddËB¿ke
  4
 
 	)
 
-46 
+48 
 	#HighB¿ke
  5
 
 	)
 
-47 
+49 
 	#Em”g’cyB¿ke
  6
 
 	)
 
-48 
+50 
 xQueueHªdË
  
 	gxQueueB¿keHªdË
 ;
 
-54 
+56 
 xQueueHªdË
  
 	gxQueueT¿nsmissiÚHªdË
 ;
 
-57 
+59 
 xQueueHªdË
  
 	gxQueueClutchHªdË
 ;
 
-59 
+61 
 xQueueHªdË
  
 	gxQueueGasHªdË
 ;
 
-61 
+63 
 	#S³ed_F1
  2.778
 
 	)
 
-62 
+64 
 	#S³ed_F2
  4.16667
 
 	)
 
-63 
+65 
 	#S³ed_R
  -2.5
 
 	)
 
-65 
+67 
 	#B¿ke_Trigg”_Low
  0.833
 
 	)
 
-66 
+68 
 	#B¿ke_Trigg”_Medium
  1.388
 
 	)
 
-67 
+69 
 	#B¿ke_Trigg”_High
  1.944
 
 	)
 
-68 
+70 
 	#B¿ke_Trigg”_Em”g’cy
  2.5
 
 	)
 
-73 
+75 
 xTaskHªdË
  
 	gxRobÙGo
 ;
 
-74 
+76 
 vRobÙGo
 Ğ*
 pvP¬am‘”s
 );
 
-76 
+78 
 xTaskHªdË
  
 	gxS¹HªdË
 ;
 
-77 
+79 
 vS¹
 Ğ*
 pvP¬am‘”s
 );
 
-79 
+81 
 xTaskHªdË
  
 	gxWa™šgHªdË
 ;
 
-80 
+82 
 vWa™šgEv’t
 Ğ*
 pvP¬am‘”s
 );
 
-82 
+84 
 xTaskHªdË
  
 	gxMaHªdË
 ;
 
-83 
+85 
 vMes§geS’dšg
 Ğ* 
 pvP¬am‘”s
 );
 
-85 
+87 
 xTaskHªdË
  
 	gxClutchHªdË
 ;
 
-86 
+88 
 vClutchMªagem’t
 Ğ*
 pvP¬am‘”s
 );
 
-88 
+90 
 xTaskHªdË
  
 	gxB¿keHªdË
 ;
 
-89 
+91 
 vB¿keMªagem’t
 Ğ*
 pvP¬am‘”s
 );
 
-91 
+93 
 xTaskHªdË
  
 	gxGasHªdË
 ;
 
-92 
+94 
 vGasMªagem’t
 Ğ*
 pvP¬am‘”s
 );
 
-94 
+96 
 xTaskHªdË
  
 	gxQueueMªagHªdË
 ;
 
-95 
+97 
 vSecur™yMemÜyMªagem’t
 Ğ*
 pvP¬am‘”s
 );
 
-97 
+99 
 xTaskHªdË
  
 	gxG—rsHªdË
 ;
 
-98 
+100 
 vMªagem’tG—rsBox
 Ğ*
 pvP¬am‘”s
 );
 
-100 
+102 
 xTaskHªdË
  
 	gxModBusHªdË
 ;
 
-101 
+103 
 vModBusMªagem’t
 Ğ*
 pvP¬am‘”s
 );
 
-103 
+105 
 xTaskHªdË
  
 	gxTrIn™
 ;
 
-104 
+106 
 vT¿nsmissiÚIn™
 Ğ*
 pvP¬am‘”s
@@ -162001,7 +162003,7 @@ S2
 
 51 
 	#S³edT¿nsmissiÚ
- 0.5
+ 3.0
 
 52 
 _BoŞ
@@ -163687,7 +163689,7 @@ ReguÏtÜ
 
 10 
 	#Te¡šgModBus
- 0
+ 1
 
 	)
 
@@ -163711,97 +163713,95 @@ ReguÏtÜ
 
 20 
 	#MašS¹
- 0
+ 1
 
 	)
 
-23 
+21 
+	#CheckEngše
+ 1
+
+	)
+
+24 
 	#Recov”ySeùÜ
  0
 
 	)
 
-25 
+26 
 	#DEBUG_SUPPORT
- 1
+ 0
 
 	)
 
-28 
+29 
 	#Z”oMesFÏg_Off
  1
 
 	)
 
-30 
+31 
 	gE¼ÜTask
 ;
 
-32 
+33 
 _BoŞ
  
 	gZ”oMesFÏg
 ;
 
-33 
+34 
 	gT¬g‘S³ed
 ;
 
-35 #if(
+35 
+_BoŞ
+ 
+	gS¹
+ = 0;
+
+36 #if(
 DEBUG_SUPPORT
  == 1)
 
-38 
+39 
 	mT¿nsmissiÚ
 ;
 
-39 
+40 
 	mB¿ke
 ;
 
-40 
+41 
 	mClutch
 ;
 
-41 
+42 
 	mModBus
 ;
 
-43 }
+44 }
 	gDebug_MÚ™Ü
 ;
 
-48 
+49 
 	$vAµliÿtiÚTickHook
 ()
 
-50 ifĞ
-E¼ÜTask
- !ğ0x00è
-	`£t_pš
-(
-PIN2_12V
-);
-
-51 
-	`»£t_pš
-(
-PIN2_12V
-);
-
-56 
+59 
 	}
 }
 
-58 
+61 
 	$vAµliÿtiÚIdËHook
 ()
 
-64 
+67 
 	}
 }
 
-66 
+69 
 	$vAµliÿtiÚSckOv”æowHook
 Ğ
 TaskHªdË_t
@@ -163811,25 +163811,25 @@ xTask
 pcTaskName
  )
 
-73 
+76 
 	}
 }
 
-75 
+78 
 	$vAµliÿtiÚM®locFaedHook
 ( )
 
-78 
+81 
 	}
 }
 
-121 
+124 
 	$vRobÙGo
 Ğ*
 pvP¬am‘”s
 )
 
-125 
+128 
 	`xSem­hÜeTake
 (
 xS¹Ev’t
@@ -163837,123 +163837,123 @@ xS¹Ev’t
 pÜtMAX_DELAY
 );
 
-127 
+130 
 	`ModBus_In™
 ();
 
-128 
+131 
 	`PID_In™
 ();
 
-129 
+132 
 E¼ÜTask
  = 0x00;
 
-130 
+133 
 Z”oMesFÏg
  = 0;
 
-133 
+136 
 	`vTaskSu¥’d
 (
 xWa™šgHªdË
 );
 
-134 
+137 
 	`vTaskSu¥’d
 (
 xMaHªdË
 );
 
-135 
+138 
 	`vTaskSu¥’d
 (
 xGasHªdË
 );
 
-136 
+139 
 	`vTaskSu¥’d
 (
 xB¿keHªdË
 );
 
-137 
+140 
 	`vTaskSu¥’d
 (
 xClutchHªdË
 );
 
-138 
+141 
 	`vTaskSu¥’d
 (
 xG—rsHªdË
 );
 
-139 
+142 
 	`vTaskSu¥’d
 (
 xModBusHªdË
 );
 
-140 
+143 
 	`vTaskSu¥’d
 (
 xQueueMªagHªdË
 );
 
-142 
+145 
 	`vTaskResume
 (
 xS¹HªdË
 );
 
-145 
+148 
 	`vTaskD–‘e
 (
 NULL
 );
 
-146 
+149 
 	}
 }
 
-149 
+152 
 	$vS¹
 Ğ*
 pvP¬am‘”s
 )
 
-152 
+155 
 Úû
  = 0;
 
-154 
+157 
 	`PID_In™
 ();
 
-155 
+158 
 	`ModBus_In™
 ();
 
-156 
+159 
 E¼ÜTask
  = 0x00;
 
-157 
+160 
 Z”oMesFÏg
  = 0;
 
-158 
+161 
 UARTT¿nsm™_FÏg
  = 3;
 
-160 
+163 
 Ev’tB™s_t
  
 xEv’tB™s
 ;
 
-162 
+165 
 ušt8_t
  
 T¿nsmissiÚ
@@ -163965,41 +163965,41 @@ B¿ke
 Gas
 ;
 
-163 #if(
+166 #if(
 DEBUG_SUPPORT
  == 1)
 
-164 
+167 
 Debug_MÚ™Ü
 .
 Clutch
  = '0';
 
-165 
+168 
 Debug_MÚ™Ü
 .
 B¿ke
  = '0';
 
-166 
+169 
 Debug_MÚ™Ü
 .
 ModBus
  = '0';
 
-167 
+170 
 Debug_MÚ™Ü
 .
 T¿nsmissiÚ
  = '0';
 
-172 
+175 
 	`£t_pš
 (
 PIN3_12V
 );
 
-173 
+178 
 xEv’tB™s
  = 
 	`xEv’tGroupCË¬B™s
@@ -164009,31 +164009,37 @@ xEv’tStus
 ALL_BITS
 );
 
-175 #iàĞ
+180 
+	`£t_pš
+(
+PIN1_12V
+);
+
+182 #iàĞ
 Te¡šgB¿ke
  == 1)
 
-176 
+183 
 	`G‘_B¿ke
 ();
 
-177 
+184 
 	`vTaskPriÜ™yS‘
 (
 xB¿keHªdË
 , 3);
 
-178 if(
+185 if(
 B¿ke_FÏg
  == 1)
 
-180 
+187 
 B¿ke
  = 
 FuÎStİ
 ;
 
-181 
+188 
 	`xQueueS’d
 (
 xQueueB¿keHªdË
@@ -164041,37 +164047,35 @@ xQueueB¿keHªdË
 B¿ke
 , 0);
 
-182 
+189 
 	`vTaskResume
 (
 xB¿keHªdË
 );
 
-183 
+190 
 	`vTaskD–ay
 (4100);
 
-186 #ifĞ
+193 #ifĞ
 Te¡šgClutch
  == 1)
 
-187 
+194 
 	`G‘_Clutch
 ();
 
-188 ifĞ
+195 ifĞ
 Clutch_FÏg
  !ğ
 FuÎ
 )
 
-190 
+197 
 Clutch
- = 
-FuÎ
-;
+ = 0;
 
-191 
+198 
 	`xQueueS’d
 (
 xQueueClutchHªdË
@@ -164079,43 +164083,55 @@ xQueueClutchHªdË
 Clutch
 , 0);
 
-192 
+199 
 	`vTaskPriÜ™yS‘
 (
 xClutchHªdË
 , 3);
 
-193 
+200 
 	`vTaskResume
 (
 xClutchHªdË
 );
 
-194 
+201 
 	`vTaskD–ay
 (3500);
 
-197 #ifĞ
+204 #ifĞ
 Te¡šgT¿nsmissiÚ
  == 1)
 
-198 
+205 
 	`G‘_T¿nsmissiÚ
 ();
 
-199 ifĞ
+206 
+	`vTaskPriÜ™yS‘
+(
+xG—rsHªdË
+, 3);
+
+207 ifĞ
 T¿nsmissiÚ_FÏg
  !ğ
 N
 )
 
-201 
+209 
+Clutch_FÏg
+ = 
+FuÎ
+;
+
+210 
 T¿nsmissiÚ
  = 
 N
 ;
 
-202 
+211 
 	`xQueueS’d
 (
 xQueueT¿nsmissiÚHªdË
@@ -164123,39 +164139,43 @@ xQueueT¿nsmissiÚHªdË
 T¿nsmissiÚ
 , 0);
 
-203 
-	`vTaskPriÜ™yS‘
+213 
+xEv’tB™s
+ = 
+	`xEv’tGroupCË¬B™s
 (
-xG—rsHªdË
-, 3);
+xEv’tStus
+, 
+T¿nsmissiÚ_BIT
+);
 
-204 
+215 
 	`vTaskResume
 (
 xG—rsHªdË
 );
 
-205 
+216 
 	`vTaskD–ay
-(6000);
+(3000);
 
-208 #ifĞ
+218 #ifĞ
 Te¡šgGas
  == 1)
 
-209 !
+219 !
 	`pš_v®
 (
 GENERAL_PIN_9
 )) {}
 
-210 
+220 
 Gas
  = 
 _WEWE
 ;
 
-211 
+221 
 	`xQueueS’d
 (
 xQueueGasHªdË
@@ -164163,183 +164183,225 @@ xQueueGasHªdË
 Gas
 , 0);
 
-212 
+222 
 	`vTaskPriÜ™yS‘
 (
 xGasHªdË
 , 3);
 
-213 
+223 
 	`vTaskResume
 (
 xGasHªdË
 );
 
-214 
+224 
 	`vTaskD–ay
 (2000);
 
-216 #ifĞ
+226 #ifĞ
 Te¡šgModBus
  == 1)
 
-217 
+227 
 	`vTaskPriÜ™yS‘
 (
 xModBusHªdË
 , 4);
 
-218 
+228 
 	`vTaskResume
 (
 xModBusHªdË
 );
 
-221 #ifĞ
+231 #ifĞ
 MašS¹
  == 1)
 
-223 
-	`vTaskPriÜ™yS‘
-(
-xQueueMªagHªdË
-, 3);
-
-225 
-	`vTaskPriÜ™yS‘
-(
-xMaHªdË
-, 3);
-
-226 
-	`vTaskResume
-(
-xMaHªdË
-);
-
-228 
-	`vTaskPriÜ™yS‘
-(
-xWa™šgHªdË
-, 3);
-
-229 
-	`vTaskResume
-(
-xWa™šgHªdË
-);
-
-231 
-	`vTaskResume
-(
-xRobÙGo
-);
-
-233 
-	`»£t_pš
-(
-PIN3_12V
-);
+233 #ifĞ
+CheckEngše
+ == 1)
 
 234 
+	`£t_pš
+(
+PIN4_12V
+);
+
+235 !
+	`pš_v®
+(
+GENERAL_PIN_9
+)) {}
+
+236 
+	`vTaskD–ay
+(1500);
+
+237 
+	`»£t_pš
+(
+PIN4_12V
+);
+
+238 
+	`pš_v®
+(
+GENERAL_PIN_8
+)) {}
+
+239 
 	`£t_pš
 (
 PIN2_12V
 );
 
-236 
+240 
+	`»£t_pš
+(
+PIN3_12V
+);
+
+242 
+	`vTaskPriÜ™yS‘
+(
+xQueueMªagHªdË
+, 3);
+
+244 
+	`vTaskPriÜ™yS‘
+(
+xMaHªdË
+, 3);
+
+245 
+	`vTaskResume
+(
+xMaHªdË
+);
+
+247 
+	`vTaskPriÜ™yS‘
+(
+xWa™šgHªdË
+, 3);
+
+248 
+	`vTaskResume
+(
+xWa™šgHªdË
+);
+
+254 
 	`vTaskSu¥’d
 (
 xS¹HªdË
 );
 
-238 
+256 
 	`vTaskD–‘e
 (
 NULL
 );
 
-239 
+257 
 	}
 }
 
-242 
+260 
 	$vWa™šgEv’t
 Ğ*
 pvP¬am‘”s
 )
 
-246 ifĞ
+262 
+ušt32_t
+ 
+d—dtime
+ = 0xFFFFFFFF;
+
+265 ifĞ
 UART_Bufãr
 [14] != '\0')
 
-248 
+267 
 S¹FÏgs
 .
 S¹C¬FÏg_ModBus
  = 1;
 
-249 
+268 
 	`xSem­hÜeGive
 (
 xUARTEv’t
 );
 
-252 
+270 { 
+d—dtime
+--; }
+
+271 ifĞ
+d—dtime
+ <ğ5è{ 
+	`ModBus_In™
+(); }
+
+273 
 	`vTaskD–‘e
 (
 NULL
 );
 
-253 
+274 
 	}
 }
 
-256 
+277 
 	$vMes§geS’dšg
 Ğ*
 pvP¬am‘”s
 )
 
-261 
+282 
 pÜtTickTy³
  
 xTimeInüem’l
 ;
 
-262 
+283 
 xTimeInüem’l
  = 
 	`xTaskG‘TickCouÁ
 ();
 
-265 #iàĞ
+286 #iàĞ
 Z”oMesFÏg_Off
  == 1)
 
-266 
+287 
 Z”oMesFÏg
  = 0;
 
-268 ifĞ
+289 ifĞ
 Z”oMesFÏg
  == 0)
 
-270 
+291 
 UARTT¿nsm™_FÏg
  = 3;
 
-271 
+292 
 	`ModBus_S’dRe¥Ú£S³ed
 (
 Cu¼’t_V–oc™y
 *100);
 
-272 
+293 
 Cu¼’t_V–oc™y
  = 0.0;
 
-274 
+295 
 	`vTaskD–ayUÁ
 (&
 xTimeInüem’l
@@ -164347,39 +164409,41 @@ xTimeInüem’l
 pÜtTICK_RATE_MS
 ));
 
-277 
+298 
 	`vTaskD–‘e
 (
 NULL
 );
 
-278 
+299 
 	}
 }
 
-281 
+302 
 	$vClutchMªagem’t
 Ğ*
 pvP¬am‘”s
 )
 
-286 
+307 
 ušt8_t
  
 ¡©us
+ = 1;
+
+308 
+Ev’tB™s_t
+ 
+xEv’ts
+;
+
+309 
+pÜtBASE_TYPE
+ 
+xStus
  = 0;
 
-290 ifĞ
-S¹FÏgs
-.
-S¹C¬FÏg_Clutch
- =ğ0 ) { 
-	`vTaskSu¥’d
-(
-xClutchHªdË
-); ; }
-
-291 
+313 
 	`xQueueReûive
 (
 xQueueClutchHªdË
@@ -164389,39 +164453,37 @@ xQueueClutchHªdË
 pÜtMAX_DELAY
 );
 
-293  
+315  
 ¡©us
  )
 
-300 
+319 
 	`G‘_Clutch
 ();
 
-301 ifĞ
+320 ifĞ
 Clutch_FÏg
  !ğ
 FuÎ
- ) 
+ )
+
+322 
 	`Move_Clutch
-(Full);
-
-302 
-¡©us
- = 1;
-
-303 
-S¹FÏgs
-.
-S¹C¬_FÏg_Maš
- = 1;
-
-304 
-	`vTaskSu¥’d
 (
-xClutchHªdË
+FuÎ
 );
 
-310 
+323 
+xEv’ts
+ = 
+	`xEv’tGroupS‘B™s
+(
+xEv’tStus
+, 
+Clutch_BIT
+);
+
+330 
 ¡©us
  = (
 T¿nsmissiÚ_FÏg
@@ -164431,7 +164493,7 @@ F1
 R
 ) ? 2 :
 
-311 (
+331 (
 T¿nsmissiÚ_FÏg
  =ğ
 F2
@@ -164439,89 +164501,57 @@ F2
 N
 ) ? 4 : 15;
 
-317 
-	`G‘_Clutch
-();
+336 
+	`vTaskD–ay
+(3000);
 
-318 ifĞ
-Clutch_FÏg
- !ğ
-Back_SecÚd
-è
+337 
 	`Move_Clutch
 (
 Back_Fœ¡
 );
 
-319 
+338 
 ¡©us
  = 3;
 
-320 
+339 
 	`vTaskD–ay
 (1000);
 
-326 
-	`G‘_Clutch
-();
+344 
+	`£t_pš
+(
+PIN3_12V
+);
 
-327 ifĞ
-Clutch_FÏg
- !ğ
-Back_SecÚd
-è
+345 
 	`Move_Clutch
-(Back_Second);
-
-328 
-¡©us
- = 5;
-
-334 
-	`G‘_Clutch
-();
-
-335 ifĞ
-Clutch_FÏg
- !ğ
+(
 Back_SecÚd
-è
+);
+
+351 
 	`Move_Clutch
 (
 Back_FuÎ
 );
 
-336 
-¡©us
- = 5;
-
-342 
-¡©us
- = 0;
-
-343 
-S¹FÏgs
-.
-S¹C¬FÏg_Clutch
- = 0;
-
-344 
-	`vTaskSu¥’d
+352 
+xEv’ts
+ = 
+	`xEv’tGroupCË¬B™s
 (
-xClutchHªdË
+xEv’tStus
+, 
+Clutch_BIT
 );
 
-350 
-S¹FÏgs
-.
-S¹C¬FÏg_Clutch
- = 0;
-
-351 
+358 
 	`G‘_T¿nsmissiÚ
 ();
 
-352 
+359 
 E¼ÜTask
  = (
 Clutch_FÏg
@@ -164529,43 +164559,37 @@ Clutch_FÏg
 Back_SecÚd
  || Clutch_FÏg !ğ
 FuÎ
-) ? 0x20 : 0x00;
+) ? 0x40 : 0x00;
 
-353 
-	`vTaskSu¥’d
-(
-xClutchHªdË
-);
-
-360 
+366 
 	`vTaskD–‘e
 (
 NULL
 );
 
-361 
+367 
 	}
 }
 
-364 
+370 
 	$vB¿keMªagem’t
  ( *
 pvP¬am‘”s
 )
 
-369 
+375 
 ušt8_t
  
 ¡©us
 ;
 
-370 
+376 
 Ev’tB™s_t
  
-xB¿ke_’d
+xEv’t
 ;
 
-374 
+380 
 	`xQueueReûive
 (
 xQueueB¿keHªdË
@@ -164575,160 +164599,52 @@ xQueueB¿keHªdË
 pÜtMAX_DELAY
 );
 
-375 #if(
+381 #if(
 DEBUG_SUPPORT
  == 1)
 
-376 
+382 
 Debug_MÚ™Ü
 .
 B¿ke
  = 'Y';
 
-378 
+384 
 ¡©us
 )
 
-381 
+386 
 ”rQUEUE_EMPTY
 : ;
 
-383 
+388 
 FuÎStİ
 :
 
-385 
-	`S‘_B¿ke
+390 
+xEv’t
+ = 
+	`xEv’tGroupWa™B™s
 (
-Push
+xEv’tStus
+, 
+Clutch_BIT
+, 
+pdFALSE
+, 
+pdTRUE
+, 
+pÜtMAX_DELAY
 );
-
-389 
-FuÎOut
-:
 
 391 
 	`S‘_B¿ke
 (
-PushOut
-);
-
-395 
-LowB¿ke
-:
-
-397 
-	`S‘_B¿ke
-(
 Push
 );
 
-398 
-	`vTaskD–ay
-(900);
-
-399 
-	`S‘_B¿ke
-(
-PushOut
-);
-
-403 
-MiddËB¿ke
-:
-
-405 
-xB¿ke_’d
- = 
-	`xEv’tGroupWa™B™s
-(
-xEv’tStus
-,
-Clutch_BIT
-, 
-pdFALSE
-, 
-pdTRUE
-, 
-pÜtMAX_DELAY
-);
-
-406 
-	`vTaskD–ay
-(
-SynchroClutchD–ay
-);
-
-407 
-	`S‘_B¿ke
-(
-Push
-);
-
-408 
-	`vTaskD–ay
-(1300);
-
-409 
-	`S‘_B¿ke
-(
-PushOut
-);
-
-413 
-HighB¿ke
-:
-
-415 
-xB¿ke_’d
- = 
-	`xEv’tGroupWa™B™s
-(
-xEv’tStus
-,
-Clutch_BIT
-, 
-pdFALSE
-, 
-pdTRUE
-, 
-pÜtMAX_DELAY
-);
-
-416 
-	`vTaskD–ay
-(
-SynchroClutchD–ay
-);
-
-417 
-	`S‘_B¿ke
-(
-Push
-);
-
-418 
-	`vTaskD–ay
-(2500);
-
-419 
-	`S‘_B¿ke
-(
-PushOut
-);
-
-423 
-Em”g’cyB¿ke
-:
-
-425 
-	`S‘_B¿ke
-(
-Push
-);
-
-429 
-xB¿ke_’d
+392 
+xEv’t
  = 
 	`xEv’tGroupS‘B™s
 (
@@ -164737,23 +164653,187 @@ xEv’tStus
 B¿ke_BIT
 );
 
-432 
+396 
+FuÎOut
+:
+
+398 
+	`S‘_B¿ke
+(
+PushOut
+);
+
+403 
+LowB¿ke
+:
+
+405 
+	`S‘_B¿ke
+(
+Push
+);
+
+406 
+	`vTaskD–ay
+(900);
+
+407 
+	`S‘_B¿ke
+(
+PushOut
+);
+
+408 
+xEv’t
+ = 
+	`xEv’tGroupS‘B™s
+(
+xEv’tStus
+, 
+B¿ke_BIT
+);
+
+412 
+MiddËB¿ke
+:
+
+414 
+xEv’t
+ = 
+	`xEv’tGroupWa™B™s
+(
+xEv’tStus
+, 
+Clutch_BIT
+, 
+pdFALSE
+, 
+pdTRUE
+, 
+pÜtMAX_DELAY
+);
+
+415 
+	`vTaskD–ay
+(
+SynchroClutchD–ay
+);
+
+416 
+	`S‘_B¿ke
+(
+Push
+);
+
+417 
+	`vTaskD–ay
+(1300);
+
+418 
+	`S‘_B¿ke
+(
+PushOut
+);
+
+419 
+xEv’t
+ = 
+	`xEv’tGroupS‘B™s
+(
+xEv’tStus
+, 
+B¿ke_BIT
+);
+
+423 
+HighB¿ke
+:
+
+425 
+xEv’t
+ = 
+	`xEv’tGroupWa™B™s
+(
+xEv’tStus
+, 
+Clutch_BIT
+, 
+pdFALSE
+, 
+pdTRUE
+, 
+pÜtMAX_DELAY
+);
+
+426 
+	`vTaskD–ay
+(
+SynchroClutchD–ay
+);
+
+427 
+	`S‘_B¿ke
+(
+Push
+);
+
+428 
+	`vTaskD–ay
+(2500);
+
+429 
+	`S‘_B¿ke
+(
+PushOut
+);
+
+430 
+xEv’t
+ = 
+	`xEv’tGroupS‘B™s
+(
+xEv’tStus
+, 
+B¿ke_BIT
+);
+
+434 
+Em”g’cyB¿ke
+:
+
+436 
+	`S‘_B¿ke
+(
+Push
+);
+
+437 
+xEv’t
+ = 
+	`xEv’tGroupS‘B™s
+(
+xEv’tStus
+, 
+B¿ke_BIT
+);
+
+443 
 	`vTaskD–‘e
 (
 NULL
 );
 
-433 
+444 
 	}
 }
 
-436 
+447 
 	$vGasMªagem’t
 Ğ*
 pvP¬am‘”s
 )
 
-443 
+454 
 ušt8_t
  
 ¡©us
@@ -164761,7 +164841,7 @@ ušt8_t
 _WEWE
 ;
 
-447 ià(
+458 ià(
 S¹FÏgs
 .
 S¹C¬FÏg_Gas
@@ -164771,119 +164851,125 @@ S¹C¬FÏg_Gas
 xGasHªdË
 );
 
-449 
+460 
 ¡©us
 )
 
-451 
+462 
 _WEWE
 :
 
-453 
+464 
 i
  = 0; i < 3; i++)
 
-455 
+466 
 	`S‘_Gas
 (
 WEWE_S³ed
 );
 
-456 
+467 
 	`vTaskD–ay
 (150);
 
-457 
+468 
 	`S‘_Gas
 (
 ZeWE_S³ed
 );
 
-458 
+469 
 	`vTaskD–ay
 (500);
 
-460 
+471 
 S¹FÏgs
 .
 S¹C¬_FÏg_Maš
  = 1;
 
-461 
+472 
 S¹FÏgs
 .
 S¹C¬FÏg_Gas
  = 0; ;
 
-465 
+476 
 LowGas
 :
 
-467 
+478 
 	`S‘_Gas
 (
 Low_S³ed
 );
 
-471 
+482 
 Z”o
 :
 
-473 
+484 
 	`S‘_Gas
 (
 Z”o_S³ed
 );
 
-477 
+488 
 H–pT¿nsmissiÚ
 :
 
-479 
+490 
 	`S‘_Gas
 (
 Low_S³ed
 );
 
-480 
+491 
 	`vTaskD–ay
 (500);
 
-481 
+492 
 	`S‘_Gas
 (
 Z”o_S³ed
 );
 
-488 
+499 
 	`vTaskD–‘e
 (
 NULL
 );
 
-489 
+500 
 	}
 }
 
-492 
+503 
 	$vMªagem’tG—rsBox
 Ğ*
 pvP¬am‘”s
  )
 
-494 
+505 
 ušt8_t
  
 ¡©us
 ;
 
-495 
+506 
 pÜtBASE_TYPE
  
 xStus
 ;
 
-499 
+507 
+Ev’tB™s_t
+ 
+xEv’ts
+;
+
+511 
 xStus
  = 
 	`xQueueReûive
@@ -164895,99 +164981,179 @@ xQueueT¿nsmissiÚHªdË
 pÜtMAX_DELAY
 );
 
-501 
+513 
 ¡©us
 )
 
-503 
+515 
 ”rQUEUE_EMPTY
 : ;
 
-505 
+517 
 N
 :
 
-507 
-Clutch_FÏg
- !ğ
-FuÎ
-) {}
+519 
+xEv’ts
+ = 
+	`xEv’tGroupWa™B™s
+(
+xEv’tStus
+, 
+Clutch_BIT
+, 
+pdFALSE
+, 
+pdTRUE
+, 
+pÜtMAX_DELAY
+);
 
-508 
+520 
 	`S‘_T¿nsmissiÚ
 (
 N
 );
 
-512 
+521 
+xEv’ts
+ = 
+	`xEv’tGroupS‘B™s
+(
+xEv’tStus
+, 
+T¿nsmissiÚ_BIT
+);
+
+525 
 R
 :
 
-514 
-Clutch_FÏg
- !ğ
-FuÎ
-) {}
+527 
+xEv’ts
+ = 
+	`xEv’tGroupWa™B™s
+(
+xEv’tStus
+, 
+Clutch_BIT
+, 
+pdFALSE
+, 
+pdTRUE
+, 
+pÜtMAX_DELAY
+);
 
-515 
+528 
 	`S‘_T¿nsmissiÚ
 (
 R
 );
-
-519 
-F1
-:
-
-521 
-Clutch_FÏg
- !ğ
-FuÎ
-) {}
-
-522 
-	`S‘_T¿nsmissiÚ
-(
-F1
-);
-
-526 
-F2
-:
-
-528 
-Clutch_FÏg
- !ğ
-FuÎ
-) {}
 
 529 
-	`S‘_T¿nsmissiÚ
+xEv’ts
+ = 
+	`xEv’tGroupS‘B™s
 (
-F2
+xEv’tStus
+, 
+T¿nsmissiÚ_BIT
+);
+
+533 
+F1
+:
+
+535 
+xEv’ts
+ = 
+	`xEv’tGroupWa™B™s
+(
+xEv’tStus
+, 
+Clutch_BIT
+, 
+pdFALSE
+, 
+pdTRUE
+, 
+pÜtMAX_DELAY
 );
 
 536 
+	`S‘_T¿nsmissiÚ
+(
+F1
+);
+
+537 
+xEv’ts
+ = 
+	`xEv’tGroupS‘B™s
+(
+xEv’tStus
+, 
+T¿nsmissiÚ_BIT
+);
+
+541 
+F2
+:
+
+543 
+xEv’ts
+ = 
+	`xEv’tGroupWa™B™s
+(
+xEv’tStus
+, 
+Clutch_BIT
+, 
+pdFALSE
+, 
+pdTRUE
+, 
+pÜtMAX_DELAY
+);
+
+544 
+	`S‘_T¿nsmissiÚ
+(
+F2
+);
+
+545 
+xEv’ts
+ = 
+	`xEv’tGroupS‘B™s
+(
+xEv’tStus
+, 
+T¿nsmissiÚ_BIT
+);
+
+552 
 	`vTaskD–‘e
 (
 NULL
 );
 
-537 
+553 
 	}
 }
 
-540 
+556 
 	$vModBusMªagem’t
 Ğ*
 pvP¬am‘”s
  )
 
-542 
+558 
 D©a
 ;
 
-545 
+561 
 	`xSem­hÜeTake
 (
 xUARTEv’t
@@ -164995,101 +165161,115 @@ xUARTEv’t
 pÜtMAX_DELAY
 );
 
-546 
+562 
 E¼ÜTask
  = 
 	`ModBus_CheckF¿me
 ();
 
-547 ifĞ
+564 ifĞ
 E¼ÜTask
  == 0x08)
 
-549 
+566 
 	`ModBus_CË¬Msgs
 ();
 
-552 
+569 
 D©a
  = 
 	`ModBus_P¬£Pack‘
 ();
 
-553 
+570 
 	`ModBus_CË¬Msgs
 ();
 
-554 ià((
+571 ià(
 D©a
- >ğ0.05 || D©¨<ğ-0.05è&& (D©¨<ğ4.0 || D©¨>ğ-4.0 )è{
+ <ğ4.0 || D©¨>ğ-4.0 ) {
 	`xQueueS’d
 (
 xQueue20HªdË
 , &Data, 0);}
 
-555 { 
+572 { 
 E¼ÜTask
- |= 0x40; ; }
+ = 0x40; ; }
 
-556 
+573 
 E¼ÜTask
- &= ~(0x08);
+ = 0;
 
-558 
+575 
 	`vTaskResume
 (
 xQueueMªagHªdË
 );
 
-560 
+577 
 	`vTaskD–‘e
 (
 NULL
 );
 
-561 
+578 
 	}
 }
 
-564 
+581 
 	$vSecur™yMemÜyMªagem’t
  ( *
 pvP¬am‘”s
 )
 
-569 
+586 
 S³ed
 ;
 
-570 
+587 
 ušt8_t
  
 T¿nsmissiÚ
 ;
 
-571 
+588 
 ušt8_t
  
 B¿ke
 ;
 
-572 cÚ¡ 
-V–_Divid”
- = 1.0;
+589 
+ušt8_t
+ 
+Clutch
+ = 
+NONE
+;
 
-573 
+590 cÚ¡ 
+V–_Divid”
+ = 0.5;
+
+592 
 pÜtBASE_TYPE
  
 xStus
 ;
 
-574 
+593 
 xStus
  = 
 pdFALSE
 ;
 
-578 
+594 
+Ev’tB™s_t
+ 
+xEv’t
+;
+
+598 
 xStus
  = 
 	`xQueueReûive
@@ -165101,7 +165281,7 @@ S³ed
 pÜtMAX_DELAY
 );
 
-580 
+600 
 Divid”
  = 
 S³ed
@@ -165109,57 +165289,49 @@ S³ed
 Cu¼’t_V–oc™y
 ;
 
-583 ifĞ
+603 ifĞ
 Divid”
  < 
 V–_Divid”
  &&
 
-584 
+604 
 Divid”
  > -
 V–_Divid”
  && 
 S³ed
- !ğ0.0 ) { 
-S¹FÏgs
-.
-S¹C¬FÏg_ModBus
- = 0; ; }
+ != 0.0 ) ;
 
-586 
-	`G‘_T¿nsmissiÚ
-();
-
-590 
-T¿nsmissiÚ_FÏg
- = 
-N
-;
-
-592 
+606 
 T¿nsmissiÚ
  = 
 NONE
 ;
 
-593 
+607 
 B¿ke
  = 
 NONE
 ;
 
-595 ifĞ
+608 
+Clutch
+ = 
+NONE
+;
+
+610 ifĞ
 Divid”
  < -
 V–_Divid”
 )
 
-597 ifĞ
+612 ifĞ
 Cu¼’t_V–oc™y
  <= -1.0 && Current_Velocity > -3.333)
 
-602 ifĞ
+617 ifĞ
 T¿nsmissiÚ_FÏg
  !ğ
 R
@@ -165167,7 +165339,7 @@ R
 T¿nsmissiÚ
  = R;
 
-604 
+619 
 B¿ke
  = (
 S³ed
@@ -165179,7 +165351,7 @@ B¿ke_Trigg”_Low
 FuÎOut
  :
 
-605 (
+620 (
 S³ed
  >ğ
 S³ed_R
@@ -165189,7 +165361,7 @@ B¿ke_Trigg”_Medium
 LowB¿ke
  :
 
-606 (
+621 (
 S³ed
  >ğ
 S³ed_R
@@ -165199,7 +165371,7 @@ B¿ke_Trigg”_High
 MiddËB¿ke
  :
 
-607 (
+622 (
 S³ed
  >ğ
 S³ed_R
@@ -165211,17 +165383,17 @@ HighB¿ke
 Em”g’cyB¿ke
 ;
 
-609 
+624 
 S¹FÏgs
 .
 S¹C¬Mªagem’t
  = 1;
 
-612 ifĞ
+627 ifĞ
 Cu¼’t_V–oc™y
- > -1.0 && Current_Velocity <= 1.5 )
+ > -1.0 && Current_Velocity <= 1.0 )
 
-617 
+632 
 T¿nsmissiÚ
  = (
 S³ed
@@ -165229,7 +165401,7 @@ S³ed
 N
  :
 
-618 (
+633 (
 S³ed
  < -1.0è? 
 R
@@ -165237,7 +165409,7 @@ R
 N
 ;
 
-620 
+635 
 B¿ke
  = (
 S³ed
@@ -165245,7 +165417,7 @@ S³ed
 FuÎOut
  :
 
-621 (
+636 (
 S³ed
  >ğ-1.0 && S³ed <ğ1.0è? 
 HighB¿ke
@@ -165253,11 +165425,11 @@ HighB¿ke
 Em”g’cyB¿ke
 ;
 
-624 ifĞ
+639 ifĞ
 Cu¼’t_V–oc™y
  > 1.0 && Current_Velocity <= 3.333 )
 
-629 ifĞ
+644 ifĞ
 T¿nsmissiÚ_FÏg
  !ğ
 F1
@@ -165265,7 +165437,7 @@ F1
 T¿nsmissiÚ
  = F1;
 
-631 ifĞ
+646 ifĞ
 S³ed
  <ğ1.5è
 T¿nsmissiÚ
@@ -165273,53 +165445,69 @@ T¿nsmissiÚ
 N
 ;
 
-633 
+648 
 B¿ke
- = ((
+ = (
 S³ed
- <ğ3.333è&& (S³ed >ğS³ed - 
+ >ğ
+S³ed_R
+ && (
 B¿ke_Trigg”_Low
-èè? 
+ >ğS³ed - 
+Divid”
+)è? 
 FuÎOut
  :
 
-634 ((
+649 (
 S³ed
- <ğ3.333è&& (S³ed >ğS³ed - 
+ >ğ
+S³ed_R
+ && (
 B¿ke_Trigg”_Medium
-èè? 
+ >ğS³ed - 
+Divid”
+)è? 
 LowB¿ke
  :
 
-635 ((
+650 (
 S³ed
- <ğ3.333è&& (S³ed >ğS³ed - 
+ >ğ
+S³ed_R
+ && (
 B¿ke_Trigg”_High
-èè? 
+ >ğS³ed - 
+Divid”
+)è? 
 MiddËB¿ke
  :
 
-636 ((
+651 (
 S³ed
- <ğ3.333è&& (S³ed >ğS³ed - 
+ >ğ
+S³ed_R
+ && (
 B¿ke_Trigg”_Em”g’cy
-èè? 
+ >ğS³ed - 
+Divid”
+)è? 
 HighB¿ke
  : 
 Em”g’cyB¿ke
 ;
 
-656 ifĞ
+671 ifĞ
 Divid”
  > 
 V–_Divid”
 )
 
-659 ifĞ
+674 ifĞ
 Cu¼’t_V–oc™y
  < -1.0 && Current_Velocity > -3.333)
 
-664 
+679 
 T¿nsmissiÚ
  = (
 S³ed
@@ -165327,61 +165515,69 @@ S³ed
 R
  :
 
-665 (
+680 (
 S³ed
  >ğ-1.0 && S³ed <ğ1.0è? 
 N
  : N;
 
-667 
+682 
 B¿ke
  = (
 S³ed
  >ğ
 S³ed_R
- && (S³ed <ğS³ed + 
+ && (
 B¿ke_Trigg”_Low
+ >ğS³ed - 
+Divid”
 )è? 
 FuÎOut
  :
 
-668 (
+683 (
 S³ed
  >ğ
 S³ed_R
- && (S³ed <ğS³ed + 
+ && (
 B¿ke_Trigg”_Medium
+ >ğS³ed - 
+Divid”
 )è? 
 LowB¿ke
  :
 
-669 (
+684 (
 S³ed
  >ğ
 S³ed_R
- && (S³ed <ğS³ed + 
+ && (
 B¿ke_Trigg”_High
+ >ğS³ed - 
+Divid”
 )è? 
 MiddËB¿ke
  :
 
-670 (
+685 (
 S³ed
  >ğ
 S³ed_R
- && (S³ed <ğS³ed + 
+ && (
 B¿ke_Trigg”_Em”g’cy
+ >ğS³ed - 
+Divid”
 )è? 
 HighB¿ke
  : 
 Em”g’cyB¿ke
 ;
 
-673 ifĞ
+688 ifĞ
 Cu¼’t_V–oc™y
  >= -1.0 && Current_Velocity <= 1.0 )
 
-678 
+693 
 T¿nsmissiÚ
  = (
 S³ed
@@ -165389,7 +165585,7 @@ S³ed
 N
  :
 
-679 (
+694 (
 S³ed
  > 1.0è? 
 F1
@@ -165397,17 +165593,17 @@ F1
 N
 ;
 
-681 
+696 
 B¿ke
  = 
 FuÎOut
 ;
 
-684 ifĞ
+699 ifĞ
 Cu¼’t_V–oc™y
  > 1.0 && Current_Velocity <= 3.333 )
 
-689 
+704 
 T¿nsmissiÚ
  = ( 
 S³ed
@@ -165415,7 +165611,7 @@ S³ed
 F1
  :
 
-690 Ğ
+705 Ğ
 S³ed
  > 4.16667 && S³ed <ğ5.55è? 
 F2
@@ -165423,75 +165619,213 @@ F2
 F1
 ;
 
-692 
+707 
 B¿ke
  = 
 FuÎOut
 ;
 
-706 
+722 
 xStus
  = 
 pdFALSE
 ;
 
-708 ifĞ
-B¿ke_FÏg
- !ğ
+723 ifĞ
 B¿ke
-è
+ !ğ
+NONE
+ && B¿k!ğ
+FuÎOut
+)
+
+725 ifĞ(
+B¿ke
+ =ğ
+MiddËB¿ke
+ || B¿k=ğ
+HighB¿ke
+ || B¿k=ğ
+Em”g’cyB¿ke
+) )
+
+727 ifĞ
+Clutch_FÏg
+ !ğ
+FuÎ
+)
+
+729 
+Clutch
+ = 0;
+
+730 
+xStus
+ = 
+	`xQueueS’d
+(
+xQueueClutchHªdË
+, &
+Clutch
+, 
+pÜtMAX_DELAY
+);
+
+733 
 xStus
  = 
 	`xQueueS’d
 (
 xQueueB¿keHªdË
-, &Brake, 0);
+, &
+B¿ke
+, 
+pÜtMAX_DELAY
+);
 
-709 ifĞ
+734 
+xEv’t
+ = 
+	`xEv’tGroupWa™B™s
+(
+xEv’tStus
+, 
+B¿ke_BIT
+, 
+pdTRUE
+,…dTRUE, 
+pÜtMAX_DELAY
+);
+
+736 ifĞ
+B¿ke
+ =ğ
+FuÎOut
+)
+
+738 
+xStus
+ = 
+	`xQueueS’d
+(
+xQueueClutchHªdË
+, &
+B¿ke
+, 
+pÜtMAX_DELAY
+);
+
+741 ifĞ
 T¿nsmissiÚ
  !ğ
 T¿nsmissiÚ_FÏg
-è
+ && Transmission_Flag != 15)
+
+744 ifĞ
+Clutch_FÏg
+ !ğ
+FuÎ
+è{ 
+Clutch
+ = 0; 
+xStus
+ = 
+	`xQueueS’d
+(
+xQueueClutchHªdË
+, &Clutch, 
+pÜtMAX_DELAY
+); }
+
+745 
 xStus
  = 
 	`xQueueS’d
 (
 xQueueT¿nsmissiÚHªdË
-, &Transmission, 0);
+, &
+T¿nsmissiÚ
+, 
+pÜtMAX_DELAY
+);
 
-711 
+748 
+xEv’t
+ = 
+	`xEv’tGroupWa™B™s
+(
+xEv’tStus
+, ( 
+T¿nsmissiÚ_BIT
+ | 
+Clutch_BIT
+), 
+pdTRUE
+,…dTRUE, 
+pÜtMAX_DELAY
+);
+
+750 
+Clutch
+ = 
+FuÎ
+;
+
+751 
+xStus
+ = 
+	`xQueueS’d
+(
+xQueueClutchHªdË
+, &
+Clutch
+, 
+pÜtMAX_DELAY
+);
+
+753 
+xEv’t
+ = 
+	`xEv’tGroupCË¬B™s
+(
+xEv’tStus
+, 
+ALL_BITS
+);
+
+756 
 	`vTaskD–‘e
 (
 NULL
 );
 
-712 
+757 
 	}
 }
 
-715 
+760 
 	$vT¿nsmissiÚIn™
 Ğ*
 pvP¬am‘”s
 )
 
-724 ifĞ
+769 ifĞ
 T¿nsmissiÚ_FÏg
  =ğ
 N
 )
 
-726 
+771 
 	`MoveTo
 (0,0.0);
 
-727 
+772 
 	`vTaskD–ay
 (1000 / 
 pÜtTICK_RATE_MS
 );
 
-728 ifĞ((
+773 ifĞ((
 adc_d©a
 [0] / 250è=ğ
 LEFT
@@ -165499,21 +165833,21 @@ LEFT
 RIGHT
 ) )
 
-729 
+774 
 	`move_ŒªsmissiÚ_to_û¹aš_¡©e
 ();
 
-731 
+776 
 	`move_ŒªsmissiÚ_to_û¹aš_¡©e
 ();
 
-733 
+778 
 	`vTaskD–‘e
 (
 NULL
 );
 
-734 
+779 
 	}
 }
 
@@ -170371,17 +170705,17 @@ _BoŞ
 	`PID_In™
 ();
 
-9 #ià(
+10 #ià(
 Te¡
  == 0)
 
-12 
+14 
 	`vSem­hÜeC»©eBš¬y
 (
 xS¹Ev’t
 );
 
-13 
+15 
 	`xTaskC»©e
 (
 vRobÙGo
@@ -170393,13 +170727,13 @@ NULL
 xRobÙGo
 );
 
-14 
+16 
 	`vTaskSu¥’d
 (
 xRobÙGo
 );
 
-17 
+19 
 	`xTaskC»©e
 (
 vS¹
@@ -170411,13 +170745,13 @@ NULL
 xS¹HªdË
 );
 
-20 
+22 
 	`vSem­hÜeC»©eBš¬y
 (
 xUARTEv’t
 );
 
-21 
+23 
 	`xTaskC»©e
 (
 vWa™šgEv’t
@@ -170429,13 +170763,13 @@ NULL
 xWa™šgHªdË
 );
 
-22 
+24 
 	`vTaskSu¥’d
 (
 xWa™šgHªdË
 );
 
-25 
+27 
 	`xTaskC»©e
 (
 vMes§geS’dšg
@@ -170447,13 +170781,13 @@ NULL
 xMaHªdË
 );
 
-26 
+28 
 	`vTaskSu¥’d
 (
 xMaHªdË
 );
 
-29 
+31 
 	`xTaskC»©e
 (
 vClutchMªagem’t
@@ -170465,13 +170799,13 @@ NULL
 xClutchHªdË
 );
 
-30 
+32 
 	`vTaskSu¥’d
 (
 xClutchHªdË
 );
 
-33 
+35 
 	`xTaskC»©e
 (
 vB¿keMªagem’t
@@ -170483,13 +170817,13 @@ NULL
 xB¿keHªdË
 );
 
-34 
+36 
 	`vTaskSu¥’d
 (
 xB¿keHªdË
 );
 
-37 
+39 
 	`xTaskC»©e
 (
 vGasMªagem’t
@@ -170501,13 +170835,13 @@ NULL
 xGasHªdË
 );
 
-38 
+40 
 	`vTaskSu¥’d
 (
 xGasHªdË
 );
 
-41 
+43 
 	`xTaskC»©e
 (
 vMªagem’tG—rsBox
@@ -170519,13 +170853,13 @@ NULL
 xG—rsHªdË
  );
 
-42 
+44 
 	`vTaskSu¥’d
 (
 xG—rsHªdË
 );
 
-45 
+47 
 	`xTaskC»©e
 (
 vModBusMªagem’t
@@ -170537,13 +170871,13 @@ NULL
 xModBusHªdË
  );
 
-46 
+48 
 	`vTaskSu¥’d
 (
 xModBusHªdË
 );
 
-49 
+51 
 	`xTaskC»©e
 (
 vSecur™yMemÜyMªagem’t
@@ -170555,13 +170889,13 @@ NULL
 xQueueMªagHªdË
  );
 
-50 
+52 
 	`vTaskSu¥’d
 (
 xQueueMªagHªdË
 );
 
-53 
+55 
 	`xTaskC»©e
 (
 vT¿nsmissiÚIn™
@@ -170573,36 +170907,20 @@ NULL
 xTrIn™
 );
 
-54 
+56 
 	`vTaskSu¥’d
 (
 xTrIn™
 );
 
-56 
+58 
 xQueue20HªdË
  = 
 	`xQueueC»©e
 (1, ());
 
-57 
-xQueueB¿keHªdË
- = 
-	`xQueueC»©e
-(1, (
-ušt8_t
-));
-
-58 
-xQueueT¿nsmissiÚHªdË
- = 
-	`xQueueC»©e
-(1, (
-ušt8_t
-));
-
 59 
-xQueueClutchHªdË
+xQueueB¿keHªdË
  = 
 	`xQueueC»©e
 (1, (
@@ -170610,7 +170928,15 @@ ušt8_t
 ));
 
 60 
-xQueueGasHªdË
+xQueueT¿nsmissiÚHªdË
+ = 
+	`xQueueC»©e
+(1, (
+ušt8_t
+));
+
+61 
+xQueueClutchHªdË
  = 
 	`xQueueC»©e
 (1, (
@@ -170618,42 +170944,44 @@ ušt8_t
 ));
 
 62 
+xQueueGasHªdË
+ = 
+	`xQueueC»©e
+(1, (
+ušt8_t
+));
+
+64 
 xEv’tStus
  = 
 	`xEv’tGroupC»©e
 ();
 
-64 
-	`£t_pš
-(
-PIN1_12V
-);
-
-65 ifĞ
+66 ifĞ
 xQueue20HªdË
  !ğ
 NULL
  &&
 
-66 
+67 
 xQueueB¿keHªdË
  !ğ
 NULL
  &&
 
-67 
+68 
 xQueueT¿nsmissiÚHªdË
  !ğ
 NULL
  &&
 
-68 
+69 
 xQueueClutchHªdË
  !ğ
 NULL
  &&
 
-69 
+70 
 xQueueGasHªdË
  !ğ
 NULL
@@ -170661,29 +170989,19 @@ NULL
 	`vTaskS¹ScheduËr
 (); }
 
-70 #–ià(
+71 #–ià(
 Te¡
  == 1)
 
-72 
-Clutch_FÏg
- = 1;
-
-75 ifĞ
+76 ifĞ
 Úû
  == 1)
 
-77 
-	`Move_Clutch
-(
-FuÎ
-);
-
-79 
+81 
 Úû
  = 0;
 
-86 
+88 
 	}
 }
 

@@ -75,6 +75,7 @@ void TIM7_IRQHandler(void) // Speed Regulator Car 10Hz
 //                 reset_pin(PIN5_12V);
 //                     reset_pin(PIN6_12V);
     Get_Transmission();
+    Get_Clutch();
    //MoveTo(direction, TransmissionPWM);
     globalRangeTransmission += TransmissionReg[0].CurrentSpeed * 0.1;
 #if( Speed_Mode == 0)

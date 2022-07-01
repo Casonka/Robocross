@@ -15,6 +15,8 @@ struct
 }StartFlags;
 /// FreeRTOS structures
 
+//xTimerHandle xDeadTimeOut;
+
 #define ALL_BITS            (0xFF)
 #define Brake_BIT           (1 << 0)
 #define Clutch_BIT          (1 << 1)

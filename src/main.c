@@ -1,5 +1,5 @@
 #include "main.h"
-#define Test      0     // если нужно запустить тестирование отдельных блоков то ставьте
+#define Test     0     // если нужно запустить тестирование отдельных блоков то ставьте
 _Bool once = 0;
 int transmission = 0;
 int main(void)
@@ -9,6 +9,7 @@ int main(void)
     //Get_Clutch();
 #if (Test == 0)
 
+    //xDeadTimeOut = xTimerCreate(xDeadTimeOut,)
     // разрешение движения и рестарт
     vSemaphoreCreateBinary(xStartEvent);
     xTaskCreate(vRobotGo, (char *) "SET/RESET", configMINIMAL_STACK_SIZE, NULL, 3, &xRobotGo);
@@ -60,7 +61,7 @@ int main(void)
     xQueueClutchHandle = xQueueCreate(1, sizeof(uint8_t)); /// Queue Clutch Command
     xQueueGasHandle = xQueueCreate(1, sizeof(uint8_t)); /// Queue Gas Command
 
-   // xEventStatus = xEventGroupCreate();
+    xEventStatus = xEventGroupCreate();
 
     if( xQueue20Handle != NULL &&
         xQueueBrakeHandle != NULL &&
