@@ -68,22 +68,19 @@ float globalRangeCar = 0.0;
 #define Speed_Mode     1
 void TIM7_IRQHandler(void) // Speed Regulator Car 10Hz
 {
-//    reset_pin(PIN1_12V);
-//     reset_pin(PIN2_12V);
-//         reset_pin(PIN3_12V);
-//             reset_pin(PIN4_12V);
-//                 reset_pin(PIN5_12V);
-//                     reset_pin(PIN6_12V);
+
     Get_Transmission();
+    //Transmission_Flag = R;
     Get_Clutch();
    //MoveTo(direction, TransmissionPWM);
-    globalRangeTransmission += TransmissionReg[0].CurrentSpeed * 0.1;
+    //globalRangeTransmission += TransmissionReg[0].CurrentSpeed * 0.1;
 #if( Speed_Mode == 0)
     Current_Velocity = Speed_Calc_Car(LPulseWheel, RPulseWheel);
 #elif( Speed_Mode == 1)
     Current_Velocity = Speed_Calc_Car_HighFreq();
 #endif
-    //globalRangeCar += Current_Velocity * 0.1;
+    if( Current_Velocity > 100.0 || Current_Velocity < -100.0) {Current_Velocity = 0.0;}
+    globalRangeCar += Current_Velocity * 0.1;
 
 TIM7->SR = 0;
 }
@@ -125,7 +122,12 @@ void EXTI4_IRQHandler(void)
 
 void EXTI9_5_IRQHandler(void)
 {
-    //if(pin_val(GENERAL_PIN_9))
+    static portBASE_TYPE xHigher;
+  if(!pin_val(GENERAL_PIN_8) && pin_val(GENERAL_PIN_9))
+  {
+    xSemaphoreGiveFromISR(xStartEvent, &xHigher);
+  }
+
   if (EXTI->PR&(1<<6))
   {
     EXTI->PR=(1<<6);

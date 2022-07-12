@@ -33,12 +33,13 @@ float Speed_Calc_Car_HighFreq(void)
 {
     volatile uint32_t P_left, P_right = 0;
     float Speed_Left, Speed_Right, Result = 0.0;
+    //LPulseWheel = 0;
     if( LPulseWheel == 0) Speed_Left = 0.0;
     else
     {
         P_left = TIM4->CCR1;
         leftPeriod = P_left;
-        Speed_Left = StepHighFreq / (P_left * 0.00002) * 0.27;
+        Speed_Left = StepHighFreq / (P_left * 0.00002) * 0.33;
        // Speed_l = Speed_Left;
     }
 
@@ -47,7 +48,7 @@ float Speed_Calc_Car_HighFreq(void)
     {
         P_right = TIM3->CCR1;
         rightPeriod = P_right;
-        Speed_Right = StepHighFreq / (P_right * 0.00002) * 0.27;
+        Speed_Right = StepHighFreq / (P_right * 0.00002) * 0.33; // 0.27
        // Speed_r = Speed_Right;
     }
 
@@ -60,10 +61,9 @@ float Speed_Calc_Car_HighFreq(void)
 
     Result = (Transmission_Flag == R) ? -Result : Result;
 
-    if( Result == Current_Velocity ) {ZeroCounts++;}
-    else {ZeroCounts = 0; ZeroMesFlag = 0;}
+//    if( Result == Current_Velocity ) {ZeroCounts++;}
+//    else {ZeroCounts >= 1; ZeroMesFlag = 0;}
 
-    if(ZeroCounts >= 10) {ZeroMesFlag = 1;}
     return Result;
 }
 

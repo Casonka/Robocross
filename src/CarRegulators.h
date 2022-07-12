@@ -22,7 +22,7 @@ typedef struct
 Regulator TransmissionReg[2];
 
 float Current_Velocity; // текущая скорость
-
+float globalRangeCar;
 #define Freq_Timer    0.01      // 100 Hz  1/100 = 0.01 сек
 #define Freq_Wheel      0.1
 #define StepWheel   0.03665    // метров за один шаг колеса (48 магнитов)

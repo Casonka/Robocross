@@ -10,12 +10,18 @@ void Move_Clutch(int direction)
 {
     int Pulses = 0;
 
-    if( direction == Full) {SetPWM(4, 0.5); Pulses = PulseToClutch_UP;}
+    if( direction == Full || direction == Forward_First) {
+    SetPWM(4, 0.5);
+    if( direction == Full)     Pulses = PulseToClutch_UP;
+    if( direction == Forward_First) Pulses = PulseToClutch_UPFirst;
+}
     else
         {
             SetPWM(4, -0.5);
             if( direction == Back_First) { Pulses = PulseToClutch_First; }
             if( direction == Back_Second) { Pulses = PulseToClutch_Second; }
+            if( direction == Back_First_Rev) {Pulses = PulseToClutch_First_Rev;}
+            if( direction == Back_Second_Rev) {Pulses = PulseToClutch_Second_Rev;}
             if( direction == Back_Full) { Pulses = PulseToClutch_BackFull;}
         }
         for(int i = 0; i < Pulses; )

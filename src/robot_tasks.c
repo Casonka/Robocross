@@ -1,76 +1,67 @@
 #include "robot_tasks.h"
 
-// запуск коробки передач
+// Р·Р°РїСѓСЃРє РєРѕСЂРѕР±РєРё РїРµСЂРµРґР°С‡
 #define TestingTransmission  1
 
-// запуск сцепления
+// Р·Р°РїСѓСЃРє СЃС†РµРїР»РµРЅРёСЏ
 #define TestingClutch        1
 
-// запуск ModBus
+// Р·Р°РїСѓСЃРє ModBus
 #define TestingModBus        1
 
-// запуск педали газа
+// Р·Р°РїСѓСЃРє РїРµРґР°Р»Рё РіР°Р·Р°
 #define TestingGas           0
 
-// запуск педали тормоза
-#define SynchroClutchDelay   600
+// Р·Р°РїСѓСЃРє РїРµРґР°Р»Рё С‚РѕСЂРјРѕР·Р°
+#define SynchroClutchDelay   900
 #define TestingBrake         1
 
-// запуск работы программы целиком
+
+// Р·Р°РїСѓСЃРє СЂР°Р±РѕС‚С‹ РїСЂРѕРіСЂР°РјРјС‹ С†РµР»РёРєРѕРј
 #define MainStart            1
 #define CheckEngine          1
 
-// запуск экстренных алгоритмов
+// Р·Р°РїСѓСЃРє СЌРєСЃС‚СЂРµРЅРЅС‹С… Р°Р»РіРѕСЂРёС‚РјРѕРІ
 #define RecoverySector       0
 
-#define DEBUG_SUPPORT        0
+// РїРѕРјРѕС‰СЊ РІ РѕС‚Р»Р°РґРєРµ
+#define DEBUG_SUPPORT
 
-// запуск принудительной отправки сообщений по ModBus
-#define ZeroMesFlag_Off      1
+// Р·Р°РїСѓСЃРє РїСЂРёРЅСѓРґРёС‚РµР»СЊРЅРѕР№ РѕС‚РїСЂР°РІРєРё СЃРѕРѕР±С‰РµРЅРёР№ РїРѕ ModBus
+#define ZeroMesFlag_Off      0
 
 unsigned int ErrorTask;
 
 _Bool ZeroMesFlag;
-float TargetSpeed;
 _Bool Start = 0;
-#if(DEBUG_SUPPORT == 1)
-struct
-{
-    char Transmission;
-    char Brake;
-    char Clutch;
-    char ModBus;
-
-}Debug_Monitor;
-#endif
 
 // System functions
 //--------------------------------------------------------------------------------------------------------------------
 void vApplicationTickHook(void)
 {
     /*!
-    *   @brief vApplicationIdleHook(void) - функция выполняется после каждого завершения любой задачи
-    *   @arg nothing - функция ничего не получает и ничего не возвращает
+    *   @brief vApplicationIdleHook(void) - С„СѓРЅРєС†РёСЏ РІС‹РїРѕР»РЅСЏРµС‚СЃСЏ РїРѕСЃР»Рµ РєР°Р¶РґРѕРіРѕ Р·Р°РІРµСЂС€РµРЅРёСЏ Р»СЋР±РѕР№ Р·Р°РґР°С‡Рё
+    *   @arg nothing - С„СѓРЅРєС†РёСЏ РЅРёС‡РµРіРѕ РЅРµ РїРѕР»СѓС‡Р°РµС‚ Рё РЅРёС‡РµРіРѕ РЅРµ РІРѕР·РІСЂР°С‰Р°РµС‚
     */
+//    if( ErrorTask != 0x00) set_pin(PIN4_12V); // СЃРѕРѕР±С‰Р°РµС‚ С‡С‚Рѕ РµСЃС‚СЊ РїСЂРѕР±Р»РµРјС‹ РІ СЃРёСЃС‚РµРјРµ
+//    else reset_pin(PIN4_12V); // error led pin
 
-    //if( ErrorTask != 0x00) set_pin(PIN4_12V); // сообщает что есть проблемы в системе
-    //else reset_pin(PIN4_12V); // error led pin
 
 }
 
 void vApplicationIdleHook(void)
 {
     /*!
-    *   @brief vApplicationTickHook(void) - функция бездействия, выполняется когда процессорное время ничем не занято
-    *   @arg nothing - функция ничего не получает и ничего не возвращает
+    *   @brief vApplicationTickHook(void) - С„СѓРЅРєС†РёСЏ Р±РµР·РґРµР№СЃС‚РІРёСЏ, РІС‹РїРѕР»РЅСЏРµС‚СЃСЏ РєРѕРіРґР° РїСЂРѕС†РµСЃСЃРѕСЂРЅРѕРµ РІСЂРµРјСЏ РЅРёС‡РµРј РЅРµ Р·Р°РЅСЏС‚Рѕ
+    *   @arg nothing - С„СѓРЅРєС†РёСЏ РЅРёС‡РµРіРѕ РЅРµ РїРѕР»СѓС‡Р°РµС‚ Рё РЅРёС‡РµРіРѕ РЅРµ РІРѕР·РІСЂР°С‰Р°РµС‚
     */
 }
 
 void vApplicationStackOverflowHook( TaskHandle_t xTask, char *pcTaskName )
 {
 /*!
-*   @brief vApplicationIdleHook(void) - функция переполнения, выполняется когда стек задачи переполнился
-*   @arg xTask - дескриптор задачи, pcTaskName - название задачи
+*   @brief vApplicationIdleHook(void) - С„СѓРЅРєС†РёСЏ РїРµСЂРµРїРѕР»РЅРµРЅРёСЏ, РІС‹РїРѕР»РЅСЏРµС‚СЃСЏ РєРѕРіРґР° СЃС‚РµРє Р·Р°РґР°С‡Рё РїРµСЂРµРїРѕР»РЅРёР»СЃСЏ
+*   @arg xTask - РґРµСЃРєСЂРёРїС‚РѕСЂ Р·Р°РґР°С‡Рё, pcTaskName - РЅР°Р·РІР°РЅРёРµ Р·Р°РґР°С‡Рё
 *
 */
 }
@@ -109,15 +100,15 @@ void vApplicationMallocFailedHook( void )
     /*--------------------------------------------*/
 
     /*!
-    *   @note  !Коды ошибок в задачах
-    *   0x01 - ошибка при старте, не заводится машина
-    *   0x02 - ошибка положения коробки
-    *   0x04 - не работает тормоз
-    *   0x08 - ошибка протокола ModBus
-    *   0x10 - ошибка в одометрии, не работает один из датчиков
-    *   0x20 - ошибка в одометрии, не работают оба датчика
-    *   0x40 - ошибка при отжатии сцепления
-    *   0x80 - проблемы с инициализацией скорости
+    *   @note  !РљРѕРґС‹ РѕС€РёР±РѕРє РІ Р·Р°РґР°С‡Р°С…
+    *   0x01 - РѕС€РёР±РєР° РїСЂРё СЃС‚Р°СЂС‚Рµ, РЅРµ Р·Р°РІРѕРґРёС‚СЃСЏ РјР°С€РёРЅР°
+    *   0x02 - РѕС€РёР±РєР° РїРѕР»РѕР¶РµРЅРёСЏ РєРѕСЂРѕР±РєРё
+    *   0x04 - РЅРµ СЂР°Р±РѕС‚Р°РµС‚ С‚РѕСЂРјРѕР·
+    *   0x08 - РѕС€РёР±РєР° РїСЂРѕС‚РѕРєРѕР»Р° ModBus
+    *   0x10 - РѕС€РёР±РєР° РІ РѕРґРѕРјРµС‚СЂРёРё, РЅРµ СЂР°Р±РѕС‚Р°РµС‚ РѕРґРёРЅ РёР· РґР°С‚С‡РёРєРѕРІ
+    *   0x20 - РѕС€РёР±РєР° РІ РѕРґРѕРјРµС‚СЂРёРё, РЅРµ СЂР°Р±РѕС‚Р°СЋС‚ РѕР±Р° РґР°С‚С‡РёРєР°
+    *   0x40 - РѕС€РёР±РєР° РїСЂРё РѕС‚Р¶Р°С‚РёРё СЃС†РµРїР»РµРЅРёСЏ
+    *   0x80 - РїСЂРѕР±Р»РµРјС‹ СЃ РёРЅРёС†РёР°Р»РёР·Р°С†РёРµР№ СЃРєРѕСЂРѕСЃС‚Рё
     */
 
 // xRobotGo
@@ -125,24 +116,31 @@ void vRobotGo( void *pvParameters)
 {
     for(;;)
     {
-        xSemaphoreTake(xStartEvent, portMAX_DELAY);
-
-        ModBus_Init();
-        PID_Init();
-        ErrorTask = 0x00;
-        ZeroMesFlag = 0;
-
-        // close active tasks
-        vTaskSuspend(xWaitingHandle);
-        vTaskSuspend(xMailHandle);
-        vTaskSuspend(xGasHandle);
-        vTaskSuspend(xBrakeHandle);
-        vTaskSuspend(xClutchHandle);
-        vTaskSuspend(xGearsHandle);
-        vTaskSuspend(xModBusHandle);
-        vTaskSuspend(xQueueManagHandle);
-
-        vTaskResume(xStartHandle);
+//        xSemaphoreTake(xStartEvent, portMAX_DELAY);
+//
+//        ModBus_Init();
+//        PID_Init();
+//        ErrorTask = 0x00;
+//        ZeroMesFlag = 0;
+//
+//        set_pin(PIN3_12V);
+//        set_pin(PIN4_12V);
+//        set_pin(PIN2_12V);
+//
+//        // close active tasks
+//        vTaskSuspend(xWaitingHandle);
+//        vTaskSuspend(xMailHandle);
+//        vTaskSuspend(xGasHandle);
+//        vTaskSuspend(xBrakeHandle);
+//        vTaskSuspend(xClutchHandle);
+//        vTaskSuspend(xGearsHandle);
+//        vTaskSuspend(xModBusHandle);
+//        vTaskSuspend(xQueueManagHandle);
+//
+//        reset_pin(PIN4_12V);
+//        reset_pin(PIN2_12V);
+//
+//        vTaskResume(xStartHandle);
     }
 
 vTaskDelete(NULL);
@@ -152,102 +150,112 @@ vTaskDelete(NULL);
 void vStart( void *pvParameters)
 {
 
-    int once = 0;
-
-    PID_Init();
-    ModBus_Init();
-    ErrorTask = 0x00;
-    ZeroMesFlag = 0;
-    UARTTransmit_Flag = 3;
-
     EventBits_t xEventBits;
 
     uint8_t Transmission, Clutch, Brake, Gas;
-#if(DEBUG_SUPPORT == 1)
-    Debug_Monitor.Clutch = '0';
-    Debug_Monitor.Brake = '0';
-    Debug_Monitor.ModBus = '0';
-    Debug_Monitor.Transmission = '0';
-#endif
 
     for(;;)
     {
-        set_pin(PIN3_12V);  // сообщаем что настраиваемся
+        PID_Init();
+        ModBus_Init();
+        ErrorTask = 0x00;
+        ZeroMesFlag = 0;
+        UARTTransmit_Flag = 3;
 
-        // очистка группы событий
+        set_pin(PIN3_12V);  // СЃРѕРѕР±С‰Р°РµРј С‡С‚Рѕ РЅР°СЃС‚СЂР°РёРІР°РµРјСЃСЏ
+
+        // РѕС‡РёСЃС‚РєР° РіСЂСѓРїРїС‹ СЃРѕР±С‹С‚РёР№
         xEventBits = xEventGroupClearBits(xEventStatus, ALL_BITS);
 
-        set_pin(PIN1_12V); // тормоз вкл
+        //set_pin(PIN1_12V); // С‚РѕСЂРјРѕР· РІРєР»
 
 #if ( TestingBrake == 1)
-        Get_Brake();
-        vTaskPrioritySet(xBrakeHandle, 3); // тормоз
-        if(Brake_Flag == 1)
-        {
-            Brake = FullStop;
-            xQueueSend(xQueueBrakeHandle, &Brake, 0);
-            vTaskResume(xBrakeHandle);
-            vTaskDelay(4100);
-        }
+        //Get_Brake();
+        vTaskPrioritySet(xBrakeHandle, 3); // С‚РѕСЂРјРѕР·
+        Brake = FullStop;
+        xQueueSend(xQueueBrakeHandle, &Brake, 0);
+//        if(Brake_Flag == 1)
+//        {
+//            Brake = FullStop;
+//            xQueueSend(xQueueBrakeHandle, &Brake, 0);
+//        }
+        vTaskResume(xBrakeHandle);
+        vTaskDelay(500 / portTICK_RATE_MS);
 #endif
 #if( TestingClutch == 1)
         Get_Clutch();
+        vTaskPrioritySet(xClutchHandle, 3); // РЅР°Р¶Р°С‚СЊ СЃС†РµРїР»РµРЅРёРµ, РµСЃР»Рё РЅРµ Р±С‹Р»Рѕ РЅР°Р¶Р°С‚Рѕ
+
         if( Clutch_Flag != Full)
         {
-            Clutch = 0;
+            Clutch = 1;
             xQueueSend(xQueueClutchHandle, &Clutch, 0);
-            vTaskPrioritySet(xClutchHandle, 3); // нажать сцепление, если не было нажато
-            vTaskResume(xClutchHandle);
-            vTaskDelay(3500);
         }
+
+        vTaskResume(xClutchHandle);
+        vTaskDelay(1250 / portTICK_RATE_MS);
 #endif
 #if( TestingTransmission == 1)
         Get_Transmission();
-        vTaskPrioritySet(xGearsHandle, 3);  // вернуть коробку в нейтраль
+        vTaskPrioritySet(xGearsHandle, 3);  // РІРµСЂРЅСѓС‚СЊ РєРѕСЂРѕР±РєСѓ РІ РЅРµР№С‚СЂР°Р»СЊ
+
         if( Transmission_Flag != N)
         {
-            Clutch_Flag = Full;
             Transmission = N;
             xQueueSend(xQueueTransmissionHandle, &Transmission, 0);
         }
-        xEventBits = xEventGroupClearBits(xEventStatus, Transmission_BIT);
+
         vTaskResume(xGearsHandle);
-        vTaskDelay(3000);
+        vTaskDelay(2000 / portTICK_RATE_MS);
+        xEventBits = xEventGroupClearBits(xEventStatus, Transmission_BIT);
 #endif
 #if( TestingGas == 1)
+        // Р¶РґР°С‚СЊ РїРёС‚Р°РЅРёСЏ РґРІРёРіР°С‚РµР»СЏ
         while(!pin_val(GENERAL_PIN_9)) {}
-        Gas = _WEWE;
-        xQueueSend(xQueueGasHandle, &Gas, 0);
-        vTaskPrioritySet(xGasHandle, 3); // проверка газа (виви мод)
+        vTaskDelay(1000 / portTICK_RATE_MS);
+
+        vTaskPrioritySet(xGasHandle, 3); // РїСЂРѕРІРµСЂРєР° РіР°Р·Р° (РІРёРІРё РјРѕРґ)
+        if( Clutch_Flag == Full)
+        {
+            Gas = _WEWE;
+            xQueueSend(xQueueGasHandle, &Gas, 0);
+        }
+
         vTaskResume(xGasHandle);
-        vTaskDelay(2000);
+        vTaskDelay(2000 / portTICK_RATE_MS);
 #endif
 #if( TestingModBus == 1)
-        vTaskPrioritySet(xModBusHandle, 4); // включение протокола ModBus
+        vTaskPrioritySet(xModBusHandle, 4); // РІРєР»СЋС‡РµРЅРёРµ РїСЂРѕС‚РѕРєРѕР»Р° ModBus
         vTaskResume(xModBusHandle);
 #endif
 
 #if( MainStart == 1)
-
 #if( CheckEngine == 1)
-        set_pin(PIN4_12V); // внимание
-        while(!pin_val(GENERAL_PIN_9)) {}
-        vTaskDelay(1000);
-        reset_pin(PIN4_12V);    // настройка закончена
-        while(pin_val(GENERAL_PIN_8)) {}
-        set_pin(PIN2_12V);      // можно начинать движение
-        reset_pin(PIN3_12V);
-#endif
-        vTaskPrioritySet(xQueueManagHandle, 3);
+        set_pin(PIN4_12V); // РІРЅРёРјР°РЅРёРµ
 
-        vTaskPrioritySet(xMailHandle, 3);
-        vTaskResume(xMailHandle);
+        //while(!pin_val(GENERAL_PIN_9)) {}
+        vTaskDelay(500 / portTICK_RATE_MS);
+
+        reset_pin(PIN4_12V);    // Р·Р°РїСѓСЃС‚РёР»РёСЃСЊ
+        while(pin_val(GENERAL_PIN_8)) {}
+        //Set_Transmission(R);
+        Set_Brake(PushOut);
+
+        set_pin(PIN2_12V);      // РјРѕР¶РЅРѕ РЅР°С‡РёРЅР°С‚СЊ РґРІРёР¶РµРЅРёРµ
+        reset_pin(PIN3_12V);    // РЅР°СЃС‚СЂРѕР№РєР° Р·Р°РєРѕРЅС‡РµРЅР°
+#endif
+        reset_pin(PIN3_12V);
+        vTaskPrioritySet(xQueueManagHandle, 3);
+        vTaskResume(xQueueManagHandle);
+
+        globalRangeCar = 0.0;
+        //vTaskPrioritySet(xMailHandle, 3);
+        //vTaskResume(xMailHandle);
 
         vTaskPrioritySet(xWaitingHandle, 3);
         vTaskResume(xWaitingHandle);
 
-
-        //vTaskResume(xRobotGo); // сброс и перезагрузка при отключении питания
+        //vTaskResume(xRobotGo); // СЃР±СЂРѕСЃ Рё РїРµСЂРµР·Р°РіСЂСѓР·РєР° РїСЂРё РѕС‚РєР»СЋС‡РµРЅРёРё РїРёС‚Р°РЅРёСЏ
 #endif
 
         vTaskSuspend(xStartHandle);
@@ -263,7 +271,6 @@ void vWaitingEvent( void *pvParameters)
     {
         if( UART_Buffer[14] != '\0')
         {
-            StartFlags.StartCarFlag_ModBus = 1;
             xSemaphoreGive(xUARTEvent);
         }
         else { deadtime--; }
@@ -276,10 +283,11 @@ vTaskDelete(NULL);
 void vMessageSending( void *pvParameters)
 {
     /*!
-    *   @note robot_tasks: < периодическая отправка сообщений >
+    *   @note robot_tasks: < РїРµСЂРёРѕРґРёС‡РµСЃРєР°СЏ РѕС‚РїСЂР°РІРєР° СЃРѕРѕР±С‰РµРЅРёР№ >
     */
     portTickType xTimeIncremental;
     xTimeIncremental = xTaskGetTickCount();
+    globalRangeCar = 0.0;
     for(;;)
     {
         #if ( ZeroMesFlag_Off == 1)
@@ -288,10 +296,10 @@ void vMessageSending( void *pvParameters)
         if( ZeroMesFlag == 0)
         {
             UARTTransmit_Flag = 3;
-            ModBus_SendResponseSpeed(Current_Velocity*100);
-            Current_Velocity = 0.0;
+            ModBus_SendResponseSpeed(globalRangeCar * 100);
+            //Current_Velocity = 0.0;
         }
-        vTaskDelayUntil(&xTimeIncremental, ( 100 / portTICK_RATE_MS));  // Гарри хочет каждый 100 мс
+        vTaskDelayUntil(&xTimeIncremental, ( 100 / portTICK_RATE_MS));  // Р“Р°СЂСЂРё С…РѕС‡РµС‚ РєР°Р¶РґС‹Р№ 100 РјСЃ
     }
 
 vTaskDelete(NULL);
@@ -301,68 +309,91 @@ vTaskDelete(NULL);
 void vClutchManagement( void *pvParameters)
 {
     /*!
-    *   @note robot_tasks: < Управление сцеплением >
+    *   @note robot_tasks: < РЈРїСЂР°РІР»РµРЅРёРµ СЃС†РµРїР»РµРЅРёРµРј >
     */
-    uint8_t status = 1;
+    uint8_t status = 6;
     EventBits_t xEvents;
-    portBASE_TYPE xStatus = 0;
+    portBASE_TYPE xStatus = pdFALSE;
 
     for(;;)
     {
-        xQueueReceive(xQueueClutchHandle, &status, portMAX_DELAY);
-
+        xStatus = xQueueReceive(xQueueClutchHandle, &status, portMAX_DELAY);
+        if( xStatus == errQUEUE_EMPTY) continue;
              switch( status )
             {
-                case 0: // выжимается сцепление
+                case 1: // РІС‹Р¶РёРјР°РµС‚СЃСЏ СЃС†РµРїР»РµРЅРёРµ
                 {
                      Get_Clutch();
                      if( Clutch_Flag != Full )
                      {
+                         taskENTER_CRITICAL();
                          Move_Clutch(Full);
-                         xEvents = xEventGroupSetBits(xEventStatus, Clutch_BIT);
+                         taskEXIT_CRITICAL();
+                        xEvents = xEventGroupSetBits(xEventStatus, Clutch_BIT);
                      }
+
                      break;
                 }
 
-                case 1: // проверяем какая передача выставлена
+                case 2: // РїСЂРѕРІРµСЂСЏРµРј РєР°РєР°СЏ РїРµСЂРµРґР°С‡Р° РІС‹СЃС‚Р°РІР»РµРЅР°
                 {
-                    xEvents = xEventGroupWaitBits(xEventStatus, Transmission_BIT, pdTRUE, pdTRUE, portMAX_DELAY);
-                    status = (Transmission_Flag == F1 || Transmission_Flag == R) ? 2 :
-                             (Transmission_Flag == F2 || Transmission_Flag == N) ? 4 : 15;
+//                    xEvents = xEventGroupWaitBits(xEventStatus, Transmission_BIT, pdTRUE, pdTRUE, portMAX_DELAY);
+                    status = (Transmission_Flag == F1 || Transmission_Flag == N) ? 3 :
+                             (Transmission_Flag == R) ? 5 : 15;
                 }
 
-                case 2:   // слегка отпустить сцепление ( с нейтрали на первую)
+                case 3:   // СЃР»РµРіРєР° РѕС‚РїСѓСЃС‚РёС‚СЊ СЃС†РµРїР»РµРЅРёРµ ( СЃ РЅРµР№С‚СЂР°Р»Рё РЅР° РїРµСЂРІСѓСЋ)
                 {
-                    vTaskDelay(3000);
+                    taskENTER_CRITICAL();
                     Move_Clutch(Back_First);
-                    status = 3;
-                    vTaskDelay(1000);
+                    taskEXIT_CRITICAL();
+                    vTaskDelay(2250 / portTICK_RATE_MS);
+                    status = 7;
+
+                    //vTaskDelay(1250 / portTICK_RATE_MS);
+                    //break;
                 }
 
-                case 3: // довести передачу до конца
+//                case 4: // РґРѕРІРµСЃС‚Рё РїРµСЂРµРґР°С‡Сѓ РґРѕ РєРѕРЅС†Р°
+//                {
+//                    Move_Clutch(Back_Second);
+//                    break;
+//                }
+
+                case 5: // reverse first step
                 {
-                    set_pin(PIN3_12V);
-                    Move_Clutch(Back_Second);
+                    taskENTER_CRITICAL();
+                    Move_Clutch(Back_First_Rev);
+                    taskEXIT_CRITICAL();
+                    vTaskDelay(1500 / portTICK_RATE_MS);
+                    status = 7;
+                    //break;
+                }
+
+//                case 6: // РЅР°Р¶Р°С‚СЊ СЃС†РµРїР»РµРЅРёРµ РЅРµ РґРѕ РєРѕРЅС†Р°
+//                {
+//                    Move_Clutch(Forward_First);
+//                    xEvents = xEventGroupSetBits(xEventStatus, Clutch_BIT);
+//                    break;
+//
+//                }
+
+                case 7:
+                {
+                    taskENTER_CRITICAL();
+                    Move_Clutch(Back_Second_Rev);
+                    taskEXIT_CRITICAL();
+                    xEvents = xEventGroupSetBits(xEventStatus, Clutch_BIT);
                     break;
                 }
 
-                case 4: // отпустить полностью, без задержек
+                default: // РїСЂРёС€РµР» РЅРµРІРµСЂРЅС‹Р№ Р°РіСЂСѓРјРµРЅС‚ РґР»СЏ СЃС†РµРїР»РµРЅРёСЏ: РќРµРёР·РІРµСЃС‚РЅС‹Р№ СЃС†РµРЅР°СЂРёР№
                 {
-                    Move_Clutch(Back_Full);
-                    xEvents = xEventGroupClearBits(xEventStatus, Clutch_BIT);
-                    break;
-                }
-
-                default: // что-то произошло с коробкой
-                {
-                    Get_Transmission();
-                    ErrorTask = (Clutch_Flag != Back_Second || Clutch_Flag != Full) ? 0x40 : 0x00;
+                    ErrorTask = 0x40;
                     break;
                 }
             }
     }
-
-// сюда не доходит задача
 vTaskDelete(NULL);
 }
 
@@ -370,24 +401,22 @@ vTaskDelete(NULL);
 void vBrakeManagement ( void *pvParameters)
 {
     /*!
-    *   @note robot_tasks: < Управление тормозом >
+    *   @note robot_tasks: < РЈРїСЂР°РІР»РµРЅРёРµ С‚РѕСЂРјРѕР·РѕРј >
     */
     uint8_t status;
+    portBASE_TYPE xStatus;
     EventBits_t xEvent;
 
     for(;;)
     {
-        xQueueReceive(xQueueBrakeHandle, &status, portMAX_DELAY);
-#if(DEBUG_SUPPORT == 1)
-        Debug_Monitor.Brake = 'Y';
-#endif
+        xStatus = xQueueReceive(xQueueBrakeHandle, &status, portMAX_DELAY);
+        if(xStatus == errQUEUE_EMPTY) continue;
+
         switch(status)
         {
-            case errQUEUE_EMPTY:    break;
-
             case FullStop: // 1
             {
-                xEvent = xEventGroupWaitBits(xEventStatus, Clutch_BIT, pdFALSE, pdTRUE, portMAX_DELAY);
+//                xEvent = xEventGroupWaitBits(xEventStatus, Clutch_BIT, pdFALSE, pdTRUE, portMAX_DELAY);
                 Set_Brake(Push);
                 xEvent = xEventGroupSetBits(xEventStatus, Brake_BIT);
                 break;
@@ -396,14 +425,14 @@ void vBrakeManagement ( void *pvParameters)
             case FullOut: // 2
             {
                 Set_Brake(PushOut);
-                //xEvent = xEventGroupSetBits(xEventStatus, Brake_BIT);
+                xEvent = xEventGroupSetBits(xEventStatus, Brake_BIT);
                 break;
             }
 
             case LowBrake: // 3
             {
                 Set_Brake(Push);
-                vTaskDelay(900);
+                vTaskDelay(SynchroClutchDelay / portTICK_RATE_MS);
                 Set_Brake(PushOut);
                 xEvent = xEventGroupSetBits(xEventStatus, Brake_BIT);
                 break;
@@ -411,10 +440,9 @@ void vBrakeManagement ( void *pvParameters)
 
             case MiddleBrake: // 4
             {
-                xEvent = xEventGroupWaitBits(xEventStatus, Clutch_BIT, pdFALSE, pdTRUE, portMAX_DELAY);
-                vTaskDelay(SynchroClutchDelay);
+//                xEvent = xEventGroupWaitBits(xEventStatus, Clutch_BIT, pdFALSE, pdTRUE, portMAX_DELAY);
                 Set_Brake(Push);
-                vTaskDelay(1300);
+                vTaskDelay((SynchroClutchDelay * 1.5) / portTICK_RATE_MS );
                 Set_Brake(PushOut);
                 xEvent = xEventGroupSetBits(xEventStatus, Brake_BIT);
                 break;
@@ -422,10 +450,9 @@ void vBrakeManagement ( void *pvParameters)
 
             case HighBrake: // 5
             {
-                xEvent = xEventGroupWaitBits(xEventStatus, Clutch_BIT, pdFALSE, pdTRUE, portMAX_DELAY);
-                vTaskDelay(SynchroClutchDelay);
+//                xEvent = xEventGroupWaitBits(xEventStatus, Clutch_BIT, pdFALSE, pdTRUE, portMAX_DELAY);
                 Set_Brake(Push);
-                vTaskDelay(2500);
+                vTaskDelay(2000 / portTICK_RATE_MS);
                 Set_Brake(PushOut);
                 xEvent = xEventGroupSetBits(xEventStatus, Brake_BIT);
                 break;
@@ -447,8 +474,8 @@ vTaskDelete(NULL);
 void vGasManagement( void *pvParameters)
 {
     /*!
-    *   @note robot_tasks: < управление газом >
-    *       @last не используется, т.к на вторую не переключаемся
+    *   @note robot_tasks: < СѓРїСЂР°РІР»РµРЅРёРµ РіР°Р·РѕРј >
+    *       @last РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ, С‚.Рє РЅР° РІС‚РѕСЂСѓСЋ РЅРµ РїРµСЂРµРєР»СЋС‡Р°РµРјСЃСЏ
     */
 
     uint8_t status = _WEWE;
@@ -516,7 +543,7 @@ void vManagementGearsBox( void *pvParameters )
 
             case N:
             {
-                xEvents = xEventGroupWaitBits(xEventStatus, Clutch_BIT, pdFALSE, pdTRUE, portMAX_DELAY);
+               // xEvents = xEventGroupWaitBits(xEventStatus, Clutch_BIT, pdTRUE, pdTRUE, portMAX_DELAY);
                 Set_Transmission(N);
                 xEvents = xEventGroupSetBits(xEventStatus, Transmission_BIT);
                 break;
@@ -524,7 +551,7 @@ void vManagementGearsBox( void *pvParameters )
 
             case R:
             {
-                xEvents = xEventGroupWaitBits(xEventStatus, Clutch_BIT, pdFALSE, pdTRUE, portMAX_DELAY);
+//                xEvents = xEventGroupWaitBits(xEventStatus, Clutch_BIT, pdTRUE, pdTRUE, portMAX_DELAY);
                 Set_Transmission(R);
                 xEvents = xEventGroupSetBits(xEventStatus, Transmission_BIT);
                 break;
@@ -532,7 +559,7 @@ void vManagementGearsBox( void *pvParameters )
 
             case F1:
             {
-                xEvents = xEventGroupWaitBits(xEventStatus, Clutch_BIT, pdFALSE, pdTRUE, portMAX_DELAY);
+ //               xEvents = xEventGroupWaitBits(xEventStatus, Clutch_BIT, pdTRUE, pdTRUE, portMAX_DELAY);
                 Set_Transmission(F1);
                 xEvents = xEventGroupSetBits(xEventStatus, Transmission_BIT);
                 break;
@@ -540,7 +567,7 @@ void vManagementGearsBox( void *pvParameters )
 
             case F2:
             {
-                xEvents = xEventGroupWaitBits(xEventStatus, Clutch_BIT, pdFALSE, pdTRUE, portMAX_DELAY);
+ //               xEvents = xEventGroupWaitBits(xEventStatus, Clutch_BIT, pdTRUE, pdTRUE, portMAX_DELAY);
                 Set_Transmission(F2);
                 xEvents = xEventGroupSetBits(xEventStatus, Transmission_BIT);
                 break;
@@ -560,19 +587,18 @@ void vModBusManagement( void *pvParameters )
     {
         xSemaphoreTake(xUARTEvent, portMAX_DELAY);
         ErrorTask = ModBus_CheckFrame();
-       // set_pin(PIN3_12V);
-        if( ErrorTask == 0x08)
+        //set_pin(PIN4_12V);
+        if(ErrorTask != 0)
         {
-            ModBus_ClearMsgs();
+            ModBus_Init();
             continue;
         }
+        //set_pin(PIN2_12V);
         Data = ModBus_ParsePacket();
         ModBus_ClearMsgs();
         if (Data <= 4.0 || Data >= -4.0 ) {xQueueSend(xQueue20Handle, &Data, 0);}
-        else { ErrorTask = 0x40; continue; }
-        ErrorTask = 0;
-
-        vTaskResume(xQueueManagHandle);
+        else continue;
+       // vTaskResume(xQueueManagHandle);
     }
 vTaskDelete(NULL);
 }
@@ -581,12 +607,12 @@ vTaskDelete(NULL);
 void vSecurityMemoryManagement ( void *pvParameters)
 {
     /*!
-    *   @note robot_tasks: < Обработчик скорости из очереди xQueue20Handle >
+    *   @note robot_tasks: < РћР±СЂР°Р±РѕС‚С‡РёРє СЃРєРѕСЂРѕСЃС‚Рё РёР· РѕС‡РµСЂРµРґРё xQueue20Handle >
     */
     float Speed;
     uint8_t Transmission;
     uint8_t Brake;
-    uint8_t Clutch = NONE;
+    uint8_t Clutch;
     const float Vel_Divider = 0.5;
 
     portBASE_TYPE xStatus;
@@ -596,158 +622,257 @@ void vSecurityMemoryManagement ( void *pvParameters)
     for(;;)
     {
         xStatus = xQueueReceive(xQueue20Handle, &Speed, portMAX_DELAY);
-       // set_pin(PIN4_12V);
-        float Divider = Speed - Current_Velocity;
-
-        // вне диапазона чувствительности системы
-        if( Divider < Vel_Divider &&
-            Divider > -Vel_Divider && Speed != 0.0 )  continue;
+        if( xStatus == errQUEUE_EMPTY) continue;
 
         Transmission = NONE;
         Brake = NONE;
         Clutch = NONE;
+        //float Divider = Speed - Current_Velocity;
 
-        if( Divider < -Vel_Divider) // уменьшение скорости
+//        // РІРЅРµ РґРёР°РїР°Р·РѕРЅР° С‡СѓРІСЃС‚РІРёС‚РµР»СЊРЅРѕСЃС‚Рё СЃРёСЃС‚РµРјС‹
+//        if( Divider < Vel_Divider &&
+//            Divider > -Vel_Divider )  continue;
+
+        if( Speed <= 1.0 && Speed >= -1.0)
         {
-            if( Current_Velocity <= -1.0 && Current_Velocity > -3.333) // едем в диапазоне реверсивной передачи
+            Clutch = Full;
+            if( Transmission_Flag != N)
             {
-                /*!
-                *   @note Здесь мы едем назад и нам пришло сообщение об уменьшении скорости, то есть ускорении назад
-                */
-                if( Transmission_Flag != R) Transmission = R;
-
-                Brake = (Speed >= Speed_R && (Speed <= Speed + Brake_Trigger_Low)) ? FullOut :
-                        (Speed >= Speed_R && (Speed <= Speed + Brake_Trigger_Medium)) ? LowBrake :
-                        (Speed >= Speed_R && (Speed <= Speed + Brake_Trigger_High)) ? MiddleBrake :
-                        (Speed >= Speed_R && (Speed <= Speed + Brake_Trigger_Emergency)) ? HighBrake : EmergencyBrake;
-
-                StartFlags.StartCarManagement = 1;
+                Transmission = N;
             }
-
-            if( Current_Velocity > -1.0 && Current_Velocity <= 1.0 ) // стоим на месте или едем очень медленно
-            {
-                /*!
-                *   @note Здесь мы едем медленно или стоим и пришлои сообщение об уменьшении скорости
-                */
-                Transmission = (Speed >= -1.0 && Speed <= 1.0) ? N :
-                               (Speed < -1.0) ? R : N;
-
-                Brake = (Speed < -1.0) ? FullOut :
-                        (Speed >= -1.0 && Speed <= 1.0) ? HighBrake : EmergencyBrake;
-            }
-
-            if( Current_Velocity > 1.0 && Current_Velocity <= 3.333 ) // скорость в диапазоне первой передачи
-            {
-                /*!
-                *   @note Уменьшение скорости когда машина едет прямо на первой передаче
-                */
-                if( Transmission_Flag != F1) Transmission = F1;
-
-                if( Speed <= 1.5) Transmission = N;
-
-                Brake = (Speed >= Speed_R && (Brake_Trigger_Low >= Speed - Divider)) ? FullOut :
-                        (Speed >= Speed_R && (Brake_Trigger_Medium >= Speed - Divider)) ? LowBrake :
-                        (Speed >= Speed_R && (Brake_Trigger_High >= Speed - Divider)) ? MiddleBrake :
-                        (Speed >= Speed_R && (Brake_Trigger_Emergency >= Speed - Divider)) ? HighBrake : EmergencyBrake;
-            }
-
-//            if( Current_Velocity > 3.333 && Current_Velocity <= 5.0) // скорость в диапазоне второй передачи
-//            {
-//                /*!
-//                *   @note Уменьшение скорости когда машина едет прямо на второй передаче
-//                */
-//
-//                if( Transmission != F2) Transmission = F2;
-//
-//                if( Speed <= 2.778 ) Transmission = F1;
-//
-//                Brake = ((Speed <= 5.0) && (Speed >= Speed - Brake_Trigger_Low) ) ? FullOut :
-//                        ((Speed <= 5.0) && (Speed >= Speed - Brake_Trigger_Medium) ) ? LowBrake :
-//                        ((Speed <= 5.0) && (Speed >= Speed - Brake_Trigger_High) ) ? MiddleBrake :
-//                        ((Speed <= 5.0) && (Speed >= Speed - Brake_Trigger_Emergency) ) ? HighBrake : EmergencyBrake;
-//            }
+            Brake = EmergencyBrake;
         }
 
-        if( Divider > Vel_Divider) // увеличение скорости
+        if( Speed < -1.0)
         {
-
-            if( Current_Velocity < -1.0 && Current_Velocity > -3.333) // едем в диапазоне реверсивной передачи
+            if( Transmission_Flag != R)
             {
-                /*!
-                *   @note Пришло сообщение о увеличении скорости, то есть уменьшенить скорость в движении назад
-                */
-                Transmission = (Speed >= -3.333 && Speed < -1.0) ? R :
-                               (Speed >= -1.0 && Speed <= 1.0) ? N : N;
-
-                Brake = (Speed >= Speed_R && (Brake_Trigger_Low >= Speed - Divider)) ? FullOut :
-                        (Speed >= Speed_R && (Brake_Trigger_Medium >= Speed - Divider)) ? LowBrake :
-                        (Speed >= Speed_R && (Brake_Trigger_High >= Speed - Divider)) ? MiddleBrake :
-                        (Speed >= Speed_R && (Brake_Trigger_Emergency >= Speed - Divider)) ? HighBrake : EmergencyBrake;
+                Clutch = Full;
+                Transmission = R;
             }
-
-            if( Current_Velocity >= -1.0 && Current_Velocity <= 1.0 ) // стоим на месте или едем очень медленно
-            {
-                /*!
-                *   @note Пришло сообщение о ускорении, мы стоим
-                */
-                Transmission = (Speed >= -1.0 && Speed <= 1.0) ? N :
-                               (Speed > 1.0) ? F1 : N;
-
+            ////Get_Brake();
+            //if(Brake_Flag != PushOut)
+            //{
                 Brake = FullOut;
-            }
+            //}
+        }
 
-            if( Current_Velocity > 1.0 && Current_Velocity <= 3.333 ) // скорость в диапазоне первой передачи
+        if( Speed > 1.0)
+        {
+            if( Transmission_Flag != F1)
             {
-                /*!
-                *   @note Пришло сообщение о увеличении скорости когда мы едем на первой передаче
-                */
-                Transmission = ( Speed > 1.0 && Speed <= 4.16667) ? F1 :
-                               ( Speed > 4.16667 && Speed <= 5.55) ? F2 : F1;
-
-                Brake = FullOut;
+                Clutch = Full;
+                Transmission = F1;
             }
+            //Get_Brake();
+            //if( Brake_Flag != PushOut)
+            //{
+                Brake = FullOut;
+            //}
 
-//            if( Current_Velocity > 3.333 && Current_Velocity <= 5.0) // скорость в диапазоне второй передачи
+        }
+
+    if( Brake == EmergencyBrake)
+    {
+        if( Clutch_Flag != Full)
+        {
+            xStatus = xQueueSend(xQueueClutchHandle, &Clutch, 0);
+            xEvent = xEventGroupWaitBits(xEventStatus, Clutch_BIT, pdTRUE, pdTRUE, portMAX_DELAY);
+        }
+            xStatus = xQueueSend(xQueueBrakeHandle, &Brake, 0);
+            xEvent = xEventGroupWaitBits(xEventStatus, Brake_BIT, pdTRUE, pdTRUE, portMAX_DELAY);
+
+            xStatus = xQueueSend(xQueueTransmissionHandle, &Transmission, 0);
+            xEvent = xEventGroupWaitBits(xEventStatus, Transmission_BIT, pdTRUE, pdTRUE, portMAX_DELAY);
+
+//            Clutch = 2;
+//            xStatus = xQueueSend(xQueueClutchHandle, &Clutch, 0);
+//            xEvent = xEventGroupWaitBits(xEventStatus, Clutch_BIT, pdTRUE, pdTRUE, portMAX_DELAY);
+
+    }
+
+    if( Transmission != N && Transmission != NONE)
+    {
+        if( Clutch_Flag != Full)
+        {
+            Clutch = Full;
+            xStatus = xQueueSend(xQueueClutchHandle, &Clutch, 0);
+            xEvent = xEventGroupWaitBits(xEventStatus, Clutch_BIT, pdTRUE, pdTRUE, portMAX_DELAY);
+        }
+
+        xStatus = xQueueSend(xQueueTransmissionHandle, &Transmission, 0);
+        xEvent = xEventGroupWaitBits(xEventStatus, Transmission_BIT, pdTRUE, pdTRUE, portMAX_DELAY);
+
+        xStatus = xQueueSend(xQueueBrakeHandle, &Brake, 0);
+        xEvent = xEventGroupWaitBits(xEventStatus, Brake_BIT, pdTRUE, pdTRUE, portMAX_DELAY);
+
+        Clutch = 2;
+        xStatus = xQueueSend(xQueueClutchHandle, &Clutch, 0);
+        xEvent = xEventGroupWaitBits(xEventStatus, Clutch_BIT, pdTRUE, pdTRUE, portMAX_DELAY);
+    }
+//    else
+//    {
+//        Clutch = 2;
+//        xStatus = xQueueSend(xQueueClutchHandle, &Clutch, portMAX_DELAY);
+//        xEvent = xEventGroupWaitBits(xEventStatus, Clutch_BIT, pdTRUE, pdTRUE, portMAX_DELAY);
+//
+//    }
+
+       // xEventGroupClearBits(xEventStatus, ALL_BITS);
+
+
+
+//        if( Divider < -Vel_Divider) // СѓРјРµРЅСЊС€РµРЅРёРµ СЃРєРѕСЂРѕСЃС‚Рё
+//        {
+//            if( Current_Velocity <= -1.0 && Current_Velocity > -3.333) // РµРґРµРј РІ РґРёР°РїР°Р·РѕРЅРµ СЂРµРІРµСЂСЃРёРІРЅРѕР№ РїРµСЂРµРґР°С‡Рё
 //            {
 //                /*!
-//                *   @note Опасный участок. Едем на второй и просят ускориться
+//                *   @note Р—РґРµСЃСЊ РјС‹ РµРґРµРј РЅР°Р·Р°Рґ Рё РЅР°Рј РїСЂРёС€Р»Рѕ СЃРѕРѕР±С‰РµРЅРёРµ РѕР± СѓРјРµРЅСЊС€РµРЅРёРё СЃРєРѕСЂРѕСЃС‚Рё, С‚Рѕ РµСЃС‚СЊ СѓСЃРєРѕСЂРµРЅРёРё РЅР°Р·Р°Рґ
 //                */
-//                Transmission = F2;
+//                if( Transmission_Flag != R) Transmission = R;
+//
+//                Brake = (Speed >= Speed_R && (-Brake_Trigger_Low <= Divider)) ? FullOut :
+//                        (Speed >= Speed_R && (-Brake_Trigger_Medium <= Divider)) ? LowBrake :
+//                        (Speed >= Speed_R && (-Brake_Trigger_High <= Divider)) ? MiddleBrake :
+//                        (Speed >= Speed_R && (-Brake_Trigger_Emergency <= Divider)) ? HighBrake : EmergencyBrake;
+//            }
+//
+//            if( Current_Velocity > -1.0 && Current_Velocity <= 1.0 ) // СЃС‚РѕРёРј РЅР° РјРµСЃС‚Рµ РёР»Рё РµРґРµРј РѕС‡РµРЅСЊ РјРµРґР»РµРЅРЅРѕ
+//            {
+//                /*!
+//                *   @note Р—РґРµСЃСЊ РјС‹ РµРґРµРј РјРµРґР»РµРЅРЅРѕ РёР»Рё СЃС‚РѕРёРј Рё РїСЂРёС€Р»Рѕ СЃРѕРѕР±С‰РµРЅРёРµ РѕР± СѓРјРµРЅСЊС€РµРЅРёРё СЃРєРѕСЂРѕСЃС‚Рё
+//                */
+//                Transmission = (Speed >= -1.0 && Speed <= 1.0) ? N :
+//                               (Speed < -1.0) ? R : N;
+//
+//                Brake = (Speed < -1.0) ? FullOut :
+//                        (Speed >= -1.0 && Speed <= 1.0) ? HighBrake : EmergencyBrake;
+//            }
+//
+//            if( Current_Velocity > 1.0 && Current_Velocity <= 3.333 ) // СЃРєРѕСЂРѕСЃС‚СЊ РІ РґРёР°РїР°Р·РѕРЅРµ РїРµСЂРІРѕР№ РїРµСЂРµРґР°С‡Рё
+//            {
+//                /*!
+//                *   @note РЈРјРµРЅСЊС€РµРЅРёРµ СЃРєРѕСЂРѕСЃС‚Рё РєРѕРіРґР° РјР°С€РёРЅР° РµРґРµС‚ РїСЂСЏРјРѕ РЅР° РїРµСЂРІРѕР№ РїРµСЂРµРґР°С‡Рµ
+//                */
+//                if( Transmission_Flag != F1) Transmission = F1;
+//
+//                if( Speed <= 1.5) Transmission = N;
+//
+//                Transmission = (Speed <= 1.5) ? N : F1;
+//
+//                Brake = (Speed >= Speed_R && (Brake_Trigger_Low >= -Divider)) ? FullOut :
+//                        (Speed >= Speed_R && (Brake_Trigger_Medium >= -Divider)) ? LowBrake :
+//                        (Speed >= Speed_R && (Brake_Trigger_High >= -Divider)) ? MiddleBrake :
+//                        (Speed >= Speed_R && (Brake_Trigger_Emergency >= -Divider)) ? HighBrake : EmergencyBrake;
+//            }
+//
+////            if( Current_Velocity > 3.333 && Current_Velocity <= 5.0) // СЃРєРѕСЂРѕСЃС‚СЊ РІ РґРёР°РїР°Р·РѕРЅРµ РІС‚РѕСЂРѕР№ РїРµСЂРµРґР°С‡Рё
+////            {
+////                /*!
+////                *   @note РЈРјРµРЅСЊС€РµРЅРёРµ СЃРєРѕСЂРѕСЃС‚Рё РєРѕРіРґР° РјР°С€РёРЅР° РµРґРµС‚ РїСЂСЏРјРѕ РЅР° РІС‚РѕСЂРѕР№ РїРµСЂРµРґР°С‡Рµ
+////                */
+////
+////                if( Transmission != F2) Transmission = F2;
+////
+////                if( Speed <= 2.778 ) Transmission = F1;
+////
+////                Brake = ((Speed <= 5.0) && (Speed >= Speed - Brake_Trigger_Low) ) ? FullOut :
+////                        ((Speed <= 5.0) && (Speed >= Speed - Brake_Trigger_Medium) ) ? LowBrake :
+////                        ((Speed <= 5.0) && (Speed >= Speed - Brake_Trigger_High) ) ? MiddleBrake :
+////                        ((Speed <= 5.0) && (Speed >= Speed - Brake_Trigger_Emergency) ) ? HighBrake : EmergencyBrake;
+////            }
+//        }
+//
+//        if( Divider > Vel_Divider) // СѓРІРµР»РёС‡РµРЅРёРµ СЃРєРѕСЂРѕСЃС‚Рё
+//        {
+//
+//            if( Current_Velocity < -1.0 && Current_Velocity > -3.333) // РµРґРµРј РІ РґРёР°РїР°Р·РѕРЅРµ СЂРµРІРµСЂСЃРёРІРЅРѕР№ РїРµСЂРµРґР°С‡Рё
+//            {
+//                /*!
+//                *   @note РџСЂРёС€Р»Рѕ СЃРѕРѕР±С‰РµРЅРёРµ Рѕ СѓРІРµР»РёС‡РµРЅРёРё СЃРєРѕСЂРѕСЃС‚Рё, С‚Рѕ РµСЃС‚СЊ СѓРјРµРЅСЊС€РµРЅРёС‚СЊ СЃРєРѕСЂРѕСЃС‚СЊ РІ РґРІРёР¶РµРЅРёРё РЅР°Р·Р°Рґ
+//                */
+//                Transmission = (Speed <= -1.0) ? R : N;
+//
+//                Brake = (Speed >= Speed_R && (Brake_Trigger_Low >= Divider)) ? FullOut :
+//                        (Speed >= Speed_R && (Brake_Trigger_Medium >= Divider)) ? LowBrake :
+//                        (Speed >= Speed_R && (Brake_Trigger_High >= Divider)) ? MiddleBrake :
+//                        (Speed >= Speed_R && (Brake_Trigger_Emergency >= Divider)) ? HighBrake : EmergencyBrake;
+//            }
+//
+//            if( Current_Velocity >= -1.0 && Current_Velocity <= 1.0 ) // СЃС‚РѕРёРј РЅР° РјРµСЃС‚Рµ РёР»Рё РµРґРµРј РѕС‡РµРЅСЊ РјРµРґР»РµРЅРЅРѕ
+//            {
+//                /*!
+//                *   @note РџСЂРёС€Р»Рѕ СЃРѕРѕР±С‰РµРЅРёРµ Рѕ СѓСЃРєРѕСЂРµРЅРёРё, РјС‹ СЃС‚РѕРёРј
+//                */
+//                Transmission = (Speed <= 1.0) ? N : F1;
 //
 //                Brake = FullOut;
-//
 //            }
-        }
+//
+//            if( Current_Velocity > 1.0 && Current_Velocity <= 3.333 ) // СЃРєРѕСЂРѕСЃС‚СЊ РІ РґРёР°РїР°Р·РѕРЅРµ РїРµСЂРІРѕР№ РїРµСЂРµРґР°С‡Рё
+//            {
+//                /*!
+//                *   @note РџСЂРёС€Р»Рѕ СЃРѕРѕР±С‰РµРЅРёРµ Рѕ СѓРІРµР»РёС‡РµРЅРёРё СЃРєРѕСЂРѕСЃС‚Рё РєРѕРіРґР° РјС‹ РµРґРµРј РЅР° РїРµСЂРІРѕР№ РїРµСЂРµРґР°С‡Рµ
+//                */
+//                Transmission = (Transmission_Flag != F1) ? F1 : NONE;
+//
+//                Brake = FullOut;
+//            }
+//
+////            if( Current_Velocity > 3.333 && Current_Velocity <= 5.0) // СЃРєРѕСЂРѕСЃС‚СЊ РІ РґРёР°РїР°Р·РѕРЅРµ РІС‚РѕСЂРѕР№ РїРµСЂРµРґР°С‡Рё
+////            {
+////                /*!
+////                *   @note РћРїР°СЃРЅС‹Р№ СѓС‡Р°СЃС‚РѕРє. Р•РґРµРј РЅР° РІС‚РѕСЂРѕР№ Рё РїСЂРѕСЃСЏС‚ СѓСЃРєРѕСЂРёС‚СЊСЃСЏ
+////                */
+////                Transmission = F2;
+////
+////                Brake = FullOut;
+////
+////            }
+//        }
+//
+//        if( Brake != NONE) // РЅР°Р·РЅР°С‡РµРЅРёРµ РєРѕРјР°РЅРґ С‚РѕСЂРјРѕР·Сѓ
+//        {
+////            if( Brake == LowBrake || Brake == FullOut)
+////            {
+////                xStatus = xQueueSend(xQueueBrakeHandle, &Brake, portMAX_DELAY);
+////            }
+//            if( (Brake == MiddleBrake || Brake == HighBrake || Brake == EmergencyBrake) )
+//            {
+//                if( Clutch_Flag != Full)
+//                {
+//                    Clutch = 1;
+//                    xStatus = xQueueSend(xQueueClutchHandle, &Clutch, portMAX_DELAY);
+//
+//                    xStatus = xQueueSend(xQueueBrakeHandle, &Brake, portMAX_DELAY);
+//                }
+//            }
+//            xEvent = xEventGroupWaitBits(xEventStatus, Brake_BIT, pdTRUE, pdTRUE, portMAX_DELAY);
+//        }
+//
+//        if( Transmission != Transmission_Flag && Transmission_Flag != 15) // РєРѕРјР°РЅРґС‹ РєРѕСЂРѕР±РєРµ РїРµСЂРµРґР°С‡
+//        {
+//            // РµСЃР»Рё РЅРµ Р±С‹Р»Рѕ РЅР°Р¶Р°С‚Рѕ СЃС†РµРїР»РµРЅРёРµ - РЅР°Р¶Р°С‚СЊ
+//             if( Clutch_Flag != Full)
+//             {
+//                 Clutch = 1;
+//                 xStatus = xQueueSend(xQueueClutchHandle, &Clutch, portMAX_DELAY);
+//                 //xEvent = xEventGroupWaitBits(xEventStatus, pdFALSE, pdTRUE, Clutch_BIT, portMAX_DELAY);
+//             }
+//
+//            xStatus = xQueueSend(xQueueTransmissionHandle, &Transmission, portMAX_DELAY);
+//
+//            Clutch = 2;
+//            //xEvent = xEventGroupClearBits(xEventStatus, Clutch_BIT);
+//            xStatus = xQueueSend(xQueueClutchHandle, &Clutch, portMAX_DELAY);
+//
+//            //xEvent = xEventGroupClearBits(xEventStatus, Clutch_BIT);
+//            //xEventGroupWaitBits(xEventStatus, Clutch_BIT,, pdTRUE, portMAX_DELAY);
+//        }
 
-        xStatus = pdFALSE;
-        if( Brake != NONE) // назначение команд тормозу
-        {
-                if( (Brake == MiddleBrake || Brake == HighBrake || Brake == EmergencyBrake) )
-                {
-                    if( Clutch_Flag != Full)
-                    {
-                        Clutch = 0;
-                        xStatus = xQueueSend(xQueueClutchHandle, &Clutch, portMAX_DELAY);
-                    }
-                }
-                xStatus = xQueueSend(xQueueBrakeHandle, &Brake, portMAX_DELAY);
-            xEvent = xEventGroupWaitBits(xEventStatus, Brake_BIT, pdTRUE, pdTRUE, portMAX_DELAY);
-        }
+        //xEvent = xEventGroupClearBits(xEventStatus, ALL_BITS);
 
-        if( Transmission != Transmission_Flag && Transmission_Flag != 15) // команды коробке передач
-        {
-            // если не было нажато сцепление - нажать
-             if( Clutch_Flag != Full) { Clutch = 0; xStatus = xQueueSend(xQueueClutchHandle, &Clutch, portMAX_DELAY); }
-             xStatus = xQueueSend(xQueueTransmissionHandle, &Transmission, portMAX_DELAY);
-
-
-             xEvent = xEventGroupWaitBits(xEventStatus, ( Transmission_BIT | Clutch_BIT), pdTRUE, pdTRUE, portMAX_DELAY);
-
-                Clutch = Full;
-                xStatus = xQueueSend(xQueueClutchHandle, &Clutch, portMAX_DELAY);
-        }
-        xEvent = xEventGroupClearBits(xEventStatus, ALL_BITS);
-
+        //set_pin(PIN4_12V);
     }
 vTaskDelete(NULL);
 }
@@ -756,7 +881,7 @@ vTaskDelete(NULL);
 void vTransmissionInit( void *pvParameters)
 {
     /*!
-    *   @note Ручное управление коробкой передач
+    *   @note Р СѓС‡РЅРѕРµ СѓРїСЂР°РІР»РµРЅРёРµ РєРѕСЂРѕР±РєРѕР№ РїРµСЂРµРґР°С‡
     */
 //    portTickType time;
 //    time = xTaskGetTickCount();

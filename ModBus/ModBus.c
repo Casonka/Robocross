@@ -18,7 +18,7 @@ static unsigned int Error;
 
 // To send the velocity
 
-unsigned char StartFrameSend[15] = {':', 'D', '0', '0', '6', '0', '0', '+', '0', '0', '0', 'A', 'A', '\r', '\n'};
+unsigned char StartFrameSend[15] = {':', 'D', '0', '0', '6', '+', '0', '0', '0', '0', '0', 'A', 'A', '\r', '\n'};
 unsigned char *StartDataSendIndex;
 unsigned char *LRCPointer;
 void ModBus_Init(void) {
@@ -30,7 +30,7 @@ void ModBus_Init(void) {
     UARTReceiver_Flag = 0;
     ModBus_ClearMsgs();
 
-    StartDataSendIndex = StartFrameSend + 8;
+    StartDataSendIndex = StartFrameSend + 6;
     LRCPointer = StartFrameSend + 11;
 
     Queue_StartIndex = QueueBuffer_To_UART;
@@ -85,7 +85,7 @@ void ModBus_DEC_TO_ASCII_Converter(unsigned int *DEC_Pointer, unsigned short bsi
         ASCII += 0x30;
         *StartDataSendIndex++ = ASCII;
     }
-    StartDataSendIndex = StartFrameSend + 8;
+    StartDataSendIndex = StartFrameSend + 6;
 }
 
 void ModBus_HEX_TO_ASCII_Converter(unsigned int *HEX_Pointer, unsigned short bsize)
@@ -265,19 +265,21 @@ void ModBus_PutQueue(const volatile char Data)
 
 void ModBus_SendResponseSpeed(float Speed)
 {
-    unsigned int DataBuf[3] = {0, 0, 0};
+    unsigned int DataBuf[5] = {0, 0, 0, 0, 0};
 
-    if(Transmission_Flag == R) {*(StartDataSendIndex - 1) = '-'; Speed = -Speed;}
+    if(Speed < 0) {*(StartDataSendIndex - 1) = '-'; Speed = -Speed;}
     else {*(StartDataSendIndex - 1) = '+';}
 
-    DataBuf[0] = Speed/100;
-    DataBuf[1] = Speed/10 - ((unsigned int)(Speed/100))*10;
-    DataBuf[2] = Speed - ((unsigned int)(Speed/10))*10;
+    DataBuf[0] = Speed/10000;
+    DataBuf[1] = Speed/1000 - ((unsigned int)(Speed/10000))*10;
+    DataBuf[2] = Speed/100 - ((unsigned int)(Speed/1000))*10;
+    DataBuf[3] = Speed/10  - ((unsigned int)(Speed/100))*10;
+    DataBuf[4] = Speed - ((unsigned int)(Speed/10))*10;
 
-    ModBus_DEC_TO_ASCII_Converter(DataBuf, (unsigned short)((*DataBuf + 2) - (*DataBuf)));
+    ModBus_DEC_TO_ASCII_Converter(DataBuf, (unsigned short)((*DataBuf + 4) - (*DataBuf)));
 
     unsigned char Tmp  = LRC_Counting(StartFrameSend,
-            ((unsigned short)(( StartDataSendIndex + 3) - StartFrameSend)));
+            ((unsigned short)(( StartDataSendIndex + 5) - StartFrameSend)));
     unsigned int Buf[2];
     Buf[0] = Tmp >> 4;
     Buf[1] = Tmp&0xF;

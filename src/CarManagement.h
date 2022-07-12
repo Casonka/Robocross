@@ -10,15 +10,21 @@ void Set_Brake(int state);
 
 uint8_t Get_Brake(void);
 
-#define PulseToClutch_UP        (13000)
-#define PulseToClutch_BackFull  (13000)
-#define PulseToClutch_First     (5000)
+#define PulseToClutch_UP            (13000)
+#define PulseToClutch_BackFull      (13000)
+#define PulseToClutch_First         (5000)  // 6000
+#define PulseToClutch_UPFirst       (7000)
+#define PulseToClutch_First_Rev     (5000)
+#define PulseToClutch_Second_Rev    (1000)
 #define PulseToClutch_Second  ( PulseToClutch_UP - PulseToClutch_First )
 
 #define Full        1
 #define Back_First  2
 #define Back_Second 3
 #define Back_Full   4
+#define Forward_First   5
+#define Back_First_Rev    6
+#define Back_Second_Rev 7
 int Clutch_Flag;
 void Move_Clutch(int direction); // engine on and moving
 
