@@ -2,9 +2,24 @@
 <EmBitz_debug_session>
 	<debuggerLastSession>
 		<watches>
-			<watch key="adc_data" format="0" array="0" start="0" count="0" expanded="1" live="0" />
-			<watch key="freq_ahb" format="0" array="0" start="0" count="0" expanded="0" live="0" />
+			<watch key="adc_data" format="0" array="0" start="0" count="0" expanded="0" live="0" />
+			<watch key="Data" format="0" array="0" start="0" count="0" expanded="1" live="1" />
+			<watch key="Transmission_Flag" format="0" array="0" start="0" count="0" expanded="0" live="1" />
+			<watch key="once" format="0" array="0" start="0" count="0" expanded="0" live="0" />
+			<watch key="Current_Velocity" format="0" array="0" start="0" count="0" expanded="0" live="0" />
+			<watch key="globalRangeCar" format="0" array="0" start="0" count="0" expanded="0" live="1" />
+			<watch key="direction" format="0" array="0" start="0" count="0" expanded="0" live="0" />
+			<watch key="TransmissionPWM" format="0" array="0" start="0" count="0" expanded="0" live="0" />
+			<watch key="TransmissionReg" format="0" array="0" start="0" count="0" expanded="0" live="0" />
+			<watch key="transmission" format="0" array="0" start="0" count="0" expanded="0" live="0" />
+			<watch key="Clutch_Flag" format="0" array="0" start="0" count="0" expanded="0" live="0" />
+			<watch key="Brake_Flag" format="0" array="0" start="0" count="0" expanded="0" live="1" />
+			<watch key="xEventStatus" format="0" array="0" start="0" count="0" expanded="0" live="1" />
+			<watch key="ErrorTask" format="0" array="0" start="0" count="0" expanded="0" live="0" />
+			<watch key="UART_Buffer" format="0" array="1" start="0" count="0" expanded="0" live="1" />
+			<watch key="StartFrameSend" format="0" array="0" start="0" count="0" expanded="0" live="0" />
+			<watch key="ZeroMesFlag" format="0" array="0" start="0" count="0" expanded="0" live="0" />
 		</watches>
-		<memory_view address="0x0" locked="0" live="0" options="290" />
+		<memory_view address="0x2000023C" locked="0" live="0" options="292" />
 	</debuggerLastSession>
 </EmBitz_debug_session>
