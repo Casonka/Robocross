@@ -72,37 +72,40 @@ xQueueHandle xQueueGasHandle;
 //--------------------------------------------
 /// Tasks
 
-xTaskHandle xRobotGo;
-void vRobotGo( void *pvParameters);
+xTaskHandle xMicroROS;
+void vMicro_ROS( void *pvParameters);
 
-xTaskHandle xStartHandle;
-void vStart( void *pvParameters);
-
-xTaskHandle xWaitingHandle;
-void vWaitingEvent( void *pvParameters);
-
-xTaskHandle xMailHandle;
-void vMessageSending( void * pvParameters);
-
-xTaskHandle xClutchHandle;
-void vClutchManagement( void *pvParameters);
-
-xTaskHandle xBrakeHandle;
-void vBrakeManagement( void *pvParameters);
-
-xTaskHandle xGasHandle;
-void vGasManagement( void *pvParameters);
-
-xTaskHandle xQueueManagHandle;
-void vSecurityMemoryManagement( void *pvParameters);
-
-xTaskHandle xGearsHandle;
-void vManagementGearsBox( void *pvParameters);
-
-xTaskHandle xModBusHandle;
-void vModBusManagement( void *pvParameters);
-
-xTaskHandle xTrInit;
-void vTransmissionInit( void *pvParameters);
+//xTaskHandle xRobotGo;
+//void vRobotGo( void *pvParameters);
+//
+//xTaskHandle xStartHandle;
+//void vStart( void *pvParameters);
+//
+//xTaskHandle xWaitingHandle;
+//void vWaitingEvent( void *pvParameters);
+//
+//xTaskHandle xMailHandle;
+//void vMessageSending( void * pvParameters);
+//
+//xTaskHandle xClutchHandle;
+//void vClutchManagement( void *pvParameters);
+//
+//xTaskHandle xBrakeHandle;
+//void vBrakeManagement( void *pvParameters);
+//
+//xTaskHandle xGasHandle;
+//void vGasManagement( void *pvParameters);
+//
+//xTaskHandle xQueueManagHandle;
+//void vSecurityMemoryManagement( void *pvParameters);
+//
+//xTaskHandle xGearsHandle;
+//void vManagementGearsBox( void *pvParameters);
+//
+//xTaskHandle xModBusHandle;
+//void vModBusManagement( void *pvParameters);
+//
+//xTaskHandle xTrInit;
+//void vTransmissionInit( void *pvParameters);
 
 //--------------------------------------------

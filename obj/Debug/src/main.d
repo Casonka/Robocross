@@ -12,4 +12,4 @@ obj\debug\src\main.o: src\main.c inc/main.h inc/stm32f4xx.h \
  freertos_lib/task.h freertos_lib/semphr.h freertos_lib/queue.h \
  freertos_lib/croutine.h freertos_lib/timers.h \
  freertos_lib/event_groups.h freertos_lib/timers.h inc/robot_tasks.h \
- inc/main.h ModBus/ModBus.h src/CarManagement.h src/CarRegulators.h
+ inc/main.h ModBus/ModBus.h

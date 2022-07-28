@@ -11,5 +11,4 @@ obj\debug\src\robot_tasks.o: src\robot_tasks.c inc/robot_tasks.h \
  freertos_lib/FreeRTOSConfig.h freertos_lib/task.h freertos_lib/list.h \
  freertos_lib/queue.h freertos_lib/task.h freertos_lib/semphr.h \
  freertos_lib/queue.h freertos_lib/croutine.h freertos_lib/timers.h \
- freertos_lib/event_groups.h freertos_lib/timers.h ModBus/ModBus.h \
- src/CarManagement.h src/CarRegulators.h
+ freertos_lib/event_groups.h freertos_lib/timers.h ModBus/ModBus.h

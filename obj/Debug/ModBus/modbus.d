@@ -1,9 +1,8 @@
 obj\debug\modbus\modbus.o: ModBus\ModBus.c ModBus\ModBus.h \
  FIL\ lib/FilConfig.h inc/main.h inc/stm32f4xx.h cmsis/core_cm4.h \
  cmsis/cmsis_version.h cmsis/cmsis_compiler.h cmsis/cmsis_gcc.h \
- cmsis/mpu_armv7.h inc/system_stm32f4xx.h src/CarManagement.h \
- src/CarRegulators.h FIL\ lib/RCC.h FIL\ lib/GPIO.h FIL\ lib/TIM.h \
- FIL\ lib/ADC.h FIL\ lib/DMA.h FIL\ lib/USART.h \
+ cmsis/mpu_armv7.h inc/system_stm32f4xx.h FIL\ lib/RCC.h FIL\ lib/GPIO.h \
+ FIL\ lib/TIM.h FIL\ lib/ADC.h FIL\ lib/DMA.h FIL\ lib/USART.h \
  FIL\ lib\RCR\ DSTU/RCR_Custom.h FIL\ lib\RCR\ DSTU/RCR_SetupCustom.h \
  freertos_lib/FreeRTOS.h freertos_lib/FreeRTOSConfig.h inc/stm32f4xx.h \
  freertos_lib/projdefs.h freertos_lib/portable.h \

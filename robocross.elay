@@ -21,9 +21,9 @@
 			<Cursor1 position="1631" topLine="9" />
 		</Cursor>
 	</File>
-	<File name="FIL lib\FilConfig.h" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="FIL lib\FilConfig.h" open="0" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2865" topLine="51" />
+			<Cursor1 position="2862" topLine="57" />
 		</Cursor>
 	</File>
 	<File name="FIL lib\GPIO.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -31,7 +31,7 @@
 			<Cursor1 position="2026" topLine="63" />
 		</Cursor>
 	</File>
-	<File name="FIL lib\INTERRUPTS.c" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="FIL lib\INTERRUPTS.c" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="1129" topLine="42" />
 		</Cursor>
@@ -41,7 +41,7 @@
 			<Cursor1 position="6127" topLine="82" />
 		</Cursor>
 	</File>
-	<File name="FIL lib\RCR DSTU\RCR_Custom.h" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="FIL lib\RCR DSTU\RCR_Custom.h" open="0" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="8666" topLine="72" />
 		</Cursor>
@@ -51,12 +51,12 @@
 			<Cursor1 position="2941" topLine="54" />
 		</Cursor>
 	</File>
-	<File name="FIL lib\RCR DSTU\RCR_SetupCustom.c" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="FIL lib\RCR DSTU\RCR_SetupCustom.c" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2133" topLine="60" />
+			<Cursor1 position="2987" topLine="60" />
 		</Cursor>
 	</File>
-	<File name="FIL lib\RCR DSTU\RCR_SetupCustom.h" open="1" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="FIL lib\RCR DSTU\RCR_SetupCustom.h" open="0" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="5367" topLine="113" />
 		</Cursor>
@@ -93,7 +93,7 @@
 	</File>
 	<File name="freertos_lib\FreeRTOSConfig.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2562" topLine="45" />
+			<Cursor1 position="2526" topLine="39" />
 		</Cursor>
 	</File>
 	<File name="freertos_lib\list.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -146,19 +146,19 @@
 			<Cursor1 position="105487" topLine="2369" />
 		</Cursor>
 	</File>
-	<File name="freertos_lib\tasks.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="freertos_lib\tasks.c" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="144485" topLine="3439" />
 		</Cursor>
 	</File>
-	<File name="inc\main.h" open="1" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="inc\main.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="267" topLine="0" />
+			<Cursor1 position="342" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="inc\robot_tasks.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="inc\robot_tasks.h" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="894" topLine="31" />
+			<Cursor1 position="2390" topLine="63" />
 		</Cursor>
 	</File>
 	<File name="inc\stm32f4xx.h" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -176,48 +176,61 @@
 			<Cursor1 position="8115" topLine="261" />
 		</Cursor>
 	</File>
-	<File name="ModBus\ModBus.h" open="1" top="0" tabpos="16" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="ModBus\ModBus.h" open="0" top="0" tabpos="16" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="139" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src\CarManagement.c" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\CarManagement.c" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2336" topLine="42" />
+			<Cursor1 position="7228" topLine="93" />
+		</Cursor>
+		<Folding>
+			<Collapse line="58" />
+			<Collapse line="87" />
+			<Collapse line="114" />
+			<Collapse line="167" />
+		</Folding>
+	</File>
+	<File name="src\CarManagement.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="53" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src\CarManagement.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="107" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="src\CarRegulators.c" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\CarRegulators.c" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="2303" topLine="25" />
 		</Cursor>
 	</File>
-	<File name="src\CarRegulators.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\CarRegulators.h" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="443" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src\main.c" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\main.c" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="221" topLine="0" />
+			<Cursor1 position="230" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src\robot_tasks.c" open="1" top="1" tabpos="4" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+	<File name="src\robot_tasks.c" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="8028" topLine="219" />
+			<Cursor1 position="4467" topLine="89" />
 		</Cursor>
 		<Folding>
 			<Collapse line="52" />
 			<Collapse line="60" />
 			<Collapse line="69" />
-			<Collapse line="267" />
-			<Collapse line="474" />
-			<Collapse line="583" />
-			<Collapse line="881" />
+			<Collapse line="125" />
+			<Collapse line="160" />
+			<Collapse line="277" />
+			<Collapse line="293" />
+			<Collapse line="319" />
+			<Collapse line="411" />
+			<Collapse line="484" />
+			<Collapse line="540" />
+			<Collapse line="593" />
+			<Collapse line="617" />
+			<Collapse line="891" />
 		</Folding>
 	</File>
 	<File name="src\startup_stm32f407xx.S" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -225,7 +238,7 @@
 			<Cursor1 position="3845" topLine="182" />
 		</Cursor>
 	</File>
-	<File name="src\system_stm32f4xx.c" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\system_stm32f4xx.c" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="26996" topLine="501" />
 		</Cursor>

@@ -51,13 +51,13 @@ void BoardStart(void)
     TimGasConfigure();      // one pulse mode
 
     // Расчет скорости колес
-    TimPIDConfigure(Tim7,8399,1000);    // 10 Hz
+    //TimPIDConfigure(Tim7,8399,1000);    // 10 Hz
 
     // Расчет ПИД двигателей коробки передач
-    TimPIDConfigure(Tim6,8399,100);    // 100 Hz
+    //TimPIDConfigure(Tim6,8399,100);    // 100 Hz
 
     // Reserved
-    TimPIDConfigure(Tim5,83, 1000);  // 1kHz
+    //TimPIDConfigure(Tim5,83, 1000);  // 1kHz
 
     // расчет скорости колес
     TimPWMInputCaptureConfigure(Tim4,1679, 0xC350);
@@ -76,8 +76,8 @@ void BoardStart(void)
     // 115200 бод
     USARTBothConfigure(usart3, 0x16C , 0, 1);   //0x16C
 
-    add_ext_interrupt(EXTI1_PIN, EXTI_RISING_EDGE);    // Hall Sensor 1 - left wheel
-    add_ext_interrupt(EXTI2_PIN, EXTI_FALLING_EDGE);    // Hall Sensor 2 - right wheel
+    //add_ext_interrupt(EXTI1_PIN, EXTI_RISING_EDGE);    // Hall Sensor 1 - left wheel
+    //add_ext_interrupt(EXTI2_PIN, EXTI_FALLING_EDGE);    // Hall Sensor 2 - right wheel
    // add_ext_interrupt(GENERAL_PIN_9, EXTI_RISING_EDGE); // Check supply voltage
 
     // Danger control Clutch
@@ -86,6 +86,8 @@ void BoardStart(void)
     InterruptsEnable();
     __enable_irq();
 }
+
+
 
 void ADC_Init(void)
 {
@@ -110,7 +112,7 @@ void ADC_Init(void)
   DMA2_Stream0->CR |= DMA_SxCR_PSIZE_0; //Размерность данных периферии - 16 бит.
   DMA2_Stream0->CR |= DMA_SxCR_MSIZE_0; //Размерность данных памяти - 16 бит
   DMA2_Stream0->CR |= DMA_SxCR_PL; //Приоритет - очень высокий (Very High)
-  DMA2_Stream0->CR |= DMA_SxCR_TCIE;
+
 
   //DMA2->LIFCR = DMA_LIFCR_CTCIF0;
   DMA2_Stream0->CR |= DMA_SxCR_EN | DMA_SxCR_TCIE; //Разрешаем работу канала 1 DMA
